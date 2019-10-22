@@ -39,9 +39,12 @@ char	*ft_strncat(char *dest, const char *src, size_t n);
 
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
-//strchr
-//strrchr
-//strstr
+char	*ft_strchr(const char *s, int c);
+
+// Home 21.10
+char	*ft_strrchr(const char *s, int c);
+char	*ft_strstr(const char *haystack, const char *needle);
+
 //strnstr
 //strcmp
 //strncmp

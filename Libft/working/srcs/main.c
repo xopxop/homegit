@@ -301,6 +301,40 @@ int main(void)
 }
 */
 
+// ft_strchr.c
+/*
+int main(void) {
+	char s[] = "found!";
+
+	printf("%s\n", strchr(s, 'u'));
+	printf("%s\n", ft_strchr(s, 'u'));
+	printf("%s\n", strchr(s, '\0'));
+	printf("%s\n", ft_strchr(s, '\0'));
+}
+*/
+
+// ft_strrchr.c
+/*
+int main(void) {
+	char s[] = "found you sound!";
+	
+	printf("%s\n", strrchr(s, 'u'));
+	printf("%s\n", ft_strrchr(s, 'u'));
+	printf("%s\n", strrchr(s, '\0'));
+	printf("%s\n", ft_strrchr(s, '\0'));
+}
+*/
+
+// ft_strstr.c
+
+int main(void) {
+	char s[] = "found you sound!";
+	
+	printf("%s\n", strstr(s, "un"));
+	printf("%s\n", ft_strstr(s, "un"));
+	printf("%s\n", strstr(s, "\0"));
+	printf("%s\n", ft_strstr(s, "\0"));
+}
 ////////////////////////////////////////////
 
 // ft_memalloc.c
