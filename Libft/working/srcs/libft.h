@@ -6,7 +6,7 @@
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 11:32:53 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/21 16:59:54 by dthan            ###   ########.fr       */
+/*   Updated: 2019/10/23 16:59:04 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,12 @@ char	*ft_strncat(char *dest, const char *src, size_t n);
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 char	*ft_strchr(const char *s, int c);
-
-// Home 21.10
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strstr(const char *haystack, const char *needle);
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
+int		ft_strcmp(const char *s1, const char *s2);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
-//strnstr
-//strcmp
-//strncmp
 
 int	ft_atoi(const char *str);
 int	ft_isalpha(int c);
@@ -66,12 +64,10 @@ char	*ft_strnew(size_t size);
 void	ft_strdel(char **as);
 void	ft_strclr(char *s);
 void	ft_striter(char *s, void (*f)(char *));
+void	ft_striteri(char *s, void (*f)(unsigned int, char *));
+char	*ft_strmap(char  const *s, char (*f)(char));
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
-
-
-// ft_striteri
-// ft_strmap
-// ft_strmapi
 // ft_strequ
 // ft_strnequ
 // ft_strub
@@ -79,14 +75,14 @@ void	ft_striter(char *s, void (*f)(char *));
 // ft_strtrim
 // ft_strsplit
 // ft_itoa
-// ft_putchar
-// ft_putstr
-// ft_putendl
-// ft_putnbr
-// ft_putchar_fd
-// ft_putstr_fd
-// ft_putendl_fd
-// ft_putnbr_fd
+void	ft_putchar(char c);
+void	ft_putstr(char const *s);
+void	ft_putendl(char const *s);
+void	ft_putnbr(int n);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char const *s, int fd);
+void	ft_putendl_fd(char const *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
 
 // BONUS PART
 // ft_lstnew

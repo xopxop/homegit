@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 16:18:57 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/21 17:56:03 by dthan            ###   ########.fr       */
+/*   Created: 2019/10/23 16:10:07 by dthan             #+#    #+#             */
+/*   Updated: 2019/10/23 16:33:25 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+void    ft_putnbr(int nbr)
 {
-	size_t i;
-	size_t j;
-	size_t tlen;
-
-	i = 0;
-	j = 0;
-	tlen = 0;
-	while (dst[i] != '\0')
-		i++;
-	while (src[j] != '\0')
-		j++;
-	if (dstsize < i)
-		tlen = j + dstsize;
-	else
-		tlen = i + j;
-	j = 0;
-	while (src[j] != '\0' && i + 1 < dstsize)
-		dst[i++] = src[j++];
-	return (tlen);
+	if (nbr == -2147483648)
+	{
+		ft_putchar('-');
+		ft_putchar('2');
+		ft_putnbr(147483648);
+	}
+    if (nbr < 0)
+	{
+        ft_putchar('-');
+		nbr *= -1;
+	}
+    if (nbr >= 10)
+		ft_putnbr(nbr / 10);
+	ft_putchar((nbr % 10) + '0');
 }

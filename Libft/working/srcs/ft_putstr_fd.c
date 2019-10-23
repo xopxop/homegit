@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 16:18:57 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/21 17:56:03 by dthan            ###   ########.fr       */
+/*   Created: 2019/10/23 14:27:03 by dthan             #+#    #+#             */
+/*   Updated: 2019/10/23 14:39:12 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+void	ft_putstr_fd(char const *string, int fileDescriptor)
 {
-	size_t i;
-	size_t j;
-	size_t tlen;
-
-	i = 0;
-	j = 0;
-	tlen = 0;
-	while (dst[i] != '\0')
-		i++;
-	while (src[j] != '\0')
-		j++;
-	if (dstsize < i)
-		tlen = j + dstsize;
-	else
-		tlen = i + j;
-	j = 0;
-	while (src[j] != '\0' && i + 1 < dstsize)
-		dst[i++] = src[j++];
-	return (tlen);
+	while (*string)
+	{
+		ft_putchar_fd(*string, fileDescriptor);
+		string++;
+	}
 }

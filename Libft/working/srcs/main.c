@@ -305,7 +305,6 @@ int main(void)
 /*
 int main(void) {
 	char s[] = "found!";
-
 	printf("%s\n", strchr(s, 'u'));
 	printf("%s\n", ft_strchr(s, 'u'));
 	printf("%s\n", strchr(s, '\0'));
@@ -326,7 +325,7 @@ int main(void) {
 */
 
 // ft_strstr.c
-
+/*
 int main(void) {
 	char s[] = "found you sound!";
 	
@@ -335,6 +334,59 @@ int main(void) {
 	printf("%s\n", strstr(s, "\0"));
 	printf("%s\n", ft_strstr(s, "\0"));
 }
+*/
+
+// ft_strnstr.c
+/*
+int main(void) {
+	char s[] = "found you sound!";
+	
+	printf("%s\n", strnstr(s, "un", 10));
+	printf("%s\n", ft_strnstr(s, "un", 10));
+	printf("%s\n", strnstr(s, "un", 3));
+	printf("%s\n", ft_strnstr(s, "un", 3));
+}
+*/
+
+// ft_strcmp.c
+/*
+int main(void) {
+	char s1[] = "abcd";
+	char s2[] = "abcd";
+	char s3[] = "abc";
+	char s4[] = "ade";
+	char s5[] = "ced";
+	char s6[] = "aed";
+
+	printf("%d\n", strcmp(s1, s2));
+	printf("%d\n", ft_strcmp(s1, s2));
+	printf("%d\n", strcmp(s3, s4));
+	printf("%d\n", ft_strcmp(s3, s4));
+	printf("%d\n", strcmp(s5, s6));
+	printf("%d\n", ft_strcmp(s5, s6));
+}
+*/
+
+// ft_strncmp.c
+/*
+int main(void) {
+	char s1[] = "aaaaabcd";
+	char s2[] = "aaaaabcd";
+	char s3[] = "aaaabc";
+	char s4[] = "aaaade";
+	char s5[] = "cccced";
+	char s6[] = "accccced";
+
+	printf("%d\n", strncmp(s1, s2, 5));
+	printf("%d\n", ft_strncmp(s1, s2, 5));
+	printf("%d\n", strncmp(s3, s4, 3));
+	printf("%d\n", ft_strncmp(s3, s4, 3));
+	printf("%d\n", strncmp(s3, s4, 6));
+	printf("%d\n", ft_strncmp(s3, s4, 6));
+	printf("%d\n", strncmp(s5, s6, 6));
+	printf("%d\n", ft_strncmp(s5, s6, 6));
+}
+*/
 ////////////////////////////////////////////
 
 // ft_memalloc.c
@@ -407,26 +459,79 @@ int main(void) {
 }
 */
 
-//////////////////
+// ft_striter.c
 /*
 #include "libft.h"
 
+void ftt_toupper(char *c) {
+	if (*c >= 'a' && *c <= 'a') 
+		*c -= 32;
+	else
+		*c = *c;
+}
+
 int main(void) {
-	char s[] = "aaaaa";
-	void nextchar(char *c)
-	{
-		(*c)++;
-	}
+	char s[] = "aaaa";
 
-	ft_striter(NULL, &nextchar);
-	ft_striter(s, &nextchar);
-
-	if (strcmp(s, "kjpq"))
-		return (1);
-	printf ("ft_striter OK\n");
-	return (0);
+	ft_striter(s, ftt_toupper);
+	printf("%s", s);
 }
 */
-///////////////////////
 
+// ft_striteri.c
+/*
 
+#include "libft.h"
+
+void ftt_toupper(unsigned int , char *c) {
+	if (*c >= 'a' && *c <= 'a') 
+		*c -= 32;
+	else
+		*c = *c;
+}
+
+int main(void) {
+	char s[] = "aaaa";
+
+	ft_striteri(s, ftt_toupper);
+	printf("%s", s);
+}
+*/
+
+//////////////////////////// 23.10 From School
+
+// ft_putnbr.c
+/*
+int main(void) {
+	ft_putnbr(32);
+	ft_putnbr(-423);
+}
+*/
+
+// ft_putchar_fd.c
+/*
+int main(void) {
+	ft_putchar_fd('c', 1);
+}
+*/
+
+// ft_putstr_fd.c
+/*
+int main(void) {
+	ft_putstr_fd("abc", 1);
+}
+*/
+
+// ft_putendl_fd.c
+/*
+int main(void) {
+	ft_putendl_fd("abc", 1);
+}
+*/
+
+// ft_putnbr.c
+
+int main(void) {
+	ft_putnbr_fd(32, 2);
+	ft_putnbr_fd(-423, 1);
+}

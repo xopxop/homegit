@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 16:18:57 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/21 17:56:03 by dthan            ###   ########.fr       */
+/*   Created: 2019/10/22 13:30:54 by dthan             #+#    #+#             */
+/*   Updated: 2019/10/22 14:00:17 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	size_t i;
-	size_t j;
-	size_t tlen;
+	int i;
 
 	i = 0;
-	j = 0;
-	tlen = 0;
-	while (dst[i] != '\0')
+	while (s1[i] != '\0' && s2[i] != '\0')
+	{
+		if (s1[i] !=  s2[i])
+			return ((unsigned char)(s1[i]) - (unsigned char)(s2[i]));
 		i++;
-	while (src[j] != '\0')
-		j++;
-	if (dstsize < i)
-		tlen = j + dstsize;
-	else
-		tlen = i + j;
-	j = 0;
-	while (src[j] != '\0' && i + 1 < dstsize)
-		dst[i++] = src[j++];
-	return (tlen);
+	}
+	return (0);
 }
