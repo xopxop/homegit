@@ -1,30 +1,30 @@
-#include <string.h>
-#include <stdio.h>
+#include "libft.h"
 
-void ftt_toupper(unsigned int i, char *c) {
-    if (*c >= 'a' && *c <= 'a')
-        *c -= 32;
-    else
-        *c = *c;
-}
-
-void    ft_striteri(char *s, void (*f)(unsigned int, char *))
+char		**ft_strsplit(char const *s, char c)
 {
-    unsigned int i;
+	char	**a;
+	size_t	inside_a_word;
+	size_t	word_index;
+	size_t	i;
+	size_t	start;
 
-    i = 0;
-    if (!s || !f || !*(s))
-        return ;
-    while (s[i])
+	if (!s)
+		return (NULL);
+	if (!(a = (char **)ft_memalloc((ft_countwords(s, c) + 1) * sizeof(char *))))
+		return (NULL);
+	word_index = 0;
+	inside_a_word = 0;
+	i = -1;
+	start = 0;
+	while (s[++i])
 	{
-        f(i, &s[i]);
-		i++;
+		if (inside_a_word && s[i] == c)
+			a[word_index++] = ft_strsub(s, start, i - start);
+		if (!inside_a_word && s[i] != c)
+			start = i;
+		inside_a_word = (s[i] == c) ? 0 : 1;
 	}
-}
-
-int main(void) {
-    char s[] = "aaaa";
-
-    ft_striteri(s, ftt_toupper);
-    printf("%s", s);
+	if (inside_a_word)
+		a[word_index] = ft_strsub(s, start, i - start);
+	return (a);
 }
