@@ -1,23 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/16 11:28:40 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/18 14:39:48 by dthan            ###   ########.fr       */
+/*   Created: 2019/10/25 13:32:29 by dthan             #+#    #+#             */
+/*   Updated: 2019/10/25 13:51:05 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*ft_memset(void *s, int c, size_t n)
+char    **ft_strsplit(char const *s, char c)
 {
-	unsigned char *ptr;
 
-	ptr = s;
-	while (n-- > 0)
-		*ptr++ = c;
-	return (s);
-}

@@ -605,3 +605,14 @@ int main(void) {
 		i++;
 	}
 }
+
+
+// ft_itoa.c
+/*
+int main(void) {
+    printf("%s\n", ft_itoa(9));
+    printf("%s\n", ft_itoa(0));
+    printf("%s\n", ft_itoa(109));
+    printf("%s\n", ft_itoa(-9));
+}
+*/
