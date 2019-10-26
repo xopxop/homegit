@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/24 14:25:48 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/26 04:18:06 by dthan            ###   ########.fr       */
+/*   Created: 2019/10/21 13:48:19 by dthan             #+#    #+#             */
+/*   Updated: 2019/10/26 17:56:56 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strtrim(char const *string)
+void	*ft_memalloc(size_t size)
 {
-	size_t stringstart;
-	size_t stringend;
+	void *ptr;
 
-	stringstart = 0;
-	stringend = ft_strlen(string);
-	if (!string)
-		return (0);
-	while (ft_isspace(string[stringstart]))
-		stringstart++;
-	while (ft_isspace(string[stringend - 1]))
-		stringend--;
-	if (stringstart < stringend)
-		return (ft_strsub(string, stringstart, stringend - stringstart));
-	else
-		return (0);
+	if (!(ptr = malloc(size)))
+		return (NULL);
+	ft_bzero(ptr, size);
+	return (ptr);
 }

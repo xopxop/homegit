@@ -2,7 +2,7 @@
 #include "libft.h"
 
 // ft_atoi.c
-
+/*
 #include <stdlib.h>
 
 int main(void) {
@@ -13,7 +13,7 @@ int main(void) {
 	printf("%d\n", ft_atoi("ads"));
 
 }
-
+*/
 
 
 // ft_isalpha.c
@@ -588,6 +588,8 @@ int main(void) {
 	printf("%s\n", ft_strtrim("     asdjaslkdjlkas     "));
 	printf("%s\n", ft_strtrim("asdjaslkdjlkas     "));
 	printf("%s\n", ft_strtrim("     asdjaslkdjlkas"));
+    	printf("%s\n", ft_strtrim(NULL));
+
 }
 */
 
@@ -616,3 +618,9 @@ int main(void) {
     printf("%s\n", ft_itoa(-9));
 }
 */
+
+// Bones part
+
+// ft_lstnew.c
+
+
