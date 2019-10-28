@@ -1,5 +1,6 @@
-#include <stdio.h>
 #include "libft.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 // ft_atoi.c
 /*
@@ -622,5 +623,55 @@ int main(void) {
 // Bones part
 
 // ft_lstnew.c
+/*
+int main(void) {
+	t_list *list = 0;
 
+	list = ft_lstnew("abcds", 6);
+	list->next = ft_lstnew("basd", 5);
+	list->next->next = ft_lstnew("jsad", 5);
+	printf("%s\n", (char*)list->content);
+	printf("%s\n", (char*)list->next->content);
+	printf("%s\n", (char*)list->next->next->content);
+}
+*/
 
+// ft_lstelone.c
+/*
+void	freefunct(void *d, size_t s)
+{
+	free(d);
+	(void)s;
+}
+
+int	main(void)
+{
+	t_list *begin;
+	size_t v;
+
+	v = 1;
+	begin = ft_lstnew(&v, sizeof(void *));
+	begin->next = ft_lstnew(&v, sizeof(void *));
+	begin->next->next = ft_lstnew(&v, sizeof(void *));
+	ft_lstdelone(&begin->next->next, freefunct);
+	if (begin->next->next != NULL)
+	{
+		printf( "It doesn't work\n");
+		return (0);
+	}
+	ft_lstdelone(&begin->next, freefunct);
+	if (begin->next != NULL)
+	{
+		printf("It doesn't work\n");
+		return (0);
+	}
+	ft_lstdelone(&begin, freefunct);
+	if (begin != NULL)
+	{
+		printf("It doesn't work\n");
+		return (0);
+	}
+	printf("It works\n");
+//	return (1);
+}
+*/
