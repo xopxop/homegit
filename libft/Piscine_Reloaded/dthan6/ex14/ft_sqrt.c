@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/23 14:48:02 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/26 18:37:40 by dthan            ###   ########.fr       */
+/*   Created: 2019/10/15 09:45:10 by dthan             #+#    #+#             */
+/*   Updated: 2019/10/15 11:09:20 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_putnbr_fd(int nbr, int filedescriptor)
+int	ft_sqrt(int nb)
 {
-	unsigned int nb;
+	int root;
 
-	if (nbr < 0)
-	{
-		ft_putchar_fd('-', filedescriptor);
-		nb = (unsigned int)(nbr * -1);
-	}
-        else
-                nb = (unsigned int)nbr;
-	if (nb >= 10)
-		ft_putnbr_fd(nb / 10, filedescriptor);
-	ft_putchar_fd((nb % 10) + '0', filedescriptor);
+	root = 1;
+	while (root * root < nb)
+		root++;
+	if (root * root == nb)
+		return (root);
+	else
+		return (0);
 }

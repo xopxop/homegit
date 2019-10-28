@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/28 16:33:57 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/28 16:40:11 by dthan            ###   ########.fr       */
+/*   Created: 2019/10/16 12:27:32 by dthan             #+#    #+#             */
+/*   Updated: 2019/10/16 12:27:37 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* PROTOTYPE: void ft_lstadd(t_list **alst, t_list *new)
- * DESCRIPTION: Adds the element new at the bbeginning of the list
- * PARAM.#1: The address of a pointer to the first link of a list
- * PARAM.#2: The link to add at the beginning of the list
- * RETURN VALUE: None
- * Libc function: None
- */
-
-#include "libft.h"
-
-void ft_lstadd(t_list **alst, t_list *new)
+int	ft_recursive_factorial(int nb)
 {
-	new->next = *alst;
-	*alst = new;
+	if (nb < 0 || nb > 12)
+		return (0);
+	if (nb > 1)
+		return (nb * ft_recursive_factorial(nb - 1));
+	else
+		return (1);
 }

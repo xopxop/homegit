@@ -6,7 +6,7 @@
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 16:18:57 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/26 17:49:04 by dthan            ###   ########.fr       */
+/*   Updated: 2019/10/28 17:52:40 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	j = 0;
 	while (src[j] != '\0' && i + 1 < dstsize)
 		dst[i++] = src[j++];
-        dst[i] = '\0';
+	dst[i] = '\0';
 	return (tlen);
 }

@@ -637,7 +637,7 @@ int main(void) {
 */
 
 // ft_lstelone.c
-/*
+
 void	freefunct(void *d, size_t s)
 {
 	free(d);
@@ -674,4 +674,3 @@ int	main(void)
 	printf("It works\n");
 //	return (1);
 }
-*/

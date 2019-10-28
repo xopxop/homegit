@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/24 14:25:48 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/26 19:26:31 by dthan            ###   ########.fr       */
+/*   Created: 2019/10/16 12:26:04 by dthan             #+#    #+#             */
+/*   Updated: 2019/10/17 09:00:57 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strtrim(char const *string)
+char	*ft_strdup(char *src)
 {
-	size_t stringstart;
-	size_t stringend;
+	char	*new;
+	int		i;
+	int		size;
 
-	stringstart = 0;
-	stringend = ft_strlen(string);
-	if (!string)
+	size = 0;
+	while (src[size])
+		++size;
+	if (!(new = malloc(sizeof(char) * (size + 1))))
 		return (NULL);
-	while (ft_isspace(string[stringstart]))
-		stringstart++;
-	while (ft_isspace(string[stringend - 1]))
-		stringend--;
-	if (stringend < stringstart)
-                stringend = stringstart;
-	return (ft_strsub(string, stringstart, stringend - stringstart));
+	i = 0;
+	while (src[i])
+	{
+		new[i] = src[i];
+		i++;
+	}
+	new[i] = '\0';
+	return (new);
 }
