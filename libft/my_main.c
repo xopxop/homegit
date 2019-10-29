@@ -675,3 +675,121 @@ int	main(void)
 //	return (1);
 }
 */
+
+// ft_lstiter.c
+/*
+void ft_hello(t_list *elem) {
+	ft_strcpy((char*)elem, "hello");
+}
+
+
+int main(void) {
+	t_list *list = 0;
+
+	list = ft_lstnew("abcde", sizeof(char*));
+	list->next = ft_lstnew("afdfe", sizeof(char*));
+	list->next->next = ft_lstnew("aswre", sizeof(char*));
+	printf("%s\n", (char*)list->content);
+	printf("%s\n", (char*)list->next->content);
+	printf("%s\n", (char*)list->next->next->content);
+	ft_lstiter(list, ft_hello);
+	printf("%s\n", (char*)list->content);
+	printf("%s\n", (char*)list->next->content);
+	printf("%s\n", (char*)list->next->next->content);
+}
+*/
+/*
+void	iterfunct(t_list *v)
+{
+	*(size_t*)v->content = *(size_t*)v->content + 1;
+}
+
+int		main(void)
+{
+	t_list	*begin;
+	size_t	i;
+	size_t	j;
+
+	i = 1;
+	j = 2;
+	begin = ft_lstnew(&i, sizeof(size_t));
+	begin->next = ft_lstnew(&j, sizeof(size_t));
+	ft_lstiter(begin, iterfunct);
+	printf("%zu\n", *(size_t*)begin->content);
+	printf("%zu\n", *(size_t*)begin->next->content);
+	if (*(size_t*)begin->content != 2)
+	{
+		printf("It doesn't work\n");
+		return (0);
+	}
+	if (*(size_t*)begin->next->content != 3)
+	{
+		printf("It doesn't work\n");
+		return (0);
+	}
+	free(begin->next);
+	free(begin);
+	printf("It works\n");
+	return (1);
+}
+*/
+
+// ft_lstmap.c
+
+t_list		*iterfunct(t_list *elem)
+{
+	t_list	*new;
+	char	*content;
+	size_t	i;
+
+	content = ft_strdup((char *)(elem->content));
+	i = 0;
+	while (i < ft_strlen(content))
+	{
+		content[i] += 1;
+		++i;
+	}
+	new = ft_lstnew((void const *) content, 5);
+	free(content);
+	return (new);
+}
+
+int			main(void)
+{
+	t_list			*lst_initial;
+	t_list			*lst;
+	char			*content;
+	t_list			*(*f)(t_list *);
+
+	content = "toto";
+	lst_initial = ft_lstnew((void const *) content, 5);
+	content = "tata";
+	lst_initial->next = ft_lstnew((void const *) content, 5);
+	content = "tutu";
+	lst_initial->next->next = ft_lstnew((void const *) content, 5);
+	f = &iterfunct;
+	lst = ft_lstmap(lst_initial, f);
+	if (!strcmp((const char *) lst->content, (const char *) lst_in
+				itial->content) || strcmp((const char *) lst->content, "upup"))
+	{
+		write(1, "It doesn't work\n", 16);
+		return (0);
+	}
+	if (!strcmp((const char *) lst->next->content, (const ch
+					ar *) lst_initial->next->content) || strcmp((const char *
+						) lst->next->content, "ubub"))
+	{
+		write(1, "It doesn't work\n", 16);
+		return (0);
+	}
+	if (!strcmp((const char *) lst->next->next->content, (con
+					st char *) lst_initial->next->next->content) || strcmp((con
+						st char *) lst->next->next->content, "uvuv"))
+	{
+		write(1, "It doesn't work\n", 16);
+		return (0);
+	}
+	write(1, "It works\n", 9);
+	return (0);
+}
+
