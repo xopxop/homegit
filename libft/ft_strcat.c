@@ -6,14 +6,14 @@
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 13:43:31 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/18 13:44:08 by dthan            ###   ########.fr       */
+/*   Updated: 2019/10/30 08:26:14 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strcat(char *dest, const char *src)
 {
-	int ct;
-	int i;
+	unsigned int ct;
+	unsigned int i;
 
 	ct = 0;
 	while (dest[ct])

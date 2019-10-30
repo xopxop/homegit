@@ -6,7 +6,7 @@
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 16:26:00 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/26 03:45:41 by dthan            ###   ########.fr       */
+/*   Updated: 2019/10/30 08:04:43 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
 	unsigned char		*ptr;
 	const unsigned char	*ptr2;
-	int					i;
+	unsigned int i;
 
 	ptr = (unsigned char*)dst;
 	ptr2 = (unsigned char*)src;

@@ -6,11 +6,10 @@
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 13:49:36 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/26 03:57:54 by dthan            ###   ########.fr       */
+/*   Updated: 2019/10/30 08:41:38 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 char	*ft_strnew(size_t size)
@@ -19,9 +18,9 @@ char	*ft_strnew(size_t size)
 	size_t	i;
 
 	i = 0;
-	if (!(s = malloc(size + 1)))
+	if (!(s = ft_memalloc(size + 1)))
 		return (NULL);
-	while (i <= size)
+	while (i < size)
 		s[i++] = '\0';
 	return (s);
 }

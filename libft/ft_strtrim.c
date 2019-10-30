@@ -6,7 +6,7 @@
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 14:25:48 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/28 17:53:54 by dthan            ###   ########.fr       */
+/*   Updated: 2019/10/30 09:14:30 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 char	*ft_strtrim(char const *string)
 {
-	size_t stringstart;
-	size_t stringend;
+	int stringstart;
+	int  stringend;
 
 	stringstart = 0;
-	stringend = ft_strlen(string);
+	stringend = ft_strlen((char*)string);
 	if (!string)
 		return (NULL);
 	while (ft_isspace(string[stringstart]))

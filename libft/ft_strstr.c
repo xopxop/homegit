@@ -6,14 +6,14 @@
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 13:09:32 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/22 13:09:36 by dthan            ###   ########.fr       */
+/*   Updated: 2019/10/30 08:46:23 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strstr(const char *haystack, const char *needle)
 {
-	int pos;
-	int i;
+	unsigned int pos;
+	unsigned int i;
 
 	if (!*needle)
 		return ((char*)haystack);

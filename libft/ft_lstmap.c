@@ -6,7 +6,7 @@
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 16:38:01 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/29 16:57:48 by dthan            ###   ########.fr       */
+/*   Updated: 2019/10/29 23:32:00 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 
 	if (!lst || !f)
 		return (NULL);
-	while(lst)
-
+	newlst = f(lst);
+	newlst->next = ft_lstmap(lst->next, f);
+	return (newlst);
+}

@@ -246,7 +246,7 @@ int main(void) {
 	printf("str1 before memmove: %s\n",str1);
 	//Copies contents of str2 to sr1
 //	printf("str1 after memmove: %s\n", memmove(str1, str2, sizeof(str2)));
-	printf("str1 after memmove: %s\n", ft_memmove(str1, str2, sizeof(str2)));
+	printf("str1 after memmove: %s\n", (char*)ft_memmove(str1, str2, sizeof(str2)));
 	return 0;
 }
 */
@@ -677,7 +677,7 @@ int	main(void)
 */
 
 // ft_lstiter.c
-/*
+/* NOTE: THIS TEST IS SEGMENTATION FAIL need to fix the main
 void ft_hello(t_list *elem) {
 	ft_strcpy((char*)elem, "hello");
 }
@@ -735,61 +735,38 @@ int		main(void)
 */
 
 // ft_lstmap.c
+/*
 
-t_list		*iterfunct(t_list *elem)
+t_list	*ft_tooupp(t_list *elem)
 {
-	t_list	*new;
-	char	*content;
-	size_t	i;
+	int i;
+	t_list *new_elem;
 
-	content = ft_strdup((char *)(elem->content));
+	new_elem = ft_lstnew(elem->content, elem->content_size);
 	i = 0;
-	while (i < ft_strlen(content))
+	while (((char*)new_elem->content)[i])
 	{
-		content[i] += 1;
-		++i;
+	       ((char*)new_elem->content)[i] -= 32;
+	       i++;
 	}
-	new = ft_lstnew((void const *) content, 5);
-	free(content);
-	return (new);
+	return (new_elem);
 }
 
-int			main(void)
-{
-	t_list			*lst_initial;
-	t_list			*lst;
-	char			*content;
-	t_list			*(*f)(t_list *);
 
-	content = "toto";
-	lst_initial = ft_lstnew((void const *) content, 5);
-	content = "tata";
-	lst_initial->next = ft_lstnew((void const *) content, 5);
-	content = "tutu";
-	lst_initial->next->next = ft_lstnew((void const *) content, 5);
-	f = &iterfunct;
-	lst = ft_lstmap(lst_initial, f);
-	if (!strcmp((const char *) lst->content, (const char *) lst_in
-				itial->content) || strcmp((const char *) lst->content, "upup"))
-	{
-		write(1, "It doesn't work\n", 16);
-		return (0);
-	}
-	if (!strcmp((const char *) lst->next->content, (const ch
-					ar *) lst_initial->next->content) || strcmp((const char *
-						) lst->next->content, "ubub"))
-	{
-		write(1, "It doesn't work\n", 16);
-		return (0);
-	}
-	if (!strcmp((const char *) lst->next->next->content, (con
-					st char *) lst_initial->next->next->content) || strcmp((con
-						st char *) lst->next->next->content, "uvuv"))
-	{
-		write(1, "It doesn't work\n", 16);
-		return (0);
-	}
-	write(1, "It works\n", 9);
-	return (0);
+int main(void) {
+	t_list *start;
+	t_list *new;
+
+	start = ft_lstnew("aaa", sizeof("aaa"));
+	start->next = ft_lstnew("bbb", sizeof("bbb"));
+	start->next->next = ft_lstnew("ccc", sizeof("ccc"));
+	printf("%s\n", (char*)start->content);
+	printf("%s\n", (char*)start->next->content);
+	printf("%s\n", (char*)start->next->next->content);
+	new = ft_lstmap(start, &ft_tooupp);
+	printf("%s\n", (char*)new->content);
+	printf("%s\n", (char*)new->next->content);
+	printf("%s\n", (char*)new->next->next->content);
+
 }
-
+*/

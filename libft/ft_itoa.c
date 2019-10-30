@@ -6,13 +6,13 @@
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 11:21:14 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/26 04:45:58 by dthan            ###   ########.fr       */
+/*   Updated: 2019/10/30 07:58:43 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-unsigned int	getsizenumber(unsigned int nb)
+static int	getsizenumber(unsigned int nb)
 {
 	unsigned int size;
 
@@ -37,15 +37,12 @@ char			*ft_itoa(int n)
 		nbr = (unsigned int)(n * -1);
 	else
 		nbr = (unsigned int)(n);
-	size = getsizenumber(nbr);
+	size = (unsigned int)getsizenumber(nbr);
 	if (!(string = (char*)malloc(sizeof(char) *
 					(size + 1 + (n < 0 ? 1 : 0)))))
 		return (NULL);
-	if (n < 0)
-	{
-		string[index] = '-';
+	if (n < 0 && (string[index] = '-'))
 		size++;
-	}
 	index = size - 1;
 	while (nbr >= 10)
 	{

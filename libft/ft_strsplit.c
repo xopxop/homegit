@@ -6,28 +6,11 @@
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 17:15:10 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/26 04:43:07 by dthan            ###   ########.fr       */
+/*   Updated: 2019/10/30 08:45:31 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int		ft_wordct(char const *string, char delimeter)
-{
-	size_t	ct;
-	int		insideword;
-
-	insideword = 0;
-	ct = 0;
-	while (*string)
-	{
-		if (!insideword && *string != delimeter)
-			ct++;
-		insideword = (*string == delimeter) ? 0 : 1;
-		string++;
-	}
-	return (ct);
-}
 
 char	**ft_strsplit(char const *string, char c)
 {
@@ -39,7 +22,7 @@ char	**ft_strsplit(char const *string, char c)
 
 	if (!string)
 		return (NULL);
-	if (!(re = (char**)ft_memalloc((ft_wordct(string, c) + 1) * sizeof(char*))))
+	if (!(re = (char**)ft_memalloc((ft_countwords(string, c) + 1) * sizeof(char*))))
 		return (NULL);
 	indexword = 0;
 	checkinsideaword = 0;

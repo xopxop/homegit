@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/17 15:53:24 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/30 08:29:16 by dthan            ###   ########.fr       */
+/*   Created: 2019/10/14 16:10:25 by dthan             #+#    #+#             */
+/*   Updated: 2019/10/14 16:16:01 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dst, const char *src)
+void	ft_swap(int *a, int *b)
 {
-	unsigned int i;
+	int temp;
 
-	i = 0;
-	while (src[i])
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = src[i];
-	return (dst);
+	temp = *a;
+	*a = *b;
+	*b = temp;
 }
