@@ -25,7 +25,7 @@ SRCS=ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c \
 	ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
 	ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c \
 	ft_lstmap.c \
-	ft_isspace.c ft_islower.c ft_isupper.c ft_swap.c ft_countwords.c
+	ft_isspace.c ft_islower.c ft_isupper.c ft_swap.c ft_ctwords.c
 
 OBJECTS=ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o \
 	ft_memchr.o ft_memcmp.o ft_strlen.o ft_strdup.o ft_strcpy.o \
@@ -40,7 +40,7 @@ OBJECTS=ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o \
 	ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o \
 	ft_lstnew.o ft_lstdelone.o ft_lstdel.o ft_lstadd.o ft_lstiter.o \
 	ft_lstmap.o \
-	ft_isspace.o ft_islower.o ft_isupper.o ft_swap.o ft_countwords.o
+	ft_isspace.o ft_islower.o ft_isupper.o ft_swap.o ft_ctwords.o
 
 INCLUDES=./
 

@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_ctwords.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/19 19:28:03 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/30 08:07:39 by dthan            ###   ########.fr       */
+/*   Created: 2019/10/30 10:23:18 by dthan             #+#    #+#             */
+/*   Updated: 2019/10/30 10:23:26 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+int		ft_ctwords(char const *str, char c)
 {
-	unsigned char	*p1;
-	unsigned char	*p2;
-	size_t				i;
+	size_t	count;
+	int		inside_a_word;
 
-	i = 0;
-	p1 = (unsigned char*)s1;
-	p2 = (unsigned char*)s2;
-	while (n-- > 0)
+	inside_a_word = 0;
+	count = 0;
+	while (*str)
 	{
-		if (p1[i] != p2[i])
-			return ((int)(p1[i] - p2[i]));
-		else
-			i++;
+		if (!inside_a_word && *str != c)
+			count++;
+		inside_a_word = (*str == c) ? 0 : 1;
+		str++;
 	}
-	return (0);
+	return (count);
 }

@@ -6,7 +6,7 @@
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 14:25:48 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/30 09:14:30 by dthan            ###   ########.fr       */
+/*   Updated: 2019/10/30 10:20:22 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strtrim(char const *string)
 {
-	int stringstart;
-	int  stringend;
+	int	stringstart;
+	int	stringend;
 
 	stringstart = 0;
 	stringend = ft_strlen((char*)string);

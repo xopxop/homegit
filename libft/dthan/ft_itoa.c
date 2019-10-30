@@ -6,7 +6,7 @@
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 11:21:14 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/30 07:58:43 by dthan            ###   ########.fr       */
+/*   Updated: 2019/10/30 10:24:24 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	getsizenumber(unsigned int nb)
 	return (size + 1);
 }
 
-char			*ft_itoa(int n)
+char		*ft_itoa(int n)
 {
 	char			*string;
 	unsigned int	nbr;
