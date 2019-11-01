@@ -6,8 +6,15 @@
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:22:30 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/31 16:22:33 by dthan            ###   ########.fr       */
+/*   Updated: 2019/11/01 23:09:12 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line.h"
+#include "libft.h"
+
+int	get_next_line(const in fd, char **line)
+{
+	if (fd < 0 || !i(c[fd] && !(c[fd] = ft_strnew(1))) || !line)
+		return (-1);
 
