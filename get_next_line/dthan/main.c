@@ -14,15 +14,16 @@
 int main(int argc, char **argv)
 {
 	int fd;
-	int fd2;
+//	int fd2;
 	int ret;
-	int ret2;
+//	int ret2;
 	int line;
-	int line2;
+//	int line2;
 	char *buff;
-	char *buff2;
+//	char *buff2;
 
 	line = 0;
+//	line2 = 0;
 	if (argc >= 2)
 	{
 		fd = open(argv[1], O_RDONLY);
@@ -37,18 +38,18 @@ int main(int argc, char **argv)
 		else if (ret == 0)
 			printf("-----------\nEnd of file\n");
 		close(fd);
-		fd2 = open(argv[2], O_RDONLY);
-		while ((ret2 = get_next_line(fd2, &buff2)) > 0)
-		{
-			printf("[Return: %d] Line #%d: %s\n", ret2, ++line2, buff2);
-			free(buff2);
-		}
-		printf("[Return: %d] Line #%d: %s\n", ret2, ++line2, buff2);
-		if (ret2 == -1)
-			printf("-----------\nError\n");
-		else if (ret2 == 0)
-			printf("-----------\nEnd of file\n");
-		close(fd2);
+//		fd2 = open(argv[2], O_RDONLY);
+//		while ((ret2 = get_next_line(fd2, &buff2)) > 0)
+//		{
+//			printf("[Return: %d] Line #%d: %s\n", ret2, ++line2, buff2);
+//			free(buff2);
+//		}
+//		printf("[Return: %d] Line #%d: %s\n", ret2, ++line2, buff2);
+//		if (ret2 == -1)
+//			printf("-----------\nError\n");
+//		else if (ret2 == 0)
+//			printf("-----------\nEnd of file\n");
+//		close(fd2);
 	}
 	if (argc == 1)
 	{

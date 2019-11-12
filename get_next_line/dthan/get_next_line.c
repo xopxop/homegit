@@ -70,7 +70,7 @@ int			get_next_line(int fd, char **line)
 			return (1);
 	read_value = read_file(fd, read_buffer, &string[fd], line);
 	ft_strdel(&read_buffer);
-//	free(read_buffer);
+	free(read_buffer);
 	if (read_value != 0 || string[fd] == NULL || string[fd][0] == '\0')
 	{
 		if (!read_value && *line)
@@ -79,5 +79,6 @@ int			get_next_line(int fd, char **line)
 	}
 	*line = string[fd];
 	string[fd] = NULL;
+//	ft_strdel(string);
 	return (1);
 }

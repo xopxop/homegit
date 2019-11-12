@@ -6,7 +6,7 @@
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 01:54:57 by dthan             #+#    #+#             */
-/*   Updated: 2019/11/07 14:12:04 by dthan            ###   ########.fr       */
+/*   Updated: 2019/11/12 11:18:39 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	get_next_line(int fd, char **line)
 		if (gnl_verify_line(&string[fd], line))
 			return (1);
 	}
-	while (read_value = read(fd, read_buffer, BUFF_SIZE))
+	while ((read_value = read(fd, read_buffer, BUFF_SIZE)) > 0)
 	{
 		read_buffer[read_value] = '\0';
 		if (string[fd] == NULL)
