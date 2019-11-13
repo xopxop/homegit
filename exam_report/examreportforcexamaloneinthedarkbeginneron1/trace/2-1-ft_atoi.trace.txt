@@ -1,0 +1,111 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+c1r4p8.hive.fi
+Darwin 18.7.0 x86_64
+$> date
+Tue Nov 12 16:41:09 EET 2019
+$> gcc --version
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/include/c++/4.2.1
+Apple LLVM version 10.0.1 (clang-1001.0.46.4)
+Target: x86_64-apple-darwin18.7.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+$> clang --version
+Apple LLVM version 10.0.1 (clang-1001.0.46.4)
+Target: x86_64-apple-darwin18.7.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: auto-exam/2019/c-exam-alone-in-the-dark-beginner/exam_20191112/dthan
+
+= Git history ==================================================================
+$> git -C /tmp/tmpY5b1gS/user log --pretty='%H - %an, %ad : %s'
+b50e004947a3d32d00dcd3faacfc9ff0890b874b - Exam 42, Tue Nov 12 16:40:59 2019 +0200 : Delete junk file
+4b93a723a69c75431c5bd74fedbf318a8869c1df - Exam 42, Tue Nov 12 16:40:34 2019 +0200 : Check
+d13d175130f2670406c55b813f030808663ced63 - Exam 42, Tue Nov 12 16:32:57 2019 +0200 : Added atoi
+169acfb21bf0c76634786b8afe075795930d3136 - Exam 42, Tue Nov 12 16:08:00 2019 +0200 : Add ft_strcmp
+fc9abd134158a834f793cd99a96ee36ac59de483 - Exam 42, Tue Nov 12 15:28:12 2019 +0200 : added ulstr
+047fe9244aad0a33d7546b4533659e0c6d240e82 - Exam 42, Tue Nov 12 15:19:49 2019 +0200 : Swap added
+8c1c6d679f057065be15e3231ca330a95e320b04 - Exam 42, Tue Nov 12 14:52:13 2019 +0200 : Added rotone
+e0a1ab07606c5af7a35c3725b169455685140aea - Exam 42, Tue Nov 12 14:21:35 2019 +0200 : 1 Done
+ 
+= Collected files ==========================================
+$> ls -lAR /tmp/tmpY5b1gS/user
+total 8
+-rw-r--r--  1 root  wheel  1839 Nov 12 16:41 __GIT_HISTORY
+drwxr-xr-x  3 root  wheel    96 Nov 12 16:41 aff_first_param
+drwxr-xr-x  3 root  wheel    96 Nov 12 16:41 ft_atoi
+drwxr-xr-x  3 root  wheel    96 Nov 12 16:41 ft_strcmp
+drwxr-xr-x  3 root  wheel    96 Nov 12 16:41 ft_swap
+drwxr-xr-x  3 root  wheel    96 Nov 12 16:41 rotone
+drwxr-xr-x  3 root  wheel    96 Nov 12 16:41 ulstr
+
+/tmp/tmpY5b1gS/user/aff_first_param:
+total 8
+-rw-r--r--  1 root  wheel  1113 Nov 12 16:41 aff_first_param.c
+
+/tmp/tmpY5b1gS/user/ft_atoi:
+total 8
+-rw-r--r--  1 root  wheel  1274 Nov 12 16:41 ft_atoi.c
+
+/tmp/tmpY5b1gS/user/ft_strcmp:
+total 8
+-rw-r--r--  1 root  wheel  1026 Nov 12 16:41 ft_strcmp.c
+
+/tmp/tmpY5b1gS/user/ft_swap:
+total 8
+-rw-r--r--  1 root  wheel  968 Nov 12 16:41 ft_swap.c
+
+/tmp/tmpY5b1gS/user/rotone:
+total 8
+-rw-r--r--  1 root  wheel  1292 Nov 12 16:41 rotone.c
+
+/tmp/tmpY5b1gS/user/ulstr:
+total 8
+-rw-r--r--  1 root  wheel  1244 Nov 12 16:41 ulstr.c
+ 
+= ft_atoi ======================================================================
+$> gcc -Wextra -Wall -Werror main.c ft_atoi.c -o user_exe 
+
+= Test 1 ===================================================
+$> ./kidbn1k4j7y3ssmlg1xrexmo 
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./ry61ce1xm8q0f9m472oovjvo "21" "2313"
+$> diff -U 3 user_output_test2 test2.output | cat -e
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./cc0c1q2ybx1uq825wcv5d9yr 2147483647
+$> diff -U 3 user_output_test3 test3.output | cat -e
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./7b32fxqah0eaxtku9qanwyks -2147483648
+$> diff -U 3 user_output_test4 test4.output | cat -e
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./akrgabrmc3zxhm32hvihkos9 0
+$> diff -U 3 user_output_test5 test5.output | cat -e
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./8iurf3l5sv7i1j2g1dz6fftr 12211t11
+$> diff -U 3 user_output_test6 test6.output | cat -e
+--- user_output_test6	2019-11-12 14:41:11.000000000 +0000$
++++ test6.output	2019-11-12 14:41:11.000000000 +0000$
+@@ -1 +1 @@$
+-12217811$
+\ No newline at end of file$
++12211$
+\ No newline at end of file$
+
+Diff KO :(
+Grade: 0
+
+= Final grade: 0 ===============================================================

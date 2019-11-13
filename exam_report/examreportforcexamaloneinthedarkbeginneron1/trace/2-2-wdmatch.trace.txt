@@ -1,0 +1,79 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+c3r2p2.hive.fi
+Darwin 18.7.0 x86_64
+$> date
+Tue Nov 12 16:59:54 EET 2019
+$> gcc --version
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/include/c++/4.2.1
+Apple LLVM version 10.0.1 (clang-1001.0.46.4)
+Target: x86_64-apple-darwin18.7.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+$> clang --version
+Apple LLVM version 10.0.1 (clang-1001.0.46.4)
+Target: x86_64-apple-darwin18.7.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: auto-exam/2019/c-exam-alone-in-the-dark-beginner/exam_20191112/dthan
+
+= Git history ==================================================================
+$> git -C /tmp/tmpLawjaV/user log --pretty='%H - %an, %ad : %s'
+43680dba1739d49c5eff976fc1ddd81fa2c37af8 - Exam 42, Tue Nov 12 16:59:45 2019 +0200 : Add wdwatch
+b50e004947a3d32d00dcd3faacfc9ff0890b874b - Exam 42, Tue Nov 12 16:40:59 2019 +0200 : Delete junk file
+4b93a723a69c75431c5bd74fedbf318a8869c1df - Exam 42, Tue Nov 12 16:40:34 2019 +0200 : Check
+d13d175130f2670406c55b813f030808663ced63 - Exam 42, Tue Nov 12 16:32:57 2019 +0200 : Added atoi
+169acfb21bf0c76634786b8afe075795930d3136 - Exam 42, Tue Nov 12 16:08:00 2019 +0200 : Add ft_strcmp
+fc9abd134158a834f793cd99a96ee36ac59de483 - Exam 42, Tue Nov 12 15:28:12 2019 +0200 : added ulstr
+047fe9244aad0a33d7546b4533659e0c6d240e82 - Exam 42, Tue Nov 12 15:19:49 2019 +0200 : Swap added
+8c1c6d679f057065be15e3231ca330a95e320b04 - Exam 42, Tue Nov 12 14:52:13 2019 +0200 : Added rotone
+e0a1ab07606c5af7a35c3725b169455685140aea - Exam 42, Tue Nov 12 14:21:35 2019 +0200 : 1 Done
+ 
+= Collected files ==========================================
+$> ls -lAR /tmp/tmpLawjaV/user
+total 8
+-rw-r--r--  1 root  wheel  2083 Nov 12 16:59 __GIT_HISTORY
+drwxr-xr-x  3 root  wheel    96 Nov 12 16:59 aff_first_param
+drwxr-xr-x  3 root  wheel    96 Nov 12 16:59 ft_atoi
+drwxr-xr-x  3 root  wheel    96 Nov 12 16:59 ft_strcmp
+drwxr-xr-x  3 root  wheel    96 Nov 12 16:59 ft_swap
+drwxr-xr-x  3 root  wheel    96 Nov 12 16:59 rotone
+drwxr-xr-x  3 root  wheel    96 Nov 12 16:59 ulstr
+drwxr-xr-x  3 root  wheel    96 Nov 12 16:59 wmatch
+
+/tmp/tmpLawjaV/user/aff_first_param:
+total 8
+-rw-r--r--  1 root  wheel  1113 Nov 12 16:59 aff_first_param.c
+
+/tmp/tmpLawjaV/user/ft_atoi:
+total 8
+-rw-r--r--  1 root  wheel  1274 Nov 12 16:59 ft_atoi.c
+
+/tmp/tmpLawjaV/user/ft_strcmp:
+total 8
+-rw-r--r--  1 root  wheel  1026 Nov 12 16:59 ft_strcmp.c
+
+/tmp/tmpLawjaV/user/ft_swap:
+total 8
+-rw-r--r--  1 root  wheel  968 Nov 12 16:59 ft_swap.c
+
+/tmp/tmpLawjaV/user/rotone:
+total 8
+-rw-r--r--  1 root  wheel  1292 Nov 12 16:59 rotone.c
+
+/tmp/tmpLawjaV/user/ulstr:
+total 8
+-rw-r--r--  1 root  wheel  1244 Nov 12 16:59 ulstr.c
+
+/tmp/tmpLawjaV/user/wmatch:
+total 8
+-rw-r--r--  1 root  wheel  1213 Nov 12 16:59 wdmatch.c
+ 
+= wdmatch ======================================================================
+Nothing turned in
+Grade: 0
+
+= Final grade: 0 ===============================================================

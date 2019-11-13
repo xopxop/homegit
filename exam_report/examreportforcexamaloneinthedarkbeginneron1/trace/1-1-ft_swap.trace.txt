@@ -1,0 +1,65 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+c1r3p5.hive.fi
+Darwin 18.7.0 x86_64
+$> date
+Tue Nov 12 15:20:00 EET 2019
+$> gcc --version
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/include/c++/4.2.1
+Apple LLVM version 10.0.1 (clang-1001.0.46.4)
+Target: x86_64-apple-darwin18.7.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+$> clang --version
+Apple LLVM version 10.0.1 (clang-1001.0.46.4)
+Target: x86_64-apple-darwin18.7.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: auto-exam/2019/c-exam-alone-in-the-dark-beginner/exam_20191112/dthan
+
+= Git history ==================================================================
+$> git -C /tmp/tmpYTXb4V/user log --pretty='%H - %an, %ad : %s'
+047fe9244aad0a33d7546b4533659e0c6d240e82 - Exam 42, Tue Nov 12 15:19:49 2019 +0200 : Swap added
+8c1c6d679f057065be15e3231ca330a95e320b04 - Exam 42, Tue Nov 12 14:52:13 2019 +0200 : Added rotone
+e0a1ab07606c5af7a35c3725b169455685140aea - Exam 42, Tue Nov 12 14:21:35 2019 +0200 : 1 Done
+ 
+= Collected files ==========================================
+$> ls -lAR /tmp/tmpYTXb4V/user
+total 8
+-rw-r--r--  1 root  wheel  706 Nov 12 15:20 __GIT_HISTORY
+drwxr-xr-x  3 root  wheel   96 Nov 12 15:20 aff_first_param
+drwxr-xr-x  3 root  wheel   96 Nov 12 15:20 ft_swap
+drwxr-xr-x  3 root  wheel   96 Nov 12 15:20 rotone
+
+/tmp/tmpYTXb4V/user/aff_first_param:
+total 8
+-rw-r--r--  1 root  wheel  1113 Nov 12 15:20 aff_first_param.c
+
+/tmp/tmpYTXb4V/user/ft_swap:
+total 8
+-rw-r--r--  1 root  wheel  968 Nov 12 15:20 ft_swap.c
+
+/tmp/tmpYTXb4V/user/rotone:
+total 8
+-rw-r--r--  1 root  wheel  1292 Nov 12 15:20 rotone.c
+ 
+= ft_swap ======================================================================
+$> gcc -Wextra -Wall -Werror ft_swap.c main.c -o user_exe 
+
+= Test 1 ===================================================
+$> ./68pjwi3jkopqr5kglaef9yvh "-1536800034" "-1642194475"
+$> diff -U 3 user_output_test1 test1.output | cat -e
+--- user_output_test1	2019-11-12 13:20:02.000000000 +0000$
++++ test1.output	2019-11-12 13:20:02.000000000 +0000$
+@@ -1,2 +1,2 @@$
+ -1536800034 -1642194475$
+--1536800034 -1642194475$
++-1642194475 -1536800034$
+
+Diff KO :(
+Grade: 0
+
+= Final grade: 0 ===============================================================

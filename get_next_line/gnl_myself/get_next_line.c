@@ -1,23 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/06 01:54:57 by dthan             #+#    #+#             */
-/*   Updated: 2019/11/12 11:18:39 by dthan            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "get_next_line.h"
-#include "libft/libft.h"
-
-static int	gnl_verify_line(char **string, char **line)
-{
-	int i;
-	char	*string_with_line_break;
-	char	*ptr_for_string_with_line_break;
 
 	i = 0;
 

@@ -1,0 +1,103 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+c3r1p2.hive.fi
+Darwin 18.7.0 x86_64
+$> date
+Tue Nov 12 16:08:08 EET 2019
+$> gcc --version
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/4.2.1
+Apple clang version 11.0.0 (clang-1100.0.33.12)
+Target: x86_64-apple-darwin18.7.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+$> clang --version
+Apple clang version 11.0.0 (clang-1100.0.33.12)
+Target: x86_64-apple-darwin18.7.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: auto-exam/2019/c-exam-alone-in-the-dark-beginner/exam_20191112/dthan
+
+= Git history ==================================================================
+$> git -C /tmp/tmpV_ZX5n/user log --pretty='%H - %an, %ad : %s'
+169acfb21bf0c76634786b8afe075795930d3136 - Exam 42, Tue Nov 12 16:08:00 2019 +0200 : Add ft_strcmp
+fc9abd134158a834f793cd99a96ee36ac59de483 - Exam 42, Tue Nov 12 15:28:12 2019 +0200 : added ulstr
+047fe9244aad0a33d7546b4533659e0c6d240e82 - Exam 42, Tue Nov 12 15:19:49 2019 +0200 : Swap added
+8c1c6d679f057065be15e3231ca330a95e320b04 - Exam 42, Tue Nov 12 14:52:13 2019 +0200 : Added rotone
+e0a1ab07606c5af7a35c3725b169455685140aea - Exam 42, Tue Nov 12 14:21:35 2019 +0200 : 1 Done
+ 
+= Collected files ==========================================
+$> ls -lAR /tmp/tmpV_ZX5n/user
+total 8
+-rw-r--r--  1 root  wheel  1172 Nov 12 16:08 __GIT_HISTORY
+drwxr-xr-x  3 root  wheel    96 Nov 12 16:08 aff_first_param
+drwxr-xr-x  3 root  wheel    96 Nov 12 16:08 ft_strcmp
+drwxr-xr-x  3 root  wheel    96 Nov 12 16:08 ft_swap
+drwxr-xr-x  3 root  wheel    96 Nov 12 16:08 rotone
+drwxr-xr-x  3 root  wheel    96 Nov 12 16:08 ulstr
+
+/tmp/tmpV_ZX5n/user/aff_first_param:
+total 8
+-rw-r--r--  1 root  wheel  1113 Nov 12 16:08 aff_first_param.c
+
+/tmp/tmpV_ZX5n/user/ft_strcmp:
+total 8
+-rw-r--r--  1 root  wheel  1026 Nov 12 16:08 ft_strcmp.c
+
+/tmp/tmpV_ZX5n/user/ft_swap:
+total 8
+-rw-r--r--  1 root  wheel  968 Nov 12 16:08 ft_swap.c
+
+/tmp/tmpV_ZX5n/user/rotone:
+total 8
+-rw-r--r--  1 root  wheel  1292 Nov 12 16:08 rotone.c
+
+/tmp/tmpV_ZX5n/user/ulstr:
+total 8
+-rw-r--r--  1 root  wheel  1244 Nov 12 16:08 ulstr.c
+ 
+= ft_strcmp ====================================================================
+$> gcc -Wextra -Wall -Werror main.c ft_strcmp.c -o user_exe 
+
+= Test 1 ===================================================
+$> ./91mcw28kxleqj5ba5qxz2oty 
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./fp5m6j346uylrd3ojyj4dop9 "salut a tous tout le monde"
+$> diff -U 3 user_output_test2 test2.output | cat -e
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./sq34u6a64pl0m3n4xaa79l8w "salut" "a" "tous" "tout" "le" "monde"
+$> diff -U 3 user_output_test3 test3.output | cat -e
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./r3lac65hts7axr5ytbm1y9zl "a" "ab"
+$> diff -U 3 user_output_test4 test4.output | cat -e
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./l0z09t0i72jfrhhlmsni8txc "" ""
+$> diff -U 3 user_output_test5 test5.output | cat -e
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./9v27f1276e7yje0697js1emi "VFx2WjEOkndIs7DlN" ""
+$> diff -U 3 user_output_test6 test6.output | cat -e
+--- user_output_test6	2019-11-12 14:08:11.000000000 +0000$
++++ test6.output	2019-11-12 14:08:11.000000000 +0000$
+@@ -1 +1 @@$
+--1$
+\ No newline at end of file$
++1$
+\ No newline at end of file$
+
+Diff KO :(
+Grade: 0
+
+= Final grade: 0 ===============================================================
