@@ -104,6 +104,17 @@ static int		read_file(int fd, char *read_buffer, char **string, char **line)
 	return (read_value);
 }
 
+//static ssize_t	return_value(ssize_t read_value, int fd, char **string, char **line)
+//{
+//	if (!read_value && *line)
+//		*line = NULL;
+//	if (string[fd] == NULL)
+//		return (read_value);
+//	else if ((string[fd][0]) && (string[fd][0] == '\0'))
+//		free(string[fd]);
+//	return (read_value);
+//}
+
 int			get_next_line(int fd, char **line)
 {
 	static char	*string[FD_MAX];
@@ -116,16 +127,21 @@ int			get_next_line(int fd, char **line)
 		if (gnl_verify_line(&string[fd], line))
 			return (1);
 	read_value = read_file(fd, read_buffer, &string[fd], line);
+//	if (read_value != 0 || string[fd] == NULL || string[fd][0] == '\0')
+//		return (read_value = return_value(read_value, fd, string , line));
 	if (read_value != 0 || string[fd] == NULL || string[fd][0] == '\0')
 	{
 		if (!read_value && *line)
 			*line = NULL;
-		else if (string[fd][0] == '\0')
-			free(string[fd]);
+		if (string[fd] == NULL)
+			return (read_value);
+		else if ((string[fd][0]) && (string[fd][0] == '\0'))
+			ft_strdel(&string[fd]);
 		return (read_value);
 	}
 	*line = string[fd];
-	string[fd] = NULL;
-	free(string[fd]);
+	ft_strdel(&string[fd]);
+//	string[fd] = NULL;
+//	free(string[fd]);
 	return (1);
 }
