@@ -1,19 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/02 23:51:48 by dthan             #+#    #+#             */
-/*   Updated: 2019/12/03 00:02:53 by dthan            ###   ########.fr       */
+/*   Created: 2019/12/05 23:46:29 by dthan             #+#    #+#             */
+/*   Updated: 2019/12/05 23:54:20 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
-# include <stdarg.h>
+#include "../includes/ft_printf.h"
 
-int	printf(const char *format, ...);
+int	printf(const char *format, ...)
+{
+	va_list arg;
+	int i;
+	int count_byte;
 
-#endif
+	va_start(arg, format);
+	i = 0;
+	count_byte = 0;
+	while(format[i++] != '\0')
+		if (format[i++] == '%')
+		{
+			count_byte++;
+//			parse_and_print(arg, format, i);
+		}
+		else
+		{
+			ft_putchar(format[i]);
+			count_byte++;
+		}
+	va_end(arg);
+	return (count_byte);
+}
