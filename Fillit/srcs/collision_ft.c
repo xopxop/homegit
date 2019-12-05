@@ -6,13 +6,13 @@
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 04:36:20 by dthan             #+#    #+#             */
-/*   Updated: 2019/11/25 11:30:32 by dthan            ###   ########.fr       */
+/*   Updated: 2019/11/27 14:28:52 by sadawi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	piece_collide(int *ordinate, char **board)
+int		piece_collide(int *ordinate, char **board)
 {
 	int i;
 	int size;
@@ -28,7 +28,7 @@ int	piece_collide(int *ordinate, char **board)
 	return (TRUE);
 }
 
-int	box_collide(int *ordinate, int size)
+int		box_collide(int *ordinate, int size)
 {
 	int i;
 
@@ -36,14 +36,13 @@ int	box_collide(int *ordinate, int size)
 	while (i < 8)
 	{
 		if (ordinate[i] >= size || ordinate[i] > size)
-		return (FALSE);
+			return (FALSE);
 		i++;
 	}
 	return (TRUE);
 }
 
-int 	not_collision(char **board, int size, int *ordinate)
+int		not_collision(char **board, int size, int *ordinate)
 {
-	return ((box_collide(ordinate, size)) && \
-			(piece_collide(ordinate, board)));
+	return ((box_collide(ordinate, size)) && (piece_collide(ordinate, board)));
 }

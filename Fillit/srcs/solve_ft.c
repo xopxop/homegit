@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solve.c                                            :+:      :+:    :+:   */
+/*   solve_ft.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/21 00:14:03 by dthan             #+#    #+#             */
-/*   Updated: 2019/11/21 00:42:43 by dthan            ###   ########.fr       */
+/*   Created: 2019/11/27 14:36:28 by dthan             #+#    #+#             */
+/*   Updated: 2019/11/27 14:55:15 by sadawi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	place(t_block *block, int *ordinate, char **board)
+void		place(t_block *block, int *ordinate, char **board)
 {
-	int x;
-	int y;
-	int i;
+	int	x;
+	int	y;
+	int	i;
 
 	i = 0;
 	x = 0;
@@ -30,41 +30,38 @@ void	place(t_block *block, int *ordinate, char **board)
 	}
 }
 
-void	clear_piece(char **grid, int *tab)
+void		clear_piece(char **board, int *ordinate)
 {
-	int i;
-	int x;
-	int y;
+	int	i;
+	int	x;
+	int	y;
 
 	x = 0;
 	y = 0;
 	i = 0;
 	while (i < 8)
 	{
-		y = tab[i + 1];
-		x = tab[i];
-		grid[y][x] = '.';
+		y = ordinate[i + 1];
+		x = ordinate[i];
+		board[y][x] = '.';
 		i += 2;
 	}
 }
 
-int		backtrack(t_block *blocks, char **board, int size)
+int			backtrack(t_block *blocks, char **board, int size)
 {
-	int row;
-	int col;
-	int *temp_ordinate;
+	int	row;
+	int	col;
+	int	*temp_ordinate;
 
-	row = 0;
+	row = -1;
 	temp_ordinate = (int *)malloc(sizeof(int) * 8);
-	if(!blocks)
+	if (!blocks)
+		return (free_ordinate(temp_ordinate, TRUE));
+	while (++row < size)
 	{
-		free(temp_ordinate);
-		return (TRUE);
-	}
-	while (row < size)
-	{
-		col = 0;
-		while(col < size)
+		col = -1;
+		while (++col < size)
 		{
 			copy_ordinate(temp_ordinate, blocks->ordinate);
 			shift_ordinate(temp_ordinate, col, row);
@@ -72,26 +69,18 @@ int		backtrack(t_block *blocks, char **board, int size)
 			{
 				place(blocks, temp_ordinate, board);
 				if (backtrack(blocks->next, board, size))
-				{
-					free(temp_ordinate);
-					return (TRUE);
-				}
+					return (free_ordinate(temp_ordinate, TRUE));
 				clear_piece(board, temp_ordinate);
-				free(temp_ordinate);
-				return (FALSE);
 			}
-			col++;
 		}
-		row++;
 	}
-	free(temp_ordinate);
-	return (FALSE);
+	return (free_ordinate(temp_ordinate, FALSE));
 }
 
-void	solve(t_block *blocks)
+void		solve(t_block *blocks)
 {
-	int size;
-	char **board;
+	int		size;
+	char	**board;
 
 	size = board_starting_size(count_tetromines(blocks));
 	board = get_board(blocks);

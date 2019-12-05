@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_ft.c                                       :+:      :+:    :+:   */
+/*   ft_strfill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sadawi <sadawi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/27 14:31:15 by sadawi            #+#    #+#             */
-/*   Updated: 2019/11/27 14:31:18 by sadawi           ###   ########.fr       */
+/*   Created: 2019/10/21 13:39:07 by sadawi            #+#    #+#             */
+/*   Updated: 2019/10/21 13:44:04 by sadawi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-
-/*
-** Print board which has been filled in
-*/
-
-void	print_board(char **board)
+void	ft_strfill(char *s, char c)
 {
 	int i;
 
 	i = 0;
-	while (board[i])
+	while (s[i])
 	{
-		ft_putstr(board[i]);
-		ft_putchar('\n');
+		s[i] = c;
 		i++;
 	}
 }

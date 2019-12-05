@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_info_ft.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: sadawi <sadawi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/21 16:10:34 by dthan             #+#    #+#             */
-/*   Updated: 2019/11/21 16:10:59 by dthan            ###   ########.fr       */
+/*   Created: 2019/11/27 14:31:42 by sadawi            #+#    #+#             */
+/*   Updated: 2019/11/27 14:32:39 by sadawi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,34 +40,34 @@ int		*get_xy(char **shifted_line_read)
 	return (block_ordinate);
 }
 
-int     get_height(int *block_ordinate)
+int		get_height(int *block_ordinate)
 {
-    int i;
-    int height;
+	int i;
+	int height;
 
-    height = 0;
-    i = 0;
+	height = 0;
+	i = 0;
 	while (block_ordinate[i] < 8)
 	{
 		if (i % 2 == 1 && height <= block_ordinate[i])
 			height = block_ordinate[i] + 1;
 		i++;
 	}
-    return (height);
+	return (height);
 }
 
-int     get_length(int *block_ordinate)
+int		get_length(int *block_ordinate)
 {
-    int i;
-    int length;
+	int i;
+	int length;
 
-    length = 0;
-    i = 0;
+	length = 0;
+	i = 0;
 	while (block_ordinate[i] < 8)
 	{
 		if (i % 2 == 0 && length <= block_ordinate[i])
 			length = block_ordinate[i] + 1;
 		i++;
 	}
-    return (length);
+	return (length);
 }

@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_ft.c                                       :+:      :+:    :+:   */
+/*   ft_putlst.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sadawi <sadawi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/27 14:31:15 by sadawi            #+#    #+#             */
-/*   Updated: 2019/11/27 14:31:18 by sadawi           ###   ########.fr       */
+/*   Created: 2019/10/28 13:41:23 by sadawi            #+#    #+#             */
+/*   Updated: 2019/10/28 13:42:12 by sadawi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-/*
-** Print board which has been filled in
-*/
-
-void	print_board(char **board)
+void	ft_putlst(t_list *lst)
 {
-	int i;
-
-	i = 0;
-	while (board[i])
+	while (lst)
 	{
-		ft_putstr(board[i]);
-		ft_putchar('\n');
-		i++;
+		ft_putendl(lst->content);
+		lst = lst->next;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: sadawi <sadawi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/19 00:04:40 by dthan             #+#    #+#             */
-/*   Updated: 2019/11/25 11:22:40 by dthan            ###   ########.fr       */
+/*   Created: 2019/11/27 14:33:22 by sadawi            #+#    #+#             */
+/*   Updated: 2019/12/02 13:01:55 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ int	main(int argc, char **argv)
 	else
 	{
 		if (!store_blocks(&blocks, argv[1]))
-			ft_putstr("error");
+			ft_putstr("error\n");
+		else if (!check_amount(blocks))
+			ft_putstr("error\n");
 		else
 		{
 			solve(blocks);

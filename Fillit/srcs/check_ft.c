@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_valid.c                                      :+:      :+:    :+:   */
+/*   check_ft.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: sadawi <sadawi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/19 00:14:58 by dthan             #+#    #+#             */
-/*   Updated: 2019/11/25 11:27:57 by dthan            ###   ########.fr       */
+/*   Created: 2019/11/27 14:25:45 by sadawi            #+#    #+#             */
+/*   Updated: 2019/11/27 16:33:11 by sadawi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,8 @@ int	check_valid_char(char **lines_read)
 }
 
 /*
-** count_adjacent counts how many adjacent '#' characters each '#' character has.
+** count_adjacent counts how many adjacent '#' characters
+** each '#' character has.
 */
 
 int	count_adjacent(char **lines_read, int row, int col)
@@ -112,4 +113,21 @@ int	count_adjacent(char **lines_read, int row, int col)
 		if (lines_read[row][col + 1] == '#')
 			count++;
 	return (count);
+}
+
+/*
+** check_amount checks if there are less than 27 blocks in the file.
+*/
+
+int	check_amount(t_block *blocks)
+{
+	int i;
+
+	i = 0;
+	while (blocks)
+	{
+		blocks = blocks->next;
+		i++;
+	}
+	return ((i < 27));
 }

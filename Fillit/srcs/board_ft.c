@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   backtrack.c                                        :+:      :+:    :+:   */
+/*   board_ft.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: sadawi <sadawi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/20 11:42:27 by dthan             #+#    #+#             */
-/*   Updated: 2019/11/20 16:55:04 by dthan            ###   ########.fr       */
+/*   Created: 2019/11/27 14:21:09 by sadawi            #+#    #+#             */
+/*   Updated: 2019/11/27 14:25:19 by sadawi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 char	*gen_line(int size)
 {
-	char *line;
-	int i;
+	char	*line;
+	int		i;
 
 	i = 0;
 	if (!(line = (char*)malloc(sizeof(char) * size + 1)))
@@ -39,12 +39,12 @@ char	*gen_line(int size)
 
 char	**gen_board(int size)
 {
-	char **board;
-	char *line;
-	int i;
+	char	**board;
+	char	*line;
+	int		i;
 
 	i = 0;
-	if(!(board = (char**)malloc(sizeof(char*) * size + 1)))
+	if (!(board = (char**)malloc(sizeof(char*) * size + 1)))
 		return (NULL);
 	while (i < size)
 	{
@@ -59,15 +59,15 @@ char	**gen_board(int size)
 }
 
 /*
-** Count number of tetromines in the linked list 
+** Count number of tetromines in the linked list
 */
 
-int	count_tetromines(t_block *blocks)
+int		count_tetromines(t_block *blocks)
 {
 	int tetromines_nbr;
 
 	tetromines_nbr = 0;
-	while(blocks != NULL)
+	while (blocks != NULL)
 	{
 		tetromines_nbr++;
 		blocks = blocks->next;
@@ -79,12 +79,12 @@ int	count_tetromines(t_block *blocks)
 ** Finding the board starting size. NOTE: the ft_sqrt is not 100% percisely
 */
 
-int	board_starting_size(int tetromines_nbr)
+int		board_starting_size(int tetromines_nbr)
 {
 	int board_size;
 
 	board_size = ft_sqrt(tetromines_nbr * 4);
-	return(board_size);
+	return (board_size);
 }
 
 /*
@@ -94,12 +94,12 @@ int	board_starting_size(int tetromines_nbr)
 
 char	**get_board(t_block *blocks)
 {
-	int board_size;
-	char **board;
-	int tetromines_nbr;
+	int		board_size;
+	char	**board;
+	int		tetromines_nbr;
 
 	tetromines_nbr = count_tetromines(blocks);
 	board_size = board_starting_size(tetromines_nbr);
 	board = gen_board(board_size);
-	return(board);
+	return (board);
 }

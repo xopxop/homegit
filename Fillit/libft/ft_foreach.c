@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_ft.c                                       :+:      :+:    :+:   */
+/*   ft_foreach.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sadawi <sadawi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/27 14:31:15 by sadawi            #+#    #+#             */
-/*   Updated: 2019/11/27 14:31:18 by sadawi           ###   ########.fr       */
+/*   Created: 2019/10/15 18:53:39 by sadawi            #+#    #+#             */
+/*   Updated: 2019/10/15 19:12:44 by sadawi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-
-/*
-** Print board which has been filled in
-*/
-
-void	print_board(char **board)
+void	ft_foreach(int *tab, int length, void (*f)(int))
 {
 	int i;
 
 	i = 0;
-	while (board[i])
+	while (i < length)
 	{
-		ft_putstr(board[i]);
-		ft_putchar('\n');
+		(*f)(tab[i]);
 		i++;
 	}
 }

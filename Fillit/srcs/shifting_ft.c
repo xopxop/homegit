@@ -6,7 +6,7 @@
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 00:26:59 by dthan             #+#    #+#             */
-/*   Updated: 2019/11/19 00:31:47 by dthan            ###   ########.fr       */
+/*   Updated: 2019/11/27 14:39:43 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** amount_x finds how much a tetromino has to be shifted to the left
 */
 
-int	amount_x(char **tetro)
+int		amount_x(char **tetro)
 {
 	int row;
 	int col;
@@ -25,7 +25,7 @@ int	amount_x(char **tetro)
 	while (col < 4)
 	{
 		row = 0;
-		while(row < 4)
+		while (row < 4)
 			if (tetro[row++][col] == '#')
 				return (col);
 		col++;
@@ -37,7 +37,7 @@ int	amount_x(char **tetro)
 ** amount_x finds how much a tetromino has to be shifted up
 */
 
-int	amount_y(char **tetro)
+int		amount_y(char **tetro)
 {
 	int row;
 	int col;
@@ -46,7 +46,7 @@ int	amount_y(char **tetro)
 	while (row < 4)
 	{
 		col = 0;
-		while(col < 4)
+		while (col < 4)
 			if (tetro[row][col++] == '#')
 				return (row);
 		row++;
@@ -57,6 +57,7 @@ int	amount_y(char **tetro)
 /*
 ** shift_tetro shifts the tetromino on the x and y axis to the upper left corner
 */
+
 void	shift_tetro(char **tetro)
 {
 	int row;
