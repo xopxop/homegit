@@ -10,27 +10,28 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME=libftprintf.a
-SRCS=
-OBJ=
-INCLUDES=
-FLAGS=-Wall -Wextra -Werror
-RUN_LIB=make -C libft/ fclean && make -C libft/
+NAME = libftprintf.a
 
-all: $NAME
+SRCS = $(addprefix srcs/, ft_printf.c)
+
+#OBJ = $(patsubs %.c,%.o, $(SRCS))
+
+INCLUDES = includes/
+
+FLAGS = -Wall -Wextra -Werror
+
+all: $(NAME)
 
 $(NAME):
-	@$(RUN_LIB)
-	gcc $(FLAGS) -c $(SRCS)
-	gcc $(FLAGS) -o $(NAME) $(OBJ) libft/libft.a
+	gcc $(FLAGS) -c -I$(INCLUDES) -I ./libft $(SRCS)
+	ar rc $(NAME) *.o
+	ranlib $(NAME)
 
 clean:
-	/bin/rm -f $(OBJ)
-	make -C libft/ clean
+	/bin/rm -f *.o
 
 fclean: clean
 	/bin/rm -f $(NAME)
-	make -C libft/ fclean
 
 re: fclean all
 
