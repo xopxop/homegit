@@ -12,9 +12,17 @@
 
 NAME = libftprintf.a
 
-SRCS = $(addprefix srcs/, ft_printf.c)
+SRCS_DIR = srcs
 
-#OBJ = $(patsubs %.c,%.o, $(SRCS))
+LIBFT_DIR = libft
+
+SRCS_CODES = $(addprefix $(SRCS_DIR)/, ft_printf.c)
+
+LIBFT_CODES = $(addprefix $(LIBFT_DIR)/, ft_putchar.c)
+
+#SRCS_OBJ = $(patsubs %.c,%.o, $(SRCS))
+
+#LIBFT_OBJ = $(patsubs %.c,%.o $(LIBFT_CODES))
 
 INCLUDES = includes/
 
@@ -23,15 +31,15 @@ FLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME):
-	gcc $(FLAGS) -c -I$(INCLUDES) -I ./libft $(SRCS)
+	gcc $(FLAGS) -c -I$(INCLUDES) $(SRCS_CODES) $(LIBFT_CODES)
 	ar rc $(NAME) *.o
 	ranlib $(NAME)
 
 clean:
-	/bin/rm -f *.o
+	rm -f *.o
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 
