@@ -13,8 +13,8 @@
 #ifndef LIBFTPRINTF_H
 # define LIBFTPRINTF_H
 # include <stdarg.h>
-# include "../libft/libft.h"
+# include "libft.h"
 
-int	printf(const char *format, ...);
+int	ft_printf(const char *format, ...);
 
 #endif

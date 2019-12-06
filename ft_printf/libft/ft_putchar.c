@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/23 13:59:59 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/23 14:00:28 by dthan            ###   ########.fr       */
+/*   Created: 2019/12/06 17:30:42 by dthan             #+#    #+#             */
+/*   Updated: 2019/12/06 17:31:59 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "../includes/libft.h"
 
 void	ft_putchar(char c)
 {
-	write(1, &c, 1);
+	write (1, &c, 1);
 }
