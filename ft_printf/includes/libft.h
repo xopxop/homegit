@@ -16,6 +16,6 @@
 
 void	ft_putchar(char c);
 void    ft_bzero(void *s, size_t n);
-void    ft_bzero(void *s, size_t n);
+void	*ft_memalloc(size_t size);
 
 #endif
