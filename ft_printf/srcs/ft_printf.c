@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 int	ft_printf(const char *format, ...)
 {
@@ -21,9 +21,11 @@ int	ft_printf(const char *format, ...)
 	va_start(arg, format);
 	i = 0;
 	count_byte = 0;
-	while(format[i++] != '\0')
-		if (format[i++] == '%')
+	while(format[i] != '\0')
+	{
+		if (format[i] == '%')
 		{
+			i++;
 			count_byte++;
 //			parse_and_print(arg, format, i);
 		}
@@ -32,6 +34,8 @@ int	ft_printf(const char *format, ...)
 			ft_putchar(format[i]);
 			count_byte++;
 		}
+		i++;
+	}
 	va_end(arg);
 	return (count_byte);
 }
