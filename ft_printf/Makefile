@@ -16,9 +16,11 @@ SRCS_DIR = srcs
 
 LIBFT_DIR = libft
 
-SRCS_CODES = $(addprefix $(SRCS_DIR)/, ft_printf.c)
+SRCS_CODES = srcs/ft_printf.c srcs/parsing/parsing.c srcs/parsing/identifier.c \
+			srcs/parsing/helper.c
 
-LIBFT_CODES = $(addprefix $(LIBFT_DIR)/, ft_putchar.c)
+LIBFT_CODES = $(addprefix $(LIBFT_DIR)/, ft_putchar.c ft_memalloc.c \
+			ft_isdigit.c ft_bzero.c)
 
 #SRCS_OBJ = $(patsubs %.c,%.o, $(SRCS))
 

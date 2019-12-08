@@ -10,31 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
-int	ft_printf(const char *format, ...)
+int	ft_printf(char *format, ...) //need to change back to const char
 {
 	va_list arg;
-	int i;
+	int pos;
 	int count_byte;
 
 	va_start(arg, format);
-	i = 0;
+	pos = 0;
 	count_byte = 0;
-	while(format[i] != '\0')
+	while(format[pos] != '\0')
 	{
-		if (format[i] == '%')
+		if (format[pos] == '%')
 		{
-			i++;
-			count_byte++;
-//			parse_and_print(arg, format, i);
+			pos++;
+			count_byte = parse_and_print(arg, format, pos);
 		}
 		else
 		{
-			ft_putchar(format[i]);
+			ft_putchar(format[pos]);
 			count_byte++;
 		}
-		i++;
+		pos++;
 	}
 	va_end(arg);
 	return (count_byte);

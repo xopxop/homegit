@@ -10,16 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	get_nbr(char *format, t_info *info; int pos)
+#include "ft_printf.h"
+
+int	get_nbr(char *format, int pos)
 {
 	int nbr;
 
 	nbr = 0;
-	if (!ft_isdigit(format[pos]))
+	if (!(ft_isdigit(format[pos])))
 		return (0);
 	while(ft_isdigit(format[pos]))
 		nbr = nbr * 10 + (format[pos++] - '0');
-	return (1);
+	return (nbr);
 }
 
 
