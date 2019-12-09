@@ -25,13 +25,12 @@ void    parsing(char *format, int pos, t_info *info)
     is_specifier(format, info, pos);
 }
 
-void printing(va_list arg) //need to add t_info *info
-{
-    int temp;
 
-//This is a test
-    temp = va_arg(arg, int);
-    ft_putchar(temp);
+
+void printing(t_info *info, va_list arg) //need to add t_info *info
+{
+    if (info)
+        printing_helper(info, arg);
 }
 
 int	parse_and_print(va_list arg, char *format, int pos)
@@ -40,7 +39,7 @@ int	parse_and_print(va_list arg, char *format, int pos)
 
     info = (t_info*)ft_memalloc(sizeof(t_info));
     parsing(format, pos, info);
-    printing(arg);
+    printing(info, arg);
     free(info);
     return (0); //Just temp, it need to return with different number
 }

@@ -31,4 +31,7 @@ int	is_specifier(char *format, t_info *info, int pos);
 // PARSING FT
 int	parse_and_print(va_list arg, char *format, int pos);
 
+//PRINTING.C
+void	printing_helper(t_info *info, va_list arg);
+
 #endif
