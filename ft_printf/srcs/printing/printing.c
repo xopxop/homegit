@@ -82,6 +82,32 @@ void	prepare_octal(va_list arg)
 }
 
 /*
+** Hexadecimal number
+*/
+
+int		decimalToHexadecimal(int decimalnum)
+{
+	int octalnum = 0; 
+	int temp = 1;
+
+    while (decimalnum != 0)
+    {
+    	octalnum = octalnum + (decimalnum % 16) * temp;
+    	decimalnum = decimalnum / 16;
+        temp = temp * 10;
+    }
+
+    return (octalnum);
+}
+
+void	prepare_hexadecimal(va_list arg)
+{
+	char *str;
+	ft_putstr(str = ft_itoa(\
+			decimalToHexadecimal(va_arg(arg, int))));
+}
+
+/*
 ** this function will take info from the struct info and print
 */
 
@@ -93,9 +119,9 @@ void	printing_helper(t_info *info, va_list arg)
 		prepare_undercimal(arg);
 	else if (info->specifier.type_o == 1)
 		prepare_octal(arg);
-/*
 	else if (info->specifier.type_x == 1 || info->specifier.type_X == 1)
-		prepare_hexadecimal(info, arg);
+		prepare_hexadecimal(arg);
+/*	
 	else if (info->specifier->type_f == 1)
 		prepare ; // Type_f
 */
