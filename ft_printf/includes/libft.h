@@ -20,5 +20,6 @@ void	*ft_memalloc(size_t size);
 int	ft_isdigit(int c);
 void	ft_putstr(char const *pstring);
 char		*ft_itoa(int n);
+char		*ft_itoa_unsigned_int(unsigned int n);
 
 #endif

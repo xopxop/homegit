@@ -20,7 +20,8 @@ SRCS_CODES = srcs/ft_printf.c srcs/parsing/parsing.c srcs/parsing/identifier.c \
 			srcs/parsing/helper.c srcs/printing/printing.c
 
 LIBFT_CODES = $(addprefix $(LIBFT_DIR)/, ft_putchar.c ft_memalloc.c \
-			ft_isdigit.c ft_bzero.c ft_putstr.c ft_itoa.c)
+			ft_isdigit.c ft_bzero.c ft_putstr.c ft_itoa.c ft_itoa_unsigned_int.c \
+			)
 
 #SRCS_OBJ = $(patsubs %.c,%.o, $(SRCS))
 
