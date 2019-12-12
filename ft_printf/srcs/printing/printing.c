@@ -82,7 +82,7 @@ void	prepare_octal(va_list arg)
 }
 
 /*
-** Hexadecimal number
+** Hexadecimal number (not sure if we need to handle negative hexadecimal num)
 */
 
 int		decimalToHexadecimal(int decimalnum)
@@ -108,6 +108,60 @@ void	prepare_hexadecimal(va_list arg)
 }
 
 /*
+** type_p pointer, the void*pointer argument is printed in hexadecimal
+*/
+
+char *reverseString(char *str)
+{
+	unsigned int i;
+	unsigned int j;
+	char temp;
+
+	j = 2;
+	i = ft_strlen(str) - 1;
+	while (j < i)
+	{
+		temp = str[j];
+		str[j] = str[i];
+		str[i] = temp;
+		j++;
+		i--;
+	}
+	return (str);
+}
+
+char	*converToHex(uint64_t ptr)
+{
+	int i;
+	char *s;
+	char *hex = "0123456789abcdef";
+
+	i = 0;
+	s =(char*)ft_memalloc(14);
+	s[i++] = '0';
+	s[i++] = 'x';
+	while(ptr)
+	{
+		s[i++] = hex[ptr & 0xf];
+		ptr >>= 4;
+	}
+	return (reverseString(s));
+}
+
+void	prepare_ptr(va_list arg)
+{
+//	unsigned int ptr;
+	uint64_t ptr;
+	char *s;
+
+//	ptr = va_arg(arg, unsigned int);
+	ptr = va_arg(arg, uint64_t);
+	s = converToHex(ptr);
+	ft_putstr(s);
+	free(s);
+}
+
+/*
 ** this function will take info from the struct info and print
 */
 
@@ -129,10 +183,9 @@ void	printing_helper(t_info *info, va_list arg)
 		prepare_char(arg);
 	else if (info->specifier.type_s == 1)
 		prepare_str(arg);
-/*
 	else if (info->specifier.type_p == 1)
-		prepare_ptr(info, arg);
-	else if (info->specifier.percentage_sign == 1)
+		prepare_ptr(arg);
+/*	else if (info->specifier.percentage_sign == 1)
 		prepare_percentage_sign(info);
 	// will be missing some data like nothing, check it later
 */

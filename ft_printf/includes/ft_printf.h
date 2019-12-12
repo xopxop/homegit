@@ -14,6 +14,7 @@
 # define LIBFTPRINTF_H
 # include <stdarg.h>
 # include <stdlib.h>
+# include <stdint.h>
 # include "libft.h"
 # include "info.h"
 

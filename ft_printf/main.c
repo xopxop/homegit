@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 00:45:54 by dthan             #+#    #+#             */
-/*   Updated: 2019/12/11 01:55:15 by dthan            ###   ########.fr       */
+/*   Updated: 2019/12/12 02:30:32 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ int main()
 	unsigned int	type_u_negative = -92;
 	unsigned int	type_o = 65;
 	int		type_x = -100;
+	int	*ptr;
+
+	ptr = &type_int;
 
 	printf("PRINTF\n");
 	ft_printf("MY FT_PRINTF\n");
@@ -47,5 +50,7 @@ int main()
 	printf("Test for hexadecimal interger: --%x\n", type_x);
 	ft_printf("MY PRINTF Test for hexadicimal interger: --%x\n", type_x);
 
+	printf("Test for pointer : --%p\n", (void*)ptr);
+	ft_printf("MY PRINTF Test for pointer : --%p\n", (void*)ptr);
 	return (0);
 }
