@@ -111,7 +111,7 @@ void	prepare_hexadecimal(va_list arg)
 ** type_p pointer, the void*pointer argument is printed in hexadecimal
 */
 
-char *reverseString(char *str)
+char *reverseString(char *str) // need to change to lower case: norm
 {
 	unsigned int i;
 	unsigned int j;
@@ -130,7 +130,7 @@ char *reverseString(char *str)
 	return (str);
 }
 
-char	*converToHex(uint64_t ptr)
+char	*converToHex(uint64_t ptr) // need to change to lower case : norm
 {
 	int i;
 	char *s;
@@ -160,6 +160,21 @@ void	prepare_ptr(va_list arg)
 	ft_putstr(s);
 	free(s);
 }
+
+/*
+**	Type float
+*/
+
+/*
+void prepare_float(va_list arg)
+{
+	double temp;
+	char *str;
+	
+	temp = va_arg(arg, double);
+	str = 
+}
+*/
 
 /*
 ** this function will take info from the struct info and print
