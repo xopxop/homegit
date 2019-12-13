@@ -50,10 +50,21 @@ typedef struct		s_specifier
 	int		percentage_sign;
 }			t_specifier;
 
+typedef struct		s_length
+{
+	int		h;
+	int		hh;
+	int 	l;
+	int		ll;
+	int		L;
+}					t_length;
+
+
 typedef struct		s_info
 {
 	t_flags		flags;
 	t_width		width;
+	t_length	length;
 	t_percision	percision;
 	t_specifier	specifier;
 }			t_info;

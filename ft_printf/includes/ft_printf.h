@@ -25,9 +25,10 @@ int	get_nbr(char *format, int pos);
 
 // IDENTIFIER_FT
 int     is_flags(char *format, t_info *info, int pos);
-int    is_width(char *format, t_info *info, int pos);
-int	is_percision(char *format, t_info *info, int pos);
+int    is_width(char *format, t_info *info, int pos, va_list arg);
+int	is_percision(char *format, t_info *info, int pos, va_list arg);
 int	is_specifier(char *format, t_info *info, int pos);
+int is_length(char *format, t_info *info, int pos);
 
 // PARSING FT
 int	parse_and_print(va_list arg, char *format, int pos);
