@@ -13,14 +13,16 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <unistd.h>
+# include <stdint.h>
 
-void	ft_putchar(char c);
-void    ft_bzero(void *s, size_t n);
-void	*ft_memalloc(size_t size);
 int	ft_isdigit(int c);
-void	ft_putstr(char const *pstring);
-char		*ft_itoa(int n);
-char		*ft_itoa_unsigned_int(unsigned int n);
 size_t	ft_strlen(const char *s);
-
+size_t	ft_strnlen(const char *s, size_t count);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strdup(const char *s1);
+void	*ft_memset(void *s, int c, size_t n);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
+void	*ft_memalloc(size_t size);
+void	ft_bzero(void *s, size_t n);
+char		*ft_itoa_signed_longlong(long long n);
 #endif

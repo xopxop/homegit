@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/07 17:05:34 by dthan             #+#    #+#             */
-/*   Updated: 2019/12/19 05:57:52 by dthan            ###   ########.fr       */
+/*   Created: 2019/10/16 11:28:40 by dthan             #+#    #+#             */
+/*   Updated: 2019/10/30 08:24:33 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
 
-int main(void)
+#include "libft.h"
+
+void	*ft_memset(void *s, int c, size_t n)
 {
-	int a;
-	int *p;
+	unsigned char *ptr;
 
-	a = 10;
-	p = &a;
-	printf("--%.2p--\n", (void*)p);
-	printf("%010d", a);
+	ptr = (unsigned char*)s;
+	while (n-- > 0)
+		*ptr++ = (unsigned char)c;
+	return (s);
 }

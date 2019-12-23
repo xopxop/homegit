@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "../includes/ft_printf.h"
 
-static int	getsizenumber(unsigned int nb)
+static int	getsizenumber(unsigned long long nb)
 {
 	unsigned int size;
 
@@ -25,18 +25,18 @@ static int	getsizenumber(unsigned int nb)
 	return (size + 1);
 }
 
-char		*ft_itoa(int n)
+char		*ft_itoa_signed_longlong(long long n)
 {
 	char			*string;
-	unsigned int	nbr;
+	long long	nbr;
 	unsigned int	index;
 	unsigned int	size;
 
 	index = 0;
 	if (n < 0)
-		nbr = (unsigned int)(n * -1);
+		nbr = (unsigned long long)(n * -1);
 	else
-		nbr = (unsigned int)(n);
+		nbr = n;
 	size = (unsigned int)getsizenumber(nbr);
 	if (!(string = (char*)malloc(sizeof(char) *
 					(size + 1 + (n < 0 ? 1 : 0)))))

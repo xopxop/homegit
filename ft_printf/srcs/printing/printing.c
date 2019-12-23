@@ -12,196 +12,49 @@
 
 #include "../../includes/ft_printf.h"
 
-void	prepare_char(va_list arg)
+/*
+** This is the Dispatch table/ Jump table using pointer to function array
+** it will return the function coresponding to the specifier type
+*/
+
+char *(*get_func(t_specifier specifier))(t_info*, va_list)
 {
-	int temp;
+	char *(*func[SPECIFIER_COUNT])(t_info*, va_list);
 
-	temp = va_arg(arg, int);
-	ft_putchar(temp);
-}
+	func[spec_char] = &type_c;
+	func[spec_str] = &type_s;
+//	func[spec_ptr] = &type_p;
+	func[spec_int] = &type_di;
+//	func[spec_uint] = &type_u;
+//	func[spec_octal] = &type_o;
+//	func[spec_hexlowcase] = &type_x;
+//	func[spec_hexupcase] = &type_X;
+//	func[spec_float] = &type_f;
+//	func[spec_percentsign] = &type_percent;
+//	func[spec_none] = &type_none;
 
-
-void	prepare_signed_int(va_list arg)
-{
-	int temp;
-	char *nbr;
-
-	temp = va_arg(arg, int);
-	nbr = ft_itoa(temp);
-	ft_putstr((const char*)nbr);
+	return (func[specifier]);
 }
 
 /*
-** Print string
+** The printing ft will take the pared struc info and the argument va_list
+** First, using the dispatch table the get the function which coresponding to
+** the specifier and take that address of that specific function into print_func
+** output_str will be the returned string from the choosen function
+** then it will count the output_str and display the out_putstr
+** Return value: length of the output_str
 */
 
-void	prepare_str(va_list arg)
+int	printing(t_info *info, va_list arg)
 {
-	const char *str;
+	char *(*print_func)(t_info*, va_list);
+	char *output_str;
+	size_t count;
 
-	ft_putstr((str = va_arg(arg, char*)));
-}
-
-/*
-** Unsigned Interger
-*/
-
-void	prepare_undercimal(va_list arg)
-{
-	unsigned int temp;
-	char *str;
-
-	ft_putstr(str = ft_itoa_unsigned_int(temp = va_arg(arg, unsigned int)));
-}
-
-/*
-** Octal Interger
-*/
-
-unsigned int decimalToOctal(unsigned int decimalnum)
-{
-    unsigned int octalnum = 0; 
-	unsigned int temp = 1;
-
-    while (decimalnum != 0)
-    {
-    	octalnum = octalnum + (decimalnum % 8) * temp;
-    	decimalnum = decimalnum / 8;
-        temp = temp * 10;
-    }
-
-    return (octalnum);
-}
-
-void	prepare_octal(va_list arg)
-{
-	char *str;
-
-	ft_putstr(str = ft_itoa_unsigned_int(\
-			decimalToOctal(va_arg(arg, unsigned int))));
-}
-
-/*
-** Hexadecimal number (not sure if we need to handle negative hexadecimal num)
-*/
-
-int		decimalToHexadecimal(int decimalnum)
-{
-	int octalnum = 0; 
-	int temp = 1;
-
-    while (decimalnum != 0)
-    {
-    	octalnum = octalnum + (decimalnum % 16) * temp;
-    	decimalnum = decimalnum / 16;
-        temp = temp * 10;
-    }
-
-    return (octalnum);
-}
-
-void	prepare_hexadecimal(va_list arg)
-{
-	char *str;
-	ft_putstr(str = ft_itoa(\
-			decimalToHexadecimal(va_arg(arg, int))));
-}
-
-/*
-** type_p pointer, the void*pointer argument is printed in hexadecimal
-*/
-
-char *reverseString(char *str) // need to change to lower case: norm
-{
-	unsigned int i;
-	unsigned int j;
-	char temp;
-
-	j = 2;
-	i = ft_strlen(str) - 1;
-	while (j < i)
-	{
-		temp = str[j];
-		str[j] = str[i];
-		str[i] = temp;
-		j++;
-		i--;
-	}
-	return (str);
-}
-
-char	*converToHex(uint64_t ptr) // need to change to lower case : norm
-{
-	int i;
-	char *s;
-	char *hex = "0123456789abcdef";
-
-	i = 0;
-	s =(char*)ft_memalloc(14);
-	s[i++] = '0';
-	s[i++] = 'x';
-	while(ptr)
-	{
-		s[i++] = hex[ptr & 0xf];
-		ptr >>= 4;
-	}
-	return (reverseString(s));
-}
-
-void	prepare_ptr(va_list arg)
-{
-//	unsigned int ptr;
-	uint64_t ptr;
-	char *s;
-
-//	ptr = va_arg(arg, unsigned int);
-	ptr = va_arg(arg, uint64_t);
-	s = converToHex(ptr);
-	ft_putstr(s);
-	free(s);
-}
-
-/*
-**	Type float
-*/
-
-/*
-void prepare_float(va_list arg)
-{
-	double temp;
-	char *str;
-	
-	temp = va_arg(arg, double);
-	str = 
-}
-*/
-
-/*
-** this function will take info from the struct info and print
-*/
-
-void	printing_helper(t_info *info, va_list arg)
-{
-	if (info->specifier.type_d == 1 || info->specifier.type_i == 1)
-		prepare_signed_int(arg);
-	else if (info->specifier.type_u == 1)
-		prepare_undercimal(arg);
-	else if (info->specifier.type_o == 1)
-		prepare_octal(arg);
-	else if (info->specifier.type_x == 1 || info->specifier.type_X == 1)
-		prepare_hexadecimal(arg);
-/*	
-	else if (info->specifier->type_f == 1)
-		prepare ; // Type_f
-*/
-	else if (info->specifier.type_c == 1)
-		prepare_char(arg);
-	else if (info->specifier.type_s == 1)
-		prepare_str(arg);
-	else if (info->specifier.type_p == 1)
-		prepare_ptr(arg);
-/*	else if (info->specifier.percentage_sign == 1)
-		prepare_percentage_sign(info);
-	// will be missing some data like nothing, check it later
-*/
+	print_func = get_func(info->specifier);
+	output_str = print_func(info, arg);
+	count = ft_strlen(output_str);
+	write (STDOUT, output_str, count);
+	free(output_str);
+	return (count);
 }

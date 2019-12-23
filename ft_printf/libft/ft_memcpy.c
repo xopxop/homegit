@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/07 17:05:34 by dthan             #+#    #+#             */
-/*   Updated: 2019/12/19 05:57:52 by dthan            ###   ########.fr       */
+/*   Created: 2019/10/19 15:01:52 by dthan             #+#    #+#             */
+/*   Updated: 2019/10/26 04:31:34 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
 
-int main(void)
+#include "libft.h"
+
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	int a;
-	int *p;
+	unsigned char		*ptr;
+	const unsigned char	*ptr2;
 
-	a = 10;
-	p = &a;
-	printf("--%.2p--\n", (void*)p);
-	printf("%010d", a);
+	ptr = (unsigned char*)dst;
+	ptr2 = (unsigned char *)src;
+	while (n--)
+		*ptr++ = *ptr2++;
+	return (dst);
 }

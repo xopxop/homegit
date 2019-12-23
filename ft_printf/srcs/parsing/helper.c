@@ -12,16 +12,30 @@
 
 #include "ft_printf.h"
 
-int	get_nbr(char *format, int pos)
-{
-	int nbr;
+/*
+** inilializing the struc info
+*/
 
-	nbr = 0;
-	if (!(ft_isdigit(format[pos])))
-		return (0);
-	while(ft_isdigit(format[pos]))
-		nbr = nbr * 10 + (format[pos++] - '0');
-	return (nbr);
+void struct_init(t_info *info)
+{
+    info->flags = 0;
+	info->field_width = -1;
+	info->percision = -1;
+	info->length = '\0';
+    info->specifier = '\0';
 }
 
+/*
+** ft_skip_atoi will take the number from the string
+** Return value: the number from the str
+*/
+
+int ft_skip_atoi(const char *format, size_t *pos)
+{
+    int i = 0;
+
+    while (ft_isdigit(format[*pos]))
+        i = i * 10 + format[(*pos)++] - '0';
+    return (i);
+}
 
