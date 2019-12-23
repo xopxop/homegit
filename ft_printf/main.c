@@ -16,7 +16,7 @@
 int main()
 {
 	char	type_char = 'a';
-//	int	type_int = 23;
+	int	type_int = 23;
 	char*	str = "abcdef";
 //	unsigned int	type_u = 4294967295;
 //	unsigned int	type_u_negative = -92;
@@ -34,7 +34,7 @@ int main()
 	ft_printf("--%5.2c--\n", type_char);
 
 //	printf("Test for interger: --%d\n", type_int);
-//	ft_printf("--%d\n", type_int);
+	ft_printf("--%d\n", type_int);
 
 //	printf("Test for string: --%4.2s--\n", str);
 	ft_printf("MY PRINTF Test for string: --%4.2s--\n", str);

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   fill_struct.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/07 03:30:22 by dthan             #+#    #+#             */
-/*   Updated: 2019/12/07 17:05:10 by dthan            ###   ########.fr       */
+/*   Created: 2019/12/23 04:38:41 by dthan             #+#    #+#             */
+/*   Updated: 2019/12/23 04:38:43 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../../includes/ft_printf.h"
 #define IS_FLAG(x) ((x)=='-'||(x)=='+'||(x)==' '||(x)=='#'||(x)=='0')
 
 /*
@@ -19,7 +19,7 @@
 ** NOTE: Also, using recusive ft to keep parsing
 */
 
-void    parsing_flags(const char *format, size_t *pos, t_info *info)
+void    get_flags(const char *format, size_t *pos, t_info *info)
 {
     if(IS_FLAG(format[*pos]))
     {
@@ -163,19 +163,4 @@ void    get_specifier(const char *format, size_t *pos, t_info *info)
     (*pos)++;
 }
 
-/*
-** This parsing ft is not Fully well writen but it has the same concept (it needs to
-** be put in a loop to check all the flags, width, length). However, it will initialize
-** the struct then set all the value in the struct. After that it will start parsing
-** flags, field_width, percision, length and specifier
-*/
 
-void    parsing(const char *format, va_list args, size_t *pos, t_info *info)
-{
-    struct_init(info);
-    parsing_flags(format, pos, info);
-    get_field_width(format, pos, args, info);
-    get_precision(format, pos, args, info);
-    get_length(format, pos, info);
-    get_specifier(format, pos, info);
-}

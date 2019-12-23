@@ -6,7 +6,7 @@
 #    By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/05 23:35:56 by dthan             #+#    #+#              #
-#    Updated: 2019/12/15 05:52:05 by dthan            ###   ########.fr        #
+#    Updated: 2019/12/23 04:49:11 by dthan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ SRCS_DIR = srcs
 
 LIBFT_DIR = libft
 
-SRCS_CODES = srcs/core.c srcs/parsing/parsing.c srcs/parsing/helper.c \
-			srcs/printing/printing.c srcs/printing/str_summary.c \
-			srcs/printing/printing_helper.c srcs/printing/nbr_summary.c
+SRCS_CODES = srcs/core.c srcs/parsing.c srcs/printing.c \
+	     srcs/parsing/fill_struct.c srcs/parsing/helper.c \
+	     srcs/printing/type_c.c srcs/printing/type_s.c srcs/printing/type_di.c \
 
 LIBFT_CODES = $(addprefix $(LIBFT_DIR)/, ft_isdigit.c ft_strlen.c\
 ft_strchr.c ft_strdup.c ft_memset.c ft_memalloc.c ft_bzero.c ft_strnlen.c\

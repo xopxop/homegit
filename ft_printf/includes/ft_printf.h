@@ -17,7 +17,6 @@
 # include <stdint.h>
 # include "libft.h"
 
-# define STDOUT		1
 /*
 ** Flags uses a binary addressing system
 ** ZERO : pad with zero
@@ -35,33 +34,9 @@
 # define SMALL 32
 # define SIGN 64 /*unsigned/signed long*/
 
-# define SPECIFIER_COUNT 2 // Need to changed to 11(11 cases)
-
 typedef enum e_specifier t_specifier;
-typedef enum e_length t_length;
 
-typedef unsigned char t_u8bits;
-typedef unsigned short t_u16bits;
-typedef unsigned int t_u32bits;
-typedef unsigned long long t_u64bits;
-
-typedef char t_8bits;
-typedef short t_16bits;
-typedef int	 t_32bits;
-typedef long long t_64bits;
-
-
-enum	e_length
-{
-	len_hh,
-	len_h,
-	len_ll,
-	len_l,
-	len_lup,
-	len_none,
-};
-
-enum	e_specifier //Need to add more
+enum	e_specifier
 {
 	spec_char,
 	spec_str,
@@ -76,6 +51,28 @@ enum	e_specifier //Need to add more
 	spec_none,
 };
 
+typedef enum e_length t_length;
+
+enum	e_length
+{
+	len_hh,
+	len_h,
+	len_ll,
+	len_l,
+	len_lup,
+	len_none,
+};
+
+typedef unsigned char t_u8bits;
+typedef unsigned short t_u16bits;
+typedef unsigned int t_u32bits;
+typedef unsigned long long t_u64bits;
+
+typedef char t_8bits;
+typedef short t_16bits;
+typedef int	 t_32bits;
+typedef long long t_64bits;
+
 typedef struct		s_info
 {
 
@@ -86,40 +83,37 @@ typedef struct		s_info
 	t_specifier	specifier;
 }t_info;
 
-/*
-** ----------------------------Function dispatch Table------------------------
-*/
-
-
 //CORE
 
 int	ft_printf(char const *format, ...);
 int parse_and_print(const char *format, va_list args, t_info *info);
 
-// HELPER
+// PARSING
+void    parsing(const char *format, va_list args, size_t *pos, t_info *info);
 void struct_init(t_info *info);
+
+// PARSING/HELPER
 int ft_skip_atoi(const char *format, size_t *pos);
 
-// PARSING
-void    parsing_flags(const char *format, size_t *pos, t_info *info);
+// PARSING/FILL_STRUCT
+void    get_flags(const char *format, size_t *pos, t_info *info);
 void    get_field_width(const char *format, size_t *pos, va_list arg, t_info *info);
 void    get_precision(const char *format, size_t *pos, va_list arg, t_info *info);
 void    get_length(const char *format, size_t *pos, t_info *info);
-void    parsing(const char *format, va_list args, size_t *pos, t_info *info);
+void    get_specifier(const char *format, size_t *pos, t_info *info);
 
 // PRINTING
 int	printing(t_info *info, va_list arg);
 
-char *number(long num, int base, t_info *info);
-
-// STR_SUMMARY
+// TYPE_C
 char    *type_c(t_info *info, va_list arg);
 char    *type_s(t_info *info, va_list arg);
 char    *type_p(t_info *info, va_list arg);
-
-// NBR_SUMMARY
-long long get_signed_argument(t_info* info, va_list arg);
 char    *type_di(t_info *info, va_list arg);
+
+// PRINTING/PRINTING HELPER
+long long get_signed_argument(t_info* info, va_list arg);
+
 //char    *type_o(t_info *info, va_list arg);
 //char    *type_h(t_info *info, va_list arg);
 

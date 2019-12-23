@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+#define STDOUT 1
 
 /*
 ** The ft_parse_and_print will check every character from the string format.

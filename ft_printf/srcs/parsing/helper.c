@@ -13,19 +13,6 @@
 #include "ft_printf.h"
 
 /*
-** inilializing the struc info
-*/
-
-void struct_init(t_info *info)
-{
-    info->flags = 0;
-	info->field_width = -1;
-	info->percision = -1;
-	info->length = '\0';
-    info->specifier = '\0';
-}
-
-/*
 ** ft_skip_atoi will take the number from the string
 ** Return value: the number from the str
 */

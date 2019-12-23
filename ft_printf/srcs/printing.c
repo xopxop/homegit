@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/ft_printf.h"
+#include "../includes/ft_printf.h"
+# define SPECIFIER_COUNT 11
+# define STDOUT 1
 
 /*
 ** This is the Dispatch table/ Jump table using pointer to function array
