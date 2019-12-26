@@ -17,7 +17,15 @@ char *type_di(t_info *info, va_list arg)
     long long num;
     char *str;
 
+
     num = get_signed_argument(info, arg);
     str = ft_itoa_signed_longlong(num);
+    if (info->flags & PLUS_SIGN || info->flags & MINUS_SIGN || info->flags || \
+        info->flags & SPACE || (size_t)info->percision < ft_strlen(str))
+    {
+        if (info->flags &PLUS_SIGN && num > 0)
+            str = ft_strjoin("+", str);
+        
+    }
     return (str);
 }

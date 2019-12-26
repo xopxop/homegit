@@ -22,7 +22,27 @@
 ** RETURN VALUE: the len of the printed string
 */
 
-int parse_and_print(const char *format, va_list args, t_info *info)
+int parse_and_print(const char *format, va_list args, size_t *pos, t_info *info)
+{
+	int position_copy;
+
+	position_copy = *pos;
+	parsing(format, args, pos, info);
+	if (info->specifier == spec_none)
+	{
+		*pos = position_copy;
+		write(STDOUT, "%", 1);
+		return (1); 
+	}
+	else if (info->specifier == spec_percentsign)
+	{
+		write(STDOUT, "%", 1);
+		return (1);
+	}
+	return (printing(info,args));
+}
+
+int full_str_printing(const char *format, va_list args, t_info *info)
 {
 	size_t pos;
 	int len;
@@ -33,15 +53,13 @@ int parse_and_print(const char *format, va_list args, t_info *info)
 	{
 		if (format[pos] != '%')
 		{
-			write(STDOUT, &format[pos], 1);
+			write(STDOUT, &format[pos++], 1);
 			len++;
-			pos++;
 		}
 		else
 		{
 			pos++;
-			parsing(format, args, &pos, info);
-			len += printing(info, args);
+			len += parse_and_print(format, args, &pos, info);
 		}
 	}
 	return (len);
@@ -60,8 +78,10 @@ int	ft_printf(const char *format, ...)
 	int printed;
 	va_list args;
 
+//	if (format == NULL)
+//		return (0);
 	va_start(args, format);
-	printed = parse_and_print(format, args, &info);
+	printed = full_str_printing(format, args, &info);
 	va_end(args);
 	return (printed);
 }

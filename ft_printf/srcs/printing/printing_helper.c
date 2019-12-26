@@ -71,3 +71,14 @@ char *ft_number_conversion(unsigned long long num, int mask, int shiff_nbr, int 
     }
     return (str);
 }
+
+char *create_space(int len)
+{
+	char *str_space;
+
+	if (!(str_space = ft_memalloc(len + 1)))
+		return (0);
+	while (len-- > -1)
+		str_space[len] = ' ';
+	return (str_space);
+}

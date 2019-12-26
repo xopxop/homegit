@@ -32,8 +32,6 @@ char *(*get_func(t_specifier specifier))(t_info*, va_list)
 	func[spec_hexlowcase] = &type_x;
 	func[spec_hexupcase] = &type_x_up;
 	func[spec_float] = &type_f;
-//	func[spec_percentsign] = &type_percent;
-//	func[spec_none] = &type_none;
 
 	return (func[specifier]);
 }
@@ -47,38 +45,17 @@ char *(*get_func(t_specifier specifier))(t_info*, va_list)
 ** Return value: length of the output_str
 */
 
-char *create_space(int len)
-{
-	char *str_space;
-
-	if (!(str_space = ft_memalloc(len + 1)))
-		return (0);
-	while (len-- > -1)
-		str_space[len] = ' ';
-	return (str_space);
-}
-
 int	printing(t_info *info, va_list arg)
 {
 	char *(*print_func)(t_info*, va_list);
 	char *output_str;
-	char *res;
 	int count;
 
 	count = 0;
 	print_func = get_func(info->specifier);
 	output_str = print_func(info, arg);
 	count = ft_strlen(output_str);
-	if (info->field_width > count)
-	{
-		if (info->flags & MINUS_SIGN)
-			res = ft_strjoin(output_str, create_space(info->field_width - (int)count));
-		else
-			res = ft_strjoin(create_space(info->field_width - (int)count), output_str);
-	}
-	else
-		res = output_str;
-	write (STDOUT, res, ft_strlen(res));
-	free(res);
+	write (STDOUT, output_str, count);
+	free(output_str);
 	return (count);
 }

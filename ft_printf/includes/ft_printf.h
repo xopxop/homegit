@@ -86,7 +86,8 @@ typedef struct		s_info
 //CORE
 
 int	ft_printf(char const *format, ...);
-int parse_and_print(const char *format, va_list args, t_info *info);
+int full_str_printing(const char *format, va_list args, t_info *info);
+int parse_and_print(const char *format, va_list args, size_t *pos, t_info *info);
 
 // PARSING
 void    parsing(const char *format, va_list args, size_t *pos, t_info *info);
@@ -120,6 +121,7 @@ char    *type_f(t_info *info, va_list arg);
 long long get_signed_argument(t_info* info, va_list arg);
 unsigned long long get_unsigned_argument(t_info* info, va_list arg);
 char *ft_number_conversion(unsigned long long num, int mask, int shiff_nbr, int strlen, char *s);
+char *create_space(int len);
 
 //char    *type_o(t_info *info, va_list arg);
 //char    *type_h(t_info *info, va_list arg);

@@ -19,8 +19,8 @@
 void struct_init(t_info *info)
 {
     info->flags = 0;
-	info->field_width = -1;
-	info->percision = -1;
+	info->field_width = 0;
+	info->percision = 0;
 	info->length = '\0';
     info->specifier = '\0';
 }

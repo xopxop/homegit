@@ -18,12 +18,12 @@
 /*
 ** the ft parsing flags will pare the flags at the position of the string format
 ** using bitwise operand to store flags
-** NOTE: Also, using recusive ft to keep parsing
+** NOTE: Also, using loop ft to keep parsing flags
 */
 
 void    get_flags(const char *format, size_t *pos, t_info *info)
 {
-    if(IS_FLAG(format[*pos]))
+    while(IS_FLAG(format[*pos]))
     {
         if (format[*pos] == '-')
             info->flags |= MINUS_SIGN;
@@ -36,7 +36,6 @@ void    get_flags(const char *format, size_t *pos, t_info *info)
         else if (format[*pos] == '0')
             info->flags |= ZERO;
         (*pos)++;
-//        parsing_flags(format, pos, info);
     }
 }
 
