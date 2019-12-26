@@ -53,3 +53,24 @@ char		*ft_itoa_signed_longlong(long long n)
 	string[size] = '\0';
 	return (string);
 }
+
+char		*ft_itoa_unsigned_longlong(unsigned long long nbr)
+{
+	char			*string;
+	unsigned int	index;
+	unsigned int	size;
+
+	index = 0;
+	size = (unsigned int)getsizenumber(nbr);
+	if (!(string = (char*)malloc(sizeof(char) * (size + 1))))
+		return (NULL);
+	index = size - 1;
+	while (nbr >= 10)
+	{
+		string[index--] = (char)(nbr % 10 + '0');
+		nbr /= 10;
+	}
+	string[index] = (char)(nbr % 10 + '0');
+	string[size] = '\0';
+	return (string);
+}

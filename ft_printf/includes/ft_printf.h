@@ -110,9 +110,16 @@ char    *type_c(t_info *info, va_list arg);
 char    *type_s(t_info *info, va_list arg);
 char    *type_p(t_info *info, va_list arg);
 char    *type_di(t_info *info, va_list arg);
+char *type_u(t_info *info, va_list arg);
+char    *type_o(t_info *info, va_list arg);
+char    *type_x(t_info *info, va_list arg);
+char    *type_x_up(t_info *info, va_list arg);
+char    *type_f(t_info *info, va_list arg);
 
 // PRINTING/PRINTING HELPER
 long long get_signed_argument(t_info* info, va_list arg);
+unsigned long long get_unsigned_argument(t_info* info, va_list arg);
+char *ft_number_conversion(unsigned long long num, int mask, int shiff_nbr, int strlen, char *s);
 
 //char    *type_o(t_info *info, va_list arg);
 //char    *type_h(t_info *info, va_list arg);

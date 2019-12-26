@@ -35,6 +35,7 @@ int parse_and_print(const char *format, va_list args, t_info *info)
 		{
 			write(STDOUT, &format[pos], 1);
 			len++;
+			pos++;
 		}
 		else
 		{
@@ -42,7 +43,6 @@ int parse_and_print(const char *format, va_list args, t_info *info)
 			parsing(format, args, &pos, info);
 			len += printing(info, args);
 		}
-		pos++;
 	}
 	return (len);
 }

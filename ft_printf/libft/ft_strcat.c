@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   type_di.c                                          :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/23 04:43:51 by dthan             #+#    #+#             */
-/*   Updated: 2019/12/23 04:43:53 by dthan            ###   ########.fr       */
+/*   Created: 2019/10/18 13:43:31 by dthan             #+#    #+#             */
+/*   Updated: 2019/10/30 08:26:14 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/ft_printf.h"
-
-char *type_di(t_info *info, va_list arg)
+char	*ft_strcat(char *dest, const char *src)
 {
-    long long num;
-    char *str;
+	unsigned int ct;
+	unsigned int i;
 
-    num = get_signed_argument(info, arg);
-    str = ft_itoa_signed_longlong(num);
-    return (str);
+	ct = 0;
+	while (dest[ct])
+		ct++;
+	i = 0;
+	while (src[i])
+	{
+		dest[ct] = src[i];
+		i++;
+		ct++;
+	}
+	dest[ct] = '\0';
+	return (dest);
 }

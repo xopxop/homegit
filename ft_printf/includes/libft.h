@@ -25,4 +25,9 @@ void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_memalloc(size_t size);
 void	ft_bzero(void *s, size_t n);
 char		*ft_itoa_signed_longlong(long long n);
+char		*ft_itoa_unsigned_longlong(unsigned long long nbr);
+char	*ft_strjoin(char const *string1, char const *string2);
+char	*ft_strcpy(char *dst, const char *src);
+char	*ft_strcat(char *dest, const char *src);
+
 #endif

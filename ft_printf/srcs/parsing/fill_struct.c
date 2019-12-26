@@ -12,6 +12,8 @@
 
 #include "../../includes/ft_printf.h"
 #define IS_FLAG(x) ((x)=='-'||(x)=='+'||(x)==' '||(x)=='#'||(x)=='0')
+#define IS_SPECIFIER(y) ((y)=='c'||(y)=='s'||(y)=='p'||(y)=='d'||(y)=='i'\
+        ||(y)=='u'||(y)=='o'||(y)=='x'||(y)=='X'||(y)=='f'||(y)=='%')
 
 /*
 ** the ft parsing flags will pare the flags at the position of the string format
@@ -138,29 +140,32 @@ void    get_length(const char *format, size_t *pos, t_info *info)
 
 void    get_specifier(const char *format, size_t *pos, t_info *info)
 {
-    if (format[*pos] == 'c')
-        info->specifier = spec_char;
-    else if (format[*pos] == 's')
-        info->specifier = spec_str;
-    else if (format[*pos] == 'p')
-        info->specifier = spec_ptr;
-    else if (format[*pos] == 'd' || format[*pos] == 'i')
-        info->specifier = spec_int;
-    else if (format[*pos] == 'u')
-        info->specifier = spec_uint;
-    else if (format[*pos] == 'o')
-        info->specifier = spec_octal;
-    else if (format[*pos] == 'x')
-        info->specifier = spec_hexlowcase;
-    else if (format[*pos] == 'X')
-        info->specifier = spec_hexupcase;
-    else if (format[*pos] == 'f')
-        info->specifier = spec_float;
-    else if (format[*pos] == '%')
-        info->specifier = spec_percentsign;
+    if (IS_SPECIFIER(format[*pos]))
+    {
+        if (format[*pos] == 'c')
+            info->specifier = spec_char;
+        else if (format[*pos] == 's')
+            info->specifier = spec_str;
+        else if (format[*pos] == 'p')
+            info->specifier = spec_ptr;
+        else if (format[*pos] == 'd' || format[*pos] == 'i')
+            info->specifier = spec_int;
+        else if (format[*pos] == 'u')
+            info->specifier = spec_uint;
+        else if (format[*pos] == 'o')
+            info->specifier = spec_octal;
+        else if (format[*pos] == 'x')
+            info->specifier = spec_hexlowcase;
+        else if (format[*pos] == 'X')
+            info->specifier = spec_hexupcase;
+        else if (format[*pos] == 'f')
+            info->specifier = spec_float;
+        else if (format[*pos] == '%')
+            info->specifier = spec_percentsign;
+        (*pos)++;
+    }
     else
         info->specifier = spec_none;
-    (*pos)++;
 }
 
 

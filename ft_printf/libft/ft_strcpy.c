@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/07 17:05:34 by dthan             #+#    #+#             */
-/*   Updated: 2019/12/19 05:57:52 by dthan            ###   ########.fr       */
+/*   Created: 2019/10/17 15:53:24 by dthan             #+#    #+#             */
+/*   Updated: 2019/10/30 08:29:16 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
 
-int main(void)
+char	*ft_strcpy(char *dst, const char *src)
 {
-	int a;
-	int *p;
+	unsigned int i;
 
-	a = 10;
-	p = &a;
-	printf("--%.2p--\n", (void*)p);
-	printf("%010d", a);
+	i = 0;
+	while (src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = src[i];
+	return (dst);
 }
