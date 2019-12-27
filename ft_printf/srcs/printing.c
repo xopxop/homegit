@@ -19,20 +19,21 @@
 ** it will return the function coresponding to the specifier type
 */
 
-char *(*get_func(t_specifier specifier))(t_info*, va_list)
+void (*get_func(t_specifier specifier))(t_info*, va_list, char **)
 {
-	char *(*func[SPECIFIER_COUNT])(t_info*, va_list);
+	void (*func[SPECIFIER_COUNT])(t_info*, va_list, char **);
 
 	func[spec_char] = &type_c;
 	func[spec_str] = &type_s;
-	func[spec_ptr] = &type_p;
+
+//	func[spec_ptr] = &type_p;
 	func[spec_int] = &type_di;
-	func[spec_uint] = &type_u;
+/*	func[spec_uint] = &type_u;
 	func[spec_octal] = &type_o;
 	func[spec_hexlowcase] = &type_x;
 	func[spec_hexupcase] = &type_x_up;
 	func[spec_float] = &type_f;
-
+*/
 	return (func[specifier]);
 }
 
@@ -47,13 +48,13 @@ char *(*get_func(t_specifier specifier))(t_info*, va_list)
 
 int	printing(t_info *info, va_list arg)
 {
-	char *(*print_func)(t_info*, va_list);
+	void (*print_func)(t_info*, va_list, char **);
 	char *output_str;
 	int count;
 
 	count = 0;
 	print_func = get_func(info->specifier);
-	output_str = print_func(info, arg);
+	print_func(info, arg, &output_str);
 	count = ft_strlen(output_str);
 	write (STDOUT, output_str, count);
 	free(output_str);

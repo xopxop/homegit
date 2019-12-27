@@ -107,21 +107,25 @@ void    get_specifier(const char *format, size_t *pos, t_info *info);
 int	printing(t_info *info, va_list arg);
 
 // TYPE_C
-char    *type_c(t_info *info, va_list arg);
-char    *type_s(t_info *info, va_list arg);
-char    *type_p(t_info *info, va_list arg);
-char    *type_di(t_info *info, va_list arg);
-char *type_u(t_info *info, va_list arg);
-char    *type_o(t_info *info, va_list arg);
-char    *type_x(t_info *info, va_list arg);
-char    *type_x_up(t_info *info, va_list arg);
-char    *type_f(t_info *info, va_list arg);
+void type_c(t_info *info, va_list arg, char **output);
+void type_s(t_info *info, va_list arg, char **output);
+void type_p(t_info *info, va_list arg, char **output);
+void type_di(t_info *info, va_list arg, char **output);
+void type_u(t_info *info, va_list arg, char **output);
+void type_o(t_info *info, va_list arg, char **output);
+void type_x(t_info *info, va_list arg, char **output);
+void type_x_up(t_info *info, va_list arg, char **output);
+void type_f(t_info *info, va_list arg, char **output);
 
 // PRINTING/PRINTING HELPER
 long long get_signed_argument(t_info* info, va_list arg);
 unsigned long long get_unsigned_argument(t_info* info, va_list arg);
 char *ft_number_conversion(unsigned long long num, int mask, int shiff_nbr, int strlen, char *s);
-char *create_space(int len);
+char *ft_strrev(char *s);
+void ft_right_just(t_info *info, char **str, char *new);
+void ft_pad_handle(t_info *info, char **str);
+void    ft_prec_nums(t_info *info, char **str);
+void ft_prec_handle(t_info *info, char **str);
 
 //char    *type_o(t_info *info, va_list arg);
 //char    *type_h(t_info *info, va_list arg);

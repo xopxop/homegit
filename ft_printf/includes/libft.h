@@ -29,5 +29,7 @@ char		*ft_itoa_unsigned_longlong(unsigned long long nbr);
 char	*ft_strjoin(char const *string1, char const *string2);
 char	*ft_strcpy(char *dst, const char *src);
 char	*ft_strcat(char *dest, const char *src);
+char	*ft_strnew(size_t size);
+int	ft_strcmp(const char *s1, const char *s2);
 
 #endif

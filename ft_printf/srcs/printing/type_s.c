@@ -17,36 +17,14 @@
 ** RETURN VALUE: a string for type_s
 */
 
-char    *type_s(t_info *info, va_list arg)
+void    type_s(t_info *info, va_list arg, char **output)
 {
-    const char *s;
+    char *ctemp;
     char *str;
-    int len;
-    int i;
-    int j;
-    int k;
 
-    i = 0;
-    j = 0;
-    k = 0;
-    s = va_arg(arg, char *);
-    len = ft_strnlen(s, info->percision);
-    if (info->field_width > len)
-    {
-        if (!(str = ft_memalloc(sizeof(char) * info->field_width + 1)))
-            return (0);
-    }
-    else
-    {
-        if (!(str = ft_memalloc(sizeof(char) * len + 1)))
-            return (0);
-    }
-    if (!(info->flags & MINUS_SIGN))
-        while (len < info->field_width--)
-            str[j++] = ' ';
-    while (i++ < len)
-        str[j++] = s[k++];
-    while (len < info->field_width--)
-        str[j++] = ' ';
-    return (str);
+    ctemp = va_arg(arg, char*);
+    str = ft_strdup(ctemp);
+    ft_prec_handle(info, &str);
+    ft_pad_handle(info, &str);
+    *output = str;
 }
