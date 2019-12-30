@@ -12,6 +12,17 @@
 
 #include "../../includes/ft_printf.h"
 
+/*
+** ft for type integer 'i' and 'd'
+** taking the argument and put into a string
+** taking care of the flags 0:  if percision is not bigger than 0
+**                              percions is 0 -> nothing to be printed
+** taking care of PLUS and SPACE flags, if there are plus and space, plus
+** will be alwasy printed
+** ft_prec_nums will take care of the percision
+** ft_pad_handle will taking care of the padding
+*/
+
 void type_di(t_info *info, va_list arg, char **output)
 {
     long long num;
@@ -23,7 +34,7 @@ void type_di(t_info *info, va_list arg, char **output)
         info->flags ^= ZERO;
     if (info->percision == 0 && !ft_strcmp("0", str))
         *str = '\0';
-    if ((info->flags & PLUS_SIGN || info->flags & SPACE) && str[0] != '-' && info->specifier == spec_int)
+    if ((info->flags & PLUS_SIGN || info->flags & SPACE) && str[0] != '-')
     {
         str = ft_strjoin((info->flags & SPACE) ? " " : "+", str);
         str[0] = (info->flags & PLUS_SIGN) ? '+' : str[0];

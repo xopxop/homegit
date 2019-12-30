@@ -84,18 +84,14 @@ void ft_handle_integer(long double *nb, char **str, int *i, long double modulo)
 
     s = *str;
     if ((int)*nb == 0)
-    {
         s[(*i)++] = '0';
-    }
     else
-    {
         while ((int)*nb != 0)
         {
             s[(*i)++] = (char)((*nb / modulo) + '0');
             *nb -= (int)(*nb / modulo) * modulo;
             modulo /= 10;
         }
-    }
 }
 
 /*
@@ -139,48 +135,58 @@ void	ft_handle_decimals(char **str, int *i, long double nb, int precision)
 	}
 }
 
-char *put_floating_point_to_string(long double num, int precision)
+void put_floating_point_to_string(long double num, int frac_size, char **str)
 {
     long double modulo;
     int str_size;
-    char *str;
+    char *new;
     int i;
     int neg;
 
     i = 0;
     neg = 0;
-    str_size = 0;
-    if(special_case(&str, num))
-        return (str);
+    str_size = 1;
+    if(special_case(str, num))
+        return ;
     if (num < 0)
     {
         num *= -1;
         neg = 1;
     }
     modulo = ft_calc_modulo(num, &str_size);
-    str_size += precision;
-    str = ft_memalloc(sizeof(char) * (str_size + 1));
+    str_size += frac_size;
+    new =  ft_strnew(str_size);
     if (neg)
-        str[i++] = '-';
-    ft_handle_integer(&num, &str, &i, modulo);
-    ft_handle_decimals(&str, &i, num, precision);
-    str[--i] = '\0';
-    return (str);
+        new[i++] = '-';
+    ft_handle_integer(&num, new, &i, modulo);
+    ft_handle_decimals(&new, &i, num, frac_size);
+    
+    *str = new;
 }
 
-char    *type_f(t_info *info, va_list arg)
+
+void type_f(t_info *info, va_list arg, char **output)
 {
     long double num;
     char *str;
+    int frac_size;
     
+    frac_size = 0;
     if(info->length == len_l)
         num = (long double)va_arg(arg, double);
     else if (info->length == len_lup)
         num = va_arg(arg, long double);
     else
         num = (long double)va_arg(arg, double);
-    if (info->percision <= 0)
-        info->percision = 7;
-    str = put_floating_point_to_string(num, info->percision);
-    return (str);
+    if (info->percision = -1)
+        frac_size = 7;
+    else if (info->percision > 0)
+        frac_size = info->percision + 1;
+    put_floating_point_to_string(num, frac_size, &str);
+    if ((info->flags & PLUS_SIGN || info->flags & SPACE) && str[0] != '-')
+    {
+        str = ft_strjoin((info->flags & SPACE) ? " " : "+", str);
+        str[0] = (info->flags & PLUS_SIGN) ? '+' : str[0];
+    }
+    *output = str;
 }

@@ -25,15 +25,13 @@ void (*get_func(t_specifier specifier))(t_info*, va_list, char **)
 
 	func[spec_char] = &type_c;
 	func[spec_str] = &type_s;
-
-//	func[spec_ptr] = &type_p;
+	func[spec_ptr] = &type_p;
 	func[spec_int] = &type_di;
-/*	func[spec_uint] = &type_u;
+	func[spec_uint] = &type_u;
 	func[spec_octal] = &type_o;
 	func[spec_hexlowcase] = &type_x;
 	func[spec_hexupcase] = &type_x_up;
 	func[spec_float] = &type_f;
-*/
 	return (func[specifier]);
 }
 

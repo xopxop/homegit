@@ -122,10 +122,16 @@ long long get_signed_argument(t_info* info, va_list arg);
 unsigned long long get_unsigned_argument(t_info* info, va_list arg);
 char *ft_number_conversion(unsigned long long num, int mask, int shiff_nbr, int strlen, char *s);
 char *ft_strrev(char *s);
+
+
+// PADDING
 void ft_right_just(t_info *info, char **str, char *new);
 void ft_pad_handle(t_info *info, char **str);
 void    ft_prec_nums(t_info *info, char **str);
 void ft_prec_handle(t_info *info, char **str);
+
+void ft_percisionSmallerThanSTRLEN(t_info *info, char **str);
+void ft_percision_hex(t_info *info, char **str);
 
 //char    *type_o(t_info *info, va_list arg);
 //char    *type_h(t_info *info, va_list arg);

@@ -14,7 +14,7 @@
 
 /*
 ** ft printing for type_c
-** RETURN VALUE: a string for type_c
+** Taking the argument, put into a string and padding (if)
 */
 
 void type_c(t_info* info , va_list arg, char **output)

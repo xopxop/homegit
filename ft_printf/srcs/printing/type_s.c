@@ -13,8 +13,8 @@
 #include "../../includes/ft_printf.h"
 
 /*
-** ft printing for type_s
-** RETURN VALUE: a string for type_s
+** This function is for printing type string
+** geting the string, taking care of the precison and padding
 */
 
 void    type_s(t_info *info, va_list arg, char **output)

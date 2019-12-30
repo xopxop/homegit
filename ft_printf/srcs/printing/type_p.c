@@ -15,15 +15,25 @@
 #define SHIFF_HEX_MASK 4
 #define MAX_HEX_STRLEN 17
 
-char    *type_p(t_info *info, va_list arg)
+/*
+** This ft will taking care of type pointer
+** Getting the adress from the argument then put it in an unsigned long long
+** interger
+** Convered the number into a string with ft_number_conversion, using the 
+** mask to get the hex value
+** Ft_percison_hex to deal with the precision
+** Ft_pd_handle to deal with the padding
+*/
+
+void type_p(t_info *info, va_list arg, char **output)
 {
     unsigned long long num;
     char *str;
     char *hex = "0123456789abcdef";
-
-    if (info->specifier == spec_ptr)
-        num = (long long)va_arg(arg, long long);
+    
+    num = (long long)va_arg(arg, long long);
     str = ft_number_conversion(num, HEX_MASK, SHIFF_HEX_MASK, MAX_HEX_STRLEN, hex);
-    str = ft_strjoin("Ox", str);
-    return (str);
+    ft_percision_hex(info, &str);
+    ft_pad_handle(info, &str);
+    *output = str;
 }
