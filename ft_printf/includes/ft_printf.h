@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 23:45:44 by dthan             #+#    #+#             */
-/*   Updated: 2019/12/17 04:53:59 by dthan            ###   ########.fr       */
+/*   Updated: 2019/12/31 15:49:58 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,77 +63,137 @@ enum	e_length
 	len_none,
 };
 
-typedef unsigned char t_u8bits;
-typedef unsigned short t_u16bits;
-typedef unsigned int t_u32bits;
-typedef unsigned long long t_u64bits;
-
-typedef char t_8bits;
-typedef short t_16bits;
-typedef int	 t_32bits;
-typedef long long t_64bits;
-
 typedef struct		s_info
 {
-
 	int		flags;
 	int		field_width;
 	int		percision;
 	t_length		length;
 	t_specifier	specifier;
-}t_info;
+}			t_info;
 
-//CORE
+/*
+** Core file
+*/
 
 int	ft_printf(char const *format, ...);
-int full_str_printing(const char *format, va_list args, t_info *info);
-int parse_and_print(const char *format, va_list args, size_t *pos, t_info *info);
+int	full_str_printing(const char *format, va_list args, t_info *info);
+int	parse_and_print(const char *format, va_list args, size_t *pos, t_info *info);
 
-// PARSING
-void    parsing(const char *format, va_list args, size_t *pos, t_info *info);
-void struct_init(t_info *info);
+/*
+** -------------------------Parsing part file---------------------------------
+*/
+void	parsing(const char *format, va_list args, size_t *pos, t_info *info);
+void	struct_init(t_info *info);
 
-// PARSING/HELPER
-int ft_skip_atoi(const char *format, size_t *pos);
+/*
+** Parsing helper file
+*/
 
-// PARSING/FILL_STRUCT
-void    get_flags(const char *format, size_t *pos, t_info *info);
-void    get_field_width(const char *format, size_t *pos, va_list arg, t_info *info);
-void    get_precision(const char *format, size_t *pos, va_list arg, t_info *info);
-void    get_length(const char *format, size_t *pos, t_info *info);
-void    get_specifier(const char *format, size_t *pos, t_info *info);
+int	ft_skip_atoi(const char *format, size_t *pos);
 
-// PRINTING
-int	printing(t_info *info, va_list arg);
+/*
+** Filling struct file
+*/
 
-// TYPE_C
-void type_c(t_info *info, va_list arg, char **output);
-void type_s(t_info *info, va_list arg, char **output);
-void type_p(t_info *info, va_list arg, char **output);
-void type_di(t_info *info, va_list arg, char **output);
-void type_u(t_info *info, va_list arg, char **output);
-void type_o(t_info *info, va_list arg, char **output);
-void type_x(t_info *info, va_list arg, char **output);
-void type_x_up(t_info *info, va_list arg, char **output);
-void type_f(t_info *info, va_list arg, char **output);
+void			get_flags(const char *format, size_t *pos, t_info *info);
+void			get_field_width(const char *format, size_t *pos, va_list arg, t_info *info);
+void			get_precision(const char *format, size_t *pos, va_list arg, t_info *info);
+void			get_length(const char *format, size_t *pos, t_info *info);
+void			get_specifier(const char *format, size_t *pos, t_info *info);
 
-// PRINTING/PRINTING HELPER
-long long get_signed_argument(t_info* info, va_list arg);
-unsigned long long get_unsigned_argument(t_info* info, va_list arg);
-char *ft_number_conversion(unsigned long long num, int mask, int shiff_nbr, int strlen, char *s);
-char *ft_strrev(char *s);
+/*
+** -------------------------Printing files------------------------------------
+*/
+
+int			printing(t_info *info, va_list arg);
+
+/*
+** Get number to string file
+*/
+
+char			*ft_number_conversion(unsigned long long num, int mask, int shiff_nbr, int strlen, char *s);
+void			put_floating_point_to_string(long double num, t_info *info, char **str);
 
 
-// PADDING
-void ft_right_just(t_info *info, char **str, char *new);
-void ft_pad_handle(t_info *info, char **str);
-void    ft_prec_nums(t_info *info, char **str);
-void ft_prec_handle(t_info *info, char **str);
+long long		get_signed_argument(t_info* info, va_list arg);
+unsigned long long	get_unsigned_argument(t_info* info, va_list arg);
 
-void ft_percisionSmallerThanSTRLEN(t_info *info, char **str);
-void ft_percision_hex(t_info *info, char **str);
+/*
+** Padding file
+*/
 
-//char    *type_o(t_info *info, va_list arg);
-//char    *type_h(t_info *info, va_list arg);
+void			ft_pad_handle(t_info *info, char **str);
+void			ft_right_just(t_info *info, char **str, char *new);
+void			ft_right_just_special_case(t_info *info, char **str, char *new);
+void			ft_special_case(t_info *info, char **str);
+
+/*
+** Percision file
+*/
+
+void			ft_prec_handle(t_info *info, char **str);
+void			ft_prec_nums(t_info *info, char **str);
+void			ft_percision_hex(t_info *info, char **str);
+void			ft_percisionSmallerThanSTRLEN(t_info *info, char **str);
+
+/*
+** Type_C
+*/
+
+void			type_c(t_info *info, va_list arg, char **output);
+
+/*
+** Type_S
+*/
+
+void			type_s(t_info *info, va_list arg, char **output);
+
+/*
+** TYPE_P
+*/
+
+void			type_p(t_info *info, va_list arg, char **output);
+
+/*
+** TYPE SIGNED INTEGER
+*/
+
+void			type_di(t_info *info, va_list arg, char **output);
+
+/*
+** Type unsigned integer
+*/
+
+void			type_u(t_info *info, va_list arg, char **output);
+
+/*
+** Type Octal number
+*/
+
+void			ft_handle_alt(t_info *info, char **str);
+void			ft_handle_xou(t_info *info, char **str);
+void			type_o(t_info *info, va_list arg, char **output);
+
+/*
+** Type Hexadecimal number
+*/
+
+void			ft_percisionSmallerForxX(t_info *info, char **str);
+void			ft_prec_hex(t_info *info, char **str);
+void			type_x(t_info *info, va_list arg, char **output);
+void			type_x_up(t_info *info, va_list arg, char **output);
+
+/*
+** Type floating point
+*/
+
+int			ft_isnan(double num);
+int			ft_isinf(double num);
+int			special_case(char **s, double num);
+long double		ft_calc_modulo(double num, int *str_size);
+void			ft_handle_decimal(long double *nb, char **str, int *i, long double modulo);
+void			ft_handle_fractional(char **str, int *i, long double nb, t_info *info);
+void			type_f(t_info *info, va_list arg, char **output);
 
 #endif

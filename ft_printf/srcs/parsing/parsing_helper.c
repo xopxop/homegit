@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helper.c                                           :+:      :+:    :+:   */
+/*   parsing_helper.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/07 17:47:36 by dthan             #+#    #+#             */
-/*   Updated: 2019/12/07 18:00:01 by dthan            ###   ########.fr       */
+/*   Created: 2019/12/31 14:52:04 by dthan             #+#    #+#             */
+/*   Updated: 2019/12/31 14:52:08 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,11 @@
 ** Return value: the number from the str
 */
 
-int ft_skip_atoi(const char *format, size_t *pos)
+int	ft_skip_atoi(const char *format, size_t *pos)
 {
-    int i = 0;
+	int i = 0;
 
-    while (ft_isdigit(format[*pos]))
-        i = i * 10 + format[(*pos)++] - '0';
-    return (i);
+	while (ft_isdigit(format[*pos]))
+		i = i * 10 + format[(*pos)++] - '0';
+	return (i);
 }
-

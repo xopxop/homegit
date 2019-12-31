@@ -6,22 +6,22 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 20:40:30 by dthan             #+#    #+#             */
-/*   Updated: 2019/12/08 21:57:12 by dthan            ###   ########.fr       */
+/*   Updated: 2019/12/31 13:52:42 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-# define SPECIFIER_COUNT 11
-# define STDOUT 1
+#define SPECIFIER_COUNT 11
+#define STDOUT 1
 
 /*
 ** This is the Dispatch table/ Jump table using pointer to function array
 ** it will return the function coresponding to the specifier type
 */
 
-void (*get_func(t_specifier specifier))(t_info*, va_list, char **)
+void	(*get_func(t_specifier specifier))(t_info*, va_list, char **)
 {
-	void (*func[SPECIFIER_COUNT])(t_info*, va_list, char **);
+	void	(*func[SPECIFIER_COUNT])(t_info*, va_list, char **);
 
 	func[spec_char] = &type_c;
 	func[spec_str] = &type_s;
