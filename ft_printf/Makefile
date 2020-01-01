@@ -16,18 +16,16 @@ SRCS_DIR = srcs
 
 LIBFT_DIR = libft
 
-SRCS_CODES = srcs/core.c srcs/parsing.c srcs/printing.c \
-	     srcs/parsing/fill_struct.c srcs/parsing/helper.c \
-		 srcs/printing/printing_helper.c srcs/printing/padding.c \
-	     srcs/printing/type_c.c srcs/printing/type_s.c srcs/printing/type_di.c \
-		 srcs/printing/type_p.c srcs/printing/type_u.c srcs/printing/type_xX.c \
-		 srcs/printing/type_o.c #srcs/printing/type_f.c
+SRCS_CODES = $(addprefix $(SRCS_DIR)/, core.c parsing.c printing.c \
+parsing/fill_struct.c parsing/parsing_helper.c \
+printing/nbr_to_str.c printing/padding.c printing/percision.c \
+printing/type_c.c printing/type_di.c printing/type_f.c printing/type_o.c \
+printing/type_p.c printing/type_s.c printing/type_u.c printing/type_xX.c)
 		 
-
 LIBFT_CODES = $(addprefix $(LIBFT_DIR)/, ft_isdigit.c ft_strlen.c\
-ft_strchr.c ft_strdup.c ft_memset.c ft_memalloc.c ft_bzero.c ft_strnlen.c\
+ft_strchr.c ft_strdup.c ft_memset.c ft_memalloc.c ft_bzero.c \
 ft_itoa.c ft_strjoin.c ft_strcpy.c ft_strcat.c ft_strnew.c ft_strcmp.c ft_strncpy.c\
-ft_toupper.c ft_isalnum.c)
+ft_toupper.c ft_isalnum.c ft_strrev.c)
 
 #SRCS_OBJ = $(patsubs %.c,%.o, $(SRCS))
 

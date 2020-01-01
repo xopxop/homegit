@@ -6,19 +6,19 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 12:21:21 by dthan             #+#    #+#             */
-/*   Updated: 2019/12/30 12:21:24 by dthan            ###   ########.fr       */
+/*   Updated: 2019/12/31 10:19:46 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "includes/ft_printf.h"s
+#include "../includes/ft_printf.h"
 #define RED "\x1b[31m"
 #define RESET "\x1b[0m"
 
 int			main(void)
 {
 	double		nb;
-	nb = -12547.58;
+	nb = 12547.58;
 
 	ft_printf(RESET"test basique:");printf(RED"test basique:");
     ft_printf(RESET"space:% f\n", nb);printf(RED"space:% f\n", nb);

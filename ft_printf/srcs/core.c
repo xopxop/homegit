@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 02:33:13 by dthan             #+#    #+#             */
-/*   Updated: 2019/12/18 02:33:17 by dthan            ###   ########.fr       */
+/*   Updated: 2019/12/31 13:50:27 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 ** RETURN VALUE: the len of the printed string
 */
 
-int parse_and_print(const char *format, va_list args, size_t *pos, t_info *info)
+int	parse_and_print(const char *format, va_list args, size_t *pos, t_info *info)
 {
 	int position_copy;
 
@@ -32,7 +32,7 @@ int parse_and_print(const char *format, va_list args, size_t *pos, t_info *info)
 	{
 		*pos = position_copy;
 		write(STDOUT, "%", 1);
-		return (1); 
+		return (1);
 	}
 	else if (info->specifier == spec_percentsign)
 	{
@@ -42,7 +42,7 @@ int parse_and_print(const char *format, va_list args, size_t *pos, t_info *info)
 	return (printing(info,args));
 }
 
-int full_str_printing(const char *format, va_list args, t_info *info)
+int	full_str_printing(const char *format, va_list args, t_info *info)
 {
 	size_t pos;
 	int len;
