@@ -1,0 +1,5 @@
+#!bin/bash
+
+echo "The command that kills ssh service\n"
+echo "service ssh stop"
+service ssh stop

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "Write a script which delete an ACTIVE user on the VM.\n"
+

@@ -1,0 +1,4 @@
+#!/bin/bash
+echo"Find the command that list all packages\n"
+echo"Command that list all packages: 'dpkg -l'\n"
+dpkg -l
