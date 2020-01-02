@@ -172,7 +172,6 @@ void			type_u(t_info *info, va_list arg, char **output);
 */
 
 void			ft_handle_alt(t_info *info, char **str);
-void			ft_handle_xou(t_info *info, char **str);
 void			type_o(t_info *info, va_list arg, char **output);
 
 /*
@@ -195,5 +194,12 @@ long double		ft_calc_modulo(double num, int *str_size);
 void			ft_handle_decimal(long double *nb, char **str, int *i, long double modulo);
 void			ft_handle_fractional(char **str, int *i, long double nb, t_info *info);
 void			type_f(t_info *info, va_list arg, char **output);
+
+/*
+** Printing helper
+*/
+
+char	*ft_strjoin_and_free_string1(char *string1, char *string2);
+char	*ft_strjoin_and_free_string2(char *string1, char *string2);
 
 #endif

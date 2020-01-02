@@ -13,17 +13,6 @@
 #include "../../includes/ft_printf.h"
 
 /*
-void null_only(char **str)
-{
-    char *new;
-
-    new = ft_strdup("(null)");
-    free(*str);
-    *str = new;
-}
-*/
-
-/*
 ** ft printing for type_c
 ** Taking the argument, put into a string and padding (if)
 */

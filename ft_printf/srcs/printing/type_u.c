@@ -29,11 +29,6 @@ void	type_u(t_info *info, va_list arg, char **output)
 		info->flags ^= ZERO;
 	if (info->percision == 0 && !ft_strcmp("0", str))
 		*str = '\0';
-	if (info->flags & PLUS_SIGN || info->flags & SPACE)
-	{
-		str = ft_strjoin((info->flags & SPACE) ? " " : "+", str);
-		str[0] = (info->flags & PLUS_SIGN) ? '+' : str[0];
-	}
 	ft_prec_nums(info, &str);
 	ft_pad_handle(info, &str);
 	*output = str;

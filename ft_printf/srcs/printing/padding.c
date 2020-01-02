@@ -110,7 +110,8 @@ void	ft_special_case(t_info *info, char **str)
 	char *new;
 
 	if ((info->field_width == 0 || ft_strlen(*str) < \
-(size_t)info->field_width) && (info->flags & HASH_SIGN) && (info->flags & ZERO))
+(size_t)info->field_width) && (info->flags & HASH_SIGN) && (info->flags & ZERO)\
+&& !(info->flags & MINUS_SIGN))
 	{
 		new = ft_strnew(info->field_width);
 		ft_right_just_special_case(info, str, new);

@@ -51,11 +51,14 @@ void	ft_prec_nums(t_info *info, char **str)
 	char *orig;
 
 	orig = *str;
-	if (info->percision == 0 && !ft_strcmp("0", *str))
-	{
-		**str = '\0';
+	if (!**str)
 		return ;
-	}
+// 	if ((info->percision == 0 || info->percision == -1) && !ft_strcmp("0", *str) && (info->specifier == spec_int ||
+//	 info->specifier == spec_octal || info->specifier == spec_hexlowcase))
+//	{
+//		**str = '\0';
+//		return ;
+//	}
 	if (info->percision == -1)
 		info->percision = 1;
 	if (info->percision < (int) ft_strlen(*str))

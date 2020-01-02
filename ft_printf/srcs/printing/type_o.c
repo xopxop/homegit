@@ -15,30 +15,6 @@
 #define SHIFF_OCTAL_MASK 3
 #define MAX_OCTAL_STRLEN 22+1
 
-void	ft_handle_alt(t_info *info, char **str)
-{
-	char *new;
-
-	if (info->flags & HASH_SIGN && **str != '0')
-	{
-		new = ft_strjoin("0", *str);
-		free(*str);
-		*str = new;
-	}
-}
-
-void	ft_handle_xou(t_info *info, char **str)
-{
-	if(info->flags & ZERO && info->percision == 0)
-		info->flags ^= ZERO;
-	if (info->percision == 0 && !ft_strcmp(*str, "0"))
-		*str = '\0';
-	ft_prec_nums(info, str);
-	if (!(info->flags & ZERO && info->flags & HASH_SIGN))
-		ft_handle_alt(info, str);
-	ft_pad_handle(info, str);
-}
-
 void	type_o(t_info *info, va_list arg, char **output)
 {
 	unsigned long long num;
@@ -48,6 +24,24 @@ void	type_o(t_info *info, va_list arg, char **output)
 	num = get_unsigned_argument(info, arg);
 	str = ft_number_conversion(num, OCTAL_MASK, SHIFF_OCTAL_MASK, \
 			MAX_OCTAL_STRLEN, oct);
-	ft_handle_xou(info, &str);
+	if (info->percision != -1 && info->flags & ZERO)
+		info->flags ^= ZERO;
+	if (info->flags & HASH_SIGN)
+	{
+		if (!ft_strcmp("0", str))
+			;
+		else
+			str = ft_strjoin_and_free_string2("0", str);
+	}
+	if (info->percision == 0  && !ft_strcmp("0", str))
+		*str = '\0';
+	if (info->flags & PLUS_SIGN || info->flags & SPACE)
+	{
+		str = ft_strjoin_and_free_string2((info->flags & SPACE) ? " " : "+", str);
+		str[0] = (info->flags & PLUS_SIGN) ? '+' : str[0];
+	}
+	ft_prec_nums(info, &str);
+	ft_pad_handle(info, &str);
 	*output = str;
 }
+

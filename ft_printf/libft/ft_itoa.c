@@ -28,7 +28,7 @@ static int	getsizenumber(unsigned long long nb)
 char		*ft_itoa_signed_longlong(long long n)
 {
 	char			*string;
-	long long	nbr;
+	unsigned long long	nbr;
 	unsigned int	index;
 	unsigned int	size;
 

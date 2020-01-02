@@ -126,11 +126,16 @@ char	*ft_number_conversion(unsigned long long num, int mask, int shiff_nbr, int 
 	i = 0;
 	if (!(str = (char*)ft_memalloc(strlen)))
 		return (0);
-	while (num)
+	if (num == 0)
+		ft_strcpy(str, "0");
+	else
 	{
-		str[i++] = s[num & mask];
-		num >>= shiff_nbr;
+		while (num)
+		{
+			str[i++] = s[num & mask];
+			num >>= shiff_nbr;
+		}
+		str = ft_strrev(str);
 	}
-	str = ft_strrev(str);
 	return (str);
 }

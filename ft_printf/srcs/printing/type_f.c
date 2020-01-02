@@ -163,7 +163,7 @@ void	type_f(t_info *info, va_list arg, char **output)
 	put_floating_point_to_string(num, info, &str);
 	if ((info->flags & PLUS_SIGN || info->flags & SPACE) && str[0] != '-')
 	{
-		str = ft_strjoin((info->flags & SPACE) ? " " : "+", str);
+		str = ft_strjoin_and_free_string2((info->flags & SPACE) ? " " : "+", str);
 		str[0] = (info->flags & PLUS_SIGN) ? '+' : str[0];
 	}
 	ft_pad_handle(info, &str);

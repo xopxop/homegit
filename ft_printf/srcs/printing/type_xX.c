@@ -51,8 +51,7 @@ void	ft_prec_hex(t_info *info, char **str)
 		ft_percisionSmallerForxX(info, str);
 		return ;
 	}
-	else if ((info->percision > (int)ft_strlen(*str)))
-		extra = (!ft_isalnum((*str)[0])) ? (*str)[0] : 0;
+	extra = (!ft_isalnum((*str)[0])) ? (*str)[0] : 0;
 	hash = (info->flags & HASH_SIGN) ? 2 : 0;
 	if (extra)
 		(*str)++;
@@ -92,11 +91,13 @@ void	type_x(t_info *info, va_list arg, char **output)
 			MAX_HEX_STRLEN, hex);
 	if (info->percision != -1 && info->flags & ZERO)
 		info->flags ^= ZERO;
+	if (info->flags & HASH_SIGN && !ft_strcmp("0", str))
+		info->flags ^= HASH_SIGN;
 	if (info->percision == 0 && !ft_strcmp("0", str))
 		*str = '\0';
 	if (info->flags & PLUS_SIGN || info->flags & SPACE)
 	{
-		str = ft_strjoin((info->flags & SPACE) ? " " : "+", str);
+		str = ft_strjoin_and_free_string2((info->flags & SPACE) ? " " : "+", str);
 		str[0] = (info->flags & PLUS_SIGN) ? '+' : str[0];
 	}
 	ft_prec_hex(info, &str);

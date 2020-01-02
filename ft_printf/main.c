@@ -6,7 +6,5 @@
 
 int main(void)
 {
-//	ft_printf(RED"-%#x-\n", 0);
-
-	ft_printf("%s %s", NULL, string);
+	printf("% hZ");
 }

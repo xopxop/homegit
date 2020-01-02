@@ -21,11 +21,9 @@ void	type_s(t_info *info, va_list arg, char **output)
 {
 	char *ctemp;
 	char *str;
-	int null;
 
 	ctemp = va_arg(arg, char*);
-	null = (*ctemp == '\0') ? 1 : 0;
-	if (null)
+	if (!ctemp)
 		str = ft_strdup("(null)");
 	else
 	{
