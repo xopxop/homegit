@@ -6,35 +6,14 @@
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 01:54:57 by dthan             #+#    #+#             */
-/*   Updated: 2019/11/12 23:21:31 by dthan            ###   ########.fr       */
+/*   Updated: 2019/11/14 13:38:13 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "libft/libft.h"
 
-static char	*ft_strdupx(const char *s1)
-{
-	char	*new;
-	int		ct;
-	int		i;
-
-	ct = 0;
-	while (s1[ct])
-		ct++;
-	if (!(new = (char*)malloc(sizeof(char) * (ct + 1))))
-		return (0);
-	i = 0;
-	while (s1[i])
-	{
-		new[i] = s1[i];
-		i++;
-	}
-	new[i] = '\0';
-	return (new);
-}
-
-static char	*ft_strjoinx(char const *string1, char const *string2)
+static char		*ft_strjoinx(char const *string1, char const *string2)
 {
 	char	*jointstring;
 	size_t	jointstringsize;
@@ -60,7 +39,7 @@ static char	*ft_strjoinx(char const *string1, char const *string2)
 
 static int		gnl_verify_line(char **string, char **line)
 {
-	int		i;
+	int			i;
 	char		*string_with_line_break;
 	char		*ptr_for_string_with_line_break;
 	char		*temp;
@@ -72,8 +51,8 @@ static int		gnl_verify_line(char **string, char **line)
 			return (0);
 	ptr_for_string_with_line_break = &string_with_line_break[i];
 	*ptr_for_string_with_line_break = '\0';
-	*line = ft_strdupx(*string);
-	temp = ft_strdupx(ptr_for_string_with_line_break + 1);
+	*line = ft_strdup(*string);
+	temp = ft_strdup(ptr_for_string_with_line_break + 1);
 	ft_strdel(string);
 	*string = temp;
 	return (1);
@@ -94,7 +73,7 @@ static int		read_file(int fd, char *read_buffer, char **string, char **line)
 			ft_strdel(&temp_string);
 		}
 		else
-			*string = ft_strdupx(read_buffer);
+			*string = ft_strdup(read_buffer);
 		if (gnl_verify_line(string, line))
 		{
 			read_value = 1;
@@ -104,18 +83,22 @@ static int		read_file(int fd, char *read_buffer, char **string, char **line)
 	return (read_value);
 }
 
-//static ssize_t	return_value(ssize_t read_value, int fd, char **string, char **line)
-//{
-//	if (!read_value && *line)
-//		*line = NULL;
-//	if (string[fd] == NULL)
-//		return (read_value);
-//	else if ((string[fd][0]) && (string[fd][0] == '\0'))
-//		free(string[fd]);
-//	return (read_value);
-//}
+static ssize_t	return_value(ssize_t read_value, int fd, \
+		char **string, char **line)
+{
+	if (!read_value && *line)
+	{
+		*line = NULL;
+		ft_strdel(&string[fd]);
+	}
+	if (string[fd] == NULL)
+		return (read_value);
+	else if ((string[fd][0]) && (string[fd][0] == '\0'))
+		free(string[fd]);
+	return (read_value);
+}
 
-int			get_next_line(int fd, char **line)
+int				get_next_line(int fd, char **line)
 {
 	static char	*string[FD_MAX];
 	char		read_buffer[BUFF_SIZE + 1];
@@ -127,26 +110,9 @@ int			get_next_line(int fd, char **line)
 		if (gnl_verify_line(&string[fd], line))
 			return (1);
 	read_value = read_file(fd, read_buffer, &string[fd], line);
-//	if (read_value != 0 || string[fd] == NULL || string[fd][0] == '\0')
-//		return (read_value = return_value(read_value, fd, string , line));
 	if (read_value != 0 || string[fd] == NULL || string[fd][0] == '\0')
-	{
-		if (!read_value && *line)
-		{
-			*line = NULL;
-			free(string[fd]);
-		}
-		if (string[fd] == NULL)
-		{
-			return (read_value);
-		}
-		else if ((string[fd][0]) && (string[fd][0] == '\0'))
-			ft_strdel(&string[fd]);
-		return (read_value);
-	}
+		return (read_value = return_value(read_value, fd, string, line));
 	*line = string[fd];
-//	ft_strdel(&string[fd]);
 	string[fd] = NULL;
-//	free(string[fd]);
 	return (1);
 }
