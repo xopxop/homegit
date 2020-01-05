@@ -1,1 +1,4 @@
+#!/bin/bash
+echo "Name the command that determines the state of the SSH service.\n"
+echo "service ssh status\n"
 service ssh status

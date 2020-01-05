@@ -1,1 +1,4 @@
+#!/bin/bash
+echo "Q: Find the command that kills the background command’s process\n"
+echo "A: pkill tail\n"
 pkill tail

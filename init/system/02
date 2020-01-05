@@ -1,1 +1,4 @@
+#!/bin/bash
+echo "Q: What command can you use to rename your system?\n"
+echo "A: hostname new_name\n"
 hostname new_name

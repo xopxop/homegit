@@ -1,1 +1,4 @@
-/etc/debian_version
+#!/bin/bash
+echo "Q: In what file can you find the installed version of your Debian?\n"
+echo "A: /etc/debian_version\n"
+cat /etc/debian_version

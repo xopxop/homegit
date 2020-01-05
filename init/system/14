@@ -1,1 +1,5 @@
+#!/bin/bash
+echo "Q: Run the ‘tail -f /var/log/syslog‘ command in background\n"
+echo "A: tail -f /var/log/syslog &
+NOTE: Run a command in back ground with '&'"
 tail -f /var/log/syslog &

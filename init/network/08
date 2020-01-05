@@ -1,4 +1,6 @@
-Amazon Technologies Inc.
-
-#host slash16.org
-#whois 13.33.242.31
+#!/bin/bash
+echo "Q: Find the provider of slash16.org\n"
+echo "A: Amazon Technologies Inc.
+Using commands:
+host slash16.org
+whois 13.33.242.31\n"

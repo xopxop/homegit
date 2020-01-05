@@ -1,1 +1,4 @@
+#!/bin/bash
+echo "Q: Name the command that reboots the SSH service\n"
+echo "A: service ssh restart\n"
 service ssh restart

@@ -1,2 +1,4 @@
-cron
-#man cron for more information
+#!/bin/bash
+echo "Q: Find the service which makes it possible to run specific tasks following a regular schedule\n"
+echo "A: cron
+NOTE: man cron for more information"

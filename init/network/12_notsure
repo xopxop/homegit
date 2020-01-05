@@ -1,3 +1,4 @@
+#!/bin/bash
 #cat /etc/resolv.conf to find the nameserver -> 10.51.1.253
 #host 10.51.1.253
 #should it be ping 10.51.1.253, not sure if we need to use ping command here

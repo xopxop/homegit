@@ -1,1 +1,4 @@
-/etc/hosts
+#!/bin/bash
+echo "Q: What file contains the local DNS entries?\n"
+echo "A: /etc/hosts\n"
+cat /etc/hosts

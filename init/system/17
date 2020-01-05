@@ -1,11 +1,5 @@
 #!/bin/bash
-
-YELLOW='\033[0;33m'			#YELLOW
-MAGENTA='\033[0;35m'		#MAGENTA
-RED='\033[0;31m'			#RED]]]'
-
-#Find the command that allows you to connect via ssh on the VM.(In parallel with the graphic session)
-
-echo "${MAGENTA}\nThe command that allows to connect via ssh on the VM is:\n"
-echo "${RED}ssh 'dthan@10.12.180.243'\n"
+echo "Q: Find the command that allows you to connect via ssh on the VM.
+(In parallel with the graphic session)\n"
+echo "A: ssh '<user_name>@<ip>'\n"
 ssh dthan@10.12.180.243

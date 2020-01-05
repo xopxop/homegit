@@ -1,5 +1,4 @@
 #!bin/bash
-
-echo "The command that kills ssh service\n"
-echo "service ssh stop"
+echo "Q: T. Find the command that kills ssh service\n"
+echo "A: service ssh stop"
 service ssh stop

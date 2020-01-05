@@ -1,3 +1,4 @@
 #!/bin/bash
-echo "Find the command that add a new local user\n"
+echo "Q: Find the command that add a new local user\n"
+echo "A: useradd 'username'"
 useradd 'username'

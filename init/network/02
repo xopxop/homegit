@@ -1,1 +1,6 @@
+#!/bin/bash
+echo "Q:  Identify and display the Ethernet interface characteristics:
+(a) Identify broadcast address
+(b) Identify all IP adresses which are part of the same subnet\n"
+echo "ifconfig en0\n"
 ifconfig en0

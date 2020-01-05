@@ -1,1 +1,4 @@
+#!/bin/bash
+echo "Q: Identify the IP address of the DNS that responds to the following url: slash16.org\n"
+echo "A: nslookup slash16.org\n"
 nslookup slash16.org

@@ -1,1 +1,4 @@
+#!/bin/bash
+echo "Q: Identifiy the default gateway in the routing table\n"
+echo "A: netstat -nr | grep -A 2 Internet: | grep default | awk '{print \$2}'\n"
 netstat -nr | grep -A 2 Internet: | grep default | awk '{print $2}'

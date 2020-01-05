@@ -1,1 +1,4 @@
+#!/bin/bash
+echo "Q: Identify the MAC address of the Wi-Fi card\n"
+echo "A: ifconfig en1 | grep "ether" | cut -d \" \" -f 2\n"
 ifconfig en1 | grep "ether" | cut -d " " -f 2

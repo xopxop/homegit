@@ -1,1 +1,4 @@
+#!/bin/bash
+echo "Q: Identify the network devices between your computer and the slash16.org domain\n"
+echo "A: traceroute slash16.org\n"
 traceroute slash16.org

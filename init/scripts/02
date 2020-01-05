@@ -1,5 +1,4 @@
 #!/bin/bash
-
-echo "Write a script which delete an ACTIVE user on the VM.\n"
-echo "userdel <user_name>
+echo "Q: Write a script which delete an ACTIVE user on the VM.\n"
+echo "A: userdel <user_name>
 userdel user_name

@@ -1,1 +1,4 @@
+#!/bin/bash
+echo "Q: What command lets you know who is connected to the System?"
+echo "A: who\n"
 who

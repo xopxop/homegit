@@ -1,1 +1,4 @@
+#!/bin/bash
+echo "Q: Name the command that lists the partition tables of drives?\n"
+echo "A: fdisk -l\n"
 fdisk -l

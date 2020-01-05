@@ -1,1 +1,4 @@
+#!/bin/bash
+echo "Q: Name the command that find, in real time, currently running processes\n"
+echo "A: ps axu\n"
 ps axu

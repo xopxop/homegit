@@ -1,4 +1,4 @@
 #!/bin/bash
-
-echo "List all existing users on the VM\n"
+echo "Q: List all existing users on the VM\n"
+echo "A: cat /etc/passwd | awk -F ':' '{print \n$1}'"
 cat /etc/passwd | awk -F ':' '{print $1}'

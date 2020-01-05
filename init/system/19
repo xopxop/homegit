@@ -1,4 +1,4 @@
 #!/bin/bash
-
-echo "List all services which are started at boot time and name this kind of services\n"
+echo "Q: List all services which are started at boot time and name this kind of services\n"
+echo "A: service --status-all\n"
 service --status-all

@@ -1,1 +1,5 @@
+#!/bin/bash
+echo "Q: Get the list of the network interfaces of the machine without displaying any detail for these interfaces. 
+Only the list of names.\n"
+echo "A: ifconfig -l\n"
 ifconfig -l

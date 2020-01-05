@@ -1,1 +1,4 @@
+#!/bin/bash
+echo "Q: What file has to be modified to make it permanent?\n"
+echo "A: /etc/hostname\n"
 /etc/hostname

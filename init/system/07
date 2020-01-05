@@ -1,1 +1,4 @@
+#!/bin/bash
+echo "Q: Figure out the PID of the SSHD service.\n"
+echo "A: cat /var/run/sshd.pid\n"
 cat /var/run/sshd.pid

@@ -1,0 +1,5 @@
+#!/bin/bash
+echo "Q: Use the output of the previous command to find the name and IP address of the
+device that makes the link between you (local network) and the outside world\n"
+echo "A: \n"
+10.12.254.25410.12.254.25410.12.254.25410.12.254.25410.12.254.25410.12.254.25410.12.254.25410.12.254.25410.12.254.25410.12.254.254

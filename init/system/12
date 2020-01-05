@@ -1,1 +1,5 @@
+#!/bin/bash
+echo "Q: Figure out the exact size of each folder of /var 
+in a humanly understandable way followed by the path of it.\n"
+echo "A: du -sh /var/*\n"
 du -sh /var/*
