@@ -12,7 +12,7 @@
 
 NAME = fdf
 CFLAGS = -Wall -Wextra -Werror
-SOURCE_CODE = srcs/main.c
+SOURCE_CODE = srcs/main.c srcs/read.c
 INCLUDES = includes/
 FRAMEWORK = -framework OpenGL -framework Appkit
 LIB_DIR = /usr/local/lib/
@@ -21,7 +21,8 @@ LIBFT_DIR = libft/
 all: $(NAME)
 
 $(NAME):
-	cc $(SOURCE_CODE) $(C_FLAGS) -I$(INCLUDES) -L $(LIB_DIR) -lmlx -L libft/ -lft $(FRAMEWORK)
+		gcc $(SOURCE_CODE) -I libft/includes -L libft/ -lft -g
+#cc $(SOURCE_CODE) $(C_FLAGS) -I$(INCLUDES) -L $(LIB_DIR) -lmlx -L libft/ -lft $(FRAMEWORK)
 
 clean:
 	rm -f *.o
