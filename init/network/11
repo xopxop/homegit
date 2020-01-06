@@ -1,0 +1,6 @@
+#!/bin/bash
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q: Use the output of the previous command to find the name and IP address of the
+device that makes the link between you (local network) and the outside world\n"
+echo "${YELLOW}A: nat (10.60.1.1)"

@@ -1,5 +1,7 @@
 #!/bin/bash
-echo "Q: Run the ‘tail -f /var/log/syslog‘ command in background\n"
-echo "A: tail -f /var/log/syslog &
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q: Run the ‘tail -f /var/log/syslog‘ command in background\n"
+echo "${YELLOW}A: tail -f /var/log/syslog &
 NOTE: Run a command in back ground with '&'"
-tail -f /var/log/syslog &
+sudo tail -f /var/log/syslog &

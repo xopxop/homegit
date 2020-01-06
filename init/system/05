@@ -1,4 +1,6 @@
 #!/bin/bash
-echo "Name the command that determines the state of the SSH service.\n"
-echo "service ssh status\n"
-service ssh status
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Name the command that determines the state of the SSH service.\n"
+echo "${YELLOW}service ssh status"
+sudo service ssh status

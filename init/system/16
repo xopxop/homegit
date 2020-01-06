@@ -1,4 +1,6 @@
 #!/bin/bash
-echo "Q: Find the service which makes it possible to run specific tasks following a regular schedule\n"
-echo "A: cron
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q: Find the service which makes it possible to run specific tasks following a regular schedule\n"
+echo "${YELLOW}A: cron
 NOTE: man cron for more information"

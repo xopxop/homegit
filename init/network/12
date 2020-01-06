@@ -1,0 +1,6 @@
+#!/bin/bash
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q:Find the IP that was assigned to you by dhcp server\n "
+echo "${YELLOW}A: ifconfig en0 | grep 'inet' | cut -d ' ' -f2"
+ifconfig en0 | grep 'inet ' | cut -d ' ' -f2

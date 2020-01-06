@@ -1,4 +1,6 @@
 #!/bin/bash
-echo "Q: What command can you use to rename your system?\n"
-echo "A: hostname new_name\n"
-hostname new_name
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q: What command can you use to rename your system?\n"
+echo "${YELLOW}A: hostname <new_name>"
+sudo hostname newname

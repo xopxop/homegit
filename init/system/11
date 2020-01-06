@@ -1,5 +1,7 @@
 #!/bin/bash
-echo "Q: Name the command that displays the available space left 
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q: Name the command that displays the available space left 
 and used on the system in an humanly understandable way\n"
-echo "A: df -h --total\n"
+echo "${YELLOW}A: df -h --total"
 df -h --total

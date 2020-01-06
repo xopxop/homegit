@@ -1,0 +1,14 @@
+#!/bin/bash
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q: Thanks to the previous question and the reverse DNS find the name of your host\n"
+echo "${YELLOW}A: dhcp-ns1.hive.fi
+Find the IP adress if the host from Question 6: We got the IP '10.51.1.253'
+Then nslookup ip address from the previous command, we will find the name of the host
+OUTPUT:
+nslookup 10.51.1.253
+->
+Server:		10.51.1.253
+Address:	10.51.1.253#53
+
+253.1.51.10.in-addr.arpa	name = dhcp-ns1.hive.fi."

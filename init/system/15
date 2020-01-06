@@ -1,4 +1,6 @@
 #!/bin/bash
-echo "Q: Find the command that kills the background command’s process\n"
-echo "A: pkill tail\n"
-pkill tail
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q: Find the command that kills the background command’s process\n"
+echo "${YELLOW}A: pkill tail"
+sudo pkill tail

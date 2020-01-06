@@ -1,4 +1,6 @@
 #!/bin/bash
-echo "Q: What command lets you know who is connected to the System?"
-echo "A: who\n"
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q: What command lets you know who is connected to the System?\n"
+echo "${YELLOW}A: who"
 who

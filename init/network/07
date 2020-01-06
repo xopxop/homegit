@@ -1,4 +1,6 @@
 #!/bin/bash
-echo "Q: Query an external DNS server on the slash16.org domain name (ie. : google 8.8.8.8)\n"
-echo "A: nslookup slash16.org 8.8.8.8\n"
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q: Query an external DNS server on the slash16.org domain name (ie. : google 8.8.8.8)\n"
+echo "${YELLOW}A: nslookup slash16.org 8.8.8.8"
 nslookup slash16.org 8.8.8.8

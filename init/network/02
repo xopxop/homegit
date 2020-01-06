@@ -1,6 +1,11 @@
 #!/bin/bash
-echo "Q:  Identify and display the Ethernet interface characteristics:
-(a) Identify broadcast address
-(b) Identify all IP adresses which are part of the same subnet\n"
-echo "ifconfig en0\n"
-ifconfig en0
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q:  Identify and display the Ethernet interface characteristics:
+(a) Identify broadcast address\n"
+echo "${YELLOW}ifconfig en0 | grep boardcast | awk '{print \$6}'"
+ifconfig en0 | grep broadcast | awk '{print $6}'
+echo "${RED}\n(b) Identify all IP addresses which are part of the same subnet\n"
+echo "${YELLOW}arp -a | awk '{print \$2}'"
+arp -a | awk '{print $2}'
+

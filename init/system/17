@@ -1,5 +1,7 @@
 #!/bin/bash
-echo "Q: Find the command that allows you to connect via ssh on the VM.
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q: Find the command that allows you to connect via ssh on the VM.
 (In parallel with the graphic session)\n"
-echo "A: ssh '<user_name>@<ip>'\n"
+echo "${YELLOW}A: ssh '<user_name>@<ip>'\n"
 ssh dthan@10.12.180.243

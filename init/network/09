@@ -1,3 +1,5 @@
 #!/bin/bash
-echo "Q: Find the external IP of 42.fr\n"
-echo "A: 163.172.250.13 & 163.172.250.12\n"
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q: Find the external IP of 42.fr\n"
+echo "${YELLOW}A: 163.172.250.13 & 163.172.250.12"

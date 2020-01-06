@@ -1,4 +1,5 @@
 #!/bin/bash
-echo "Q: In what file can you find the installed version of your Debian?\n"
-echo "A: /etc/debian_version\n"
-cat /etc/debian_version
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q: In what file can you find the installed version of your Debian?\n"
+echo "${YELLOW}A: /etc/debian_version"

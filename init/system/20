@@ -1,4 +1,6 @@
 #!/bin/bash
-echo "Q: List all existing users on the VM\n"
-echo "A: cat /etc/passwd | awk -F ':' '{print \n$1}'"
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q: List all existing users on the VM\n"
+echo "${YELLOW}A: cat /etc/passwd | awk -F ':' '{print \$1}'"
 cat /etc/passwd | awk -F ':' '{print $1}'

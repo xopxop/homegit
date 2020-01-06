@@ -1,4 +1,6 @@
 #!/bin/bash
-echo "Q: Make the intra.42.fr address reroute to 46.19.122.85\n"
-echo "A: echo 'intra.42.fr 46.19.122.85' >> /etc/hosts
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q: Make the intra.42.fr address reroute to 46.19.122.85\n"
+echo "${YELLOW}A: echo 'intra.42.fr 46.19.122.85' >> /etc/hosts
 NOTE: permission denied, we need to have sudo right to be able to change"

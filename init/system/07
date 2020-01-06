@@ -1,4 +1,6 @@
 #!/bin/bash
-echo "Q: Figure out the PID of the SSHD service.\n"
-echo "A: cat /var/run/sshd.pid\n"
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q: Figure out the PID of the SSHD service.\n"
+echo "${YELLOW}A: cat /var/run/sshd.pid"
 cat /var/run/sshd.pid

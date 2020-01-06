@@ -1,4 +1,5 @@
 #!/bin/bash
-echo "Q: Get the complete path of the file that contains the IP address of the DNS server you’re using\n"
-echo "A: /etc/resolv.conf\n"
-cat /etc/resolv.conf
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q: Get the complete path of the file that contains the IP address of the DNS server you’re using\n"
+echo "${YELLOW}A: /etc/resolv.conf"

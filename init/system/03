@@ -1,4 +1,5 @@
 #!/bin/bash
-echo "Q: What file has to be modified to make it permanent?\n"
-echo "A: /etc/hostname\n"
-/etc/hostname
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q: What file has to be modified to make it permanent?\n"
+echo "${YELLOW}A: /etc/hostname"

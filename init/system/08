@@ -1,4 +1,6 @@
 #!/bin/bash
-echo "Q: What file contains the RSA keys of systems that are authorized to connect via SSH?\n"
-echo "A: ~/.ssh/authorized_keys
-NOTE: The file contains public keys for public key authentication\n"
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q: What file contains the RSA keys of systems that are authorized to connect via SSH?\n"
+echo "${YELLOW}A: ~/.ssh/authorized_keys
+NOTE: The file contains public keys for public key authentication"

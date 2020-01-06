@@ -1,4 +1,6 @@
 #!/bin/bash
-echo "Q: List all real users on the VM\n"
-echo "A: cut -d: -f1,3 /etc/passwd | egrep ':[0-9]{4}$' | cut -d: -f1\n"
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q: List all real users on the VM\n"
+echo "${YELLOW}A: cut -d: -f1,3 /etc/passwd | egrep ':[0-9]{4}$' | cut -d: -f1\n"
 cut -d: -f1,3 /etc/passwd | egrep ':[0-9]{4}$' | cut -d: -f1

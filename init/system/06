@@ -1,4 +1,6 @@
 #!/bin/bash
-echo "Q: Name the command that reboots the SSH service\n"
-echo "A: service ssh restart\n"
-service ssh restart
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q: Name the command that reboots the SSH service\n"
+echo "${YELLOW}A: service ssh restart\n"
+sudo service ssh restart

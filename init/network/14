@@ -1,4 +1,5 @@
 #!/bin/bash
-echo "Q: What file contains the local DNS entries?\n"
-echo "A: /etc/hosts\n"
-cat /etc/hosts
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q: What file contains the local DNS entries?\n"
+echo "${YELLOW}A: /etc/hosts"

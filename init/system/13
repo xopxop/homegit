@@ -1,4 +1,6 @@
 #!/bin/bash
-echo "Q: Name the command that find, in real time, currently running processes\n"
-echo "A: ps axu\n"
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q: Name the command that find, in real time, currently running processes\n"
+echo "${YELLOW}A: ps axu"
 ps axu

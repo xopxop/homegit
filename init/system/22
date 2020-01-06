@@ -1,4 +1,6 @@
 #!/bin/bash
-echo "Q: Find the command that add a new local user\n"
-echo "A: useradd 'username'"
-useradd 'username'
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q: Find the command that add a new local user\n"
+echo "${YELLOW}A: useradd 'username'"
+sudo useradd 'username'

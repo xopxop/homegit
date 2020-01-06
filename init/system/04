@@ -1,4 +1,6 @@
 #!/bin/bash
-echo "Q: What command gives you the time since your system was last booted?\n"
-echo "A: uptime\n"
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q: What command gives you the time since your system was last booted?\n"
+echo "${YELLOW}A: uptime"
 uptime

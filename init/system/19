@@ -1,4 +1,6 @@
 #!/bin/bash
-echo "Q: List all services which are started at boot time and name this kind of services\n"
-echo "A: service --status-all\n"
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q: List all services which are started at boot time and name this kind of services\n"
+echo "${YELLOW}A: service --status-all\n"
 service --status-all

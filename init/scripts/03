@@ -1,6 +1,8 @@
-!#/bin/bash
-echo "Q: There's a Charm. Write a script of your choice\n"
-echo "A: Copy a files from one machine to another using ssh
+#!/bin/bash
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q: There's a Charm. Write a script of your choice\n"
+echo "${YELLOW}A: Copy a files from one machine to another using ssh
 scp <source> <destination>
 To copy a file from B to A while logged into B:
 scp /path/to/file username@a:/path/to/destination

@@ -1,4 +1,6 @@
 #!bin/bash
-echo "Q: T. Find the command that kills ssh service\n"
-echo "A: service ssh stop"
-service ssh stop
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q: T. Find the command that kills ssh service\n"
+echo "${YELLOW}A: service ssh stop"
+sudo service ssh stop

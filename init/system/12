@@ -1,5 +1,7 @@
 #!/bin/bash
-echo "Q: Figure out the exact size of each folder of /var 
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q: Figure out the exact size of each folder of /var 
 in a humanly understandable way followed by the path of it.\n"
-echo "A: du -sh /var/*\n"
+echo "${YELLOW}A: du -sh /var/*"
 du -sh /var/*

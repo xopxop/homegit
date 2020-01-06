@@ -1,5 +1,7 @@
 #!/bin/bash
-echo "Q: Write a script which displays only the login, UID and Path of each entry of the /etc/passwd file.\n"
-echo "A: We use the command line:
-cat /etc/passwd | awk -F ':' '{print \$1\"|\"\$3\"|\"\$7}'\n"
-cat /etc/passwd | awk -F ':' '{print $1"|"$3"|"$7}'
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+echo "${RED}Q: Write a script which displays only the login, UID and Path of each entry of the /etc/passwd file.\n"
+echo "${YELLOW}A: We use the command line:
+cat /etc/passwd | awk -F ':' '{print \$1\"|\"\$3\"|\"\$7}'"
+
