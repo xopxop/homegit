@@ -1,6 +1,6 @@
 #!/bin/bash
 RED='\033[0;31m'
 YELLOW='\033[1;33m'
-echo"${RED}Q: Find the command that list all packages\n"
-echo"${YELLOW}A: dpkg -l"
+echo "${RED}Q: Find the command that list all packages\n"
+echo "${YELLOW}A: dpkg -l"
 dpkg -l

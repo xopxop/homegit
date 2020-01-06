@@ -1,7 +1,7 @@
 #!/bin/bash
 RED='\033[0;31m'
 YELLOW='\033[1;33m'
-echo"${RED}Q: Explain how connect yourself as new user. (With graphic session and ssh session)\n"
-echo"${YELLOW}A:
+echo "${RED}Q: Explain how connect yourself as new user. (With graphic session and ssh session)\n"
+echo "${YELLOW}A:
 1. Graphic session: Prompting your login and password in the graphic session
 2. SSH session: Run command 'ssh <user_name>@<ip_adress>\n"
