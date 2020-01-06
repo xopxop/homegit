@@ -21,7 +21,7 @@ parsing/fill_struct.c parsing/parsing_helper.c \
 printing/nbr_to_str.c printing/padding.c printing/percision.c \
 printing/type_c.c printing/type_di.c printing/type_f.c printing/type_o.c \
 printing/type_p.c printing/type_s.c printing/type_u.c printing/type_xX.c \
-printing/printing_helper.c)
+printing/type_percent.c printing/printing_helper.c)
 		 
 LIBFT_CODES = $(addprefix $(LIBFT_DIR)/, ft_isdigit.c ft_strlen.c\
 ft_strchr.c ft_strdup.c ft_memset.c ft_memalloc.c ft_bzero.c \

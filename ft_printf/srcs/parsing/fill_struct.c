@@ -6,14 +6,14 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 04:38:41 by dthan             #+#    #+#             */
-/*   Updated: 2019/12/31 13:59:20 by dthan            ###   ########.fr       */
+/*   Updated: 2020/01/06 20:51:47 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 #define IS_FLAG(x) ((x)=='-'||(x)=='+'||(x)==' '||(x)=='#'||(x)=='0')
 #define IS_SPECIFIER(y) ((y)=='c'||(y)=='s'||(y)=='p'||(y)=='d'||(y)=='i'\
-        ||(y)=='u'||(y)=='o'||(y)=='x'||(y)=='X'||(y)=='f'||(y)=='%')
+		||(y)=='u'||(y)=='o'||(y)=='x'||(y)=='X'||(y)=='f'||(y)=='%')
 
 /*
 ** the ft parsing flags will pare the flags at the position of the string format
@@ -23,7 +23,7 @@
 
 void	get_flags(const char *format, size_t *pos, t_info *info)
 {
-	while(IS_FLAG(format[*pos]))
+	while (IS_FLAG(format[*pos]))
 	{
 		if (format[*pos] == '-')
 			info->flags |= MINUS_SIGN;
@@ -73,7 +73,8 @@ void	get_field_width(const char *format, size_t *pos, va_list arg, \
 ** the int percision will take the argument instead
 */
 
-void	get_precision(const char *format, size_t *pos, va_list arg, t_info *info)
+void	get_precision(const char *format, size_t *pos, va_list arg, \
+		t_info *info)
 {
 	if (format[*pos] == '.')
 	{
@@ -125,8 +126,8 @@ void	get_length(const char *format, size_t *pos, t_info *info)
 }
 
 /*
-** Ft get_specifier will take the format string at the position to parse then put
-** the result into t_specifier in the struc info
+** Ft get_specifier will take the format string at the position to parse then
+** put the result into t_specifier in the struc info
 ** If:
 ** 'c' --> character
 ** 's' --> string

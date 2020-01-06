@@ -6,7 +6,7 @@
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 04:25:23 by dthan             #+#    #+#             */
-/*   Updated: 2019/12/31 14:25:56 by dthan            ###   ########.fr       */
+/*   Updated: 2020/01/06 21:10:29 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 **                 0 if is number
 */
 
-int	ft_isnan(double num)
+int				ft_isnan(double num)
 {
 	return (num != num);
 }
@@ -27,7 +27,7 @@ int	ft_isnan(double num)
 **                 0 if not
 */
 
-int	ft_isinf(double num)
+int				ft_isinf(double num)
 {
 	if (num == (10.0 / 0.0) || num == (-10.0 / 0.0))
 		return (1);
@@ -39,7 +39,7 @@ int	ft_isinf(double num)
 ** infinity and the string, "nan" for not a number, "inf" for the 2 later
 */
 
-int	special_case(char **s, double num)
+int				special_case(char **s, double num)
 {
 	if (ft_isnan(num))
 	{
@@ -62,7 +62,7 @@ int	special_case(char **s, double num)
 ** != 0
 */
 
-long double	ft_calc_modulo(double num, int *str_size)
+long double		ft_calc_modulo(double num, int *str_size)
 {
 	long double modulo;
 
@@ -87,7 +87,7 @@ long double	ft_calc_modulo(double num, int *str_size)
 ** ex: 423.2324 -> 0.2324, stop here cause int(nb) == '0'
 */
 
-void	ft_handle_decimal(long double *nb, char **str, int *i, \
+void			ft_handle_decimal(long double *nb, char **str, int *i, \
 		long double modulo)
 {
 	char *s;
@@ -106,8 +106,8 @@ void	ft_handle_decimal(long double *nb, char **str, int *i, \
 
 /*
 ** Handle the fractional part
-** NOTE: This is not an accurate method, the accurate method will take way longer
-** for reference: dtoa function : http://www.netlib.org/fp/dtoa.c
+** NOTE: This is not an accurate method, the accurate method will take way
+** longer for reference: dtoa function : http://www.netlib.org/fp/dtoa.c
 ** - Push one by one the fractional part to decimal by multiply with 10 then
 ** put the nbr we got into the str
 ** Rouding the nb with 0.01
@@ -115,11 +115,12 @@ void	ft_handle_decimal(long double *nb, char **str, int *i, \
 ** Read this: https://en.wikipedia.org/wiki/IEEE_754
 */
 
-void	ft_handle_fractional(char **str, int *i, long double nb, t_info *info)
+void			ft_handle_fractional(char **str, int *i, long double nb, \
+		t_info *info)
 {
-	int j;
-	int tmp;
-	char *s;
+	int		j;
+	int		tmp;
+	char	*s;
 
 	nb *= 10;
 	j = 0;
@@ -140,20 +141,21 @@ void	ft_handle_fractional(char **str, int *i, long double nb, t_info *info)
 
 /*
 ** This function is for floating point type
-** - first it will take the argument and put its value into the long double number
-** - then it check the percision, if there is no percision then it will take the
+** - first it will take the argument and put its value into the long double
+** number
+** - then it check the percision, if there is no percision then it will take
 ** the default percision which is 6
 ** - next is putting the floating point into the string
 ** - next step is flags checking, flags '+' and ' '
 ** - finally, paddling for field width
 */
 
-void	type_f(t_info *info, va_list arg, char **output)
+void			type_f(t_info *info, va_list arg, char **output)
 {
-	long double num;
-	char *str;
+	long double	num;
+	char		*str;
 
-	if(info->length == len_l)
+	if (info->length == len_l)
 		num = (long double)va_arg(arg, double);
 	else if (info->length == len_lup)
 		num = va_arg(arg, long double);
@@ -163,7 +165,8 @@ void	type_f(t_info *info, va_list arg, char **output)
 	put_floating_point_to_string(num, info, &str);
 	if ((info->flags & PLUS_SIGN || info->flags & SPACE) && str[0] != '-')
 	{
-		str = ft_strjoin_and_free_string2((info->flags & SPACE) ? " " : "+", str);
+		str = ft_strjoin_and_free_string2((info->flags & SPACE) ? " " : "+", \
+				str);
 		str[0] = (info->flags & PLUS_SIGN) ? '+' : str[0];
 	}
 	ft_pad_handle(info, &str);

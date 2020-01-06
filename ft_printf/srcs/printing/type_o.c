@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 08:51:30 by dthan             #+#    #+#             */
-/*   Updated: 2019/12/31 14:27:47 by dthan            ###   ########.fr       */
+/*   Updated: 2020/01/06 21:18:18 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@
 
 void	type_o(t_info *info, va_list arg, char **output)
 {
-	unsigned long long num;
-	char *str;
-	char *oct = "01234567";
+	unsigned long long	num;
+	char				*str;
+	char				*oct;
 
+	oct	= "01234567";
 	num = get_unsigned_argument(info, arg);
 	str = ft_number_conversion(num, OCTAL_MASK, SHIFF_OCTAL_MASK, \
 			MAX_OCTAL_STRLEN, oct);
@@ -33,15 +34,15 @@ void	type_o(t_info *info, va_list arg, char **output)
 		else
 			str = ft_strjoin_and_free_string2("0", str);
 	}
-	if (info->percision == 0  && !ft_strcmp("0", str))
+	if (info->percision == 0 && !ft_strcmp("0", str))
 		*str = '\0';
 	if (info->flags & PLUS_SIGN || info->flags & SPACE)
 	{
-		str = ft_strjoin_and_free_string2((info->flags & SPACE) ? " " : "+", str);
+		str = ft_strjoin_and_free_string2((info->flags & SPACE) ? " " : "+", \
+				str);
 		str[0] = (info->flags & PLUS_SIGN) ? '+' : str[0];
 	}
 	ft_prec_nums(info, &str);
 	ft_pad_handle(info, &str);
 	*output = str;
 }
-

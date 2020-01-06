@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 14:56:46 by dthan             #+#    #+#             */
-/*   Updated: 2019/12/31 14:56:49 by dthan            ###   ########.fr       */
+/*   Updated: 2020/01/06 20:56:28 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 ** the function get_signed_argument is for signed integer (type i & d)
-** it will return the value which is respectively to the flags length 
+** it will return the value which is respectively to the flags length
 ** length:  h(short) -
 **          hh(signed char)
 **          l (long int)
@@ -22,7 +22,7 @@
 ** for more info: http://www.cplusplus.com/reference/cstdio/printf/
 */
 
-long long	get_signed_argument(t_info* info, va_list arg)
+long long			get_signed_argument(t_info *info, va_list arg)
 {
 	long long num;
 
@@ -45,7 +45,7 @@ long long	get_signed_argument(t_info* info, va_list arg)
 ** http://www.cplusplus.com/reference/cstdio/printf/
 */
 
-unsigned long long	get_unsigned_argument(t_info* info, va_list arg)
+unsigned long long	get_unsigned_argument(t_info *info, va_list arg)
 {
 	unsigned long num;
 
@@ -73,14 +73,15 @@ unsigned long long	get_unsigned_argument(t_info* info, va_list arg)
 ** - Filling the Fractional part
 */
 
-void	put_floating_point_to_string(long double num, t_info *info, char **str)
+void				put_floating_point_to_string(long double num, t_info *info,\
+		char **str)
 {
-	long double modulo;
-	int str_size;
-	char *new;
-	char negative_sign;
-	char radix_point;
-	int i;
+	long double	modulo;
+	int			str_size;
+	char		*new;
+	char		negative_sign;
+	char		radix_point;
+	int			i;
 
 	if (special_case(str, num))
 		return ;
@@ -90,7 +91,7 @@ void	put_floating_point_to_string(long double num, t_info *info, char **str)
 	if (negative_sign)
 		num *= -1;
 	radix_point = (info->percision > 0 || (info->percision == 0 && \
-			    info->flags & HASH_SIGN)) ? '.' : 0;
+				info->flags & HASH_SIGN)) ? '.' : 0;
 	modulo = ft_calc_modulo(num, &str_size);
 	str_size += (info->percision + !!negative_sign + !!radix_point);
 	new = ft_strnew(str_size);
@@ -118,10 +119,11 @@ void	put_floating_point_to_string(long double num, t_info *info, char **str)
 ** shifting right
 */
 
-char	*ft_number_conversion(unsigned long long num, int mask, int shiff_nbr, int strlen, char *s)
+char				*ft_number_conversion(unsigned long long num, int mask, \
+		int shiff_nbr, int strlen, char *s)
 {
-	int i;
-	char *str;
+	int		i;
+	char	*str;
 
 	i = 0;
 	if (!(str = (char*)ft_memalloc(strlen)))

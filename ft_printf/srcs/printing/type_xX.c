@@ -6,7 +6,7 @@
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 03:31:21 by dthan             #+#    #+#             */
-/*   Updated: 2019/12/31 14:41:07 by dthan            ###   ########.fr       */
+/*   Updated: 2020/01/06 21:21:14 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 
 void	ft_percisionSmallerForxX(t_info *info, char **str)
 {
-	char *origin;
-	char *new;
-	char extra;
-	int hash;
+	char	*origin;
+	char	*new;
+	char	extra;
+	int		hash;
 
 	origin = *str;
 	extra = ((info->flags & PLUS_SIGN) || (info->flags & SPACE)) ? \
@@ -38,10 +38,10 @@ void	ft_percisionSmallerForxX(t_info *info, char **str)
 
 void	ft_prec_hex(t_info *info, char **str)
 {
-	char *new;
-	char extra;
-	char *orig;
-	int hash;
+	char	*new;
+	char	extra;
+	char	*orig;
+	int		hash;
 
 	orig = *str;
 	if (info->percision == -1)
@@ -58,7 +58,7 @@ void	ft_prec_hex(t_info *info, char **str)
 	new = ft_strnew(info->percision + !!extra);
 	ft_memset(new + hash + !!extra, '0', info->percision - ft_strlen(*str));
 	ft_strcpy(new + hash + info->percision - ft_strlen(*str) + \
-			!! extra, *str);
+			!!extra, *str);
 	if (extra)
 		new[0] = extra;
 	if (hash)
@@ -82,10 +82,11 @@ void	ft_prec_hex(t_info *info, char **str)
 
 void	type_x(t_info *info, va_list arg, char **output)
 {
-	unsigned long long num;
-	char *str;
-	char *hex = "0123456789abcdef";
+	unsigned long long	num;
+	char				*str;
+	char				*hex;
 
+	hex = "0123456789abcdef";
 	num = get_unsigned_argument(info, arg);
 	str = ft_number_conversion(num, HEX_MASK, SHIFF_HEX_MASK, \
 			MAX_HEX_STRLEN, hex);
@@ -97,11 +98,12 @@ void	type_x(t_info *info, va_list arg, char **output)
 		*str = '\0';
 	if (info->flags & PLUS_SIGN || info->flags & SPACE)
 	{
-		str = ft_strjoin_and_free_string2((info->flags & SPACE) ? " " : "+", str);
+		str = ft_strjoin_and_free_string2((info->flags & SPACE) ? " " : "+", \
+				str);
 		str[0] = (info->flags & PLUS_SIGN) ? '+' : str[0];
 	}
 	ft_prec_hex(info, &str);
-	ft_special_case(info,&str);
+	ft_special_case(info, &str);
 	ft_pad_handle(info, &str);
 	*output = str;
 }

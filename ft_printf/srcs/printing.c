@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 20:40:30 by dthan             #+#    #+#             */
-/*   Updated: 2019/12/31 13:52:42 by dthan            ###   ########.fr       */
+/*   Updated: 2020/01/06 20:48:41 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	(*get_func(t_specifier specifier))(t_info*, va_list, char **)
 	func[spec_hexlowcase] = &type_x;
 	func[spec_hexupcase] = &type_x_up;
 	func[spec_float] = &type_f;
+	func[spec_percentsign] = &type_percent;
 	return (func[specifier]);
 }
 
@@ -44,17 +45,17 @@ void	(*get_func(t_specifier specifier))(t_info*, va_list, char **)
 ** Return value: length of the output_str
 */
 
-int	printing(t_info *info, va_list arg)
+int		printing(t_info *info, va_list arg)
 {
-	void (*print_func)(t_info*, va_list, char **);
-	char *output_str;
-	int count;
+	void	(*print_func)(t_info*, va_list, char **);
+	char	*output_str;
+	int		count;
 
 	count = 0;
 	print_func = get_func(info->specifier);
 	print_func(info, arg, &output_str);
 	count = ft_strlen(output_str);
-	write (STDOUT, output_str, count);
+	write(STDOUT, output_str, count);
 	free(output_str);
 	return (count);
 }

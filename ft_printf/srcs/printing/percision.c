@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 14:46:54 by dthan             #+#    #+#             */
-/*   Updated: 2019/12/31 14:46:57 by dthan            ###   ########.fr       */
+/*   Updated: 2020/01/06 21:02:41 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,14 @@ void	ft_prec_nums(t_info *info, char **str)
 //	}
 	if (info->percision == -1)
 		info->percision = 1;
-	if (info->percision < (int) ft_strlen(*str))
+	if (info->percision < (int)ft_strlen(*str))
 		return ;
 	extra = (!ft_isdigit((*str)[0])) ? (*str)[0] : 0;
 	if (extra)
 		(*str)++;
 	new = ft_strnew(info->percision + !!extra);
 	ft_memset(new + !!extra, '0', info->percision - ft_strlen(*str));
-	ft_strcpy(new + info->percision - ft_strlen(*str) + !! extra, *str);
+	ft_strcpy(new + info->percision - ft_strlen(*str) + !!extra, *str);
 	if (extra)
 		new[0] = extra;
 	free(orig);

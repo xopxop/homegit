@@ -6,5 +6,6 @@
 
 int main(void)
 {
-	printf("% hZ");
+	ft_printf(RED"--%5%--\n"); 
+	printf(RESET"--%5%--\n"); 
 }

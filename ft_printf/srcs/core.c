@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 02:33:13 by dthan             #+#    #+#             */
-/*   Updated: 2019/12/31 13:50:27 by dthan            ###   ########.fr       */
+/*   Updated: 2020/01/06 20:45:54 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,17 @@ int	parse_and_print(const char *format, va_list args, size_t *pos, t_info *info)
 		write(STDOUT, "%", 1);
 		return (1);
 	}
-	return (printing(info,args));
+	return (printing(info, args));
 }
 
 int	full_str_printing(const char *format, va_list args, t_info *info)
 {
-	size_t pos;
-	int len;
+	size_t	pos;
+	int		len;
 
 	pos = 0;
 	len = 0;
-	while(format[pos] != '\0')
+	while (format[pos] != '\0')
 	{
 		if (format[pos] != '%')
 		{
@@ -74,12 +74,14 @@ int	full_str_printing(const char *format, va_list args, t_info *info)
 
 int	ft_printf(const char *format, ...)
 {
-	t_info info;
-	int printed;
-	va_list args;
+	t_info	info;
+	int		printed;
+	va_list	args;
 
-//	if (format == NULL)
-//		return (0);
+/*
+** 	if (format == NULL)
+**		return (0);
+*/
 	va_start(args, format);
 	printed = full_str_printing(format, args, &info);
 	va_end(args);

@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 04:43:51 by dthan             #+#    #+#             */
-/*   Updated: 2019/12/31 14:16:42 by dthan            ###   ########.fr       */
+/*   Updated: 2020/01/06 21:04:44 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 
 void	type_di(t_info *info, va_list arg, char **output)
 {
-	long long num;
-	char *str;
+	long long	num;
+	char		*str;
 
 	num = get_signed_argument(info, arg);
 	str = ft_itoa_signed_longlong(num);
@@ -36,7 +36,8 @@ void	type_di(t_info *info, va_list arg, char **output)
 		*str = '\0';
 	if ((info->flags & PLUS_SIGN || info->flags & SPACE) && str[0] != '-')
 	{
-		str = ft_strjoin_and_free_string2((info->flags & SPACE) ? " " : "+", str);
+		str = ft_strjoin_and_free_string2((info->flags & SPACE) ? " " : "+", \
+				str);
 		str[0] = (info->flags & PLUS_SIGN) ? '+' : str[0];
 	}
 	ft_prec_nums(info, &str);

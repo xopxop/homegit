@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 15:03:31 by dthan             #+#    #+#             */
-/*   Updated: 2019/12/31 15:03:32 by dthan            ###   ########.fr       */
+/*   Updated: 2020/01/06 21:01:21 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_right_just(t_info *info, char **str, char *new)
 	if (info->flags & ZERO)
 	{
 		extra = (!ft_isdigit((*str)[0]) && info->specifier == spec_int)\
-		       	? (*str)[0] : 0;
+				? (*str)[0] : 0;
 		ft_memset(new, '0', info->field_width - ft_strlen(*str) + \
 				!!extra);
 		if (extra)
@@ -40,10 +40,11 @@ void	ft_right_just(t_info *info, char **str, char *new)
 	{
 		ft_memset(new, ' ', info->field_width - ft_strlen(*str));
 		if ((info->flags & PLUS_SIGN) && **str != '-')
-			new[info->field_width -ft_strlen(*str)] = ((*str)[0] ==\
-				       	'-') ? '-' : '+';
+			new[info->field_width - ft_strlen(*str)] = ((*str)[0] ==\
+					'-') ? '-' : '+';
 	}
-	ft_strcpy(new + info->field_width - ft_strlen(*str) + !!extra, *str + !!extra);
+	ft_strcpy(new + info->field_width - ft_strlen(*str) + !!extra, *str \
+			+ !!extra);
 }
 
 /*
@@ -84,9 +85,9 @@ void	ft_pad_handle(t_info *info, char **str)
 
 void	ft_right_just_special_case(t_info *info, char **str, char *new)
 {
-	int hash;
-	char extra;
-	char *temp;
+	int		hash;
+	char	extra;
+	char	*temp;
 
 	temp = *str;
 	hash = (ft_strchr(*str, 'x')) ? 2 : 0;
@@ -110,8 +111,8 @@ void	ft_special_case(t_info *info, char **str)
 	char *new;
 
 	if ((info->field_width == 0 || ft_strlen(*str) < \
-(size_t)info->field_width) && (info->flags & HASH_SIGN) && (info->flags & ZERO)\
-&& !(info->flags & MINUS_SIGN))
+(size_t)info->field_width) && (info->flags & HASH_SIGN) && \
+			(info->flags & ZERO) && !(info->flags & MINUS_SIGN))
 	{
 		new = ft_strnew(info->field_width);
 		ft_right_just_special_case(info, str, new);

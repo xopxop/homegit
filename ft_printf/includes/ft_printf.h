@@ -196,6 +196,12 @@ void			ft_handle_fractional(char **str, int *i, long double nb, t_info *info);
 void			type_f(t_info *info, va_list arg, char **output);
 
 /*
+**
+*/
+
+void	type_percent(t_info *info, va_list arg, char **output);
+
+/*
 ** Printing helper
 */
 

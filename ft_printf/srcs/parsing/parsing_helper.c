@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 14:52:04 by dthan             #+#    #+#             */
-/*   Updated: 2019/12/31 14:52:08 by dthan            ###   ########.fr       */
+/*   Updated: 2020/01/06 20:52:22 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 
 int	ft_skip_atoi(const char *format, size_t *pos)
 {
-	int i = 0;
+	int i;
 
+	i = 0;
 	while (ft_isdigit(format[*pos]))
 		i = i * 10 + format[(*pos)++] - '0';
 	return (i);
