@@ -18,7 +18,7 @@
 ** but not negative sign here
 */
 
-void	type_u(t_info *info, va_list arg, char **output)
+void	type_u(t_info *info, va_list arg, size_t *ct)
 {
 	unsigned long long	num;
 	char				*str;
@@ -31,5 +31,6 @@ void	type_u(t_info *info, va_list arg, char **output)
 		*str = '\0';
 	ft_prec_nums(info, &str);
 	ft_pad_handle(info, &str);
-	*output = str;
+	write(STDOUT, str, *ct = ft_strlen(str));
+	free(str);
 }

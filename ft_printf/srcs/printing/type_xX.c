@@ -80,7 +80,7 @@ void	ft_prec_hex(t_info *info, char **str)
 ** this padding function will be skiped
 */
 
-void	type_x(t_info *info, va_list arg, char **output)
+void	small_x(t_info *info, va_list arg, char **output)
 {
 	unsigned long long	num;
 	char				*str;
@@ -115,15 +115,25 @@ void	type_x(t_info *info, va_list arg, char **output)
 ** to upper case
 */
 
-void	type_x_up(t_info *info, va_list arg, char **output)
+void	big_x(char **output)
 {
 	char *new;
 
-	type_x(info, arg, output);
 	new = *output;
 	while (*new)
 	{
 		*new = ft_toupper(*new);
 		new++;
 	}
+}
+
+void type_x(t_info *info, va_list arg, size_t *ct)
+{
+	char *output;
+
+	small_x(info, arg, &output);
+	if (info->specifier == spec_hexupcase)
+		big_x(&output);
+	write(STDOUT, output, *ct = ft_strlen(output));
+	free(output);
 }

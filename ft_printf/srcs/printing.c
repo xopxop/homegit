@@ -19,9 +19,9 @@
 ** it will return the function coresponding to the specifier type
 */
 
-void	(*get_func(t_specifier specifier))(t_info*, va_list, char **)
+void	(*get_func(t_specifier specifier))(t_info*, va_list, size_t *ct)
 {
-	void	(*func[SPECIFIER_COUNT])(t_info*, va_list, char **);
+	void	(*func[SPECIFIER_COUNT])(t_info*, va_list, size_t *ct);
 
 	func[spec_char] = &type_c;
 	func[spec_str] = &type_s;
@@ -30,9 +30,9 @@ void	(*get_func(t_specifier specifier))(t_info*, va_list, char **)
 	func[spec_uint] = &type_u;
 	func[spec_octal] = &type_o;
 	func[spec_hexlowcase] = &type_x;
-	func[spec_hexupcase] = &type_x_up;
+	func[spec_hexupcase] = &type_x;
 	func[spec_float] = &type_f;
-	func[spec_percentsign] = &type_percent;
+//	func[spec_percentsign] = &type_percent;
 	return (func[specifier]);
 }
 
@@ -47,15 +47,11 @@ void	(*get_func(t_specifier specifier))(t_info*, va_list, char **)
 
 int		printing(t_info *info, va_list arg)
 {
-	void	(*print_func)(t_info*, va_list, char **);
-	char	*output_str;
-	int		count;
+	void	(*print_func)(t_info*, va_list, size_t *ct);
+	size_t	ct;
 
-	count = 0;
+	ct = 0;
 	print_func = get_func(info->specifier);
-	print_func(info, arg, &output_str);
-	count = ft_strlen(output_str);
-	write(STDOUT, output_str, count);
-	free(output_str);
-	return (count);
+	print_func(info, arg, &ct);
+	return (ct);
 }

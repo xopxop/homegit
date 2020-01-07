@@ -25,7 +25,7 @@
 ** MINUS_SIGN : left justified
 ** HASH_SIGN : show 0x, etc.
 */
-
+# define STDOUT 1
 # define ZERO	1
 # define PLUS_SIGN		2
 # define SPACE		4
@@ -71,6 +71,7 @@ typedef struct		s_info
 	t_length		length;
 	t_specifier	specifier;
 }			t_info;
+
 
 /*
 ** Core file
@@ -141,38 +142,38 @@ void			ft_percisionSmallerThanSTRLEN(t_info *info, char **str);
 ** Type_C
 */
 
-void			type_c(t_info *info, va_list arg, char **output);
+void			type_c(t_info *info, va_list arg, size_t *ct);
 
 /*
 ** Type_S
 */
 
-void			type_s(t_info *info, va_list arg, char **output);
+void			type_s(t_info *info, va_list arg, size_t *ct);
 
 /*
 ** TYPE_P
 */
 
-void			type_p(t_info *info, va_list arg, char **output);
+void			type_p(t_info *info, va_list arg, size_t *ct);
 
 /*
 ** TYPE SIGNED INTEGER
 */
 
-void			type_di(t_info *info, va_list arg, char **output);
+void			type_di(t_info *info, va_list arg, size_t *ct);
 
 /*
 ** Type unsigned integer
 */
 
-void			type_u(t_info *info, va_list arg, char **output);
+void			type_u(t_info *info, va_list arg, size_t *ct);
 
 /*
 ** Type Octal number
 */
 
 void			ft_handle_alt(t_info *info, char **str);
-void			type_o(t_info *info, va_list arg, char **output);
+void			type_o(t_info *info, va_list arg, size_t *ct);
 
 /*
 ** Type Hexadecimal number
@@ -180,8 +181,9 @@ void			type_o(t_info *info, va_list arg, char **output);
 
 void			ft_percisionSmallerForxX(t_info *info, char **str);
 void			ft_prec_hex(t_info *info, char **str);
-void			type_x(t_info *info, va_list arg, char **output);
-void			type_x_up(t_info *info, va_list arg, char **output);
+void			type_x(t_info *info, va_list arg, size_t *ct);
+void			small_x(t_info *info, va_list arg, char **output);
+void			big_x(char **output);
 
 /*
 ** Type floating point
@@ -193,13 +195,13 @@ int			special_case(char **s, double num);
 long double		ft_calc_modulo(double num, int *str_size);
 void			ft_handle_decimal(long double *nb, char **str, int *i, long double modulo);
 void			ft_handle_fractional(char **str, int *i, long double nb, t_info *info);
-void			type_f(t_info *info, va_list arg, char **output);
+void			type_f(t_info *info, va_list arg, size_t *ct);
 
 /*
 **
 */
 
-void	type_percent(t_info *info, va_list arg, char **output);
+void	type_percent(t_info *info, __attribute__((unused)) va_list arg, size_t *ct);
 
 /*
 ** Printing helper

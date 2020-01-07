@@ -17,7 +17,7 @@
 ** geting the string, taking care of the precison and padding
 */
 
-void	type_s(t_info *info, va_list arg, char **output)
+void	type_s(t_info *info, va_list arg, size_t *ct)
 {
 	char *ctemp;
 	char *str;
@@ -31,5 +31,6 @@ void	type_s(t_info *info, va_list arg, char **output)
 		ft_prec_handle(info, &str);
 		ft_pad_handle(info, &str);
 	}
-	*output = str;
+	write(STDOUT, str, *ct = ft_strlen(str));
+	free(str);
 }

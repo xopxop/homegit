@@ -150,7 +150,7 @@ void			ft_handle_fractional(char **str, int *i, long double nb, \
 ** - finally, paddling for field width
 */
 
-void			type_f(t_info *info, va_list arg, char **output)
+void			type_f(t_info *info, va_list arg, size_t *ct)
 {
 	long double	num;
 	char		*str;
@@ -170,5 +170,6 @@ void			type_f(t_info *info, va_list arg, char **output)
 		str[0] = (info->flags & PLUS_SIGN) ? '+' : str[0];
 	}
 	ft_pad_handle(info, &str);
-	*output = str;
+	write(STDOUT, str, *ct = ft_strlen(str));
+	free(str);
 }

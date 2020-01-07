@@ -15,7 +15,7 @@
 #define SHIFF_OCTAL_MASK 3
 #define MAX_OCTAL_STRLEN 22+1
 
-void	type_o(t_info *info, va_list arg, char **output)
+void	type_o(t_info *info, va_list arg, size_t *ct)
 {
 	unsigned long long	num;
 	char				*str;
@@ -44,5 +44,6 @@ void	type_o(t_info *info, va_list arg, char **output)
 	}
 	ft_prec_nums(info, &str);
 	ft_pad_handle(info, &str);
-	*output = str;
+	write(STDOUT, str, *ct = ft_strlen(str));
+	free(str);
 }

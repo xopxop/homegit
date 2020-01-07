@@ -6,6 +6,9 @@
 
 int main(void)
 {
-	ft_printf(RED"--%5%--\n"); 
-	printf(RESET"--%5%--\n"); 
+	int a;
+	int b;
+	a = ft_printf("%s\n", "this is a string");
+	b = printf("%s\n", "this is a string");
+	printf("%d--%d\n", a, b);
 }

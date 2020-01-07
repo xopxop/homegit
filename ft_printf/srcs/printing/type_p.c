@@ -25,7 +25,7 @@
 ** Ft_pd_handle to deal with the padding
 */
 
-void	type_p(t_info *info, va_list arg, char **output)
+void	type_p(t_info *info, va_list arg, size_t *ct)
 {
 	unsigned long long	num;
 	char				*str;
@@ -37,5 +37,6 @@ void	type_p(t_info *info, va_list arg, char **output)
 			MAX_HEX_STRLEN, hex);
 	ft_percision_hex(info, &str);
 	ft_pad_handle(info, &str);
-	*output = str;
+	write(STDOUT, str, *ct = ft_strlen(str));
+	free(str);
 }
