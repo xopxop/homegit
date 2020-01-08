@@ -27,6 +27,8 @@ void	type_o(t_info *info, va_list arg, size_t *ct)
 			MAX_OCTAL_STRLEN, oct);
 	if (info->percision != -1 && info->flags & ZERO)
 		info->flags ^= ZERO;
+	if (info->percision == 0 && !ft_strcmp("0", str))
+		*str = '\0';
 	if (info->flags & HASH_SIGN)
 	{
 		if (!ft_strcmp("0", str))
@@ -34,8 +36,6 @@ void	type_o(t_info *info, va_list arg, size_t *ct)
 		else
 			str = ft_strjoin_and_free_string2("0", str);
 	}
-	if (info->percision == 0 && !ft_strcmp("0", str))
-		*str = '\0';
 	if (info->flags & PLUS_SIGN || info->flags & SPACE)
 	{
 		str = ft_strjoin_and_free_string2((info->flags & SPACE) ? " " : "+", \
