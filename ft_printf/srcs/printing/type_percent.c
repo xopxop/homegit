@@ -22,4 +22,5 @@ void	type_percent(t_info *info, __attribute__((unused)) va_list arg, size_t *ct)
 	str[0] = percent;
 	ft_pad_handle(info, &str);
 	write (STDOUT, str, *ct = ft_strlen(str));
+	free(str);
 }
