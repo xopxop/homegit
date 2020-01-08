@@ -32,7 +32,7 @@ void	(*get_func(t_specifier specifier))(t_info*, va_list, size_t *ct)
 	func[spec_hexlowcase] = &type_x;
 	func[spec_hexupcase] = &type_x;
 	func[spec_float] = &type_f;
-//	func[spec_percentsign] = &type_percent;
+	func[spec_percentsign] = &type_percent;
 	return (func[specifier]);
 }
 

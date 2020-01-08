@@ -6,6 +6,8 @@
 
 int main(void)
 {
-	ft_printf(RED"%.o %.0o\n", 0, 0);
-	printf(RESET"%.o %.0o\n", 0, 0);
+	int a = ft_printf("%hd", -32768);
+	ft_printf("\n%d\n", a);
+	int b = printf("%hd", -32768);
+	printf("\n%d\n", b);
 }

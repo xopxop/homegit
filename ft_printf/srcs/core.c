@@ -34,11 +34,6 @@ int	parse_and_print(const char *format, va_list args, size_t *pos, t_info *info)
 		write(STDOUT, "%", 1);
 		return (1);
 	}
-	else if (info->specifier == spec_percentsign)
-	{
-		write(STDOUT, "%", 1);
-		return (1);
-	}
 	return (printing(info, args));
 }
 
