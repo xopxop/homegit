@@ -87,7 +87,9 @@ Restart the SSH service
 ##### Installing UFW (Uncomplicated Firewall)
 UFW was a simple and easy to set-up, in oder to run UFW, we need to install UFW into the system with
 ```sudo apt-get install ufw```
+
 ```sudo ufw status``` (to check the state of ufw, disable or undisable)
+
 ```sudo ufw enable``` (enable the ufw)
 
 ##### Allowing access ports
