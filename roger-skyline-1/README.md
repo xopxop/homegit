@@ -40,7 +40,7 @@ Optional: Installing vim
 # apt-get install vim
 ```
 How to use ```sudo``` command with this user? we just need to modify and add ```user_name ALL=(ALL:ALL)``` in a file with a path ```/etc/sudoers```
-<img srcs="pictures/Screen%20Shot%202020-01-22%20at%205.39.17%20PM.png" width = "100" height = "30" >
+<img src="pictures/Screen%20Shot%202020-01-22%20at%205.39.17%20PM.png" width = "100" height = "30" >
 ![](pictures/Screen%20Shot%202020-01-22%20at%205.39.17%20PM.png)
 
 In order to check the special rights: use this command ```sudo -l -U user_name```
