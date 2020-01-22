@@ -80,10 +80,19 @@ The key will be automatically added to the ```~/.ssh/authorized_keys``` on the s
 Going back to the ssh configuration file ```/etc/ssh/sshd_config``` and locate then modify the line ```# PermitRootLogin yes``` to ```PermitRootLogin no``` https://mediatemple.net/community/products/dv/204643810/how-do-i-disable-ssh-login-for-the-root-user
 NOTE: https://superuser.com/questions/1006267/why-should-i-really-disable-root-ssh-login
 
-##### Restart the SSH service
+Restart the SSH service
 ```sudo service ssh restart```
 
 #### You have to set the rules of your firewall on your server only with the services used outside the VM.
+##### Installing UFW (Uncomplicated Firewall)
+UFW was a simple and easy to set-up, in oder to run UFW, we need to install UFW into the system with
+```sudo apt-get install ufw
+sudo ufw status``` (to check the state of ufw, disable or undisable)
+```sudo ufw enable``` (enable the ufw)
+
+##### Allowing access ports
+
+
 #### You have to set a DOS (Denial Of Service Attack) protection on your open port of your VM.
 #### You have to set a protection against scans on your VM’s open ports.
 #### Stop the services you don’t need for this project.
