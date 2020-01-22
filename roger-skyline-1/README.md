@@ -52,7 +52,7 @@ To use the static IP, we need to modify this file ```/etc/network/interfaces``` 
 
 then creat a new file ```enp0s3``` then modify ```/etc/network/interfaces.d/enp0s3``` with these the new ip address, netmask in \30 and gateway address:
 
-<img src="pictures/Screen%20Shot%202020-01-22%20at%206.50.21%20PM.png" width = "400" height = "200">
+<img src="pictures/Screen%20Shot%202020-01-22%20at%206.50.21%20PM.png" width = "400" height = "120">
 
 remember to restart the networking service with the command ```sudo service networking restart```
 and using command ```ip address``` to check the result
