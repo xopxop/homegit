@@ -86,11 +86,9 @@ Restart the SSH service
 #### You have to set the rules of your firewall on your server only with the services used outside the VM.
 ##### Installing UFW (Uncomplicated Firewall)
 UFW was a simple and easy to set-up, in oder to run UFW, we need to install UFW into the system with
-```sudo apt-get install ufw```
 
-```sudo ufw status``` (to check the state of ufw, disable or undisable)
+```sudo apt-get install ufw \nsudo ufw status \nsudo ufw enable```
 
-```sudo ufw enable``` (enable the ufw)
 
 ##### Allowing access ports
 
