@@ -92,10 +92,13 @@ sudo apt-get install ufw
 sudo ufw status
 sudo ufw enable
 ```
-
-
 ##### Allowing access ports
-
+-----------------------------------------------------------
+```
+sudo ufw allow 55555/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+```
 
 #### You have to set a DOS (Denial Of Service Attack) protection on your open port of your VM.
 #### You have to set a protection against scans on your VM’s open ports.
