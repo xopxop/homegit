@@ -59,7 +59,24 @@ and using command ```ip address``` to check the result
 
 #### You have to change the default port of the SSH service by the one of your choice. SSH access HAS TO be done with publickeys. SSH root access SHOULD NOT be allowed directly, but with a user who can be root.
 
+##### Changing the default port of the SSH server by the one of your choice
+To choose the port that we want to access SSH server, we need to modify the ssh configuartion file ```/etc/ssh/sshd_config```, locate the the port line and change it to the one that we one as well as the comment ```#``` ex: changing port 22 to port 55555
+https://fi.godaddy.com/help/changing-the-ssh-port-for-your-linux-server-7306
+NOTE: To check the available port, run command ```netstat -tulpn | grep LISTEN``` or ```ss -tulwn``` to see which port is activate
 
+##### Accessing SSH service with publickeys
+Step 1: Generating a pair of public and private key, on the host machine
+```ssh-keygen -t rsa``` to generate the key. In the directory ```~\.ssh```, we can find 2 files which is the just generated key ```id_sra``` (private key) and ```id_rsa.pub``` (public key)
+NOTE:
++ id_rsa: Private key, which should be kept safely and can be crypted with a password
++ id_rsa.pub: Public key, which we need to send it to the server (in this case out guest machine)
+
+Step 2: Sending public key to the server (guest machine)
+```ssh-copy-id -i id_rsa.pub <user_name>@<ip_address> -p <port_number>```
+ex: ```ssh-copy-id -i id_rsa.pub dthan@<ip_address> -p 55555```
+The key will be automatically added to the ```~/.ssh/authorized_keys``` on the server (guest machine)
+
+##### Declining SSH root access
 
 #### You have to set the rules of your firewall on your server only with the services used outside the VM.
 #### You have to set a DOS (Denial Of Service Attack) protection on your open port of your VM.
