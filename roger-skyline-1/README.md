@@ -54,11 +54,13 @@ then creat a new file ```enp0s3``` then modify ```/etc/network/interfaces.d/enp0
 
 ![](pictures/Screen%20Shot%202020-01-22%20at%206.50.21%20PM.png)
 
-
-
-
+remember to restart the networking service with the command ```sudo service networking restart```
+and using command ```ip address``` to check the result
 
 #### You have to change the default port of the SSH service by the one of your choice. SSH access HAS TO be done with publickeys. SSH root access SHOULD NOT be allowed directly, but with a user who can be root.
+
+
+
 #### You have to set the rules of your firewall on your server only with the services used outside the VM.
 #### You have to set a DOS (Denial Of Service Attack) protection on your open port of your VM.
 #### You have to set a protection against scans on your VM’s open ports.
