@@ -32,6 +32,6 @@ In order to use sudo command, first we have to install as root user:
 $ su
 # apt-get update -y && apt-get upgrade -y
 # apt-get install sudo
-Optional: Install vim
+Optional: Installing vim
 # apt-get install vim
 ```
