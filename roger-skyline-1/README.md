@@ -50,7 +50,7 @@ To use the static IP, we need to modify this file ```/etc/network/interfaces``` 
 
 ![](pictures/Screen%20Shot%202020-01-22%20at%206.17.38%20PM.png) -> ![](pictures/Screen%20Shot%202020-01-22%20at%206.18.09%20PM.png)
 
-then creat a new file in ```/etc/network/interfaces.d```
+then creat a new file ```enp0s3``` then modify ```/etc/network/interfaces.d/enp0s3```
 
 
 
