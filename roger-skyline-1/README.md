@@ -9,7 +9,7 @@ Jessie, CentOS 7...) in the hypervisor of your choice (VMWare Fusion, VirtualBox
 • Have at least one 4.2 GB partition.
 • It will also have to be up to date as well as the whole packages installed to meet
 the demands of this subject.
-'''
+```
 My VM (set-up)
 + DEBIAN 10.2
 + Disk size of 8GB
@@ -19,4 +19,4 @@ sudo fdisk -l
 Note: when partioning the disk size, the primary disk should be some where around 4.5G, therefore when fdisk, the system disk will be around 4.2GB
 because the size when partioning and the one which was shown by the system is different
 https://superuser.com/questions/217012/what-size-should-i-make-a-partition-to-appear-as-a-standard-number-e-g-100gb
-'''
+```
