@@ -1,8 +1,9 @@
-# Roger-skyline-1 INTRODUCTION
-## MANDATORY PART
+# Roger-skyline-1
+
 roger-skyline-1 let you install a Virtual Machine, discover the
 basics about system and network administration as well as a lots of services used on a
 server machine.
+## MANDATORY PART
 ### VM Part
 You have to run a Virtual Machine (VM) with the Linux OS of your choice (Debian
 Jessie, CentOS 7...) in the hypervisor of your choice (VMWare Fusion, VirtualBox...).
