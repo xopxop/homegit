@@ -48,9 +48,7 @@ In order to check the special rights: use this command ```sudo -l -U user_name``
 #### We don’t want you to use the DHCP service of your machine. You’ve got to configure it to have a static IP and a Netmask in \30.
 To use the static IP, we need to modify this file ```/etc/network/interfaces``` from:
 
-<img src="pictures/Screen%20Shot%202020-01-22%20at%206.17.38%20PM.png" width = "300" height = "80" >
-to 
-<img src="pictures/Screen%20Shot%202020-01-22%20at%206.18.09%20PM.png" width = "300" height = "80" >
+<img src="pictures/Screen%20Shot%202020-01-22%20at%206.17.38%20PM.png" width = "300" height = "80" > to <img src="pictures/Screen%20Shot%202020-01-22%20at%206.18.09%20PM.png" width = "300" height = "80" >
 
 then creat a new file ```enp0s3``` then modify ```/etc/network/interfaces.d/enp0s3``` with these the new ip address, netmask in \30 and gateway address:
 
