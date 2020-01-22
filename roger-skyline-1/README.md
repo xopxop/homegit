@@ -49,7 +49,10 @@ In order to check the special rights: use this command ```sudo -l -U user_name``
 To use the static IP, we need to modify this file ```/etc/network/interfaces``` from:
 
 <img src="pictures/Screen%20Shot%202020-01-22%20at%206.17.38%20PM.png" width = "300" height = "80" >
- ```->``` <img src="pictures/Screen%20Shot%202020-01-22%20at%206.18.09%20PM.png" width = "300" height = "80" >
+
+```asd``` 
+
+<img src="pictures/Screen%20Shot%202020-01-22%20at%206.18.09%20PM.png" width = "300" height = "80" >
 
 then creat a new file ```enp0s3``` then modify ```/etc/network/interfaces.d/enp0s3``` with these the new ip address, netmask in \30 and gateway address:
 
