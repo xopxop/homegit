@@ -41,14 +41,16 @@ int				ft_isinf(double num)
 
 int				special_case(char **s, double num)
 {
-	if (ft_isnan(num))
+	char *new;
+
+	new = ft_strnew(3);
+	if (ft_isnan(num) || ft_isinf(num))
 	{
-		ft_strcpy(*s, "nan");
-		return (1);
-	}
-	else if (ft_isinf(num))
-	{
-		ft_strcpy(*s, "inf");
+		if (ft_isnan(num))
+			ft_strcpy(new, "nan");
+		else if (ft_isinf(num))
+			ft_strcpy(new, "inf");
+		*s = new;
 		return (1);
 	}
 	return (0);

@@ -6,8 +6,8 @@
 
 int main(void)
 {
-	int a = ft_printf("%hd", -32768);
-	ft_printf("\n%d\n", a);
-	int b = printf("%hd", -32768);
-	printf("\n%d\n", b);
+//	ft_printf("%");
+//	printf("\n");
+	printf("% h");
+	printf("-");
 }
