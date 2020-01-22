@@ -76,7 +76,12 @@ Step 2: Sending public key to the server (guest machine)
 ex: ```ssh-copy-id -i id_rsa.pub dthan@<ip_address> -p 55555```
 The key will be automatically added to the ```~/.ssh/authorized_keys``` on the server (guest machine)
 
-##### Declining SSH root access
+##### Disabling SSH root access
+Going back to the ssh configuration file ```/etc/ssh/sshd_config``` and locate then modify the line ```# PermitRootLogin yes``` to ```PermitRootLogin no``` https://mediatemple.net/community/products/dv/204643810/how-do-i-disable-ssh-login-for-the-root-user
+NOTE: https://superuser.com/questions/1006267/why-should-i-really-disable-root-ssh-login
+
+##### Restart the SSH service
+```sudo service ssh restart```
 
 #### You have to set the rules of your firewall on your server only with the services used outside the VM.
 #### You have to set a DOS (Denial Of Service Attack) protection on your open port of your VM.
