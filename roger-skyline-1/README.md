@@ -39,10 +39,21 @@ Optional: Installing vim
 ```
 # apt-get install vim
 ```
-How to use ```sudo``` command with this user, we just need to modify and add the user name in a file with a path ```/etc/sudoers```
+How to use ```sudo``` command with this user? we just need to modify and add ```user_name ALL=(ALL:ALL)``` in a file with a path ```/etc/sudoers```
 
 ![](pictures/Screen%20Shot%202020-01-22%20at%205.39.17%20PM.png)
+
+In order to check the special rights: use this command ```sudo -l -U user_name```
+
 #### We don’t want you to use the DHCP service of your machine. You’ve got to configure it to have a static IP and a Netmask in \30.
+To use the static IP, we need to modify this file ```/etc/network/interfaces``` from:
+
+![](pictures/Screen%20Shot%202020-01-22%20at%206.17.38%20PM.png) -> ![](pictures/Screen%20Shot%202020-01-22%20at%206.18.09%20PM.png)
+
+then creat a new file in ```/etc/network/interfaces.d```
+
+
+
 #### You have to change the default port of the SSH service by the one of your choice. SSH access HAS TO be done with publickeys. SSH root access SHOULD NOT be allowed directly, but with a user who can be root.
 #### You have to set the rules of your firewall on your server only with the services used outside the VM.
 #### You have to set a DOS (Denial Of Service Attack) protection on your open port of your VM.
