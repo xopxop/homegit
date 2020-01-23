@@ -116,6 +116,8 @@ Expected result:
 ## OPTIONAL PART
 
 ### Web Part
+
+#### Log-In Page
 ***This is my login page***
 
 <img src="pictures/" width = "???" height = "???" >
@@ -125,5 +127,23 @@ Expected result:
 2. Copy the webpage directory into directory ```/var/www/html/``` 
 
 Remember delete every files which was in that directory before moving the login webpage
+
+#### Self-Signed SSL
+1. Creating the SSL Certificate
+
+```
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/apache-selfsigned.key -out /etc/ssl/certs/apache-selfsigned.crt
+```
+Output Promt
+
+```
+Country Name (2 letter code) [AU]:FI
+State or Province Name (full name) [Some-State]:Uusima
+Locality Name (eg, city) []:Helsinki
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:
+Organizational Unit Name (eg, section) []:
+Common Name (e.g. server FQDN or YOUR name) []:
+Email Address []:root@debian.lan
+```
 
 ### Deployment Part
