@@ -103,7 +103,7 @@ sudo ufw allow 443/tcp
 ```
 Now let check the status of ufw:
 ```sudo ufw status```
-Expected result
+Expected result:
 
 <img src="pictures/Screen%20Shot%202020-01-23%20at%205.14.10%20PM.png" width = "330" height = "139">
 
