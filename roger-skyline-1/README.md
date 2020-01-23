@@ -73,12 +73,14 @@ NOTE:
 
 Step 2: Sending public key to the server (guest machine)
 ```ssh-copy-id -i id_rsa.pub <user_name>@<ip_address> -p <port_number>```
-ex: ```ssh-copy-id -i id_rsa.pub dthan@<ip_address> -p 55555```
+ex: ```ssh-copy-id -i id_rsa.pub dthan@0.12.1.109 -p 55555```
 The key will be automatically added to the ```~/.ssh/authorized_keys``` on the server (guest machine)
 
 ##### Disabling SSH root access
 Going back to the ssh configuration file ```/etc/ssh/sshd_config``` and locate then modify the line ```# PermitRootLogin yes``` to ```PermitRootLogin no``` https://mediatemple.net/community/products/dv/204643810/how-do-i-disable-ssh-login-for-the-root-user
 NOTE: https://superuser.com/questions/1006267/why-should-i-really-disable-root-ssh-login
+##### Remove Password Authentification
+Change ```#PasswordAuthentication yes``` to ```PasswordAuthentication no```, so no need to type password when logging the server with SSH
 
 Restart the SSH service
 ```sudo service ssh restart```
@@ -99,6 +101,11 @@ sudo ufw allow 55555/tcp
 sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
 ```
+Now let check the status of ufw:
+```sudo ufw status```
+Expected result
+
+<img src="pictures/Screen%20Shot%202020-01-23%20at%205.14.10%20PM.png" width = "330" height = "139">
 
 #### You have to set a DOS (Denial Of Service Attack) protection on your open port of your VM.
 #### You have to set a protection against scans on your VM’s open ports.
