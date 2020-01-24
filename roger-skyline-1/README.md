@@ -129,7 +129,7 @@ Expected result:
 Remember delete every files which was in that directory before moving the login webpage
 
 #### Self-Signed SSL
-*SOURCE:[How To Create a Self-Signed SSL Certificate for Apache in Debian 9](https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-apache-in-debian-9)*
+*SOURCE: [How To Create a Self-Signed SSL Certificate for Apache in Debian 9](https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-apache-in-debian-9)*
 1. Creating the SSL Certificate
 
 ```
@@ -147,7 +147,7 @@ Common Name (e.g. server FQDN or YOUR name) []:
 Email Address []:root@debian.lan
 ```
 2. Configuring Apache to Use SSL
-**Creating an Apache Configuration Snippet with Strong Encryption Settings**
+*Creating an Apache Configuration Snippet with Strong Encryption Settings*
 We first need to creat a new snippet in the ```/etc/apache2/conf-available``` directory and name the file ```ssl-params.conf``` to make its purpose clear:
 ```
 sudo nano /etc/apache2/conf-available/ssl-params.conf
@@ -169,7 +169,7 @@ SSLStaplingCache "shmcb:logs/stapling-cache(150000)"
 # Requires Apache >= 2.4.11
 SSLSessionTickets Off
 ```
-**Modifying the Default Apache SSL Virtual Host File**
+*Modifying the Default Apache SSL Virtual Host File*
 + Back up the original SSL Virtual Host file
 ```
 $ sudo cp /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf.bak
@@ -205,7 +205,7 @@ Edit the inside like this
         </VirtualHost>
 </IfModule>
 ```
-**(Recommended) Modifying the HTTP Host File to Redirect to HTTPS**
+*(Recommended) Modifying the HTTP Host File to Redirect to HTTPS*
 ```
 sudo nano /etc/apache2/sites-available/000-default.conf
 ```
