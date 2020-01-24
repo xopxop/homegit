@@ -109,7 +109,25 @@ Expected result:
 
 #### You have to set a DOS (Denial Of Service Attack) protection on your open port of your VM.
 #### You have to set a protection against scans on your VM’s open ports.
+*SOURCE:*
++ [How to protect against port scanners?](https://unix.stackexchange.com/questions/345114/how-to-protect-against-port-scanners)
++ [To protect against the scan of ports with portsentry](https://en-wiki.ikoula.com/en/To_protect_against_the_scan_of_ports_with_portsentry)
+
+
+
 #### Stop the services you don’t need for this project.
+*SOURCE: [List of available services](https://unix.stackexchange.com/questions/108591/list-of-available-services)*
+To list all the service
+```
+$ ls /etc/init.d
+```
+Disable buletooth.service, console-setup.service & keyboard-setup.service
+```
+$ sudo systemctl disable buletooth.service
+$ sudo systemctl disable console-setup.service
+$ sudo systemctl disable keyboard-setup.service
+```
+
 #### Create a script that updates all the sources of package, then your packages and which logs the whole in a file named /var/log/update_script.log. Create a scheduled task for this script once a week at 4AM and every time the machine reboots.
 
 ```
