@@ -219,7 +219,8 @@ Edit the ```000-default.conf``` which looks like this
 </VirtualHost>
 ```
 3. Adjusting the Firewall
-NOTE: Already did when setting up rules for ufw
+
+*NOTE: Already did when setting up rules for ufw*
 
 4. Enabling the Changes in Apache
 ```
@@ -228,9 +229,13 @@ $ sudo a2enmod headers
 $ sudo a2ensite default-ssl
 $ sudo a2enconf ssl-params
 $ sudo apache2ctl configtest
-*OUT PUT*
+NOTE: expected OUT PUT
 Syntax OK
 $ sudo systemctl restart apache2
+```
+Now the SSL server is tested on the host's web browser and type ```https://``` followed by the server's domain name or IP into the address bar
+```
+https://server_domain_or_IP
 ```
 
 ### Deployment Part
