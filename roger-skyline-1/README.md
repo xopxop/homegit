@@ -111,14 +111,32 @@ Expected result:
 #### You have to set a protection against scans on your VM’s open ports.
 #### Stop the services you don’t need for this project.
 #### Create a script that updates all the sources of package, then your packages and which logs the whole in a file named /var/log/update_script.log. Create a scheduled task for this script once a week at 4AM and every time the machine reboots.
+
+```
+$ touch i_will_update.sh
+$ chmod a+x i_will_update.sh
+$ echo "sudo apt-get update -y >> /var/log/update_script.log\nsudo apt-get upgrade -y >> /var/log/update_script.log" > i_will_update.sh
+```
+Changing crontab by edditing cron job:
+```
+$sudo crontab -e
+```
+
+<img src="pictures/" >
+
 #### Make a script to monitor changes of the /etc/crontab file and sends an email to root if it has been modified. Create a scheduled script task every day at midnight.
+
+```
+$ touch i_will_monitor_cron.sh
+$ chmod a+x i_will_monitor_con.sh
+```
 
 ## OPTIONAL PART
 
 ### Web Part
 
 #### Log-In Page
-***This is my login page***
+*This is my login page*
 
 <img src="pictures/" width = "???" height = "???" >
 
