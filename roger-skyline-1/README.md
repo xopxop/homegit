@@ -145,5 +145,92 @@ Organizational Unit Name (eg, section) []:
 Common Name (e.g. server FQDN or YOUR name) []:
 Email Address []:root@debian.lan
 ```
+2. Configuring Apache to Use SSL
+**Creating an Apache Configuration Snippet with Strong Encryption Settings**
+We first need to creat a new snippet in the ```/etc/apache2/conf-available``` directory and name the file ```ssl-params.conf``` to make its purpose clear:
+```
+sudo nano /etc/apache2/conf-available/ssl-params.conf
+```
+Paste the following configuration into the ```ssl-params.conf``` file
+```
+SSLCipherSuite EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH
+SSLProtocol All -SSLv2 -SSLv3 -TLSv1 -TLSv1.1
+SSLHonorCipherOrder On
+# Disable preloading HSTS for now.  You can use the commented out header line that includes
+# the "preload" directive if you understand the implications.
+# Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+Header always set X-Frame-Options DENY
+Header always set X-Content-Type-Options nosniff
+# Requires Apache >= 2.4
+SSLCompression off
+SSLUseStapling on
+SSLStaplingCache "shmcb:logs/stapling-cache(150000)"
+# Requires Apache >= 2.4.11
+SSLSessionTickets Off
+```
+**Modifying the Default Apache SSL Virtual Host File**
++ Back up the original SSL Virtual Host file
+```
+$ sudo cp /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf.bak
+```
++ Open the SSL Vitual Host file to make adjustment
+```
+sudo nano /etc/apache2/sites-available/default-ssl.conf
+```
+Edit the inside like this
+```
+<IfModule mod_ssl.c>
+        <VirtualHost _default_:443>
+                ServerAdmin your_email@example.com
+                ServerName server_domain_or_IP
+
+                DocumentRoot /var/www/html
+
+                ErrorLog ${APACHE_LOG_DIR}/error.log
+                CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+                SSLEngine on
+
+                SSLCertificateFile      /etc/ssl/certs/apache-selfsigned.crt
+                SSLCertificateKeyFile /etc/ssl/private/apache-selfsigned.key
+
+                <FilesMatch "\.(cgi|shtml|phtml|php)$">
+                                SSLOptions +StdEnvVars
+                </FilesMatch>
+                <Directory /usr/lib/cgi-bin>
+                                SSLOptions +StdEnvVars
+                </Directory>
+
+        </VirtualHost>
+</IfModule>
+```
+**(Recommended) Modifying the HTTP Host File to Redirect to HTTPS**
+```
+sudo nano /etc/apache2/sites-available/000-default.conf
+```
+Edit the ```000-default.conf``` which looks like this
+```
+<VirtualHost *:80>
+        . . .
+
+        Redirect "/" "https://your_domain_or_IP/"
+
+        . . .
+</VirtualHost>
+```
+3. Adjusting the Firewall
+NOTE: Already did when setting up rules for ufw
+
+4. Enabling the Changes in Apache
+```
+$ sudo a2enmod ssl
+$ sudo a2enmod headers
+$ sudo a2ensite default-ssl
+$ sudo a2enconf ssl-params
+$ sudo apache2ctl configtest
+*OUT PUT*
+Syntax OK
+$ sudo systemctl restart apache2
+```
 
 ### Deployment Part
