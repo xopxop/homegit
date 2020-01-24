@@ -239,9 +239,3 @@ https://server_domain_or_IP
 ```
 
 ### Deployment Part
-
-THe deployment can be run by the script deploy.sh after meet the below requirements:
-1. A VM set-up is followed by the VM setting up guideline
-2. VM network is set to Bridge Adapter
-3. sudo command has been set for the user
-4. VM has to have Git
