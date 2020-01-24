@@ -147,6 +147,7 @@ Common Name (e.g. server FQDN or YOUR name) []:
 Email Address []:root@debian.lan
 ```
 2. Configuring Apache to Use SSL
+
 *Creating an Apache Configuration Snippet with Strong Encryption Settings*
 We first need to creat a new snippet in the ```/etc/apache2/conf-available``` directory and name the file ```ssl-params.conf``` to make its purpose clear:
 ```
