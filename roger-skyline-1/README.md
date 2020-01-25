@@ -170,7 +170,7 @@ Modify the file ``/etc/default/portsentry``
 
 Activate portsentry by edditing the file `/etc/portsentry/portsentry.conf`
 
-<img src = "pictures/" width = "454" height = "430" >
+<img src = "pictures/Screen%20Shot%202020-01-25%20at%2012.57.52%20PM.png" width = "454" height = "430" >
 
 ***Stop the services you don’t need for this project.***
 
