@@ -218,7 +218,7 @@ Changing crontab by edditing cron job:
 $sudo crontab -e
 ```
 
-<img src="pictures/" >
+<img src="pictures/Screen%20Shot%202020-01-25%20at%201.36.50%20PM.png" width = 320 height = 45>
 
 ***Make a script to monitor changes of the /etc/crontab file and sends an email to root if it has been modified. Create a scheduled script task every day at midnight.***
 
