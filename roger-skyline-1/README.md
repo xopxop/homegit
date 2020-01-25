@@ -199,7 +199,6 @@ $ sudo service --status-all
 
 Disable buletooth.service, console-setup.service & keyboard-setup.service
 ```
-$ sudo systemctl disable buletooth.service
 $ sudo systemctl disable console-setup.service
 $ sudo systemctl disable keyboard-setup.service
 ```
