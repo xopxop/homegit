@@ -208,8 +208,11 @@ $ sudo systemctl disable keyboard-setup.service
 ```
 $ touch i_will_update.sh
 $ chmod a+x i_will_update.sh
-$ echo "sudo apt-get update -y >> /var/log/update_script.log\nsudo apt-get upgrade -y >> /var/log/update_script.log" > i_will_update.sh
 ```
+
+<img src = "pictures/Screen%20Shot%202020-01-25%20at%201.31.17%20PM.png" width = "380" height = "53" >
+
+
 Changing crontab by edditing cron job:
 ```
 $sudo crontab -e
