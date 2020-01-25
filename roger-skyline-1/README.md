@@ -20,15 +20,18 @@ In order to check for the size of disk, run the command:
 sudo fdisk -l
 Note: when partioning the disk size, the primary disk should be some where around 4.5G, therefore when fdisk, the system disk will be around 4.2GB
 because the size when partioning and the one which was shown by the system is different
+
 *SOURCE:*[What size should I make a partition to appear as a standard number e.g 100Gb](https://superuser.com/questions/217012/what-size-should-i-make-a-partition-to-appear-as-a-standard-number-e-g-100gb)
 
 ### Network and Security Part
 For the network on your VM, here are the steps to achieve
 
 ***You must create a non-root user to connect to the machine and work.***
+
 non-root user: dthan
 
 ***Use sudo, with this user, to be able to perform operation requiring special rights.***
+
 In order to use sudo command, first we have to install as root user:
 ```
 $ su
@@ -46,6 +49,7 @@ How to use ```sudo``` command with this user? we just need to modify and add ```
 In order to check the special rights: use this command ```sudo -l -U user_name```
 
 ***We don’t want you to use the DHCP service of your machine. You’ve got to configure it to have a static IP and a Netmask in \30.***
+
 To use the static IP, we need to modify this file ```/etc/network/interfaces``` from:
 
 <img src="pictures/Screen%20Shot%202020-01-22%20at%206.17.38%20PM.png" width = "300" height = "80" > to <img src="pictures/Screen%20Shot%202020-01-22%20at%206.18.09%20PM.png" width = "300" height = "80" >
@@ -60,11 +64,13 @@ and using command ```ip address``` to check the result
 ***You have to change the default port of the SSH service by the one of your choice. SSH access HAS TO be done with publickeys. SSH root access SHOULD NOT be allowed directly, but with a user who can be root.***
 
 *Changing the default port of the SSH server by the one of your choice*
+
 To choose the port that we want to access SSH server, we need to modify the ssh configuartion file ```/etc/ssh/sshd_config```, locate the the port line and change it to the one that we one as well as the comment ```#``` ex: changing port 22 to port 55555
 https://fi.godaddy.com/help/changing-the-ssh-port-for-your-linux-server-7306
 NOTE: To check the available port, run command ```netstat -tulpn | grep LISTEN``` or ```ss -tulwn``` to see which port is activate
 
 *Accessing SSH service with publickeys*
+
 Step 1: Generating a pair of public and private key, on the host machine
 ```ssh-keygen -t rsa``` to generate the key. In the directory ```~\.ssh```, we can find 2 files which is the just generated key ```id_sra``` (private key) and ```id_rsa.pub``` (public key)
 NOTE:
@@ -77,16 +83,20 @@ ex: ```ssh-copy-id -i id_rsa.pub dthan@0.12.1.109 -p 55555```
 The key will be automatically added to the ```~/.ssh/authorized_keys``` on the server (guest machine)
 
 *Disabling SSH root access*
+
 Going back to the ssh configuration file ```/etc/ssh/sshd_config``` and locate then modify the line ```# PermitRootLogin yes``` to ```PermitRootLogin no``` https://mediatemple.net/community/products/dv/204643810/how-do-i-disable-ssh-login-for-the-root-user
 NOTE: https://superuser.com/questions/1006267/why-should-i-really-disable-root-ssh-login
 *Remove Password Authentification*
+
 Change ```#PasswordAuthentication yes``` to ```PasswordAuthentication no```, so no need to type password when logging the server with SSH
 
 Restart the SSH service
 ```sudo service ssh restart```
 
 ***You have to set the rules of your firewall on your server only with the services used outside the VM.***
+
 *Installing UFW (Uncomplicated Firewall)*
+
 UFW was a simple and easy to set-up, in oder to run UFW, we need to install UFW into the system with
 
 ```
@@ -95,7 +105,6 @@ sudo ufw status
 sudo ufw enable
 ```
 *Allowing access ports*
------------------------------------------------------------
 ```
 sudo ufw allow 55555/tcp
 sudo ufw allow 80/tcp
@@ -146,6 +155,7 @@ ignoreregex =
 ```
 
 ***You have to set a protection against scans on your VM’s open ports.***
+
 *SOURCE:*
 + [How to protect against port scanners?](https://unix.stackexchange.com/questions/345114/how-to-protect-against-port-scanners)
 + [To protect against the scan of ports with portsentry](https://en-wiki.ikoula.com/en/To_protect_against_the_scan_of_ports_with_portsentry)
@@ -174,6 +184,7 @@ BLOCK_TCP="1"
 ```
 
 ***Stop the services you don’t need for this project.***
+
 *SOURCE: [List of available services](https://unix.stackexchange.com/questions/108591/list-of-available-services)*
 To list all the service
 ```
