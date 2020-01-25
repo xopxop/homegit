@@ -168,9 +168,22 @@ Modify the file ``/etc/default/portsentry``
 
 <img src = "pictures/Screen%20Shot%202020-01-25%20at%2012.52.02%20PM.png" width = "296" height = "90" >
 
-Activate portsentry by edditing the file `/etc/portsentry/portsentry.conf`
+Activate BLOCK_UDP & BLOCK_TCP by changing to 1 the file `/etc/portsentry/portsentry.conf`
 
 <img src = "pictures/Screen%20Shot%202020-01-25%20at%2012.57.52%20PM.png" width = "454" height = "430" >
+
+Opting for blocking of malicious persons throught iptables. Therefore will need to disable all these KILL_ROUTE lines except this one:
+```
+KILL_ROUTE="/sbin/iptables -I INPUT -s $TARGET$ -j DROP"
+```
+Check the actions:
+```
+$ cat portsentry.conf | grep KILL_ROUTE | grep -v "#"
+```
+Restart Portsentry
+```
+$ sudo service portsentry restart
+```
 
 ***Stop the services you don’t need for this project.***
 
