@@ -12,7 +12,7 @@ Jessie, CentOS 7...) in the hypervisor of your choice (VMWare Fusion, VirtualBox
 • It will also have to be up to date as well as the whole packages installed to meet
 the demands of this subject.
 
-#### My VM (set-up)
+*My VM (set-up)*
 + DEBIAN 10.2
 + Disk size of 8GB
 + one partition with 4.2 GB
@@ -25,10 +25,10 @@ https://superuser.com/questions/217012/what-size-should-i-make-a-partition-to-ap
 ### Network and Security Part
 For the network on your VM, here are the steps to achieve
 
-#### You must create a non-root user to connect to the machine and work.
+***You must create a non-root user to connect to the machine and work.***
 non-root user: dthan
 
-#### Use sudo, with this user, to be able to perform operation requiring special rights.
+***Use sudo, with this user, to be able to perform operation requiring special rights.***
 In order to use sudo command, first we have to install as root user:
 ```
 $ su
@@ -45,7 +45,7 @@ How to use ```sudo``` command with this user? we just need to modify and add ```
 
 In order to check the special rights: use this command ```sudo -l -U user_name```
 
-#### We don’t want you to use the DHCP service of your machine. You’ve got to configure it to have a static IP and a Netmask in \30.
+***We don’t want you to use the DHCP service of your machine. You’ve got to configure it to have a static IP and a Netmask in \30.***
 To use the static IP, we need to modify this file ```/etc/network/interfaces``` from:
 
 <img src="pictures/Screen%20Shot%202020-01-22%20at%206.17.38%20PM.png" width = "300" height = "80" > to <img src="pictures/Screen%20Shot%202020-01-22%20at%206.18.09%20PM.png" width = "300" height = "80" >
@@ -57,14 +57,14 @@ then creat a new file ```enp0s3``` then modify ```/etc/network/interfaces.d/enp0
 remember to restart the networking service with the command ```sudo service networking restart```
 and using command ```ip address``` to check the result
 
-#### You have to change the default port of the SSH service by the one of your choice. SSH access HAS TO be done with publickeys. SSH root access SHOULD NOT be allowed directly, but with a user who can be root.
+***You have to change the default port of the SSH service by the one of your choice. SSH access HAS TO be done with publickeys. SSH root access SHOULD NOT be allowed directly, but with a user who can be root.***
 
-##### Changing the default port of the SSH server by the one of your choice
+*Changing the default port of the SSH server by the one of your choice*
 To choose the port that we want to access SSH server, we need to modify the ssh configuartion file ```/etc/ssh/sshd_config```, locate the the port line and change it to the one that we one as well as the comment ```#``` ex: changing port 22 to port 55555
 https://fi.godaddy.com/help/changing-the-ssh-port-for-your-linux-server-7306
 NOTE: To check the available port, run command ```netstat -tulpn | grep LISTEN``` or ```ss -tulwn``` to see which port is activate
 
-##### Accessing SSH service with publickeys
+*Accessing SSH service with publickeys*
 Step 1: Generating a pair of public and private key, on the host machine
 ```ssh-keygen -t rsa``` to generate the key. In the directory ```~\.ssh```, we can find 2 files which is the just generated key ```id_sra``` (private key) and ```id_rsa.pub``` (public key)
 NOTE:
@@ -76,17 +76,17 @@ Step 2: Sending public key to the server (guest machine)
 ex: ```ssh-copy-id -i id_rsa.pub dthan@0.12.1.109 -p 55555```
 The key will be automatically added to the ```~/.ssh/authorized_keys``` on the server (guest machine)
 
-##### Disabling SSH root access
+*Disabling SSH root access*
 Going back to the ssh configuration file ```/etc/ssh/sshd_config``` and locate then modify the line ```# PermitRootLogin yes``` to ```PermitRootLogin no``` https://mediatemple.net/community/products/dv/204643810/how-do-i-disable-ssh-login-for-the-root-user
 NOTE: https://superuser.com/questions/1006267/why-should-i-really-disable-root-ssh-login
-##### Remove Password Authentification
+*Remove Password Authentification*
 Change ```#PasswordAuthentication yes``` to ```PasswordAuthentication no```, so no need to type password when logging the server with SSH
 
 Restart the SSH service
 ```sudo service ssh restart```
 
-#### You have to set the rules of your firewall on your server only with the services used outside the VM.
-##### Installing UFW (Uncomplicated Firewall)
+***You have to set the rules of your firewall on your server only with the services used outside the VM.***
+*Installing UFW (Uncomplicated Firewall)*
 UFW was a simple and easy to set-up, in oder to run UFW, we need to install UFW into the system with
 
 ```
@@ -94,7 +94,7 @@ sudo apt-get install ufw
 sudo ufw status
 sudo ufw enable
 ```
-##### Allowing access ports
+*Allowing access ports*
 -----------------------------------------------------------
 ```
 sudo ufw allow 55555/tcp
@@ -107,7 +107,7 @@ Expected result:
 
 <img src="pictures/Screen%20Shot%202020-01-23%20at%205.14.10%20PM.png" width = "330" height = "139">
 
-#### You have to set a DOS (Denial Of Service Attack) protection on your open port of your VM.
+***You have to set a DOS (Denial Of Service Attack) protection on your open port of your VM.***
 
 *SOURCE: List of DOS protection method*[CentOS DDoS protection](https://bobcares.com/blog/centos-ddos-protection/)
 
@@ -145,7 +145,7 @@ failregex = ^ -.*GET
 ignoreregex =
 ```
 
-#### You have to set a protection against scans on your VM’s open ports.
+***You have to set a protection against scans on your VM’s open ports.***
 *SOURCE:*
 + [How to protect against port scanners?](https://unix.stackexchange.com/questions/345114/how-to-protect-against-port-scanners)
 + [To protect against the scan of ports with portsentry](https://en-wiki.ikoula.com/en/To_protect_against_the_scan_of_ports_with_portsentry)
@@ -173,7 +173,7 @@ BLOCK_UDP="1"
 BLOCK_TCP="1"
 ```
 
-#### Stop the services you don’t need for this project.
+***Stop the services you don’t need for this project.***
 *SOURCE: [List of available services](https://unix.stackexchange.com/questions/108591/list-of-available-services)*
 To list all the service
 ```
@@ -186,7 +186,7 @@ $ sudo systemctl disable console-setup.service
 $ sudo systemctl disable keyboard-setup.service
 ```
 
-#### Create a script that updates all the sources of package, then your packages and which logs the whole in a file named /var/log/update_script.log. Create a scheduled task for this script once a week at 4AM and every time the machine reboots.
+***Create a script that updates all the sources of package, then your packages and which logs the whole in a file named /var/log/update_script.log. Create a scheduled task for this script once a week at 4AM and every time the machine reboots.***
 
 ```
 $ touch i_will_update.sh
@@ -200,7 +200,7 @@ $sudo crontab -e
 
 <img src="pictures/" >
 
-#### Make a script to monitor changes of the /etc/crontab file and sends an email to root if it has been modified. Create a scheduled script task every day at midnight.
+***Make a script to monitor changes of the /etc/crontab file and sends an email to root if it has been modified. Create a scheduled script task every day at midnight.***
 
 ```
 $ touch i_will_monitor_cron.sh
@@ -209,9 +209,8 @@ $ chmod a+x i_will_monitor_con.sh
 
 ## OPTIONAL PART
 
-### Web Part
+***Web Part***
 
-#### Log-In Page
 *This is my login page*
 
 <img src="pictures/" width = "???" height = "???" >
@@ -222,7 +221,7 @@ $ chmod a+x i_will_monitor_con.sh
 
 Remember delete every files which was in that directory before moving the login webpage
 
-#### Self-Signed SSL
+*Self-Signed SSL*
 *SOURCE: [How To Create a Self-Signed SSL Certificate for Apache in Debian 9](https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-apache-in-debian-9)*
 1. Creating the SSL Certificate
 
