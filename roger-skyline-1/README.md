@@ -20,7 +20,7 @@ In order to check for the size of disk, run the command:
 sudo fdisk -l
 Note: when partioning the disk size, the primary disk should be some where around 4.5G, therefore when fdisk, the system disk will be around 4.2GB
 because the size when partioning and the one which was shown by the system is different
-https://superuser.com/questions/217012/what-size-should-i-make-a-partition-to-appear-as-a-standard-number-e-g-100gb
+*SOURCE:*[What size should I make a partition to appear as a standard number e.g 100Gb](https://superuser.com/questions/217012/what-size-should-i-make-a-partition-to-appear-as-a-standard-number-e-g-100gb)
 
 ### Network and Security Part
 For the network on your VM, here are the steps to achieve
