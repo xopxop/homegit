@@ -191,7 +191,12 @@ $ sudo service portsentry restart
 To list all the service
 ```
 $ ls /etc/init.d
+or
+$ sudo service --status-all
 ```
+
+<img src="picturesScreen%20Shot%202020-01-25%20at%201.17.46%20PM.png/" width = "355" height = "324" >
+
 Disable buletooth.service, console-setup.service & keyboard-setup.service
 ```
 $ sudo systemctl disable buletooth.service
