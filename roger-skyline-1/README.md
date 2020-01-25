@@ -79,7 +79,7 @@ NOTE:
 
 Step 2: Sending public key to the server (guest machine)
 ```ssh-copy-id -i id_rsa.pub <user_name>@<ip_address> -p <port_number>```
-ex: ```ssh-copy-id -i id_rsa.pub dthan@0.12.1.109 -p 55555```
+ex: ```ssh-copy-id -i id_rsa.pub dthan@10.12.1.109 -p 55555```
 The key will be automatically added to the ```~/.ssh/authorized_keys``` on the server (guest machine)
 
 *Disabling SSH root access*
@@ -166,10 +166,8 @@ $ sudo apt-get install portsentry
 ```
 Modify the file ``/etc/default/portsentry``
 
-```
-TCP_MODE="atcp"
-UDP_MODE="audp"
-```
+<img src = "pictures/" width = "296" height = "90" >
+
 Activate portsentry by edditing the file `/etc/portsentry/portsentry.conf`
 ```
 ##################
