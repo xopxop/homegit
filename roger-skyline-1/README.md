@@ -166,7 +166,7 @@ $ sudo apt-get install portsentry
 ```
 Modify the file ``/etc/default/portsentry``
 
-<img src = "pictures/" width = "296" height = "90" >
+<img src = "pictures/Screen%20Shot%202020-01-25%20at%2012.52.02%20PM.png" width = "296" height = "90" >
 
 Activate portsentry by edditing the file `/etc/portsentry/portsentry.conf`
 ```
