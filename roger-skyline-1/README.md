@@ -169,17 +169,8 @@ Modify the file ``/etc/default/portsentry``
 <img src = "pictures/Screen%20Shot%202020-01-25%20at%2012.52.02%20PM.png" width = "296" height = "90" >
 
 Activate portsentry by edditing the file `/etc/portsentry/portsentry.conf`
-```
-##################
-# Ignore Options #
-##################
-# 0 = Do not block UDP/TCP scans.
-# 1 = Block UDP/TCP scans.
-# 2 = Run external command only (KILL_RUN_CMD)
 
-BLOCK_UDP="1"
-BLOCK_TCP="1"
-```
+<img src = "pictures/" width = "454" height = "430" >
 
 ***Stop the services you don’t need for this project.***
 
