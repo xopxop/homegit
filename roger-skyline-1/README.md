@@ -108,12 +108,70 @@ Expected result:
 <img src="pictures/Screen%20Shot%202020-01-23%20at%205.14.10%20PM.png" width = "330" height = "139">
 
 #### You have to set a DOS (Denial Of Service Attack) protection on your open port of your VM.
+
+*SOURCE: List of DOS protection method*[CentOS DDoS protection](https://bobcares.com/blog/centos-ddos-protection/)
+
+DOS protection service: Fail2Ban
+
+Install Fail2Ban
+```
+$ sudo apt-get install fail2ban iptables apache2 -y
+```
+Fail2Ban configuration file `/etc/fail2ban/jail.conf`, We will make a copy of the file `jail.conf` and name it `jail.local`. In this way, if there is any change in the `jail.conf` update, out confirguarion for Fail2Ban will be kept the same.
+
+1. Secure the SSH by edditing `/etc/fail2ban/jail.local`:
+
+2. Secure the HTTP (port 80) by eddint `/etc/fail2ban/jail.local`:
+
+3. Create a filter by creating the file /etc/fail2ban/filter.d/http-get-dos.conf and copy the text below in it:
+
+```
+# Fail2Ban configuration file
+#
+# Author: http://www.go2linux.org
+#
+[Definition]
+
+# Option: failregex
+# Note: This regex will match any GET entry in your logs, so basically all valid and not valid entries are a match.
+# You should set up in the jail.conf file, the maxretry and findtime carefully in order to avoid false positives.
+
+failregex = ^ -.*GET
+
+# Option: ignoreregex
+# Notes.: regex to ignore. If this regex matches, the line is ignored.
+# Values: TEXT
+#
+ignoreregex =
+```
+
 #### You have to set a protection against scans on your VM’s open ports.
 *SOURCE:*
 + [How to protect against port scanners?](https://unix.stackexchange.com/questions/345114/how-to-protect-against-port-scanners)
 + [To protect against the scan of ports with portsentry](https://en-wiki.ikoula.com/en/To_protect_against_the_scan_of_ports_with_portsentry)
 
+Install Portsentry
+```
+$ sudo apt-get install portsentry
+```
+Modify the file ``/etc/default/portsentry``
 
+```
+TCP_MODE="atcp"
+UDP_MODE="audp"
+```
+Activate portsentry by edditing the file `/etc/portsentry/portsentry.conf`
+```
+##################
+# Ignore Options #
+##################
+# 0 = Do not block UDP/TCP scans.
+# 1 = Block UDP/TCP scans.
+# 2 = Run external command only (KILL_RUN_CMD)
+
+BLOCK_UDP="1"
+BLOCK_TCP="1"
+```
 
 #### Stop the services you don’t need for this project.
 *SOURCE: [List of available services](https://unix.stackexchange.com/questions/108591/list-of-available-services)*
