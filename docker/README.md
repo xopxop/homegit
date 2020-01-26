@@ -100,10 +100,12 @@ docker run hello-world
 ```
 
 *Explaination:*
+
 From: docker --help
 run         Run a command in a new container
 
 *Expected Result:*
+
 Text message from Docker
 
 #### 06: Launch an nginx container, available on Docker Hub, as a background task. It should be named overlord, be able to restart on its own, and have its 80 port attached to the 5000 port of Char. You can check that your container functions properly by visiting http://<ip-de-char>:5000 on your web browser.
@@ -129,3 +131,76 @@ From: `docker run --help` or `man docker run`
 
 Visiting http://<ip-de-char>:5000 on your web browser with nginx page.
 
+#### 07: Get the internal IP address of the overlord container without starting its shell and in one command
+*Answer:*
+```
+docker inspect -f '{{.NetworkSettings.IPAddress}}' overlord
+```
+
+*Explaination:*
+inspect : Return low-level information on Docker objects
+-f      : Format the output using the give Go template
+
+*Result:*
+The internal IP address of the overlord container
+
+#### 08: Launch a shell from an alpine container, and make sure that you can interact directly with the container via your terminal, and that the container deletes itself once the shell’s execution is done
+*Answer:*
+```
+docker run -it --rm alpine /bin/sh
+```
+
+*Explaination:*
+-i, --interactive       Keep STDIN open even if not attached
+-t, --tty               Allocate a pseudo-TTY
+--rm                    Automatically remove the container when it exits
+Note: [Starting a shell in the Docker Alpine container](https://stackoverflow.com/questions/35689628/starting-a-shell-in-the-docker-alpine-container/43564198#43564198)
+
+*Results:*
+Runing a shell from the alpine container via your terminal
+
+#### 09: From the shell of a debian container, install via the container’s package manager everything you need to compile C source code and push it onto a git repo (of course, make sure before that the package manager and the packages already in the container are updated). For this exercise, you should only specify the commands to be run directly in the container.
+*Answer:*
+```
+apt-get update -y && apt-get upgrade -y && apt-get install build-essential git -y 
+```
+
+*Explaination:*
+To run the answer command line, we need to run in our debian container `docker run -it --rm debian`
+build-essential: contains gcc/g++ compilers and libraries and some other utilities
+
+*Result:*
+a debian machine with the build-essential package and git
+
+#### 10: Create a volume named hatchery.
+*Answer:*
+```
+docker volume create hatchery
+```
+
+*Explaination:*
+From: docker volume --help
+create: Create a volume
+
+*Result:*
+hatchery was listed in the output `docker volume ls`
+
+#### 11: List all the Docker volumes created on the machine. Remember. VOLUMES
+*Answer:*
+```
+docker volume ls
+```
+
+*Explaination:*
+ls: List volumes
+
+*Result:*
+Listed volumes
+
+#### 12: Launch a mysql container as a background task. It should be able to restart on its own in case of error, and the root password of the database should be Kerrigan. You will also make sure that the database is stored in the hatchery volume, that the container directly creates a database named zerglings, and that the container itself is named spawning-pool
+*Answer:*
+```
+
+```
+*Explaination:*
+*Result:*
