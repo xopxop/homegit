@@ -110,6 +110,7 @@ docker run -d -p 5000:80 --name overlord --restart=always nginx
 ```
 
 *Explaination:*
+
 From: `docker run --help` or `man docker run`
 -d: Run container in background
 -p: Publish a container's port, or range of ports, to the host HOST_PORT:CONTAINER_PORT
@@ -122,5 +123,6 @@ From: `docker run --help` or `man docker run`
 + unless-stopped: Always restart the container regardless of the exit status, but do not start it on daemon startup if the container has been put to a stopped state before.
 
 *Result:*
+
 Visiting http://<ip-de-char>:5000 on your web browser with nginx page.
 
