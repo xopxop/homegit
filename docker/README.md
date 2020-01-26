@@ -11,7 +11,7 @@
 + A self-container sealed unit of software
 + Contains everything required to run the code
 + Includes batteries and operating system
-A conatiner includes:
+*A conatiner includes:*
 + Code
 + Config
 + Processes (within that container)
