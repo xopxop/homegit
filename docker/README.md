@@ -5,4 +5,4 @@ What Is Docker/ What Docker Does?
 + Gets the code to and from your computers
 + Build these containers for you
 + Is a social platform for you to find and share containers, which are different from virtual machines
-<image src="Pictures/Docker.png" width = 1240 height = 992 >
+<image src="Pictures/Docker.png" width = 310 height = 248 >
