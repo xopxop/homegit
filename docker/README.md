@@ -82,12 +82,15 @@ Command `docker ps` works
 
 #### 04: Get the hello-world container from the Docker Hub, where it’s available.
 *Answer:*
+```
 docker pull hello-world
-
+```
 *Explaination:*
+
 To get the hello-world container, we need to pull it from the Docker Hub by using the command `Docker pull <container_image>`
 
 *Results:*
+
 `hello-world` is listed in the images `docker image ls`
 
 #### 05: Launch the hello-world container, and make sure that it prints its welcome message, then leaves it.
