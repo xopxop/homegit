@@ -50,14 +50,12 @@ or documents at [docker-machine create](https://docs.docker.com/machine/referenc
 ```
 docker-machine ip Char
 ```
-*Explaination*
-```
+
+*Explaination:*
 ip      Get the IP address of a machine
-```
-*Result*
-```
+
+*Result:*
 an IP address from Char machine
-```
 
 #### 03: Define the variables needed by your virtual machine Char in the general env of your terminal, so that you can run the docker ps command without errors. You have to fix all four environment variables with one command, and you are not allowed to use your shell’s builtin to set these variables by hand.
 *Answer:*
@@ -78,3 +76,51 @@ export DOCKER_MACHINE_NAME="Char"
 # eval $(docker-machine env Char)
 ```
 run `eval $(docker-machine env Char)` to add the variables to our enviroment.
+
+*Result:*
+Command `docker ps` works
+
+#### 04: Get the hello-world container from the Docker Hub, where it’s available.
+*Answer:*
+docker pull hello-world
+
+*Explaination:*
+To get the hello-world container, we need to pull it from the Docker Hub by using the command `Docker pull <container_image>`
+
+*Results:*
+`hello-world` is listed in the images `docker image ls`
+
+#### 05: Launch the hello-world container, and make sure that it prints its welcome message, then leaves it.
+*Answer:*
+```
+docker run hello-world
+```
+
+*Explaination:*
+From: docker --help
+run         Run a command in a new container
+
+*Expected Result:*
+Text message from Docker
+
+#### 06: Launch an nginx container, available on Docker Hub, as a background task. It should be named overlord, be able to restart on its own, and have its 80 port attached to the 5000 port of Char. You can check that your container functions properly by visiting http://<ip-de-char>:5000 on your web browser.
+*Answer:*
+```
+docker run -d -p 5000:80 --name overlord --restart=always nginx
+```
+
+*Explaination:*
+From: `docker run --help` or `man docker run`
+-d: Run container in background
+-p: Publish a container's port, or range of ports, to the host HOST_PORT:CONTAINER_PORT
+--name string: Assign a name to the container
+--restart string: Restart policy to apply when a container exits (default "no")
+**restart policy:***
++ no            : Do not automatically restart the container when it exits
++ on-failure    : Restart only if the container exits with a non-zero exit status. Optionally, linit the number of restart retries the Docker daemon attemps.
++ always        : Always restart the container regardless of the exit status. When you specify always, the Docker daemon will try to restart the container indefinitely. The container will also always start on daemon startup, regardless of the current state of the container.
++ unless-stopped: Always restart the container regardless of the exit status, but do not start it on daemon startup if the container has been put to a stopped state before.
+
+*Result:*
+Visiting http://<ip-de-char>:5000 on your web browser with nginx page.
+
