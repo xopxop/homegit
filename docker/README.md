@@ -38,7 +38,8 @@ docker-machine --driver virtualbox Char
 *Result:*
 run `docker-machine ls` to list all the created machine, created machine named `Char` should be in the list
 
-*NOTE:*To get farmiliar with the `docker-machine` command, run:
+*NOTE:*
+To get farmiliar with the `docker-machine` command, run:
 ```
 $ docker-machine --help
 ```
