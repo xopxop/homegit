@@ -11,6 +11,7 @@
 + A self-container sealed unit of software
 + Contains everything required to run the code
 + Includes batteries and operating system
+
 *A conatiner includes:*
 + Code
 + Config
@@ -20,4 +21,6 @@
 + OS (just enough to run your code)
 
 The way it works is it tales all the services that make up the Linux server (Networking, storage, code, inter process communication, the whole works) and it makes a copy of that in the Linux Kernel for each containers. So, each containers has its own little world that it can't see out of and other container can't see in.
+Resources: 
++ [learning docker](https://www.linkedin.com/learning/learning-docker-2)
 
