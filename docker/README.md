@@ -324,8 +324,8 @@ overlord container restared, time on STATUS changed
 ```
 docker run --name Abathur -v ~/:/root -p 3000:3000 -dit python:2-slim
 docker exec Abathur pip install Flask
-echo 'from flask import Flask\napp = Flask(__name__)\n@app.route("/")\ndef hello_world():\n\treturn "<h1>Hello, World!</h1>"' > ~/app.py
-docker exec -e FLASK_APP=/root/app.py Abathur flask run --host=0.0.0.0 --port 3000
+docker exec Abathur echo 'from flask import Flask\napp = Flask(__name__)\n@app.route("/")\ndef hello_world():\n\treturn "<h1>Hello, World!</h1>"' > /root/app.py
+docker exec -e FLASK_APP=/root/Abathur/app.py Abathur flask run --host=0.0.0.0 --port 3000
 ```
 
 *Explaination:*
@@ -351,3 +351,154 @@ docker exec -e FLASK_APP=/root/app.py Abathur flask run --host=0.0.0.0 --port 30
 -e, --env list             Set environment variables
 
 *Result:*
+
+____________________________________________________________________
+
+#### 20: Create a local swarm, the Char virtual machine should be its manager.
+*Answer:*
+```
+docker swarm init --advertise-addr $(docker-machine ip Char)
+```
+
+*Explaination:*
+From [Creat a swarm](https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/):
+docker swarm init --advertise-addr <MANAGER-IP>
+
+*Result:*
+A message of the initializing displays
+
+#### 21: Create another virtual machine with docker-machine using the virtualbox driver, and name it Aiur
+*Answer:*
+```
+docker-machine create --driver virtualbox Aiur
+```
+
+*Explaination:*
+Same as Question 1
+
+*Results:*
+Auir is listed in the out-put `docker-machine ls`
+
+#### 22: Turn Aiur into a slave of the local swarm in which Char is leader (the command to take control of Aiur is not requested).
+*Answer:*
+```
+docker-machine ssh Aiur "docker swarm join --token $(docker swarm join-token worker -q) $(docker-machine ip Char):2377"
+```
+
+*Explaination:*
+docker-machine ssh Aiur                          log in to Aiur
+docker swarm join --token $(docker swarm join-token worker -q) $(docker-machine ip Char):2377
+[add nodes](https://docs.docker.com/engine/swarm/swarm-tutorial/add-nodes/)
+
+*Result:*
+```
+docker node ls
+```
+
+#### 23: Create an overlay-type internal network that you will name overmind.
+*Answer:*
+```
+docker network create -d overlay overmind
+```
+*Explaination:*
+network                     Manage networks
+create                      Create a network
+-d, --driver string         Driver to manage the Network (default "bridge")
+
+*Result:*
+overmind is now listed in the network `docker network ls`
+
+#### 24: Launch a rabbitmq SERVICE that will be named orbital-command. You should define a specific user and password for the RabbitMQ service, they can be whatever you want. This service will be on the overmind network.
+*Answer:*
+```
+docker service create -d --network overmind --name orbital-command -e RABBITMQ_DEFAULT_USER=root -e RABBITMQ_DEFAULT_PASS=root rabbitmq
+```
+
+*Explaination:*
+service                     Manage services
+create                      Create a new service
+-d, --detach                Exit immediately instead of waiting for the service to converge
+--network network           Network attachments
+--name string               Service name
+-e, --env list              Set environment variables
+From [rabbitmq](https://hub.docker.com/_/rabbitmq/)
+```
+Setting default user and password
+If you wish to change the default username and password of guest / guest, you can do so with the RABBITMQ_DEFAULT_USER and RABBITMQ_DEFAULT_PASS environmental variables:
+```
+
+*Result:*
+`docker service ls`
+
+#### 25: List all the services of the local swarm.
+*Answer:*
+```
+docker service ls
+```
+
+#### 26: Launch a 42school/engineering-bay service in two replicas and make sure that the service works properly (see the documentation provided at hub.docker.com). This service will be named engineering-bay and will be on the overmind network.
+*Answer:*
+```
+docker service create -d --network overmind --name engineering-bay --replicas 2 -e OC_USERNAME=root -e OC_PASSWD=root 42school/engineering-bay
+```
+
+*Explaination:*
+service                     Manage services
+create                      Create a new service
+-d, --detach                Exit immediately instead of waiting for the service to converge
+--network network           Network attachments
+--name string               Service name
+--replicas uint             Number of tasks
+-e, --env list                           Set environment variables
+From [engineering/bay](https://hub.docker.com/r/42school/engineering-bay/)
++ OC_USERNAME : Username used to access to orbital-command
++ OC_PASSWD : Password used to access to orbital-command
+
+*Result:*
+`docker service ls`
+
+#### 27: Get the real-time logs of one the tasks of the engineering-bay service.
+*Answer:*
+```
+docker service logs -f $(docker service ps engineering-bay -f "name=engineering-bay.1" -q)
+```
+
+*Explaination:*
+logs        Fetch the logs of a service or task
+-f, --follow         Follow log output
+In `(docker service ps engineering-bay -f "name=engineering-bay.1" -q)`
+ps          List the tasks of one or more services
+-f, --filter filter   Filter output based on conditions provided
+-q, --quiet           Only display task IDs
+[docker service ps](https://docs.docker.com/engine/reference/commandline/service_ps/)
+
+*Result:*
+Real-time logs of tast 1 of the engineering-bay service
+
+#### 28: ... Damn it, a group of zergs is attacking orbital-command, and shutting down the engineering-bay service won’t help at all... You must send a troup of Marines to eliminate the intruders. Launch a 42school/marine-squad in two replicas, and make sure that the service works properly (see the documentation provided at hub.docker.com). This service will be named... marines and will be on the overmind network.
+*Answer:*
+```
+docker service create -d --name marines --network overmind --replicas 2 -e OC_USERNAME=root -e OC_PASSWD=root 42school/marine-squad
+```
+
+*Explaination:*
+[42school/marine-squad](https://hub.docker.com/r/42school/marine-squad)
++ OC_USERNAME : Username used to access to orbital-command
++ OC_PASSWD : Password used to access to orbital-command
+
+*Result:*
+`docker service ls`
+
+#### 29: Display all the tasks of the marines service.
+*Answer:*
+```
+docker service ps marines
+```
+
+*Explaination:*
+ps                  List the tasks of one or more services
+
+*Result:*
+Tasks of marines service
+
+#### 30: Increase the number of copies of the marines service up to twenty, because there’s never enough Marines to eliminate Zergs. (Remember to take a look at the tasks and logs of the service, you’ll see, it’s fun.)
