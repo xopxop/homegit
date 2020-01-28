@@ -200,7 +200,154 @@ Listed volumes
 #### 12: Launch a mysql container as a background task. It should be able to restart on its own in case of error, and the root password of the database should be Kerrigan. You will also make sure that the database is stored in the hatchery volume, that the container directly creates a database named zerglings, and that the container itself is named spawning-pool
 *Answer:*
 ```
-
+docker run -d --name spawning-pool --restart=on-failure:10 -e MYSQL_ROOT_PASSWORD=Kerrigan -e MYSQL_DATABASE=zerglings -v hatchery:/var/lib/mysql mysql --default-authentication-plugin=mysql_native_password
 ```
 *Explaination:*
+-d, --detach                         Run container in background and print container ID
+--name string                        Assign a name to the container
+--restart policy                     Restart policy to apply when a container exits. Supported values are:
+┌─────────────────────────┬───────────────────────────────────┐
+│Policy                   │ Result                            │
+├─────────────────────────┼───────────────────────────────────┤
+│no                       │ Do not automatically restart the  │
+│                         │ container when it exits.          │
+├─────────────────────────┼───────────────────────────────────┤
+│on-failure[:max-retries] │ Restart only if the container     │
+│                         │ exits with a non-zero exit        │
+│                         │ status. Optionally, limit the     │
+│                         │ number of restart retries the     │
+│                         │ Docker daemon attempts.           │
+├─────────────────────────┼───────────────────────────────────┤
+│always                   │ Always restart the container      │
+│                         │ regardless of the exit status.    │
+│                         │ When you specify always, the      │
+│                         │ Docker daemon will try to restart │
+│                         │ the container indefinitely. The   │
+│                         │ container will also always start  │
+│                         │ on daemon startup, regardless of  │
+│                         │ the current state of the          │
+│                         │ container.                        │
+├─────────────────────────┼───────────────────────────────────┤
+│unless-stopped           │ Always restart the container      │
+│                         │ regardless of the exit status,    │
+│                         │ but do not start it on daemon     │
+│                         │ startup if the container has been │
+│                         │ put to a stopped state before.    │
+└─────────────────────────┴───────────────────────────────────┘
+-e, --env list                       Set environment variables
+-v, --volume list                    Bind mount a volume
+mysql --default-authentication-plugin=mysql_native_password
+Read here for me detail![native pluggable authentification](https://dev.mysql.com/doc/refman/8.0/en/native-pluggable-authentication.html)
+
+*Result:*
+pulling msq into the images `docker images ls`
+create a container named "spawning-pool" listed in `docker ps`
+
+#### 13: Print the environment variables of the spawning-pool container in one command, to be sure that you have configured your container properly
+*Answer:*
+```
+docker inspect -f '{{.Config.Env}}' spawning-pool
+```
+*Explaination:*
+the same to **Question 07**
+
+*Result:*
+[MYSQL_ROOT_PASSWORD=Kerrigan MYSQL_DATABASE=zerglings PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin GOSU_VERSION=1.7 MYSQL_MAJOR=8.0 MYSQL_VERSION=8.0.19-1debian9]
+
+#### 14:Launch a wordpress container as a background task, just for fun. The container should be named lair, its 80 port should be bound to the 8080 port of the virtual machine, and it should be able to use the spawning-pool container as a database service. You can try to access lair on your machine via a web browser, with the IP address of the virtual machine as a URL. Congratulations, you just deployed a functional Wordpress website in two commands!
+*Answer:*
+```
+docker run -d --name lair -p 8080:80 --link spawning-pool:mysql wordpress
+```
+*Explaination:*
+--link=name-or-id[:alias]
+Add link to another container:
+If the operator uses --link when starting the new client container, then the client
+container can access the exposed port via a private networking interface. Docker will set
+some environment variables in the client container to help indicate which interface and
+port to use.
+
+*Result:*
+logging-in wordpress page with the ip_address:8080
+
+#### 15: Launch a phpmyadmin container as a background task. It should be named roach-warden, its 80 port should be bound to the 8081 port of the virtual machine and it should be able to explore the database stored in the spawning-pool container.
+*Answer:*
+```
+docker run -d --name roach-warden -p 8081:80 --link spawning-pool:db phpmyadmin/phpmyadmin
+```
+
+*Explaination:*
+phpmyadmin/phpmyadmin
+[Official phpMyAdmin Docker image](https://hub.docker.com/r/phpmyadmin/phpmyadmin)
+
+*Result:*
+phpMyadmin page : <ip>:8081
+
+#### 16: Look up the spawning-pool container’s logs in real time without running its shell.
+*Answer:*
+```
+docker logs -f spawning-pool
+```
+
+*Explaination:*
+From `docker help --help`
+ -f, --follow         Follow log output
+
+*Result:*
+spawning-pool container's logs in realtime without running its shell
+
+#### 17: Display all the currently active containers on the Char virtual machine.
+*Answer:*
+```
+docker ps
+```
+
+*Explaination:*
+docker ps - List containers
+
+*Result:*
+Active containers on the Char virtual machine
+
+#### 18: Relaunch the overlord container
+*Answer:*
+```
+docker restart overlord
+```
+*Explaination:*
+restart     Restart one or more containers
+
+*Result:*
+overlord container restared, time on STATUS changed
+
+#### 19: Launch a container name Abathur. It will be a Python container, 2-slim version, its /root folder will be bound to a HOME folder on your host, and its 3000 port will be bound to the 3000 port of your virtual machine. You will personalize this container so that you can use the Flask micro-framework in its latest version. You will make sure that an html page displaying "Hello World" with <h1> tags can be served by Flask. You will test that your container is properly set up by accessing, via curl or a web browser, the IP address of your virtual machine on the 3000 port. You will also list all the necessary commands in your repository
+*Answer:*
+```
+docker run --name Abathur -v ~/:/root -p 3000:3000 -dit python:2-slim
+docker exec Abathur pip install Flask
+echo 'from flask import Flask\napp = Flask(__name__)\n@app.route("/")\ndef hello_world():\n\treturn "<h1>Hello, World!</h1>"' > ~/app.py
+docker exec -e FLASK_APP=/root/app.py Abathur flask run --host=0.0.0.0 --port 3000
+```
+
+*Explaination:*
+```
+docker run --name Abathur python: -v ~/:/root -p 3000:3000 -dit python:2-slim
+```
+-v|--volume[=[[HOST-DIR:]CONTAINER-DIR[:OPTIONS]]]
+          Create a bind mount. If you specify, -v /HOST-DIR:/CONTAINER-DIR, Docker
+          bind mounts /HOST-DIR in the host to /CONTAINER-DIR in the Docker
+          container. If 'HOST-DIR' is omitted,  Docker automatically creates the new
+          volume on the host. For more info[Docker run reference](https://docs.docker.com/engine/reference/run/)
+[python version](https://hub.docker.com/_/python]
+-dit : Run container in background and print container ID, Keep STDIN open even if not attached, Allocate a pseudo-TTY
+```
+docker exec Abathur pip install Flask
+```
+exec        Run a command in a running container
+pip         The pip command is a tool for installing and managing Python packages
+[flask instalation](https://flask.palletsprojects.com/en/1.0.x/installation/#installation)
+```
+docker exec -e FLASK_APP=/root/app.py Abathur flask run --host=0.0.0.0 --port 3000
+```
+-e, --env list             Set environment variables
+
 *Result:*
