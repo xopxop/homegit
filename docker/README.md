@@ -502,3 +502,120 @@ ps                  List the tasks of one or more services
 Tasks of marines service
 
 #### 30: Increase the number of copies of the marines service up to twenty, because there’s never enough Marines to eliminate Zergs. (Remember to take a look at the tasks and logs of the service, you’ll see, it’s fun.)
+*Answer:*
+```
+docker service scale -d marines=20
+```
+
+*Explaination:*
+scale           Scale one or multiple replicated services
+-d, --detach    Exit immediately instead of waiting for the service to converge
+
+*Result:*
+`docker service ps marines`
+There is 20 marines
+
+#### 31: Force quit and delete all the services on the local swarm, in one command.
+*Answer:*
+```
+docker service rm $(docker service ls -q)
+```
+
+*Explaination:*
+-q, --quiet           Only display IDs
+
+*Result:*
+`docker service ls`
+
+#### 32: Force quit and delete all the containers (whatever their status), in one command.
+*Answer:*
+```
+docker rm -f $(docker ps -a -q)
+```
+
+*Explaination:*
+docker rm           Remove one or more containers
+-f, --force         Force the removal of a running container (uses SIGKILL)
+docker ps           List containers
+-a, --all           Show all containers (default shows just running)
+-q, --quiet         Only display numeric IDs
+
+*Result:*
+`docker ps`
+
+#### 33: Delete all the container images stored on the Char virtual machine, in one command as well.
+*Answer:*
+```
+docker rmi $(docker images -a -q)
+```
+
+*Explaination:*
+rmi                 Remove one or more images
+-a, --all           Show all images (default hides intermediate images)
+-q, --quiet         Only show numeric IDs
+
+*Result:*
+`docker images -a`
+
+#### 34: Delete the Aiur virtual machine without using rm -rf
+*Answer:*
+```
+docker-machine rm -y Aiur
+```
+
+*Explaination:*
+rm           Remove a machine
+-y           Assumes automatic yes to proceed with remove, without prompting further user confirmation
+
+*Result:*
+docker-machine ls
+
+### Dockerfiles
+Resouces:
++ [Dockerfile reference](https://docs.docker.com/engine/reference/builder/)
++ ex00: [Alpine Linux package management](https://wiki.alpinelinux.org/wiki/Alpine_Linux_package_management)
+#### Excercise 00: vim/emacs
+**From an alpine image you’ll add to your container your favorite text editor, vim oremacs, that will launch along with your container.**
+*How to test:*
+```
+docker build -t ex00 .
+docker run --rm -it ex00
+```
+*Note:* [How Dockerfile naming works?](https://stackoverflow.com/questions/35511604/docker-unable-to-prepare-context-unable-to-evaluate-symlinks-in-dockerfile-pat)
+
+#### Excercise 01: BYOTSS
+**From a debian image you will add the appropriate sources to create a TeamSpeak server, that will launch along with your container. It will be deemed valid if at least one user can connect to it and engage in a normal discussion (no far-fetched setup), so be sure to create your Dockerfile with the right options. Your program should get the sources when it builds, they cannot be in your repository.**
+*Explaination:*
+```
+FROM debian                 ----> from debian image
+
+MAINTAINER DuThan <dthan@student.hive.fi>                   ----> Producer
+
+ENV TS3SERVER_LICENSE=accept                ----> set variable "TS3SERVER_LICENSE = accept"
+
+WORKDIR /home/teamspeak                     ----> work directory
+
+EXPOSE 9987/udp 10011 30033                 ----> open ports
+
+RUN apt-get update && \
+apt-get upgrade -y && \
+apt-get install -y wget bzip2 && \
+wget http://dl.4players.de/ts/releases/3.0.13.4/teamspeak3-server_linux_amd64-3.0.13.4.tar.bz2 && \
+tar -xvf teamspeak3-server_linux_amd64-3.0.13.4.tar.bz2
+
+WORKDIR teamspeak3-server_linux_amd64
+
+ENTRYPOINT sh ts3server_minimal_runscript.sh
+```
+Resources:
++ [Dockerhub/TeamSpeak](https://hub.docker.com/_/teamspeak)
++ https://www.youtube.com/watch?v=za65VWo29uQ
+
+#### Excercise 02: Dockerfile in a Dockerfile... in a Dockerfile ?
+**You are going to create your first Dockerfile to containerize Rails applications. That’s a special configuration: this particular Dockerfile will be generic, and called in another Dockerfile, that will look something like this:**
+```
+FROM ft-rails:on-build
+EXPOSE 3000
+CMD ["rails", "s", "-b", "0.0.0.0", "-p", "3000"]
+```
+**Your generic container should install, via a ruby container, all the necessary dependencies and gems, then copy your rails application in the /opt/app folder of your container. Docker has to install the approtiate gems when it builds, but also launch the migrations and the db population for your application. The child Dockerfile should launch the rails server (see example below). If you don’t know what commands to use, it’s high time to look at the Ruby on Rails documentation.**
