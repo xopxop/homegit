@@ -1,6 +1,6 @@
 FROM debian
 
-MAINTAINER DuThan <dthan@student.hive.fi>
+MAINTAINER Du Than <dthan@student.hive.fi>
 
 ENV TS3SERVER_LICENSE=accept
 
