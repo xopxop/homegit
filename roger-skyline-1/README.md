@@ -84,15 +84,11 @@ $ cat /etc/network/interfaces
 
 To choose the port that we want to access SSH server, we need to modify the ssh configuartion file ```/etc/ssh/sshd_config```, locate the the port line and change it to the one that we one as well as the comment ```#``` ex: changing port 22 to port 55555
 *NOTE:* To check the available port, run command ```netstat -tulpn | grep LISTEN``` or ```ss -tulwn``` to see which port is activate
-***SOURCE:***
-
-[Changing the SSH Port for Your Linux Server](https://fi.godaddy.com/help/changing-the-ssh-port-for-your-linux-server-7306)
 
 *Accessing SSH service with publickeys*
 
 Step 1: Generating a pair of public and private key, on the host machine
 ```ssh-keygen -t rsa``` to generate the key. In the directory ```~\.ssh```, we can find 2 files which is the just generated key ```id_sra``` (private key) and ```id_rsa.pub``` (public key)
-NOTE:
 + id_rsa: Private key, which should be kept safely and can be crypted with a password
 + id_rsa.pub: Public key, which we need to send it to the server (in this case out guest machine)
 
@@ -103,8 +99,8 @@ The key will be automatically added to the ```~/.ssh/authorized_keys``` on the s
 
 *Disabling SSH root access*
 
-Going back to the ssh configuration file ```/etc/ssh/sshd_config``` and locate then modify the line ```# PermitRootLogin yes``` to ```PermitRootLogin no``` https://mediatemple.net/community/products/dv/204643810/how-do-i-disable-ssh-login-for-the-root-user
-NOTE: https://superuser.com/questions/1006267/why-should-i-really-disable-root-ssh-login
+Going back to the ssh configuration file ```/etc/ssh/sshd_config``` and locate then modify the line ```# PermitRootLogin yes``` to ```PermitRootLogin no```
+
 *Remove Password Authentification*
 
 Change ```#PasswordAuthentication yes``` to ```PasswordAuthentication no```, so no need to type password when logging the server with SSH
@@ -112,6 +108,10 @@ Change ```#PasswordAuthentication yes``` to ```PasswordAuthentication no```, so 
 Restart the SSH service
 ```sudo service ssh restart```
 
+***SOURCE:***
++ [Changing the SSH Port for Your Linux Server](https://fi.godaddy.com/help/changing-the-ssh-port-for-your-linux-server-7306)
++ [How to disable ssh login for the root user](https://mediatemple.net/community/products/dv/204643810/how-do-i-disable-ssh-login-for-the-root-user)
++ [Why should I really disable root ssh login?](https://superuser.com/questions/1006267/why-should-i-really-disable-root-ssh-login)
 ```
 Test:
 $ ssh dthan@10.12.1.109 -p 55555
