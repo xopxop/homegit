@@ -60,7 +60,7 @@ TEST:
 $ sudo -l -U user_name
 To check the special rights.
 ```
-***We don’t want you to use the DHCP service of your machine. You’ve got to configure it to have a static IP and a Netmask in \30.***
+**03: We don’t want you to use the DHCP service of your machine. You’ve got to configure it to have a static IP and a Netmask in \30.**
 
 To use the static IP, we need to modify this file ```/etc/network/interfaces``` from:
 
@@ -78,7 +78,7 @@ TEST
 $ cat /etc/network/interfaces
 ```
 
-***You have to change the default port of the SSH service by the one of your choice. SSH access HAS TO be done with publickeys. SSH root access SHOULD NOT be allowed directly, but with a user who can be root.***
+**04: You have to change the default port of the SSH service by the one of your choice. SSH access HAS TO be done with publickeys. SSH root access SHOULD NOT be allowed directly, but with a user who can be root.**
 
 *Changing the default port of the SSH server by the one of your choice*
 
@@ -119,7 +119,7 @@ with no password
 Also, unable to log in as root
 $ ssh root@10.12.1.109 -p 55555
 ```
-***You have to set the rules of your firewall on your server only with the services used outside the VM.***
+**05: You have to set the rules of your firewall on your server only with the services used outside the VM.**
 
 *Installing UFW (Uncomplicated Firewall)*
 
@@ -136,10 +136,16 @@ sudo ufw allow 55555/tcp
 sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
 ```
-Now let check the status of ufw:
-```sudo ufw status```
-Expected result:
 
+```
+TEST:
+To check the current status of ufw, it should be active
+$ sudo service ufw status
+To check open ports
+$ sudo ufw status
+or
+$ sudo ufw status verbose
+```
 <img src="pictures/Screen%20Shot%202020-01-23%20at%205.14.10%20PM.png" width = "330" height = "139">
 
 ***You have to set a DOS (Denial Of Service Attack) protection on your open port of your VM.***
