@@ -1,8 +1,13 @@
 # Roger-skyline-1
+What I have learn from project Roger-skyline-1:
++ Basic installing a VM (in this case: debian 10), partioning the disk size and understand the different between the actual disk size and the one when setting up the VM.
++ How to set up a static IP address.
++ More practice with SSH command.
++ Seting up fire wall (ufw in this case) and enable the necessary port for a server machine (in this case: a log-in website).
++ Seting up the `fail2ban` for preventing DOS attack and set its configuration file, `portsentry` for preventing port scaning and `iptables` for showing the blocked IP address
++ Working with `cron` service and mail service.
++ How to set up a log-in website with apache2 and self signed certificate it.
 
-roger-skyline-1 let you install a Virtual Machine, discover the
-basics about system and network administration as well as a lots of services used on a
-server machine.
 ## MANDATORY PART
 ### VM Part
 You have to run a Virtual Machine (VM) with the Linux OS of your choice (Debian
