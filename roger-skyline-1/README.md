@@ -10,12 +10,10 @@
 
 ## MANDATORY PART
 ### VM Part
-You have to run a Virtual Machine (VM) with the Linux OS of your choice (Debian
-Jessie, CentOS 7...) in the hypervisor of your choice (VMWare Fusion, VirtualBox...).
+**You have to run a Virtual Machine (VM) with the Linux OS of your choice (Debian Jessie, CentOS 7...) in the hypervisor of your choice (VMWare Fusion, VirtualBox...).
 • A disk size of 8 GB.
 • Have at least one 4.2 GB partition.
-• It will also have to be up to date as well as the whole packages installed to meet
-the demands of this subject.
+• It will also have to be up to date as well as the whole packages installed to meet the demands of this subject.**
 
 *My VM (set-up)*
 + DEBIAN 10.2
@@ -26,7 +24,9 @@ sudo fdisk -l
 Note: when partioning the disk size, the primary disk should be some where around 4.5G, therefore when fdisk, the system disk will be around 4.2GB
 because the size when partioning and the one which was shown by the system is different
 
-*SOURCE:*[What size should I make a partition to appear as a standard number e.g 100Gb](https://superuser.com/questions/217012/what-size-should-i-make-a-partition-to-appear-as-a-standard-number-e-g-100gb)
+*SOURCE:*
+[The Illustrated Guide to Installing Debian GNU/Linux](https://wiki.debian.org/LennyIllustratedInstall)
+[What size should I make a partition to appear as a standard number e.g 100Gb](https://superuser.com/questions/217012/what-size-should-i-make-a-partition-to-appear-as-a-standard-number-e-g-100gb)
 
 ### Network and Security Part
 For the network on your VM, here are the steps to achieve
