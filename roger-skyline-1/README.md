@@ -58,7 +58,7 @@ How to use ```sudo``` command with this user? we just need to modify and add ```
 ```
 TEST:
 $ sudo -l -U user_name
-To check the special rights
+To check the special rights.
 ```
 ***We don’t want you to use the DHCP service of your machine. You’ve got to configure it to have a static IP and a Netmask in \30.***
 
@@ -72,6 +72,11 @@ then creat a new file ```enp0s3``` then modify ```/etc/network/interfaces.d/enp0
 
 Remember to restart the networking service with the command ```sudo service networking restart```
 and using command ```ip address``` to check the result
+
+```
+TEST
+$ cat /etc/network/interfaces
+```
 
 ***You have to change the default port of the SSH service by the one of your choice. SSH access HAS TO be done with publickeys. SSH root access SHOULD NOT be allowed directly, but with a user who can be root.***
 
@@ -107,6 +112,13 @@ Change ```#PasswordAuthentication yes``` to ```PasswordAuthentication no```, so 
 Restart the SSH service
 ```sudo service ssh restart```
 
+```
+Test:
+$ ssh dthan@10.12.1.109 -p 55555
+with no password
+Also, unable to log in as root
+$ ssh root@10.12.1.109 -p 55555
+```
 ***You have to set the rules of your firewall on your server only with the services used outside the VM.***
 
 *Installing UFW (Uncomplicated Firewall)*
