@@ -31,7 +31,7 @@ because the size when partioning and the one which was shown by the system is di
 [What size should I make a partition to appear as a standard number e.g 100Gb](https://superuser.com/questions/217012/what-size-should-i-make-a-partition-to-appear-as-a-standard-number-e-g-100gb)
 
 ### Network and Security Part
-***You must create a non-root user to connect to the machine and work.***
+**01 :You must create a non-root user to connect to the machine and work.**
 
 non-root user: dthan
 
@@ -39,7 +39,7 @@ non-root user: dthan
 ```
 adduser <username>
 ```
-***Use sudo, with this user, to be able to perform operation requiring special rights.***
+**02: Use sudo, with this user, to be able to perform operation requiring special rights.**
 
 In order to use sudo command, first we have to install as root user:
 ```
@@ -55,8 +55,10 @@ How to use ```sudo``` command with this user? we just need to modify and add ```
 
 <img src="pictures/Screen%20Shot%202020-01-22%20at%205.39.17%20PM.png" width = "300" height = "80" >
 
-In order to check the special rights: use this command ```sudo -l -U user_name```
-
+===
+***TEST***
+```sudo -l -U user_name```
+===
 ***We don’t want you to use the DHCP service of your machine. You’ve got to configure it to have a static IP and a Netmask in \30.***
 
 To use the static IP, we need to modify this file ```/etc/network/interfaces``` from:
@@ -67,7 +69,7 @@ then creat a new file ```enp0s3``` then modify ```/etc/network/interfaces.d/enp0
 
 <img src="pictures/Screen%20Shot%202020-01-22%20at%206.50.21%20PM.png" width = "400" height = "80">
 
-remember to restart the networking service with the command ```sudo service networking restart```
+Remember to restart the networking service with the command ```sudo service networking restart```
 and using command ```ip address``` to check the result
 
 ***You have to change the default port of the SSH service by the one of your choice. SSH access HAS TO be done with publickeys. SSH root access SHOULD NOT be allowed directly, but with a user who can be root.***
@@ -75,8 +77,10 @@ and using command ```ip address``` to check the result
 *Changing the default port of the SSH server by the one of your choice*
 
 To choose the port that we want to access SSH server, we need to modify the ssh configuartion file ```/etc/ssh/sshd_config```, locate the the port line and change it to the one that we one as well as the comment ```#``` ex: changing port 22 to port 55555
-https://fi.godaddy.com/help/changing-the-ssh-port-for-your-linux-server-7306
-NOTE: To check the available port, run command ```netstat -tulpn | grep LISTEN``` or ```ss -tulwn``` to see which port is activate
+*NOTE:* To check the available port, run command ```netstat -tulpn | grep LISTEN``` or ```ss -tulwn``` to see which port is activate
+***SOURCE:***
+
+[Changing the SSH Port for Your Linux Server](https://fi.godaddy.com/help/changing-the-ssh-port-for-your-linux-server-7306)
 
 *Accessing SSH service with publickeys*
 
