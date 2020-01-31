@@ -1,5 +1,5 @@
 # Roger-skyline-1
-What I have learn from project Roger-skyline-1:
+***What I have learn from project Roger-skyline-1:***
 + Basic installing a VM (in this case: debian 10), partioning the disk size and understand the different between the actual disk size and the one when setting up the VM.
 + How to set up a static IP address.
 + More practice with SSH command.
