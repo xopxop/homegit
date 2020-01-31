@@ -25,7 +25,9 @@ Note: when partioning the disk size, the primary disk should be some where aroun
 because the size when partioning and the one which was shown by the system is different
 
 *SOURCE:*
+
 [The Illustrated Guide to Installing Debian GNU/Linux](https://wiki.debian.org/LennyIllustratedInstall)
+
 [What size should I make a partition to appear as a standard number e.g 100Gb](https://superuser.com/questions/217012/what-size-should-i-make-a-partition-to-appear-as-a-standard-number-e-g-100gb)
 
 ### Network and Security Part
