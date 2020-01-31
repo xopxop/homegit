@@ -54,11 +54,11 @@ Optional: Installing vim
 How to use ```sudo``` command with this user? we just need to modify and add ```user_name ALL=(ALL:ALL)``` in a file with a path ```/etc/sudoers```
 
 <img src="pictures/Screen%20Shot%202020-01-22%20at%205.39.17%20PM.png" width = "300" height = "80" >
-
-===
-***TEST***
-```sudo -l -U user_name```
-===
+```
+TEST:
+$ sudo -l -U user_name
+To check the special rights
+```
 ***We don’t want you to use the DHCP service of your machine. You’ve got to configure it to have a static IP and a Netmask in \30.***
 
 To use the static IP, we need to modify this file ```/etc/network/interfaces``` from:
