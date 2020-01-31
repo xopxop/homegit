@@ -148,9 +148,7 @@ $ sudo ufw status verbose
 ```
 <img src="pictures/Screen%20Shot%202020-01-23%20at%205.14.10%20PM.png" width = "330" height = "139">
 
-***You have to set a DOS (Denial Of Service Attack) protection on your open port of your VM.***
-
-*SOURCE: List of DOS protection method*[CentOS DDoS protection](https://bobcares.com/blog/centos-ddos-protection/)
+**06: You have to set a DOS (Denial Of Service Attack) protection on your open port of your VM.**
 
 DOS protection service: Fail2Ban
 
@@ -185,8 +183,15 @@ failregex = ^ -.*GET
 #
 ignoreregex =
 ```
+*SOURCE:*
++ List of DOS protection method*[CentOS DDoS protection](https://bobcares.com/blog/centos-ddos-protection/)
+```
+TEST:
+Using slowloris
+$ perl slowloris.pl -dns <ip>
+```
 
-***You have to set a protection against scans on your VM’s open ports.***
+**07: You have to set a protection against scans on your VM’s open ports.**
 
 *SOURCE:*
 + [How to protect against port scanners?](https://unix.stackexchange.com/questions/345114/how-to-protect-against-port-scanners)
@@ -216,10 +221,19 @@ Restart Portsentry
 ```
 $ sudo service portsentry restart
 ```
+```
+TEST
+brew install nmap
+nmap <ip>
+nothing should happen
+In the VM:
+iptables --list | head who your IP is banned'
+iptables -D INPUT 1
+service restart portsentry
+```
+**08: Stop the services you don’t need for this project.**
 
-***Stop the services you don’t need for this project.***
 
-*SOURCE: [List of available services](https://unix.stackexchange.com/questions/108591/list-of-available-services)*
 To list all the service
 ```
 $ ls /etc/init.d
@@ -234,8 +248,13 @@ Disable buletooth.service, console-setup.service & keyboard-setup.service
 $ sudo systemctl disable console-setup.service
 $ sudo systemctl disable keyboard-setup.service
 ```
-
-***Create a script that updates all the sources of package, then your packages and which logs the whole in a file named /var/log/update_script.log. Create a scheduled task for this script once a week at 4AM and every time the machine reboots.***
+*SOURCE:* 
++ [List of available services](https://unix.stackexchange.com/questions/108591/list-of-available-services)
+```
+TEST
+$ sudo service --status-all
+```
+**09 :Create a script that updates all the sources of package, then your packages and which logs the whole in a file named /var/log/update_script.log. Create a scheduled task for this script once a week at 4AM and every time the machine reboots.**
 
 ```
 $ touch i_will_update.sh
@@ -259,6 +278,32 @@ $ touch i_will_monitor_cron.sh
 $ chmod a+x i_will_monitor_con.sh
 ```
 
+**10: Make a script to monitor changes of the /etc/crontab file and sends an email to root if it has been modified. Create a scheduled script task every day at midnight.**
+
+
+MAIL part
+Install `bsd-mailx` to be able run `mail`command:
+```
+$ sudo apt install bsd-mailx
+```
+Install `postfix` to be able to send mail to root
+```
+$ sudo apt install postfix
+SETING UP
+"LOCAL ONLY"
+System mail name: debian
+```
+Edit file `/etc/aliases`
+```
+root: root
+```
+then `sudo newaliases`
+
+Now the mail system is set up
+```
+TEST
+echo "Test" | sudo mail -s "TEST" root
+```
 ## OPTIONAL PART
 
 ***Web Part***
