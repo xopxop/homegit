@@ -31,12 +31,13 @@ because the size when partioning and the one which was shown by the system is di
 [What size should I make a partition to appear as a standard number e.g 100Gb](https://superuser.com/questions/217012/what-size-should-i-make-a-partition-to-appear-as-a-standard-number-e-g-100gb)
 
 ### Network and Security Part
-For the network on your VM, here are the steps to achieve
-
 ***You must create a non-root user to connect to the machine and work.***
 
 non-root user: dthan
-
+*Note:*
+```
+adduser <username>
+```
 ***Use sudo, with this user, to be able to perform operation requiring special rights.***
 
 In order to use sudo command, first we have to install as root user:
