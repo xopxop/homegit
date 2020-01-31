@@ -34,6 +34,7 @@ because the size when partioning and the one which was shown by the system is di
 ***You must create a non-root user to connect to the machine and work.***
 
 non-root user: dthan
+
 *Note:*
 ```
 adduser <username>
