@@ -371,7 +371,7 @@ echo "Test" | sudo mail -s "TEST" root
 
 *This is my login page*
 
-<img src="pictures/" width = "???" height = "???" >
+<img src="pictures//\Screen%20Shot%202020-02-02%20at%205.03.47%20PM.png" width = "1500" height = "1000" >
 
 *In order to have your own login page*
 1. Find your own login page (ex: [html5 and css3 login forms](https://colorlib.com/wp/html5-and-css3-login-forms/))
