@@ -309,7 +309,7 @@ $ sudo systemctl disable keyboard-setup.service
 TEST
 $ sudo service --status-all
 ```
-**09 :Create a script that updates all the sources of package, then your packages and which logs the whole in a file named /var/log/update_script.log. Create a scheduled task for this script once a week at 4AM and every time the machine reboots.**
+**09: Create a script that updates all the sources of package, then your packages and which logs the whole in a file named /var/log/update_script.log. Create a scheduled task for this script once a week at 4AM and every time the machine reboots.**
 
 ```
 $ touch i_will_update.sh
@@ -321,7 +321,7 @@ $ chmod a+x i_will_update.sh
 
 Changing crontab by edditing cron job:
 ```
-$sudo crontab -e
+$ sudo crontab -e
 ```
 
 <img src="pictures/Screen%20Shot%202020-01-25%20at%201.41.02%20PM.png" width = 320 height = 58>
@@ -332,6 +332,8 @@ $sudo crontab -e
 $ touch i_will_monitor_cron.sh
 $ chmod a+x i_will_monitor_con.sh
 ```
+
+<img src="pictures/Screen%20Shot%202020-02-02%20at%204.54.23%20PM.png" width = 320 height = 60>
 
 **10: Make a script to monitor changes of the /etc/crontab file and sends an email to root if it has been modified. Create a scheduled script task every day at midnight.**
 
