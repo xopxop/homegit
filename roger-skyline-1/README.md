@@ -394,8 +394,8 @@ State or Province Name (full name) [Some-State]:Uusima
 Locality Name (eg, city) []:Helsinki
 Organization Name (eg, company) [Internet Widgits Pty Ltd]:
 Organizational Unit Name (eg, section) []:
-Common Name (e.g. server FQDN or YOUR name) []:
-Email Address []:root@debian.lan
+Common Name (e.g. server FQDN or YOUR name) []: <IP address>ex: 10.12.1.110
+Email Address []:root@debian
 ```
 2. Configuring Apache to Use SSL
 
@@ -408,19 +408,16 @@ sudo nano /etc/apache2/conf-available/ssl-params.conf
 Paste the following configuration into the ```ssl-params.conf``` file
 ```
 SSLCipherSuite EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH
-SSLProtocol All -SSLv2 -SSLv3 -TLSv1 -TLSv1.1
+SSLProtocol All -SSLv2 -SSLv3
 SSLHonorCipherOrder On
-# Disable preloading HSTS for now.  You can use the commented out header line that includes
-# the "preload" directive if you understand the implications.
-# Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+
 Header always set X-Frame-Options DENY
 Header always set X-Content-Type-Options nosniff
-# Requires Apache >= 2.4
+
 SSLCompression off
+SSLSessionTickets Off
 SSLUseStapling on
 SSLStaplingCache "shmcb:logs/stapling-cache(150000)"
-# Requires Apache >= 2.4.11
-SSLSessionTickets Off
 ```
 *Modifying the Default Apache SSL Virtual Host File*
 + Back up the original SSL Virtual Host file
@@ -435,8 +432,8 @@ Edit the inside like this
 ```
 <IfModule mod_ssl.c>
         <VirtualHost _default_:443>
-                ServerAdmin your_email@example.com
-                ServerName server_domain_or_IP
+                ServerAdmin root@debian
+                ServerName 10.12.1.110
 
                 DocumentRoot /var/www/html
 
@@ -467,7 +464,7 @@ Edit the ```000-default.conf``` which looks like this
 <VirtualHost *:80>
         . . .
 
-        Redirect "/" "https://your_domain_or_IP/"
+        Redirect "/" "https://10.12.1.110/"
 
         . . .
 </VirtualHost>
@@ -487,9 +484,10 @@ NOTE: expected OUT PUT
 Syntax OK
 $ sudo systemctl restart apache2
 ```
-Now the SSL server is tested on the host's web browser and type ```https://``` followed by the server's domain name or IP into the address bar
+Now the SSL server is tested on the host's web browser and type `https://` or `http://` followed by the server's domain name or IP into the address bar
 ```
 https://server_domain_or_IP
 ```
-
+or \<IPaddress\>:\<port_number\>
+ex: 10.12.1.110:80 (http) or 10.12.1.110:443 (https)
 ### Deployment Part
