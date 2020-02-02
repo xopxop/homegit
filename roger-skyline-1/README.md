@@ -333,7 +333,7 @@ $ touch i_will_monitor_cron.sh
 $ chmod a+x i_will_monitor_con.sh
 ```
 
-<img src="pictures/Screen%20Shot%202020-02-02%20at%204.54.23%20PM.png" width = 320 height = 60>
+<img src="pictures/Screen%20Shot%202020-02-02%20at%204.54.23%20PM.png" width = 500 height = 220>
 
 **10: Make a script to monitor changes of the /etc/crontab file and sends an email to root if it has been modified. Create a scheduled script task every day at midnight.**
 
