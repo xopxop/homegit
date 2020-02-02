@@ -241,8 +241,7 @@ ignoreregex =
 TEST:
 Using slowloris
 $ perl slowloris.pl -dns <ip>
-Check /var/log/fail2ban.log
-to see the banned IP
+Check /var/log/fail2ban.log to see the banned IP
 ```
 
 **07: You have to set a protection against scans on your VM’s open ports.**
@@ -278,13 +277,14 @@ $ sudo service portsentry restart
 ```
 ```
 TEST
-brew install nmap
++ In host machine or another VM machine
+"brew install nmap" or "apt-get install nmap"
 nmap <ip>
-nothing should happen
-In the VM:
-iptables --list | head who your IP is banned'
-iptables -D INPUT 1
-service restart portsentry
+nmap keep running, scanning, and should not give any result
++ In the VM (sever):
+mail will be sent to root if there is any portscan activity
+$ fail2ban-client status portscan
+to see the banned IP
 ```
 **08: Stop the services you don’t need for this project.**
 
