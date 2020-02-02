@@ -154,7 +154,9 @@ $ sudo ufw enable
 $ sudo ufw allow 55555/tcp
 $ sudo ufw allow 80/tcp
 $ sudo ufw allow 443/tcp
-Reload ufw
+```
+*Reload ufw*
+```
 $ sudo ufw reload
 ```
 
@@ -179,41 +181,73 @@ $ sudo apt-get install fail2ban iptables apache2 -y
 ```
 Fail2Ban configuration file `/etc/fail2ban/jail.conf`, We will make a copy of the file `jail.conf` and name it `jail.local`. In this way, if there is any change in the `jail.conf` update, out confirguarion for Fail2Ban will be kept the same.
 
-1. Secure the SSH by edditing `/etc/fail2ban/jail.local`:
-
-2. Secure the HTTP (port 80) by eddint `/etc/fail2ban/jail.local`:
-
-3. Create a filter by creating the file /etc/fail2ban/filter.d/http-get-dos.conf and copy the text below in it:
+1. Secure the SSH and HTTP (Port 80) by edditing `/etc/fail2ban/jail.local`:
 
 ```
-# Fail2Ban configuration file
-#
-# Author: http://www.go2linux.org
-#
+[DEFAULT]
+
+destmail = root@debian
+sender = root@debian
+mta = sendmail
+
+action = %(action_mwl)s
+
+[sshd]
+enabled = true
+port = 55555
+filter = sshd
+bantime = 1m
+findtime = 1m
+maxretry = 3
+
+[portscan]
+enabled  = true
+filter   = portscan
+logpath  = /var/log/syslog
+bantime = 1m
+findtime = 1m
+maxretry = 1
+
+[http-get-dos]
+enabled = true
+port = http,https
+filter = http-get-dos
+logpath = /var/log/apache*/access.log
+maxretry = 5
+findtime = 5
+bantime = 1m
+action = iptables[name=HTTP, port=http, protocol=tcp]
+```
+
+2. Create 2 filter by creating the file /etc/fail2ban/filter.d/http-get-dos.conf & portscan.conf then copy the text below into them:
+
+http-get-dos
+```
 [Definition]
-
-# Option: failregex
-# Note: This regex will match any GET entry in your logs, so basically all valid and not valid entries are a match.
-# You should set up in the jail.conf file, the maxretry and findtime carefully in order to avoid false positives.
-
-failregex = ^ -.*GET
-
-# Option: ignoreregex
-# Notes.: regex to ignore. If this regex matches, the line is ignored.
-# Values: TEXT
-#
+failregex = ^<HOST> -.*"(GET|POST).*
+ignoreregex =
+```
+portscan.conf
+```
+[Definition]
+failregex = UFW BLOCK.* SRC=<HOST>
 ignoreregex =
 ```
 *SOURCE:*
 + List of DOS protection method*[CentOS DDoS protection](https://bobcares.com/blog/centos-ddos-protection/)
++ [Install fail2ban to protect your site from DOS attacks](https://www.garron.me/en/go2linux/fail2ban-protect-web-server-http-dos-attack.html)
+
 ```
 TEST:
 Using slowloris
 $ perl slowloris.pl -dns <ip>
+Check /var/log/fail2ban.log
+to see the banned IP
 ```
 
 **07: You have to set a protection against scans on your VM’s open ports.**
-
+*Note:*
+Portscan was set up and work with Fail2ban
 *SOURCE:*
 + [How to protect against port scanners?](https://unix.stackexchange.com/questions/345114/how-to-protect-against-port-scanners)
 + [To protect against the scan of ports with portsentry](https://en-wiki.ikoula.com/en/To_protect_against_the_scan_of_ports_with_portsentry)
