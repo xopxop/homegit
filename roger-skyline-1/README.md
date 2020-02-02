@@ -145,15 +145,17 @@ $ ssh root@10.12.1.110 -p 55555
 UFW was a simple and easy to set-up, in oder to run UFW, we need to install UFW into the system with
 
 ```
-sudo apt-get install ufw
-sudo ufw status
-sudo ufw enable
+$ sudo apt-get install ufw
+$ sudo ufw status
+$ sudo ufw enable
 ```
 *Allowing access ports*
 ```
-sudo ufw allow 55555/tcp
-sudo ufw allow 80/tcp
-sudo ufw allow 443/tcp
+$ sudo ufw allow 55555/tcp
+$ sudo ufw allow 80/tcp
+$ sudo ufw allow 443/tcp
+Reload ufw
+$ sudo ufw reload
 ```
 
 ```
