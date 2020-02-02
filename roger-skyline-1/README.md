@@ -496,4 +496,4 @@ https://server_domain_or_IP
 or \<IPaddress\>:\<port_number\>
 ex: 10.12.1.110:80 (http) or 10.12.1.110:443 (https)
 ### Deployment Part
-This is the the deployment purposer, in this repository includes this file and all the files needed during the configuration which are stored in the `files` folder
+In this repository includes this file (the instruction) and all the files needed during the configuration which are stored in the `files` folder
