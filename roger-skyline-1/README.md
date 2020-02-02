@@ -78,7 +78,7 @@ iface lo inet loopback
 auto enp0s3
 ```
 
-then creat a new file ```enp0s3``` then modify ```/etc/network/interfaces.d/enp0s3``` with these the new ip address, netmask in \30 and gateway address:
+then creat a new file ```enp0s3``` and modify ```/etc/network/interfaces.d/enp0s3``` with these the new ip address, netmask in \30 and gateway address:
 
 ```
 iface enp0s3 inet static
@@ -97,12 +97,14 @@ $ cat /etc/network/interfaces
 
 **04: You have to change the default port of the SSH service by the one of your choice. SSH access HAS TO be done with publickeys. SSH root access SHOULD NOT be allowed directly, but with a user who can be root.**
 
-*Changing the default port of the SSH server by the one of your choice*
+***Changing the default port of the SSH server by the one of your choice***
 
 To choose the port that we want to access SSH server, we need to modify the ssh configuartion file ```/etc/ssh/sshd_config```, locate the the port line and change it to the one that we one as well as the comment ```#``` ex: changing port 22 to port 55555
-*NOTE:* To check the available port, run command ```netstat -tulpn | grep LISTEN``` or ```ss -tulwn``` to see which port is activate
 
-*Accessing SSH service with publickeys*
+*NOTE:* 
++ To check the available port, run command ```netstat -tulpn | grep LISTEN``` or ```ss -tulwn``` to see which port is activate
+
+***Accessing SSH service with publickeys***
 
 Step 1: Generating a pair of public and private key, on the host machine
 ```ssh-keygen -t rsa``` to generate the key. In the directory ```~\.ssh```, we can find 2 files which is the just generated key ```id_sra``` (private key) and ```id_rsa.pub``` (public key)
@@ -114,15 +116,15 @@ Step 2: Sending public key to the server (guest machine)
 ex: ```ssh-copy-id -i id_rsa.pub dthan@10.12.1.109 -p 55555```
 The key will be automatically added to the ```~/.ssh/authorized_keys``` on the server (guest machine)
 
-*Disabling SSH root access*
+***Disabling SSH root access***
 
 Going back to the ssh configuration file ```/etc/ssh/sshd_config``` and locate then modify the line ```# PermitRootLogin yes``` to ```PermitRootLogin no```
 
-*Remove Password Authentification*
+***Remove Password Authentification***
 
 Change ```#PasswordAuthentication yes``` to ```PasswordAuthentication no```, so no need to type password when logging the server with SSH
 
-Restart the SSH service
+***Restart the SSH service***
 ```sudo service ssh restart```
 
 ***SOURCE:***
