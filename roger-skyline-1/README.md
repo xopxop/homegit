@@ -53,7 +53,7 @@ Optional: Installing vim
 ```
 How to use ```sudo``` command with this user? we just need to modify and add ```user_name ALL=(ALL:ALL)``` in a file with a path ```/etc/sudoers```
 
-<img src="pictures/Screen%20Shot%202020-01-22%20at%205.39.17%20PM.png" width = "300" height = "80" >
+<img src="pictures/Screen%20Shot%202020-02-02%20at%204.22.42%20PM.png" width = "300" height = "80" >
 
 ```
 TEST:
