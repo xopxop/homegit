@@ -113,7 +113,7 @@ Step 1: Generating a pair of public and private key, on the host machine
 
 Step 2: Sending public key to the server (guest machine)
 ```ssh-copy-id -i id_rsa.pub <user_name>@<ip_address> -p <port_number>```
-ex: ```ssh-copy-id -i id_rsa.pub dthan@10.12.1.109 -p 55555```
+ex: ```ssh-copy-id -i id_rsa.pub dthan@10.12.1.110 -p 55555```
 The key will be automatically added to the ```~/.ssh/authorized_keys``` on the server (guest machine)
 
 ***Disabling SSH root access***
@@ -133,10 +133,10 @@ Change ```#PasswordAuthentication yes``` to ```PasswordAuthentication no```, so 
 + [Why should I really disable root ssh login?](https://superuser.com/questions/1006267/why-should-i-really-disable-root-ssh-login)
 ```
 Test:
-$ ssh dthan@10.12.1.109 -p 55555
+$ ssh dthan@10.12.1.110 -p 55555
 with no password
 Also, unable to log in as root
-$ ssh root@10.12.1.109 -p 55555
+$ ssh root@10.12.1.110 -p 55555
 ```
 **05: You have to set the rules of your firewall on your server only with the services used outside the VM.**
 
