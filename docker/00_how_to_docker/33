@@ -1,1 +1,1 @@
-docker-machine rm -y Aiur
+docker rmi $(docker images -a -q)
