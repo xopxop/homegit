@@ -32,7 +32,7 @@ void	type_di(t_info *info, va_list arg, size_t *ct)
 	str = ft_itoa_signed_longlong(num);
 	if (info->percision != -1 && info->flags & ZERO)
 		info->flags ^= ZERO;
-	if ((info->percision == 0 || info->percision == -1) && !ft_strcmp("0", str))
+	if ((info->percision == 0 /*|| info->percision == -1*/) && !ft_strcmp("0", str))
 		*str = '\0';
 	if ((info->flags & PLUS_SIGN || info->flags & SPACE) && str[0] != '-')
 	{

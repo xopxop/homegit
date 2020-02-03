@@ -6,8 +6,6 @@
 
 int main(void)
 {
-//	ft_printf("%");
-//	printf("\n");
-	printf("% h");
-	printf("-");
+	ft_printf("{%-15p}", 0);
+//	ft_printf("%hd%hd", (short int)0, (short int)42);
 }
