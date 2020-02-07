@@ -34,14 +34,11 @@ void	type_p(t_info *info, va_list arg, size_t *ct)
 	hex = "0123456789abcdef";
 	num = (long long)va_arg(arg, long long);
 	if (num == 0)
-	{
-		str = ft_strnew(5);
-		str = "(nil)";
-	}
+		str = ft_strdup("(nil)");
 	else
 		str = ft_number_conversion(num, HEX_MASK, SHIFF_HEX_MASK, \
 			MAX_HEX_STRLEN, hex);
-	ft_percision_hex(info, &str);
+	ft_prec_handle(info, &str);
 	ft_pad_handle(info, &str);
 	write(STDOUT, str, *ct = ft_strlen(str));
 	free(str);

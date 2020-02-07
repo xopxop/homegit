@@ -15,6 +15,7 @@
 #define SHIFF_HEX_MASK 4
 #define MAX_HEX_STRLEN 17
 
+
 void	ft_percisionSmallerForxX(t_info *info, char **str)
 {
 	char	*origin;
@@ -80,6 +81,22 @@ void	ft_prec_hex(t_info *info, char **str)
 ** this padding function will be skiped
 */
 
+void flag_control(t_info *info, char **str)
+{
+	if (info->percision != -1 && info->flags & ZERO)
+		info->flags ^= ZERO;
+	if (info->flags & HASH_SIGN && !ft_strcmp("0", *str))
+		info->flags ^= HASH_SIGN;
+	if (info->percision == 0 && !ft_strcmp("0", *str))
+		**str = '\0';
+	if (info->flags & PLUS_SIGN || info->flags & SPACE)
+	{
+		*str = ft_strjoin_and_free_string2((info->flags & SPACE) ? " " : "+", \
+				*str);
+		*str[0] = (info->flags & PLUS_SIGN) ? '+' : *str[0];
+	}
+}
+
 void	small_x(t_info *info, va_list arg, char **output)
 {
 	unsigned long long	num;
@@ -90,18 +107,7 @@ void	small_x(t_info *info, va_list arg, char **output)
 	num = get_unsigned_argument(info, arg);
 	str = ft_number_conversion(num, HEX_MASK, SHIFF_HEX_MASK, \
 			MAX_HEX_STRLEN, hex);
-	if (info->percision != -1 && info->flags & ZERO)
-		info->flags ^= ZERO;
-	if (info->flags & HASH_SIGN && !ft_strcmp("0", str))
-		info->flags ^= HASH_SIGN;
-	if (info->percision == 0 && !ft_strcmp("0", str))
-		*str = '\0';
-	if (info->flags & PLUS_SIGN || info->flags & SPACE)
-	{
-		str = ft_strjoin_and_free_string2((info->flags & SPACE) ? " " : "+", \
-				str);
-		str[0] = (info->flags & PLUS_SIGN) ? '+' : str[0];
-	}
+	flag_control(info, &str);
 	ft_prec_hex(info, &str);
 	ft_special_case(info, &str);
 	ft_pad_handle(info, &str);

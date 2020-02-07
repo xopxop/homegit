@@ -81,25 +81,32 @@ void	ft_prec_nums(t_info *info, char **str)
 
 void	ft_percision_hex(t_info *info, char **str)
 {
-	char *origin;
-	char *new;
-	char extra;
+	char	*new;
+	char	extra;
+	char	*orig;
+	int		hash;
 
-	origin = *str;
-	if (info->percision <= (int)ft_strlen(origin))
+	orig = *str;
+	if (info->percision == -1)
+		info->percision = 1;
+	if (info->percision < (int)ft_strlen(*str) && !ft_strcmp("(nil)", *str))
 	{
-		ft_percisionSmallerThanSTRLEN(info, str);
+		ft_percisionSmallerForxX(info, str);
 		return ;
 	}
-	extra = ((info->flags & PLUS_SIGN) || (info->flags & SPACE)) ? \
-		((info->flags & PLUS_SIGN) ? '+' : ' ') : 0;
-	new = ft_strnew(info->percision + 2 + !!extra);
-	ft_memset(new + !!extra + 2, '0', info->percision - ft_strlen(*str));
-	ft_strcpy(new + !!extra + 2 + info->percision - ft_strlen(*str), *str);
+	extra = (!ft_isalnum((*str)[0])) ? (*str)[0] : 0;
+	hash = (info->flags & HASH_SIGN) ? 2 : 0;
+	if (extra)
+		(*str)++;
+	new = ft_strnew(info->percision + !!extra);
+	ft_memset(new + hash + !!extra, '0', info->percision - ft_strlen(*str));
+	ft_strcpy(new + hash + info->percision - ft_strlen(*str) + \
+			!!extra, *str);
 	if (extra)
 		new[0] = extra;
-	ft_strncpy(new + !!extra, "0x", 2);
-	free(origin);
+	if (hash)
+		ft_strncpy(new + !!extra, "0x", 2);
+	free(orig);
 	*str = new;
 }
 
