@@ -15,7 +15,7 @@
 #define SHIFF_OCTAL_MASK 3
 #define MAX_OCTAL_STRLEN 22+1
 
-void flag_control(t_info *info, char **str)
+static void flag_control(t_info *info, char **str)
 {
 	if (info->percision != -1 && info->flags & ZERO)
 		info->flags ^= ZERO;

@@ -81,7 +81,7 @@ void	ft_prec_hex(t_info *info, char **str)
 ** this padding function will be skiped
 */
 
-void flag_control(t_info *info, char **str)
+static void flag_control(t_info *info, char **str)
 {
 	if (info->percision != -1 && info->flags & ZERO)
 		info->flags ^= ZERO;

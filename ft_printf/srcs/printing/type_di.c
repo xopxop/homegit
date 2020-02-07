@@ -23,7 +23,7 @@
 ** ft_pad_handle will taking care of the padding
 */
 
-void flag_control(t_info *info, char **str)
+static void flag_control(t_info *info, char **str)
 {
 	if (info->percision != -1 && info->flags & ZERO)
 		info->flags ^= ZERO;
