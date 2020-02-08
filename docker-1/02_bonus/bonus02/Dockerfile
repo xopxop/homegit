@@ -1,3 +1,5 @@
+# Minecraft Server
+
 FROM debian
 
 MAINTAINER Du Than <dthan@student.hive.fi>
@@ -14,6 +16,5 @@ EXPOSE 25565
 
 ENTRYPOINT java -Xmx1024M -Xms1024M -jar server.jar
 
-# Minecraft Server
 # docker build -t bonus02 .
 # docker run --rm -d -p 25565:25565 bonus02

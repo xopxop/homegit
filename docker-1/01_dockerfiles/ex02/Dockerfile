@@ -23,24 +23,30 @@
 # launch the rails server (see example below). If you don’t know what commands to use,
 # it’s high time to look at the Ruby on Rails documentation.
 
-FROM ruby:latest
+FROM ruby:2.5.1
 
 MAINTAINER Du Than <dthan@student.hive.fi>
 
-RUN apt-get update -y && apt-get install -y \
-        build-essential \
-        libpq-dev \
-        nodejs \
-        sqlite3
-RUN gem install bundler --no-document
-RUN gem install rails --no-document
-RUN gem install rake -v 12.3.1 --no-document
+RUN apt-get update && apt-get install -y nodejs && rm -rf /var/lib/apt/lists/*
+RUN gem install rails bundler:1.17.3
 
-ONBUILD COPY app /opt/app/
-ONBUILD WORKDIR /opt/app/
+ONBUILD COPY app /opt/app
+ONBUILD WORKDIR /opt/app
 
-ONBUILD EXPOSE 3000
-ONBUILD RUN bundle install
-ONBUILD RUN rake _12.3.1_ db:migrate
-ONBUILD RUN rake _12.3.1_ db:seed
-ONBUILD RUN rake _12.3.1_
+ONBUILD RUN bundler install
+ONBUILD RUN rails db:migrate
+ONBUILD RUN rails db:seed
+
+# Step 1: Setting up
+# mkdir ft-rails
+# mv Dockerfile ft-rails
+# Step 2: Dowloading app
+# git clone https://bitbucket.org/railstutorial/sample_app_4th_ed.git app
+# Step 3: Create Dockerfile for ex02
+# echo -e 'FROM ft-rails:on-build\nEXPOSE 3000\nCMD ["rails", "s", "-b", "0.0.0.0", "-p" ,"3000"]' > Dockerfile
+
+# How to run
+# build the ft-rails:onbuild
+# docker build -t ft-rails:on-build .
+# docker build -t ex02 .
+# docker run -it --rm -p 3000:3000 ex02
