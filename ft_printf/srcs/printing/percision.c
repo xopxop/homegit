@@ -21,7 +21,7 @@
 
 void	ft_prec_handle(t_info *info, char **str)
 {
-	if (info->percision == -1)
+	if (info->percision <= -1)
 		return ;
 	if (ft_strlen(*str) <= (size_t)info->percision)
 		return ;

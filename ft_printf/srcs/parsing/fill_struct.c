@@ -85,8 +85,6 @@ void	get_precision(const char *format, size_t *pos, va_list arg, \
 		{
 			(*pos)++;
 			info->percision = va_arg(arg, int);
-			if (info->percision < 0)
-				info->percision = 0;
 		}
 		else
 			info->percision = 0;

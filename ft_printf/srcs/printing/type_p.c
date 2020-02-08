@@ -38,8 +38,16 @@ void	type_p(t_info *info, va_list arg, size_t *ct)
 //	else
 		str = ft_number_conversion(num, HEX_MASK, SHIFF_HEX_MASK, \
 			MAX_HEX_STRLEN, hex);
-//	ft_prec_handle(info, &str);
-	str = ft_strjoin_and_free_string2("0x", str);
+	ft_prec_handle(info, &str);
+//	ft_percision_hex(info, &str);
+	if (num == 0 && info->percision > 1)
+	{
+		str = ft_strnew(2 + info->percision);
+		str = ft_strncpy(str, "0x0", 3);
+		ft_memset(str + 3, '0', info->percision - 1);
+	}
+	else
+		str = ft_strjoin_and_free_string2("0x", str);
 	ft_pad_handle(info, &str);
 	write(STDOUT, str, *ct = ft_strlen(str));
 	free(str);

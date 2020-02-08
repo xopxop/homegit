@@ -135,7 +135,7 @@ void			ft_handle_fractional(char **str, int *i, long double nb, \
 			s[(*i)++] = '0';
 			continue;
 		}
-		tmp = ((int)nb != 9) ? (int)(nb + 0.01) : (int)nb;
+		tmp = ((int)nb != 9) ? (int)(nb + 0.00001) : (int)nb;
 		s[(*i)++] = (char)(tmp + 48);
 		nb = (nb - tmp) * 10;
 	}

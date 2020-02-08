@@ -30,8 +30,8 @@ int	parse_and_print(const char *format, va_list args, size_t *pos, t_info *info)
 	parsing(format, args, pos, info);
 	if (info->specifier == spec_none)
 	{
-		*pos = position_copy;
-//		write(STDOUT, "%", 1);
+//		*pos = position_copy;
+		write(STDOUT, " ", 1);
 		return (0);
 	}
 	return (printing(info, args));

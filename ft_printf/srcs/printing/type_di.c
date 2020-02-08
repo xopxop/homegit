@@ -25,7 +25,7 @@
 
 static void flag_control(t_info *info, char **str)
 {
-	if (info->percision != -1 && info->flags & ZERO)
+	if (info->percision > -1 && info->flags & ZERO)
 		info->flags ^= ZERO;
 	if ((info->percision == 0 /*|| info->percision == -1*/) && !ft_strcmp("0", *str))
 		**str = '\0';
