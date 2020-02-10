@@ -76,26 +76,19 @@ void	prec_ctrl_nums(t_info *info, char **str)
 void	prec_ctrl_oct_hex(t_info *info, char **str, char *hash_str)
 {
 	char	*new;
-	char	extra;
 	int		hash;
 
 	hash = 0;
 	if (info->percision < (int)ft_strlen(*str))
 		info->percision = (int)ft_strlen(*str);
-	extra = (!ft_isalnum((*str)[0])) ? (*str)[0] : 0;
 	if (info->flags & HASH_SIGN)
 		hash = (info->specifier == spec_hexlowcase || \
 		info->specifier == spec_hexupcase) ? 2 : 1;
-	if (extra)
-		(*str)++;
-	new = ft_strnew(info->percision + !!extra);
-	ft_memset(new + hash + !!extra, '0', info->percision - ft_strlen(*str));
-	ft_strcpy(new + hash + info->percision - ft_strlen(*str) + \
-			!!extra, *str);
-	if (extra)
-		new[0] = extra;
+	new = ft_strnew(info->percision + hash);
+	ft_memset(new + hash, '0', info->percision - ft_strlen(*str));
+	ft_strcpy(new + hash + info->percision - ft_strlen(*str), *str);
 	if (hash)
-		ft_strncpy(new + !!extra, hash_str, hash);
+		ft_strncpy(new, hash_str, hash);
 	free(*str);
 	*str = new;
 }

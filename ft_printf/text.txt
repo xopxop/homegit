@@ -1,4 +1,4 @@
-================ PFT Run: Mon Feb 10 09:47:06 ================
+================ PFT Run: Mon Feb 10 18:57:20 ================
   Running test 0 to end
   Running in fork mode with timeout enabled
 ==============================================================
@@ -342,41 +342,6 @@ Test 1836 (f_L_rnd_prec8_rndd_neg) : FAILED.
       expected (nonprintable as hex) : "-985.76542650"
       actual   (nonprintable as hex) : "-985.76542649"
 
-Test 2390 (nocrash_mandatory_dupflag_x_afasasafljw) : FAILED.
-    (nocrash test: automatically passes provided no unexpected failure)
-    First line of code: {return test("%#++#-5x", 42);}
-    SIGABRT
-
-Test 2444 (nocrash_mandatory_o_as) : FAILED.
-    (nocrash test: automatically passes provided no unexpected failure)
-    First line of code: {return test("%+o", 42);}
-    SIGABRT
-
-Test 2445 (nocrash_mandatory_o_sp) : FAILED.
-    (nocrash test: automatically passes provided no unexpected failure)
-    First line of code: {return test("% o", 42);}
-    SIGABRT
-
-Test 2466 (nocrash_mandatory_x_as) : FAILED.
-    (nocrash test: automatically passes provided no unexpected failure)
-    First line of code: {return test("%+x", 42);}
-    SIGABRT
-
-Test 2467 (nocrash_mandatory_x_sp) : FAILED.
-    (nocrash test: automatically passes provided no unexpected failure)
-    First line of code: {return test("% x", 42);}
-    SIGABRT
-
-Test 2475 (nocrash_mandatory_X_as) : FAILED.
-    (nocrash test: automatically passes provided no unexpected failure)
-    First line of code: {return test("%+X", 42);}
-    SIGABRT
-
-Test 2476 (nocrash_mandatory_X_sp) : FAILED.
-    (nocrash test: automatically passes provided no unexpected failure)
-    First line of code: {return test("% X", 42);}
-    SIGABRT
-
 Test 2574 (moul_f_3) : FAILED.
     First line of code: {return test("Il fait au moins %f
 ", (double)-8000);}
@@ -391,7 +356,7 @@ Test 2574 (moul_f_3) : FAILED.
 
 
 Test Summary:
-================ PFT Run: Mon Feb 10 09:47:06 ================
+================ PFT Run: Mon Feb 10 18:57:20 ================
   Running test 0 to end
   Running in fork mode with timeout enabled
 ==============================================================
@@ -1906,7 +1871,7 @@ Test 2386:  nocrash_mandatory_dupflag_d_spassp         [PASS]
 Test 2387:  nocrash_mandatory_dupflag_d_ljljw          [PASS]
 Test 2388:  nocrash_mandatory_dupflag_d_ljasljw        [PASS]
 Test 2389:  nocrash_mandatory_dupflag_x_afaf           [PASS]
-Test 2390:  nocrash_mandatory_dupflag_x_afasasafljw    [SIGABRT]
+Test 2390:  nocrash_mandatory_dupflag_x_afasasafljw    [PASS]
 Test 2391:  nocrash_mandatory_c_prec_1                 [PASS]
 Test 2392:  nocrash_mandatory_c_prec_2                 [PASS]
 Test 2393:  nocrash_mandatory_c_af                     [PASS]
@@ -1960,8 +1925,8 @@ Test 2440:  nocrash_mandatory_i_size_L                 [PASS]
 Test 2441:  nocrash_mandatory_i_af                     [PASS]
 Test 2442:  nocrash_mandatory_i_size_hhh               [PASS]
 Test 2443:  nocrash_mandatory_i_lj_nowidth             [PASS]
-Test 2444:  nocrash_mandatory_o_as                     [SIGABRT]
-Test 2445:  nocrash_mandatory_o_sp                     [SIGABRT]
+Test 2444:  nocrash_mandatory_o_as                     [PASS]
+Test 2445:  nocrash_mandatory_o_sp                     [PASS]
 Test 2446:  nocrash_mandatory_o_size_L                 [PASS]
 Test 2447:  nocrash_mandatory_o_size_hhh               [PASS]
 Test 2448:  nocrash_mandatory_o_size_hhhh              [PASS]
@@ -1982,8 +1947,8 @@ Test 2462:  nocrash_mandatory_u_size_llh               [PASS]
 Test 2463:  nocrash_mandatory_u_size_lll               [PASS]
 Test 2464:  nocrash_mandatory_u_lj_nowidth             [PASS]
 Test 2465:  nocrash_mandatory_x_size_L                 [PASS]
-Test 2466:  nocrash_mandatory_x_as                     [SIGABRT]
-Test 2467:  nocrash_mandatory_x_sp                     [SIGABRT]
+Test 2466:  nocrash_mandatory_x_as                     [PASS]
+Test 2467:  nocrash_mandatory_x_sp                     [PASS]
 Test 2468:  nocrash_mandatory_x_size_hhh               [PASS]
 Test 2469:  nocrash_mandatory_x_size_hhhh              [PASS]
 Test 2470:  nocrash_mandatory_x_size_hhl               [PASS]
@@ -1991,8 +1956,8 @@ Test 2471:  nocrash_mandatory_x_size_hhll              [PASS]
 Test 2472:  nocrash_mandatory_x_size_llh               [PASS]
 Test 2473:  nocrash_mandatory_x_size_lll               [PASS]
 Test 2474:  nocrash_mandatory_X_size_L                 [PASS]
-Test 2475:  nocrash_mandatory_X_as                     [SIGABRT]
-Test 2476:  nocrash_mandatory_X_sp                     [SIGABRT]
+Test 2475:  nocrash_mandatory_X_as                     [PASS]
+Test 2476:  nocrash_mandatory_X_sp                     [PASS]
 Test 2477:  nocrash_mandatory_X_size_hhh               [PASS]
 Test 2478:  nocrash_mandatory_X_size_llh               [PASS]
 Test 2479:  nocrash_mandatory_x_lj_nowidth             [PASS]
@@ -2160,7 +2125,7 @@ Test 2666:  moul_as_4                                  [PASS]
 Test 2667:  moul_sp_1                                  [PASS]
 Test 2668:  moul_sp_2                                  [PASS]
 Test 2669:  moul_sp_3                                  [PASS]
-Tests completed. 1709/1765 tests passed.
+Tests completed. 1716/1765 tests passed.
 See .pft_results.txt for details.
 
 
