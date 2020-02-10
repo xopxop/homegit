@@ -23,20 +23,6 @@
 ** ft_pad_handle will taking care of the padding
 */
 
-static void flag_control(t_info *info, char **str)
-{
-	if (info->percision > -1 && info->flags & ZERO)
-		info->flags ^= ZERO;
-	if ((info->percision == 0 /*|| info->percision == -1*/) && !ft_strcmp("0", *str))
-		**str = '\0';
-	if ((info->flags & PLUS_SIGN || info->flags & SPACE) && *str[0] != '-')
-	{
-		*str = ft_strjoin_and_free_string2((info->flags & SPACE) ? " " : "+", \
-				*str);
-		*str[0] = (info->flags & PLUS_SIGN) ? '+' : *str[0];
-	}
-}
-
 void	type_di(t_info *info, va_list arg, size_t *ct)
 {
 	long long	num;
@@ -45,8 +31,8 @@ void	type_di(t_info *info, va_list arg, size_t *ct)
 	num = get_signed_argument(info, arg);
 	str = ft_itoa_signed_longlong(num);
 	flag_control(info, &str);
-	ft_prec_nums(info, &str);
-	ft_pad_handle(info, &str);
+	prec_ctrl_nums(info, &str);
+	width_ctrl(info, &str);
 	write(STDOUT, str, *ct = ft_strlen(str));
 	free(str);
 }

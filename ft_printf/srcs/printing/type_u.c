@@ -25,12 +25,9 @@ void	type_u(t_info *info, va_list arg, size_t *ct)
 
 	num = get_unsigned_argument(info, arg);
 	str = ft_itoa_unsigned_longlong(num);
-	if (info->percision != -1 && info->flags & ZERO)
-		info->flags ^= ZERO;
-	if (info->percision == 0 && !ft_strcmp("0", str))
-		*str = '\0';
-	ft_prec_nums(info, &str);
-	ft_pad_handle(info, &str);
+	flag_control(info, &str);
+	prec_ctrl_nums(info, &str);
+	width_ctrl(info, &str);
 	write(STDOUT, str, *ct = ft_strlen(str));
 	free(str);
 }

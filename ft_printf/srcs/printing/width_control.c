@@ -13,13 +13,13 @@
 #include "../../includes/ft_printf.h"
 
 /*
-** ft_right_just is for padding to the left if there is no MINUS flag or with
+** pad_right is for padding to the left if there is no MINUS flag or with
 ** normal field_width applied
 ** - If there is flags ZERO -> fill with '0', it not fill with ' '
 ** - cp new string to the output string
 */
 
-void	ft_right_just(t_info *info, char **str, char *new)
+void	pad_right(t_info *info, char **str, char *new)
 {
 	char extra;
 
@@ -48,14 +48,14 @@ void	ft_right_just(t_info *info, char **str, char *new)
 }
 
 /*
-** This function pad_handle will be used for padding, type d,i,u,c,s,f,p
+** This function width_ctrl will be used for padding, type d,i,u,c,s,f,p
 ** not using for type octal and hexadecimal
 ** if the field width is bigger than the strlength
 ** if MINUS flags, apply left justify
 ** else, right justification is the default
 */
 
-void	ft_pad_handle(t_info *info, char **str)
+void	width_ctrl(t_info *info, char **str)
 {
 	char *new;
 
@@ -70,7 +70,7 @@ void	ft_pad_handle(t_info *info, char **str)
 				- ft_strlen(*str));
 	}
 	else
-		ft_right_just(info, str, new);
+		pad_right(info, str, new);
 	free(*str);
 	*str = new;
 	return ;
@@ -111,7 +111,7 @@ void	ft_special_case(t_info *info, char **str)
 	char *new;
 
 	if ((info->field_width == 0 || ft_strlen(*str) < \
-(size_t)info->field_width) && (info->flags & HASH_SIGN) && \
+		(size_t)info->field_width) && (info->flags & HASH_SIGN) && \
 			(info->flags & ZERO) && !(info->flags & MINUS_SIGN))
 	{
 		new = ft_strnew(info->field_width);

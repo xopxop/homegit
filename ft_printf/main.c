@@ -6,8 +6,7 @@
 
 int main(void)
 {	
-//	printf("{%05.*d}", -15, 42);
-//	ft_printf("\n");
-	ft_printf("%f", 23.00041);
-//	ft_printf("{%*3d}", 5, 0);
+	ft_printf("%#08x", 42);
+	ft_printf("\n");
+	printf("%#08x", 42);
 }

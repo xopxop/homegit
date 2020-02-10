@@ -28,8 +28,8 @@ void	type_s(t_info *info, va_list arg, size_t *ct)
 	else
 	{
 		str = ft_strdup(ctemp);
-		ft_prec_handle(info, &str);
-		ft_pad_handle(info, &str);
+		prec_ctrl_str(info, &str);
+		width_ctrl(info, &str);
 	}
 	write(STDOUT, str, *ct = ft_strlen(str));
 	free(str);

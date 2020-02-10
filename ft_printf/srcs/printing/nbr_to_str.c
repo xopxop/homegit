@@ -73,8 +73,7 @@ unsigned long long	get_unsigned_argument(t_info *info, va_list arg)
 ** - Filling the Fractional part
 */
 
-void				put_floating_point_to_string(long double num, t_info *info,\
-		char **str)
+void	float_to_string(long double num, t_info *info, char **str)
 {
 	long double	modulo;
 	int			str_size;

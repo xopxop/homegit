@@ -133,9 +133,10 @@ void			ft_handle_fractional(char **str, int *i, long double nb, \
 		if ((int)nb == 0)
 		{
 			s[(*i)++] = '0';
+			nb *= 10;
 			continue;
 		}
-		tmp = ((int)nb != 9) ? (int)(nb + 0.00001) : (int)nb;
+		tmp = ((int)nb != 9) ? (int)(nb + 0.00000001) : (int)nb;
 		s[(*i)++] = (char)(tmp + 48);
 		nb = (nb - tmp) * 10;
 	}
@@ -164,14 +165,14 @@ void			type_f(t_info *info, va_list arg, size_t *ct)
 	else
 		num = (long double)va_arg(arg, double);
 	info->percision = (info->percision == -1) ? 6 : info->percision;
-	put_floating_point_to_string(num, info, &str);
+	float_to_string(num, info, &str);
 	if ((info->flags & PLUS_SIGN || info->flags & SPACE) && str[0] != '-')
 	{
 		str = ft_strjoin_and_free_string2((info->flags & SPACE) ? " " : "+", \
 				str);
 		str[0] = (info->flags & PLUS_SIGN) ? '+' : str[0];
 	}
-	ft_pad_handle(info, &str);
+	width_ctrl(info, &str);
 	write(STDOUT, str, *ct = ft_strlen(str));
 	free(str);
 }

@@ -13,13 +13,13 @@
 #include "../../includes/ft_printf.h"
 
 /*
-** This function ft_prec_handle is using for type s only
+** This function prec_ctrl_str is using for type s and type p
 ** when there is no precision, printing normal string
 ** if there is precision, then the string will be null-terminated at
 ** the precision number (only string's length is smaller than the percision)
 */
 
-void	ft_prec_handle(t_info *info, char **str)
+void	prec_ctrl_str(t_info *info, char **str)
 {
 	if (info->percision <= -1)
 		return ;
@@ -29,7 +29,7 @@ void	ft_prec_handle(t_info *info, char **str)
 }
 
 /*
-** This ft_prec_nums is using for type_di and type_u
+** This prec_ctrl_nums is using for type_di and type_u
 ** This ft will create a string and return it back
 ** Note:if the percision == 0 and the number is 0 -> nothing to be printed
 **      if percision < strlen ->no percision (if no percision -> automaticly
@@ -44,7 +44,7 @@ void	ft_prec_handle(t_info *info, char **str)
 ** -Finally, filling the digit from the string to new string
 */
 
-void	ft_prec_nums(t_info *info, char **str)
+void	prec_ctrl_nums(t_info *info, char **str)
 {
 	char *new;
 	char extra;
@@ -53,12 +53,6 @@ void	ft_prec_nums(t_info *info, char **str)
 	orig = *str;
 	if (!**str)
 		return ;
-// 	if ((info->percision == 0 || info->percision == -1) && !ft_strcmp("0", *str) && (info->specifier == spec_int ||
-//	 info->specifier == spec_octal || info->specifier == spec_hexlowcase))
-//	{
-//		**str = '\0';
-//		return ;
-//	}
 	if (info->percision == -1)
 		info->percision = 1;
 	if (info->percision < (int)ft_strlen(*str))
@@ -76,26 +70,22 @@ void	ft_prec_nums(t_info *info, char **str)
 }
 
 /*
-** NEED TO ADD COMMEND AND CHANGE NAME
+** This prec_ctrl_nums is using for type_octal and type_hexadicimal
 */
 
-void	ft_percision_hex(t_info *info, char **str)
+void	prec_ctrl_oct_hex(t_info *info, char **str, char *hash_str)
 {
 	char	*new;
 	char	extra;
-	char	*orig;
 	int		hash;
 
-	orig = *str;
-	if (info->percision == -1)
-		info->percision = 1;
-	if (info->percision < (int)ft_strlen(*str) && !ft_strcmp("(nil)", *str))
-	{
-		ft_percisionSmallerForxX(info, str);
-		return ;
-	}
+	hash = 0;
+	if (info->percision < (int)ft_strlen(*str))
+		info->percision = (int)ft_strlen(*str);
 	extra = (!ft_isalnum((*str)[0])) ? (*str)[0] : 0;
-	hash = (info->flags & HASH_SIGN) ? 2 : 0;
+	if (info->flags & HASH_SIGN)
+		hash = (info->specifier == spec_hexlowcase || \
+		info->specifier == spec_hexupcase) ? 2 : 1;
 	if (extra)
 		(*str)++;
 	new = ft_strnew(info->percision + !!extra);
@@ -105,27 +95,7 @@ void	ft_percision_hex(t_info *info, char **str)
 	if (extra)
 		new[0] = extra;
 	if (hash)
-		ft_strncpy(new + !!extra, "0x", 2);
-	free(orig);
-	*str = new;
-}
-
-// NEED TO ADD COMMEND AND CHANGE NAME
-
-void	ft_percisionSmallerThanSTRLEN(t_info *info, char **str)
-{
-	char *origin;
-	char *new;
-	char extra;
-
-	origin = *str;
-	extra = ((info->flags & PLUS_SIGN) || (info->flags & SPACE)) ? \
-		((info->flags & PLUS_SIGN) ? '+' : ' ') : 0;
-	new = ft_strnew(ft_strlen(*str) + !!extra + 2);
-	if (extra)
-		new[0] = extra;
-	ft_strncpy(new + !!extra, "0x", 2);
-	ft_strcpy(new + !!extra + 2, *str);
-	free(origin);
+		ft_strncpy(new + !!extra, hash_str, hash);
+	free(*str);
 	*str = new;
 }

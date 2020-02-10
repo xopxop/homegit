@@ -112,33 +112,36 @@ void			get_specifier(const char *format, size_t *pos, t_info *info);
 int			printing(t_info *info, va_list arg);
 
 /*
-** Get number to string file
+** Flag_control.c
 */
 
-char			*ft_number_conversion(unsigned long long num, int mask, int shiff_nbr, int strlen, char *s);
-void			put_floating_point_to_string(long double num, t_info *info, char **str);
-
-
-long long		get_signed_argument(t_info* info, va_list arg);
-unsigned long long	get_unsigned_argument(t_info* info, va_list arg);
+void flag_control(t_info *info, char **str);
 
 /*
-** Padding file
+** Width_control.c
 */
 
-void			ft_pad_handle(t_info *info, char **str);
-void			ft_right_just(t_info *info, char **str, char *new);
+void			width_ctrl(t_info *info, char **str);
+void			pad_right(t_info *info, char **str, char *new);
 void			ft_right_just_special_case(t_info *info, char **str, char *new);
 void			ft_special_case(t_info *info, char **str);
 
 /*
-** Percision file
+** Percision_control.c
 */
 
-void			ft_prec_handle(t_info *info, char **str);
-void			ft_prec_nums(t_info *info, char **str);
-void			ft_percision_hex(t_info *info, char **str);
-void			ft_percisionSmallerThanSTRLEN(t_info *info, char **str);
+void	prec_ctrl_str(t_info *info, char **str);
+void	prec_ctrl_nums(t_info *info, char **str);
+void	prec_ctrl_oct_hex(t_info *info, char **str, char *hash_str);
+
+/*
+** Get number to string file
+*/
+
+char			*ft_number_conversion(unsigned long long num, int mask, int shiff_nbr, int strlen, char *s);
+void			float_to_string(long double num, t_info *info, char **str);
+long long		get_signed_argument(t_info* info, va_list arg);
+unsigned long long	get_unsigned_argument(t_info* info, va_list arg);
 
 /*
 ** Type_C
@@ -174,15 +177,12 @@ void			type_u(t_info *info, va_list arg, size_t *ct);
 ** Type Octal number
 */
 
-void			ft_handle_alt(t_info *info, char **str);
 void			type_o(t_info *info, va_list arg, size_t *ct);
 
 /*
 ** Type Hexadecimal number
 */
 
-void			ft_percisionSmallerForxX(t_info *info, char **str);
-void			ft_prec_hex(t_info *info, char **str);
 void			type_x(t_info *info, va_list arg, size_t *ct);
 void			small_x(t_info *info, va_list arg, char **output);
 void			big_x(char **output);

@@ -29,7 +29,7 @@ void	type_c(t_info* info , va_list arg, size_t *ct)
 	str = ft_strnew(1);
     null = (chr == '\0') ? 1 : 0;
 	str[0] = chr + null;
-	ft_pad_handle(info, &str);
+	width_ctrl(info, &str);
 	*ct = ft_strlen(str);
 	if (null)
 	{
