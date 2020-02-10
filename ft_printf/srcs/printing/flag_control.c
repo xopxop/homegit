@@ -1,19 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   flag_control.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/10 07:36:35 by dthan             #+#    #+#             */
+/*   Updated: 2020/02/10 07:39:45 by dthan            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/ft_printf.h"
 
-void flag_control(t_info *info, char **str)
+void	flag_control(t_info *info, char **str)
 {
-    if (info->percision > -1 && info->flags & ZERO)
+	if (info->percision > -1 && info->flags & ZERO)
 		info->flags ^= ZERO;
-    if (info->specifier == spec_hexlowcase || info->specifier == spec_hexupcase \
+	if (info->specifier == spec_hexlowcase || info->specifier == spec_hexupcase\
 			|| info->specifier == spec_octal)
 	{
 		if (info->percision == 0 && !ft_strcmp("0", *str) && \
 					info->specifier == spec_octal)
 			**str = '\0';
-        if (info->flags & HASH_SIGN && !ft_strcmp("0", *str))
-		    info->flags ^= HASH_SIGN;
+		if (info->flags & HASH_SIGN && !ft_strcmp("0", *str))
+			info->flags ^= HASH_SIGN;
 	}
-	if (info->percision == 0 && !ft_strcmp("0", *str) && info->specifier != spec_octal)
+	if (info->percision == 0 && !ft_strcmp("0", *str)\
+			&& info->specifier != spec_octal)
 		**str = '\0';
 	if ((info->flags & PLUS_SIGN || info->flags & SPACE) && *str[0] != '-' \
 		&& !(info->specifier == spec_uint))

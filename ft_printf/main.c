@@ -6,7 +6,7 @@
 
 int main(void)
 {	
-	ft_printf("%#08x", 42);
-	ft_printf("\n");
-	printf("%#08x", 42);
+	printf("%+#5x", -42);
+//	ft_printf("\n");
+//	ft_printf("%+#5x", 42);
 }

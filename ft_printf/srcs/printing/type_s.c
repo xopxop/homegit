@@ -26,11 +26,9 @@ void	type_s(t_info *info, va_list arg, size_t *ct)
 	if (!ctemp)
 		str = ft_strdup("(null)");
 	else
-	{
 		str = ft_strdup(ctemp);
-		prec_ctrl_str(info, &str);
-		width_ctrl(info, &str);
-	}
+	prec_ctrl_str(info, &str);
+	width_ctrl(info, &str);
 	write(STDOUT, str, *ct = ft_strlen(str));
 	free(str);
 }

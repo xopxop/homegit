@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 15:26:45 by dthan             #+#    #+#             */
-/*   Updated: 2019/12/31 15:26:51 by dthan            ###   ########.fr       */
+/*   Updated: 2020/02/10 09:21:45 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*ft_strrev(char *str)
 {
-	char ch;
-	int i;
-	int j;
+	char	ch;
+	int		i;
+	int		j;
 
 	i = (int)ft_strlen(str) - 1;
 	j = 0;

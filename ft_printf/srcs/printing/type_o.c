@@ -6,14 +6,13 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 08:51:30 by dthan             #+#    #+#             */
-/*   Updated: 2020/01/06 21:18:18 by dthan            ###   ########.fr       */
+/*   Updated: 2020/02/10 08:40:53 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 #define OCTAL_MASK 7
 #define SHIFF_OCTAL_MASK 3
-#define MAX_OCTAL_STRLEN 22+1
 
 void	type_o(t_info *info, va_list arg, size_t *ct)
 {
@@ -21,10 +20,9 @@ void	type_o(t_info *info, va_list arg, size_t *ct)
 	char				*str;
 	char				*oct;
 
-	oct	= "01234567";
+	oct = "01234567";
 	num = get_unsigned_argument(info, arg);
-	str = ft_number_conversion(num, OCTAL_MASK, SHIFF_OCTAL_MASK, \
-			MAX_OCTAL_STRLEN, oct);
+	str = ft_number_conversion(num, OCTAL_MASK, SHIFF_OCTAL_MASK, oct);
 	flag_control(info, &str);
 	prec_ctrl_oct_hex(info, &str, "0");
 	width_ctrl(info, &str);

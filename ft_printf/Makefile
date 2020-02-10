@@ -20,7 +20,7 @@ SRCS_CODES = $(addprefix $(SRCS_DIR)/, core.c parsing.c printing.c \
 parsing/fill_struct.c parsing/parsing_helper.c \
 printing/nbr_to_str.c printing/width_control.c printing/percision_control.c \
 printing/type_c.c printing/type_di.c printing/type_f.c printing/type_o.c \
-printing/type_p.c printing/type_s.c printing/type_u.c printing/type_xX.c \
+printing/type_p.c printing/type_s.c printing/type_u.c printing/type_hex.c \
 printing/type_percent.c printing/printing_helper.c \
 printing/flag_control.c)
 

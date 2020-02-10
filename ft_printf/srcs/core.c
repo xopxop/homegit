@@ -73,10 +73,6 @@ int	ft_printf(const char *format, ...)
 	int		printed;
 	va_list	args;
 
-/*
-** 	if (format == NULL)
-**		return (0);
-*/
 	va_start(args, format);
 	printed = full_str_printing(format, args, &info);
 	va_end(args);

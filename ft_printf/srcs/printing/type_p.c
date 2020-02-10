@@ -6,14 +6,13 @@
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 04:07:20 by dthan             #+#    #+#             */
-/*   Updated: 2020/01/06 21:16:10 by dthan            ###   ########.fr       */
+/*   Updated: 2020/02/10 07:43:46 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 #define HEX_MASK 15
 #define SHIFF_HEX_MASK 4
-#define MAX_HEX_STRLEN 17
 
 /*
 ** This ft will taking care of type pointer
@@ -33,8 +32,7 @@ void	type_p(t_info *info, va_list arg, size_t *ct)
 
 	hex = "0123456789abcdef";
 	num = (long long)va_arg(arg, long long);
-		str = ft_number_conversion(num, HEX_MASK, SHIFF_HEX_MASK, \
-			MAX_HEX_STRLEN, hex);
+	str = ft_number_conversion(num, HEX_MASK, SHIFF_HEX_MASK, hex);
 	prec_ctrl_str(info, &str);
 	if (num == 0 && info->percision > 1)
 	{

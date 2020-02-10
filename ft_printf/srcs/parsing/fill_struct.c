@@ -12,8 +12,6 @@
 
 #include "../../includes/ft_printf.h"
 #define IS_FLAG(x) ((x)=='-'||(x)=='+'||(x)==' '||(x)=='#'||(x)=='0')
-#define IS_SPECIFIER(y) ((y)=='c'||(y)=='s'||(y)=='p'||(y)=='d'||(y)=='i'\
-		||(y)=='u'||(y)=='o'||(y)=='x'||(y)=='X'||(y)=='f'||(y)=='%')
 
 /*
 ** the ft parsing flags will pare the flags at the position of the string format
@@ -121,8 +119,6 @@ void	get_length(const char *format, size_t *pos, t_info *info)
 			info->length = len_lup;
 		(*pos)++;
 	}
-	else
-		info->length = len_none;
 }
 
 /*
@@ -142,7 +138,7 @@ void	get_length(const char *format, size_t *pos, t_info *info)
 
 void	get_specifier(const char *format, size_t *pos, t_info *info)
 {
-	if (IS_SPECIFIER(format[*pos]))
+	if (ft_isspecifier(format[*pos]))
 	{
 		if (format[*pos] == 'c')
 			info->specifier = spec_char;
@@ -166,6 +162,4 @@ void	get_specifier(const char *format, size_t *pos, t_info *info)
 			info->specifier = spec_percentsign;
 		(*pos)++;
 	}
-	else
-		info->specifier = spec_none;
 }

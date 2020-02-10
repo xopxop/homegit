@@ -6,11 +6,12 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 14:56:46 by dthan             #+#    #+#             */
-/*   Updated: 2020/01/06 20:56:28 by dthan            ###   ########.fr       */
+/*   Updated: 2020/02/10 07:45:00 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
+#define MAXLEN 23
 
 /*
 ** the function get_signed_argument is for signed integer (type i & d)
@@ -73,11 +74,10 @@ unsigned long long	get_unsigned_argument(t_info *info, va_list arg)
 ** - Filling the Fractional part
 */
 
-void	float_to_string(long double num, t_info *info, char **str)
+void				float_to_string(long double num, t_info *info, char **str)
 {
 	long double	modulo;
 	int			str_size;
-	char		*new;
 	char		negative_sign;
 	char		radix_point;
 	int			i;
@@ -93,19 +93,11 @@ void	float_to_string(long double num, t_info *info, char **str)
 				info->flags & HASH_SIGN)) ? '.' : 0;
 	modulo = ft_calc_modulo(num, &str_size);
 	str_size += (info->percision + !!negative_sign + !!radix_point);
-	new = ft_strnew(str_size);
+	*str = ft_strnew(str_size);
 	if (negative_sign)
-		new[i++] = negative_sign;
-	ft_handle_decimal(&num, &new, &i, modulo);
-	if (info->percision == 0)
-	{
-		if (info->flags & HASH_SIGN)
-			new[i] = radix_point;
-		*str = new;
-		return ;
-	}
-	ft_handle_fractional(&new, &i, num, info);
-	*str = new;
+		*str[i++] = negative_sign;
+	ft_handle_decimal(&num, str, &i, modulo);
+	ft_handle_fractional(str, &i, num, info);
 }
 
 /*
@@ -119,13 +111,13 @@ void	float_to_string(long double num, t_info *info, char **str)
 */
 
 char				*ft_number_conversion(unsigned long long num, int mask, \
-		int shiff_nbr, int strlen, char *s)
+		int shiff_nbr, char *s)
 {
 	int		i;
 	char	*str;
 
 	i = 0;
-	if (!(str = (char*)ft_memalloc(strlen)))
+	if (!(str = (char*)ft_memalloc(MAXLEN)))
 		return (0);
 	if (num == 0)
 		ft_strcpy(str, "0");

@@ -1,0 +1,2547 @@
+================ PFT Run: Mon Feb 10 09:47:06 ================
+  Running test 0 to end
+  Running in fork mode with timeout enabled
+==============================================================
+
+Results of failed tests:
+
+
+Test 1319 (f_basic_positive_smallfpart) : FAILED.
+    First line of code: {return test("%f", 23.00041);}
+      expected output : "23.000410"
+      your output     : "23.000409"
+      expected (nonprintable as hex) : "23.000410"
+      actual   (nonprintable as hex) : "23.000409"
+
+Test 1323 (f_basic_limits_allsmall_pos) : FAILED.
+    First line of code: {return test("%f", 0.000001);}
+      expected output : "0.000001"
+      your output     : "0.000000"
+      expected (nonprintable as hex) : "0.000001"
+      actual   (nonprintable as hex) : "0.000000"
+
+Test 1324 (f_basic_limits_allsmall_neg) : FAILED.
+    First line of code: {return test("%f", -0.000001);}
+      expected output : "-0.000001"
+      your output     : "-0.000000"
+      expected (nonprintable as hex) : "-0.000001"
+      actual   (nonprintable as hex) : "-0.000000"
+
+Test 1326 (f_basic_limits_smallfpart_neg) : FAILED.
+    First line of code: {return test("%f", -875.000001);}
+      expected output : "-875.000001"
+      your output     : "-875.000000"
+      expected (nonprintable as hex) : "-875.000001"
+      actual   (nonprintable as hex) : "-875.000000"
+
+Test 1333 (f_rndu_pos) : FAILED.
+    First line of code: {return test("%f", 0.0894255);}
+      expected output : "0.089426"
+      your output     : "0.089425"
+      expected (nonprintable as hex) : "0.089426"
+      actual   (nonprintable as hex) : "0.089425"
+
+Test 1335 (f_rndu_multidigit_pos) : FAILED.
+    First line of code: {return test("%f", 43.4399999);}
+      expected output : "43.440000"
+      your output     : "43.439999"
+      expected (nonprintable as hex) : "43.440000"
+      actual   (nonprintable as hex) : "43.439999"
+
+Test 1336 (f_rndu_multidigit_neg) : FAILED.
+    First line of code: {return test("%f", -5.0299999);}
+      expected output : "-5.030000"
+      your output     : "-5.029999"
+      expected (nonprintable as hex) : "-5.030000"
+      actual   (nonprintable as hex) : "-5.029999"
+
+Test 1341 (f_rndu_bumpwhole_pos) : FAILED.
+    First line of code: {return test("%f", 3.9999999);}
+      expected output : "4.000000"
+      your output     : "3.999999"
+      expected (nonprintable as hex) : "4.000000"
+      actual   (nonprintable as hex) : "3.999999"
+
+Test 1342 (f_rndu_bumpwhole_neg) : FAILED.
+    First line of code: {return test("%f", -5.9999999);}
+      expected output : "-6.000000"
+      your output     : "-5.999999"
+      expected (nonprintable as hex) : "-6.000000"
+      actual   (nonprintable as hex) : "-5.999999"
+
+Test 1343 (f_prec0_1) : FAILED.
+    First line of code: {return test("this %.0f float", 1.6);}
+      expected output : "this 2 float"
+      your output     : "this 1 float"
+      expected (nonprintable as hex) : "this 2 float"
+      actual   (nonprintable as hex) : "this 1 float"
+
+Test 1346 (f_prec0_negative) : FAILED.
+    First line of code: {return test("%.0f", -3.85);}
+      expected output : "-4"
+      your output     : "-3"
+      expected (nonprintable as hex) : "-4"
+      actual   (nonprintable as hex) : "-3"
+
+Test 1347 (f_prec0_positive_3_3) : FAILED.
+    First line of code: {return test("%.0f", 573.924);}
+      expected output : "574"
+      your output     : "573"
+      expected (nonprintable as hex) : "574"
+      actual   (nonprintable as hex) : "573"
+
+Test 1356 (f_prec1_negative) : FAILED.
+    First line of code: {return test("%.1f", -3.85);}
+      expected output : "-3.9"
+      your output     : "-3.8"
+      expected (nonprintable as hex) : "-3.9"
+      actual   (nonprintable as hex) : "-3.8"
+
+Test 1379 (f_prec7_positive_smallfpart) : FAILED.
+    First line of code: {return test("%.7f", 23.00041);}
+      expected output : "23.0004100"
+      your output     : "23.0004099"
+      expected (nonprintable as hex) : "23.0004100"
+      actual   (nonprintable as hex) : "23.0004099"
+
+Test 1383 (f_prec7_limits_allsmall_pos) : FAILED.
+    First line of code: {return test("%.7f", 0.0000001);}
+      expected output : "0.0000001"
+      your output     : "0.0000000"
+      expected (nonprintable as hex) : "0.0000001"
+      actual   (nonprintable as hex) : "0.0000000"
+
+Test 1384 (f_prec7_limits_allsmall_neg) : FAILED.
+    First line of code: {return test("%.7f", -0.0000001);}
+      expected output : "-0.0000001"
+      your output     : "-0.0000000"
+      expected (nonprintable as hex) : "-0.0000001"
+      actual   (nonprintable as hex) : "-0.0000000"
+
+Test 1386 (f_prec7_limits_smallfpart_neg) : FAILED.
+    First line of code: {return test("%.7f", -875.000001);}
+      expected output : "-875.0000010"
+      your output     : "-875.0000009"
+      expected (nonprintable as hex) : "-875.0000010"
+      actual   (nonprintable as hex) : "-875.0000009"
+
+Test 1391 (f_rnd_prec7_rndd_pos) : FAILED.
+    First line of code: {return test("%.7f", 23.375094499);}
+      expected output : "23.3750945"
+      your output     : "23.3750944"
+      expected (nonprintable as hex) : "23.3750945"
+      actual   (nonprintable as hex) : "23.3750944"
+
+Test 1392 (f_rnd_prec7_rndd_neg) : FAILED.
+    First line of code: {return test("%.7f", -985.765426499);}
+      expected output : "-985.7654265"
+      your output     : "-985.7654264"
+      expected (nonprintable as hex) : "-985.7654265"
+      actual   (nonprintable as hex) : "-985.7654264"
+
+Test 1394 (f_rnd_prec7_rndu_neg) : FAILED.
+    First line of code: {return test("%.7f", -56.2012685);}
+      expected output : "-56.2012685"
+      your output     : "-56.2012684"
+      expected (nonprintable as hex) : "-56.2012685"
+      actual   (nonprintable as hex) : "-56.2012684"
+
+Test 1395 (f_rnd_prec7_rndu_multidigit_pos) : FAILED.
+    First line of code: {return test("%.7f", 43.4399999);}
+      expected output : "43.4399999"
+      your output     : "43.4399998"
+      expected (nonprintable as hex) : "43.4399999"
+      actual   (nonprintable as hex) : "43.4399998"
+
+Test 1397 (f_rnd_prec7_rndd_multidigit_pos) : FAILED.
+    First line of code: {return test("%.7f", 43.43999949);}
+      expected output : "43.4399995"
+      your output     : "43.4399994"
+      expected (nonprintable as hex) : "43.4399995"
+      actual   (nonprintable as hex) : "43.4399994"
+
+Test 1398 (f_rnd_prec7_rndd_multidigit_neg) : FAILED.
+    First line of code: {return test("%.7f", -5.02999949);}
+      expected output : "-5.0299995"
+      your output     : "-5.0299994"
+      expected (nonprintable as hex) : "-5.0299995"
+      actual   (nonprintable as hex) : "-5.0299994"
+
+Test 1399 (f_rnd_prec7_rndd_wholnobump_pos) : FAILED.
+    First line of code: {return test("%.7f", 1.99999949);}
+      expected output : "1.9999995"
+      your output     : "1.9999994"
+      expected (nonprintable as hex) : "1.9999995"
+      actual   (nonprintable as hex) : "1.9999994"
+
+Test 1400 (f_rnd_prec7_rndd_wholnobump_neg) : FAILED.
+    First line of code: {return test("%.7f", -0.99999949);}
+      expected output : "-0.9999995"
+      your output     : "-0.9999994"
+      expected (nonprintable as hex) : "-0.9999995"
+      actual   (nonprintable as hex) : "-0.9999994"
+
+Test 1408 (f_prec8_positive_smallfpart) : FAILED.
+    First line of code: {return test("%.8f", 23.00041);}
+      expected output : "23.00041000"
+      your output     : "23.00040999"
+      expected (nonprintable as hex) : "23.00041000"
+      actual   (nonprintable as hex) : "23.00040999"
+
+Test 1415 (f_prec8_limits_smallfpart_neg) : FAILED.
+    First line of code: {return test("%.8f", -875.000001);}
+      expected output : "-875.00000100"
+      your output     : "-875.00000099"
+      expected (nonprintable as hex) : "-875.00000100"
+      actual   (nonprintable as hex) : "-875.00000099"
+
+Test 1420 (f_rnd_prec8_rndd_pos) : FAILED.
+    First line of code: {return test("%.8f", 23.375094499);}
+      expected output : "23.37509450"
+      your output     : "23.37509449"
+      expected (nonprintable as hex) : "23.37509450"
+      actual   (nonprintable as hex) : "23.37509449"
+
+Test 1421 (f_rnd_prec8_rndd_neg) : FAILED.
+    First line of code: {return test("%.8f", -985.765426499);}
+      expected output : "-985.76542650"
+      your output     : "-985.76542649"
+      expected (nonprintable as hex) : "-985.76542650"
+      actual   (nonprintable as hex) : "-985.76542649"
+
+Test 1423 (f_rnd_prec8_rndu_neg) : FAILED.
+    First line of code: {return test("%.8f", -56.2012685);}
+      expected output : "-56.20126850"
+      your output     : "-56.20126849"
+      expected (nonprintable as hex) : "-56.20126850"
+      actual   (nonprintable as hex) : "-56.20126849"
+
+Test 1424 (f_rnd_prec8_rndu_multidigit_pos) : FAILED.
+    First line of code: {return test("%.8f", 43.4399999);}
+      expected output : "43.43999990"
+      your output     : "43.43999989"
+      expected (nonprintable as hex) : "43.43999990"
+      actual   (nonprintable as hex) : "43.43999989"
+
+Test 1426 (f_rnd_prec8_rndd_multidigit_pos) : FAILED.
+    First line of code: {return test("%.8f", 43.43999949);}
+      expected output : "43.43999949"
+      your output     : "43.43999948"
+      expected (nonprintable as hex) : "43.43999949"
+      actual   (nonprintable as hex) : "43.43999948"
+
+Test 1427 (f_rnd_prec8_rndd_multidigit_neg) : FAILED.
+    First line of code: {return test("%.8f", -5.02999949);}
+      expected output : "-5.02999949"
+      your output     : "-5.02999948"
+      expected (nonprintable as hex) : "-5.02999949"
+      actual   (nonprintable as hex) : "-5.02999948"
+
+Test 1778 (f_L_rndu_pos) : FAILED.
+    First line of code: {return test("%Lf", 0.08942555l);}
+      expected output : "0.089426"
+      your output     : "0.089425"
+      expected (nonprintable as hex) : "0.089426"
+      actual   (nonprintable as hex) : "0.089425"
+
+Test 1780 (f_L_rndu_multidigit_pos) : FAILED.
+    First line of code: {return test("%Lf", 43.4399999l);}
+      expected output : "43.440000"
+      your output     : "43.439999"
+      expected (nonprintable as hex) : "43.440000"
+      actual   (nonprintable as hex) : "43.439999"
+
+Test 1781 (f_L_rndu_multidigit_neg) : FAILED.
+    First line of code: {return test("%Lf", -5.0299999l);}
+      expected output : "-5.030000"
+      your output     : "-5.029999"
+      expected (nonprintable as hex) : "-5.030000"
+      actual   (nonprintable as hex) : "-5.029999"
+
+Test 1786 (f_L_rndu_bumpwhole_pos) : FAILED.
+    First line of code: {return test("%Lf", 3.9999999l);}
+      expected output : "4.000000"
+      your output     : "3.999999"
+      expected (nonprintable as hex) : "4.000000"
+      actual   (nonprintable as hex) : "3.999999"
+
+Test 1787 (f_L_rndu_bumpwhole_neg) : FAILED.
+    First line of code: {return test("%Lf", -5.9999999l);}
+      expected output : "-6.000000"
+      your output     : "-5.999999"
+      expected (nonprintable as hex) : "-6.000000"
+      actual   (nonprintable as hex) : "-5.999999"
+
+Test 1801 (f_L_prec7_limits_smallfpart_neg) : FAILED.
+    First line of code: {return test("%.7Lf", -875.000001l);}
+      expected output : "-875.0000010"
+      your output     : "-875.0000009"
+      expected (nonprintable as hex) : "-875.0000010"
+      actual   (nonprintable as hex) : "-875.0000009"
+
+Test 1806 (f_L_rnd_prec7_rndd_pos) : FAILED.
+    First line of code: {return test("%.7Lf", 23.375094499l);}
+      expected output : "23.3750945"
+      your output     : "23.3750944"
+      expected (nonprintable as hex) : "23.3750945"
+      actual   (nonprintable as hex) : "23.3750944"
+
+Test 1807 (f_L_rnd_prec7_rndd_neg) : FAILED.
+    First line of code: {return test("%.7Lf", -985.765426499l);}
+      expected output : "-985.7654265"
+      your output     : "-985.7654264"
+      expected (nonprintable as hex) : "-985.7654265"
+      actual   (nonprintable as hex) : "-985.7654264"
+
+Test 1812 (f_L_rnd_prec7_rndd_multidigit_pos) : FAILED.
+    First line of code: {return test("%.7Lf", 43.43999949l);}
+      expected output : "43.4399995"
+      your output     : "43.4399994"
+      expected (nonprintable as hex) : "43.4399995"
+      actual   (nonprintable as hex) : "43.4399994"
+
+Test 1813 (f_L_rnd_prec7_rndd_multidigit_neg) : FAILED.
+    First line of code: {return test("%.7Lf", -5.02999949l);}
+      expected output : "-5.0299995"
+      your output     : "-5.0299994"
+      expected (nonprintable as hex) : "-5.0299995"
+      actual   (nonprintable as hex) : "-5.0299994"
+
+Test 1814 (f_L_rnd_prec7_rndd_wholnobump_pos) : FAILED.
+    First line of code: {return test("%.7Lf", 1.99999949l);}
+      expected output : "1.9999995"
+      your output     : "1.9999994"
+      expected (nonprintable as hex) : "1.9999995"
+      actual   (nonprintable as hex) : "1.9999994"
+
+Test 1815 (f_L_rnd_prec7_rndd_wholnobump_neg) : FAILED.
+    First line of code: {return test("%.7Lf", -0.99999949l);}
+      expected output : "-0.9999995"
+      your output     : "-0.9999994"
+      expected (nonprintable as hex) : "-0.9999995"
+      actual   (nonprintable as hex) : "-0.9999994"
+
+Test 1830 (f_L_prec8_limits_smallfpart_neg) : FAILED.
+    First line of code: {return test("%.8Lf", -875.000001l);}
+      expected output : "-875.00000100"
+      your output     : "-875.00000099"
+      expected (nonprintable as hex) : "-875.00000100"
+      actual   (nonprintable as hex) : "-875.00000099"
+
+Test 1835 (f_L_rnd_prec8_rndd_pos) : FAILED.
+    First line of code: {return test("%.8Lf", 23.375094499l);}
+      expected output : "23.37509450"
+      your output     : "23.37509449"
+      expected (nonprintable as hex) : "23.37509450"
+      actual   (nonprintable as hex) : "23.37509449"
+
+Test 1836 (f_L_rnd_prec8_rndd_neg) : FAILED.
+    First line of code: {return test("%.8Lf", -985.765426499l);}
+      expected output : "-985.76542650"
+      your output     : "-985.76542649"
+      expected (nonprintable as hex) : "-985.76542650"
+      actual   (nonprintable as hex) : "-985.76542649"
+
+Test 2390 (nocrash_mandatory_dupflag_x_afasasafljw) : FAILED.
+    (nocrash test: automatically passes provided no unexpected failure)
+    First line of code: {return test("%#++#-5x", 42);}
+    SIGABRT
+
+Test 2444 (nocrash_mandatory_o_as) : FAILED.
+    (nocrash test: automatically passes provided no unexpected failure)
+    First line of code: {return test("%+o", 42);}
+    SIGABRT
+
+Test 2445 (nocrash_mandatory_o_sp) : FAILED.
+    (nocrash test: automatically passes provided no unexpected failure)
+    First line of code: {return test("% o", 42);}
+    SIGABRT
+
+Test 2466 (nocrash_mandatory_x_as) : FAILED.
+    (nocrash test: automatically passes provided no unexpected failure)
+    First line of code: {return test("%+x", 42);}
+    SIGABRT
+
+Test 2467 (nocrash_mandatory_x_sp) : FAILED.
+    (nocrash test: automatically passes provided no unexpected failure)
+    First line of code: {return test("% x", 42);}
+    SIGABRT
+
+Test 2475 (nocrash_mandatory_X_as) : FAILED.
+    (nocrash test: automatically passes provided no unexpected failure)
+    First line of code: {return test("%+X", 42);}
+    SIGABRT
+
+Test 2476 (nocrash_mandatory_X_sp) : FAILED.
+    (nocrash test: automatically passes provided no unexpected failure)
+    First line of code: {return test("% X", 42);}
+    SIGABRT
+
+Test 2574 (moul_f_3) : FAILED.
+    First line of code: {return test("Il fait au moins %f
+", (double)-8000);}
+      expected output : "Il fait au moins -8000.000000
+"
+      your output     : "Il fait au moins -8.000000
+"
+      expected (nonprintable as hex) : "Il fait au moins -8000.000000
+"
+      actual   (nonprintable as hex) : "Il fait au moins -8.000000
+"
+
+
+Test Summary:
+================ PFT Run: Mon Feb 10 09:47:06 ================
+  Running test 0 to end
+  Running in fork mode with timeout enabled
+==============================================================
+Test    0:  nospec_no_specifier_test                   [PASS]
+Test    1:  nospec_empty_string                        [PASS]
+Test    2:  nospec_some_escaped_chars                  [PASS]
+Test    3:  nospec_successive_5_5                      [PASS]
+Test    4:  nospec_successive_2_9                      [PASS]
+Test    5:  nospec_successive_8_3                      [PASS]
+Test    6:  pct_basic                                  [PASS]
+Test   11:  nocrash_nullspec_basic                     [PASS]
+Test   12:  nocrash_nullspec_5w                        [PASS]
+Test   13:  nocrash_nullspec_5wzp                      [PASS]
+Test   14:  nocrash_nullspec_5wzplj                    [PASS]
+Test   15:  nocrash_nullspec_5wlj                      [PASS]
+Test   16:  s_basic_string_expansion                   [PASS]
+Test   17:  s_only_string_expansion                    [PASS]
+Test   18:  s_two_string_expansions                    [PASS]
+Test   19:  s_two_string_expansions2                   [PASS]
+Test   20:  s_empty_string_expansion                   [PASS]
+Test   21:  s_full_then_empty_string                   [PASS]
+Test   22:  s_empty_then_full_string                   [PASS]
+Test   23:  s_three_strings                            [PASS]
+Test   24:  s_space_padded_field_width                 [PASS]
+Test   25:  s_space_padded_field_width2                [PASS]
+Test   26:  s_space_padded_over_field_width            [PASS]
+Test   27:  s_space_padded_field_width_lj              [PASS]
+Test   28:  s_space_padded_field_width2_lj             [PASS]
+Test   29:  s_space_padded_over_field_width_lj         [PASS]
+Test   30:  s_string_prec_notrunc                      [PASS]
+Test   31:  s_string_prec_trunc                        [PASS]
+Test   32:  s_string_prec_default                      [PASS]
+Test   33:  s_string_prec_zero                         [PASS]
+Test   34:  s_two_strings_prec_2trunc                  [PASS]
+Test   35:  s_two_strings_prec_1trunc_a                [PASS]
+Test   36:  s_two_strings_prec_1trunc_b                [PASS]
+Test   37:  s_two_strings_prec_0trunc                  [PASS]
+Test   38:  s_string_prec_width_notrunc                [PASS]
+Test   39:  s_string_prec_width_trunc                  [PASS]
+Test   40:  s_string_prec_width_notrunc_lj             [PASS]
+Test   41:  s_string_prec_width_trunc_lj               [PASS]
+Test   42:  s_two_s_prec_width_2fit_0trunc             [PASS]
+Test   43:  s_two_s_prec_width_1fit_a_0trunc           [PASS]
+Test   44:  s_two_s_prec_width_1fit_b_0trunc           [PASS]
+Test   45:  s_two_s_prec_width_0fit_0trunc             [PASS]
+Test   46:  s_two_s_prec_width_2fit_1trunc_a           [PASS]
+Test   47:  s_two_s_prec_width_1fit_a_1trunc_a         [PASS]
+Test   48:  s_two_s_prec_width_1fit_b_1trunc_a         [PASS]
+Test   49:  s_two_s_prec_width_0fit_1trunc_a           [PASS]
+Test   50:  s_two_s_prec_width_2fit_1trunc_b           [PASS]
+Test   51:  s_two_s_prec_width_1fit_a_1trunc_b         [PASS]
+Test   52:  s_two_s_prec_width_1fit_b_1trunc_b         [PASS]
+Test   53:  s_two_s_prec_width_0fit_1trunc_b           [PASS]
+Test   54:  s_two_s_prec_width_2fit_2trunc             [PASS]
+Test   55:  s_two_s_prec_width_1fit_a_2trunc           [PASS]
+Test   56:  s_two_s_prec_width_1fit_b_2trunc           [PASS]
+Test   57:  s_two_s_prec_width_0fit_2trunc             [PASS]
+Test   58:  s_two_s_prec_width_2trunc                  [PASS]
+Test   59:  s_two_strings_lj_and_rj                    [PASS]
+Test   60:  s_two_strings_rj_and_lj                    [PASS]
+Test   61:  s_null_basic_string_expansion              [PASS]
+Test   62:  s_null_only_string_expansion               [PASS]
+Test   63:  s_null_space_padded_field_width            [PASS]
+Test   64:  s_null_space_padded_over_field_width       [PASS]
+Test   65:  s_null_space_padded_field_width_lj         [PASS]
+Test   66:  s_null_space_padded_field_width2_lj        [PASS]
+Test   67:  s_null_space_padded_over_field_width_lj    [PASS]
+Test   68:  s_null_string_prec_notrunc                 [PASS]
+Test   69:  s_null_string_prec_trunc                   [PASS]
+Test   70:  s_null_string_prec_default                 [PASS]
+Test   71:  s_null_string_prec_zero                    [PASS]
+Test   72:  s_basic_s_hidden                           [PASS]
+Test   73:  s_width_3_s_hidden                         [PASS]
+Test   74:  s_width_9_s_hidden                         [PASS]
+Test   75:  s_prec_no_width_s_hidden                   [PASS]
+Test   76:  s_prec_9_no_width_s_hidden                 [PASS]
+Test   77:  s_prec_03_no_width_s_hidden                [PASS]
+Test   78:  s_prec_09_no_width_s_hidden                [PASS]
+Test   79:  s_prec_03_no_width_s_null                  [PASS]
+Test   80:  s_prec_09_no_width_s_null                  [PASS]
+Test   81:  s_prec_00_no_width_s_nullchar              [PASS]
+Test   82:  s_prec_01_no_width_s_nullchar              [PASS]
+Test   83:  s_prec_03_no_width_s_nullchar              [PASS]
+Test   84:  s_prec_09_no_width_s_nullchar              [PASS]
+Test   85:  s_prec_0_width_3_s_hidden                  [PASS]
+Test   86:  s_prec_0_width_10_s_hidden                 [PASS]
+Test   87:  s_prec_0_width_3_s_null                    [PASS]
+Test   88:  s_prec_0_width_10_s_null                   [PASS]
+Test   89:  s_prec_0_width_1_s_nullchar                [PASS]
+Test   90:  s_prec_0_width_2_s_nullchar                [PASS]
+Test   91:  s_prec_0_width_9_s_nullchar                [PASS]
+Test   92:  s_prec_0_lj_width_3_s_hidden               [PASS]
+Test   93:  s_prec_0_lj_width_8_s_hidden               [PASS]
+Test   94:  s_prec_0_lj_width_3_s_null                 [PASS]
+Test   95:  s_prec_0_lj_width_8_s_null                 [PASS]
+Test   96:  s_prec_0_lj_width_1_s_nullchar             [PASS]
+Test   97:  s_prec_0_lj_width_2_s_nullchar             [PASS]
+Test   98:  s_prec_0_lj_width_6_s_nullchar             [PASS]
+Test   99:  s_prec_1_width_3_s_hidden                  [PASS]
+Test  100:  s_prec_1_width_10_s_hidden                 [PASS]
+Test  101:  s_prec_1_width_3_s_null                    [PASS]
+Test  102:  s_prec_1_width_9_s_null                    [PASS]
+Test  103:  s_prec_1_lj_width_3_s_hidden               [PASS]
+Test  104:  s_prec_1_lj_width_10_s_hidden              [PASS]
+Test  105:  s_prec_1_lj_width_3_s_null                 [PASS]
+Test  106:  s_prec_1_lj_width_9_s_null                 [PASS]
+Test  107:  s_prec_1_lj_width_3_s_nullchar             [PASS]
+Test  108:  s_prec_1_lj_width_6_s_nullchar             [PASS]
+Test  109:  s_prec_perfect_width_3_s_hidden            [PASS]
+Test  110:  s_prec_perfect_width_20_s_hidden           [PASS]
+Test  111:  s_prec_perfect_width_3_s_null              [PASS]
+Test  112:  s_prec_perfect_width_20_s_null             [PASS]
+Test  113:  s_prec_perfect_width_3_s_nullchar          [PASS]
+Test  114:  s_prec_perfect_width_6_s_nullchar          [PASS]
+Test  115:  s_prec_perfect_lj_width_3_s_hidden         [PASS]
+Test  116:  s_prec_perfect_lj_width_20_s_hidden        [PASS]
+Test  117:  s_prec_8_lj_width_3_s_hidden               [PASS]
+Test  118:  s_prec_8_lj_width_10_s_hidden              [PASS]
+Test  119:  s_prec_8_lj_width_3_s_null                 [PASS]
+Test  120:  s_prec_8_lj_width_10_s_null                [PASS]
+Test  121:  s_prec_00_lj_s_hidden_trunc                [PASS]
+Test  122:  s_prec_09_lj_s_hidden_notrunc              [PASS]
+Test  161:  i_basic_i_pos                              [PASS]
+Test  162:  i_basic_i_neg                              [PASS]
+Test  163:  i_basic_i_zero                             [PASS]
+Test  164:  i_basic_i_onlypos                          [PASS]
+Test  165:  i_basic_i_onlyneg                          [PASS]
+Test  166:  i_basic_i_onlyzero                         [PASS]
+Test  167:  d_basic_pos                                [PASS]
+Test  168:  d_basic_neg                                [PASS]
+Test  169:  d_basic_zero                               [PASS]
+Test  170:  i_intmax                                   [PASS]
+Test  171:  i_intmin                                   [PASS]
+Test  172:  i_as_pos                                   [PASS]
+Test  173:  i_as_neg                                   [PASS]
+Test  174:  i_intmax_as                                [PASS]
+Test  175:  i_width_pos_fits                           [PASS]
+Test  176:  i_width_neg_fits                           [PASS]
+Test  177:  i_width_zero_fits                          [PASS]
+Test  178:  i_width_pos_exactfit                       [PASS]
+Test  179:  i_width_neg_exactfit                       [PASS]
+Test  180:  i_width_pos_nofit                          [PASS]
+Test  181:  i_width_neg_nofit                          [PASS]
+Test  182:  i_width_pos_fits_lj                        [PASS]
+Test  183:  i_width_neg_fits_lj                        [PASS]
+Test  184:  i_width_zero_fits_lj                       [PASS]
+Test  185:  i_width_pos_exactfit_lj                    [PASS]
+Test  186:  i_width_neg_exactfit_lj                    [PASS]
+Test  187:  i_width_pos_nofit_lj                       [PASS]
+Test  188:  i_width_neg_nofit_lj                       [PASS]
+Test  189:  i_width_as_pos                             [PASS]
+Test  190:  i_width_as_zero                            [PASS]
+Test  191:  i_width_intmax_as                          [PASS]
+Test  192:  i_prec_fits_pos                            [PASS]
+Test  193:  i_prec_fits_neg                            [PASS]
+Test  194:  i_prec_fits_zero                           [PASS]
+Test  195:  i_prec_exactfit_pos                        [PASS]
+Test  196:  i_prec_exactfit_neg                        [PASS]
+Test  197:  i_prec_nofit_pos                           [PASS]
+Test  198:  i_prec_nofit_neg                           [PASS]
+Test  199:  i_prec_as_pos                              [PASS]
+Test  200:  i_prec_as_neg                              [PASS]
+Test  201:  i_prec_as_pos_nofit                        [PASS]
+Test  202:  i_zp_pos_fits                              [PASS]
+Test  203:  i_zp_neg_fits                              [PASS]
+Test  204:  i_zp_zero_fits                             [PASS]
+Test  205:  i_zp_pos_exactfit                          [PASS]
+Test  206:  i_zp_neg_exactfit                          [PASS]
+Test  207:  i_zp_neg_minus1fit                         [PASS]
+Test  210:  i_prec_width_fit_fit_pos                   [PASS]
+Test  211:  i_prec_width_fit_fit_neg                   [PASS]
+Test  212:  i_prec_width_fit_fit_zero                  [PASS]
+Test  213:  i_prec_width_nofit_fit_pos                 [PASS]
+Test  214:  i_prec_width_nofit_fit_neg                 [PASS]
+Test  215:  i_prec_width_fit_nofit_pos                 [PASS]
+Test  216:  i_prec_width_fit_nofit_neg                 [PASS]
+Test  217:  i_prec_width_nofit_nofit_pos               [PASS]
+Test  218:  i_prec_width_nofit_nofit_neg               [PASS]
+Test  219:  i_prec_width_fit_fit_pos_lj                [PASS]
+Test  220:  i_prec_width_fit_fit_neg_lj                [PASS]
+Test  221:  i_prec_width_fit_fit_zero_lj               [PASS]
+Test  222:  i_prec_width_nofit_fit_pos_lj              [PASS]
+Test  223:  i_prec_width_nofit_fit_neg_lj              [PASS]
+Test  224:  i_prec_width_fit_nofit_pos_lj              [PASS]
+Test  225:  i_prec_width_fit_nofit_neg_lj              [PASS]
+Test  226:  i_prec_width_nofit_nofit_pos_lj            [PASS]
+Test  227:  i_prec_width_nofit_nofit_neg_lj            [PASS]
+Test  228:  i_prec_width_fit_fit_pos_as                [PASS]
+Test  229:  i_prec_width_fit_fit_neg_as                [PASS]
+Test  230:  i_prec_width_fit_fit_zero_as               [PASS]
+Test  231:  i_prec_width_nofit_fit_pos_as              [PASS]
+Test  232:  i_prec_width_nofit_fit_neg_as              [PASS]
+Test  233:  i_prec_width_fit_nofit_pos_as              [PASS]
+Test  234:  i_prec_width_fit_nofit_neg_as              [PASS]
+Test  235:  i_prec_width_nofit_nofit_pos_as            [PASS]
+Test  236:  i_prec_width_nofit_nofit_neg_as            [PASS]
+Test  237:  i_prec_width_fit_fit_pos_ljas              [PASS]
+Test  238:  i_prec_width_fit_fit_neg_ljas              [PASS]
+Test  239:  i_prec_width_fit_fit_zero_ljas             [PASS]
+Test  240:  i_prec_width_nofit_fit_pos_ljas            [PASS]
+Test  241:  i_prec_width_nofit_fit_neg_ljas            [PASS]
+Test  242:  i_prec_width_fit_nofit_pos_ljas            [PASS]
+Test  243:  i_prec_width_fit_nofit_neg_ljas            [PASS]
+Test  244:  i_prec_width_nofit_nofit_pos_ljas          [PASS]
+Test  245:  i_prec_width_nofit_nofit_neg_ljas          [PASS]
+Test  246:  i_prec_width_ff_pos_zp                     [PASS]
+Test  247:  i_prec_width_ff_neg_zp                     [PASS]
+Test  248:  i_prec_width_ff_zero_zp                    [PASS]
+Test  249:  i_prec_width_nf_pos_zp                     [PASS]
+Test  250:  i_prec_width_nf_neg_zp                     [PASS]
+Test  251:  i_prec_width_fn_pos_zp                     [PASS]
+Test  252:  i_prec_width_fn_neg_zp                     [PASS]
+Test  253:  i_prec_width_nn_pos_zp                     [PASS]
+Test  254:  i_prec_width_nn_neg_zp                     [PASS]
+Test  255:  i_prec_width_ff_pos_lj_zp_ignoreflag       [PASS]
+Test  256:  i_prec_width_ff_neg_ljzp_ignoreflag        [PASS]
+Test  257:  i_prec_width_ff_zero_ljzp_ignoreflag       [PASS]
+Test  258:  i_prec_width_nf_pos_ljzp_ignoreflag        [PASS]
+Test  259:  i_prec_width_nf_neg_ljzp_ignoreflag        [PASS]
+Test  260:  i_prec_width_fn_pos_ljzp_ignoreflag        [PASS]
+Test  261:  i_prec_width_fn_neg_ljzp_ignoreflag        [PASS]
+Test  262:  i_prec_width_nn_pos_ljzp_ignoreflag        [PASS]
+Test  263:  i_prec_width_nn_neg_ljzp_ignoreflag        [PASS]
+Test  290:  i_size_hh_pos_ref                          [PASS]
+Test  291:  i_size_hh_neg_ref                          [PASS]
+Test  292:  i_size_h_pos_ref                           [PASS]
+Test  293:  i_size_h_neg_ref                           [PASS]
+Test  294:  i_size_l_pos_ref                           [PASS]
+Test  295:  i_size_l_pos_ref_lmax                      [PASS]
+Test  296:  i_size_ll_pos_ref_llmax                    [PASS]
+Test  297:  i_size_l_neg_ref                           [PASS]
+Test  298:  i_size_ll_pos_ref                          [PASS]
+Test  299:  i_size_ll_neg_ref                          [PASS]
+Test  300:  i_size_l_pos_big                           [PASS]
+Test  301:  i_size_l_neg_big                           [PASS]
+Test  302:  i_size_ll_pos_big                          [PASS]
+Test  303:  i_size_ll_neg_big                          [PASS]
+Test  304:  i_llmax                                    [PASS]
+Test  305:  i_llmin                                    [PASS]
+Test  306:  i_lmax                                     [PASS]
+Test  307:  i_lmin                                     [PASS]
+Test  308:  i_hmax                                     [PASS]
+Test  309:  i_hmin                                     [PASS]
+Test  310:  i_hhmax                                    [PASS]
+Test  311:  i_hhmin                                    [PASS]
+Test  313:  i_size_l_neg_big_prec                      [PASS]
+Test  314:  i_size_ll_pos_big_width                    [PASS]
+Test  315:  i_size_ll_neg_big_lj                       [PASS]
+Test  317:  i_size_follows_i_i                         [PASS]
+Test  318:  i_size_follows_i_l                         [PASS]
+Test  319:  i_size_follows_i_ll                        [PASS]
+Test  320:  i_size_follows_i_h                         [PASS]
+Test  321:  i_size_follows_i_hh                        [PASS]
+Test  322:  i_size_ll_hh_ll                            [PASS]
+Test  323:  i_size_h_l_hh                              [PASS]
+Test  324:  i_size_l_hh_h                              [PASS]
+Test  325:  i_size_n_ll_hh                             [PASS]
+Test  326:  i_size_ll_n_l                              [PASS]
+Test  327:  i_basic_i_pos_sp                           [PASS]
+Test  328:  i_basic_i_neg_sp                           [PASS]
+Test  329:  i_basic_i_zero_sp                          [PASS]
+Test  330:  i_basic_i_onlypos_sp                       [PASS]
+Test  331:  i_basic_i_onlyneg_sp                       [PASS]
+Test  332:  i_basic_i_onlyzero_sp                      [PASS]
+Test  333:  i_basic_i_pos_d_sp                         [PASS]
+Test  334:  i_basic_i_neg_d_sp                         [PASS]
+Test  335:  i_basic_i_zero_d_sp                        [PASS]
+Test  336:  i_intmax_sp                                [PASS]
+Test  337:  i_intmin_sp                                [PASS]
+Test  338:  i_assp_pos_ignoreflag                      [PASS]
+Test  339:  i_assp_neg_ignoreflag                      [PASS]
+Test  340:  i_intmax_assp_ignoreflag                   [PASS]
+Test  341:  i_width_pos_fits_sp                        [PASS]
+Test  342:  i_width_neg_fits_sp                        [PASS]
+Test  343:  i_width_zero_fits_sp                       [PASS]
+Test  344:  i_width_pos_exactfit_sp                    [PASS]
+Test  345:  i_width_neg_exactfit_sp                    [PASS]
+Test  346:  i_width_pos_nofit_sp                       [PASS]
+Test  347:  i_width_neg_nofit_sp                       [PASS]
+Test  348:  i_width_pos_fits_lj_sp                     [PASS]
+Test  349:  i_width_neg_fits_lj_sp                     [PASS]
+Test  350:  i_width_zero_fits_lj_sp                    [PASS]
+Test  351:  i_width_pos_exactfit_lj_sp                 [PASS]
+Test  352:  i_width_neg_exactfit_lj_sp                 [PASS]
+Test  353:  i_width_pos_nofit_lj_sp                    [PASS]
+Test  354:  i_width_neg_nofit_lj_sp                    [PASS]
+Test  355:  i_width_assp_pos_ignoreflag                [PASS]
+Test  356:  i_width_assp_zero_ignoreflag               [PASS]
+Test  357:  i_width_intmax_assp_ignoreflag             [PASS]
+Test  358:  i_prec_fits_pos_sp                         [PASS]
+Test  359:  i_prec_fits_neg_sp                         [PASS]
+Test  360:  i_prec_fits_zero_sp                        [PASS]
+Test  361:  i_prec_exactfit_pos_sp                     [PASS]
+Test  362:  i_prec_exactfit_neg_sp                     [PASS]
+Test  363:  i_prec_nofit_pos_sp                        [PASS]
+Test  364:  i_prec_nofit_neg_sp                        [PASS]
+Test  365:  i_prec_assp_pos_ignoreflag                 [PASS]
+Test  366:  i_prec_assp_neg_ignoreflag                 [PASS]
+Test  367:  i_prec_assp_pos_nofit_ignoreflag           [PASS]
+Test  376:  i_prec_width_fit_fit_pos_sp                [PASS]
+Test  377:  i_prec_width_fit_fit_neg_sp                [PASS]
+Test  378:  i_prec_width_fit_fit_zero_sp               [PASS]
+Test  379:  i_prec_width_nofit_fit_pos_sp              [PASS]
+Test  380:  i_prec_width_nofit_fit_neg_sp              [PASS]
+Test  381:  i_prec_width_fit_nofit_pos_sp              [PASS]
+Test  382:  i_prec_width_fit_nofit_neg_sp              [PASS]
+Test  383:  i_prec_width_nofit_nofit_pos_sp            [PASS]
+Test  384:  i_prec_width_nofit_nofit_neg_sp            [PASS]
+Test  385:  i_prec_width_fit_fit_pos_lj_sp             [PASS]
+Test  386:  i_prec_width_fit_fit_neg_lj_sp             [PASS]
+Test  387:  i_prec_width_fit_fit_zero_lj_sp            [PASS]
+Test  388:  i_prec_width_nofit_fit_pos_lj_sp           [PASS]
+Test  389:  i_prec_width_nofit_fit_neg_lj_sp           [PASS]
+Test  390:  i_prec_width_fit_nofit_pos_lj_sp           [PASS]
+Test  391:  i_prec_width_fit_nofit_neg_lj_sp           [PASS]
+Test  392:  i_prec_width_nofit_nofit_pos_lj_sp         [PASS]
+Test  393:  i_prec_width_nofit_nofit_neg_lj_sp         [PASS]
+Test  394:  i_prec_width_fit_fit_pos_assp_ignoreflag   [PASS]
+Test  395:  i_prec_width_fit_fit_neg_assp_ignoreflag   [PASS]
+Test  396:  i_prec_width_fit_fit_zero_assp_ignoreflag  [PASS]
+Test  397:  i_prec_width_nofit_fit_pos_assp_ignoreflag [PASS]
+Test  398:  i_prec_width_nofit_fit_neg_assp_ignoreflag [PASS]
+Test  399:  i_prec_width_fit_nofit_pos_assp_ignoreflag [PASS]
+Test  400:  i_prec_width_fit_nofit_neg_assp_ignoreflag [PASS]
+Test  401:  i_prec_width_nofit_nofit_pos_assp_ignoreflag [PASS]
+Test  402:  i_prec_width_nofit_nofit_neg_assp_ignoreflag [PASS]
+Test  403:  i_prec_width_fit_fit_pos_lj_assp_ignoreflag [PASS]
+Test  404:  i_prec_width_fit_fit_neg_lj_assp_ignoreflag [PASS]
+Test  405:  i_prec_width_fit_fit_zero_lj_assp_ignoreflag [PASS]
+Test  406:  i_prec_width_nofit_fit_pos_lj_assp_ignoreflag [PASS]
+Test  407:  i_prec_width_nofit_fit_neg_lj_assp_ignoreflag [PASS]
+Test  408:  i_prec_width_fit_nofit_pos_lj_assp_ignoreflag [PASS]
+Test  409:  i_prec_width_fit_nofit_neg_lj_assp_ignoreflag [PASS]
+Test  410:  i_prec_width_nofit_nofit_pos_lj_assp_ignoreflag [PASS]
+Test  411:  i_prec_width_nofit_nofit_neg_lj_assp_ignoreflag [PASS]
+Test  468:  i_llmax_sp                                 [PASS]
+Test  469:  i_llmin_sp                                 [PASS]
+Test  470:  i_lmax_sp                                  [PASS]
+Test  471:  i_lmin_sp                                  [PASS]
+Test  472:  i_hmax_sp                                  [PASS]
+Test  473:  i_hmin_sp                                  [PASS]
+Test  474:  i_hhmax_sp                                 [PASS]
+Test  475:  i_hhmin_sp                                 [PASS]
+Test  476:  i_prec0val0_basic                          [PASS]
+Test  477:  i_prec0val0_implicit                       [PASS]
+Test  478:  i_prec0val0_w                              [PASS]
+Test  479:  i_prec0val0_w_impl                         [PASS]
+Test  480:  i_prec0val0_wlj                            [PASS]
+Test  481:  i_prec0val0_wlj_impl                       [PASS]
+Test  482:  i_prec0val0_as                             [PASS]
+Test  483:  i_prec0val0_as_impl                        [PASS]
+Test  484:  i_prec0val0_was                            [PASS]
+Test  485:  i_prec0val0_was_impl                       [PASS]
+Test  486:  i_prec0val0_waslj                          [PASS]
+Test  487:  i_prec0val0_waslj_impl                     [PASS]
+Test  492:  d_basic_i_pos                              [PASS]
+Test  493:  d_basic_i_neg                              [PASS]
+Test  494:  d_basic_i_zero                             [PASS]
+Test  495:  d_basic_i_onlypos                          [PASS]
+Test  496:  d_basic_i_onlyneg                          [PASS]
+Test  497:  d_basic_i_onlyzero                         [PASS]
+Test  498:  d_intmax                                   [PASS]
+Test  499:  d_intmin                                   [PASS]
+Test  500:  d_as_pos                                   [PASS]
+Test  501:  d_as_neg                                   [PASS]
+Test  502:  d_intmax_as                                [PASS]
+Test  503:  d_width_pos_fits                           [PASS]
+Test  504:  d_width_neg_fits                           [PASS]
+Test  505:  d_width_zero_fits                          [PASS]
+Test  506:  d_width_pos_exactfit                       [PASS]
+Test  507:  d_width_neg_exactfit                       [PASS]
+Test  508:  d_width_pos_nofit                          [PASS]
+Test  509:  d_width_neg_nofit                          [PASS]
+Test  510:  d_width_pos_fits_lj                        [PASS]
+Test  511:  d_width_neg_fits_lj                        [PASS]
+Test  512:  d_width_zero_fits_lj                       [PASS]
+Test  513:  d_width_pos_exactfit_lj                    [PASS]
+Test  514:  d_width_neg_exactfit_lj                    [PASS]
+Test  515:  d_width_pos_nofit_lj                       [PASS]
+Test  516:  d_width_neg_nofit_lj                       [PASS]
+Test  517:  d_width_as_pos                             [PASS]
+Test  518:  d_width_as_zero                            [PASS]
+Test  519:  d_width_intmax_as                          [PASS]
+Test  520:  d_prec_fits_pos                            [PASS]
+Test  521:  d_prec_fits_neg                            [PASS]
+Test  522:  d_prec_fits_zero                           [PASS]
+Test  523:  d_prec_exactfit_pos                        [PASS]
+Test  524:  d_prec_exactfit_neg                        [PASS]
+Test  525:  d_prec_nofit_pos                           [PASS]
+Test  526:  d_prec_nofit_neg                           [PASS]
+Test  527:  d_prec_as_pos                              [PASS]
+Test  528:  d_prec_as_neg                              [PASS]
+Test  529:  d_prec_as_pos_nofit                        [PASS]
+Test  530:  d_zp_pos_fits                              [PASS]
+Test  531:  d_zp_neg_fits                              [PASS]
+Test  532:  d_zp_zero_fits                             [PASS]
+Test  533:  d_zp_pos_exactfit                          [PASS]
+Test  534:  d_zp_neg_exactfit                          [PASS]
+Test  535:  d_zp_neg_minus1fit                         [PASS]
+Test  538:  d_prec_width_fit_fit_pos                   [PASS]
+Test  539:  d_prec_width_fit_fit_neg                   [PASS]
+Test  540:  d_prec_width_fit_fit_zero                  [PASS]
+Test  541:  d_prec_width_nofit_fit_pos                 [PASS]
+Test  542:  d_prec_width_nofit_fit_neg                 [PASS]
+Test  543:  d_prec_width_fit_nofit_pos                 [PASS]
+Test  544:  d_prec_width_fit_nofit_neg                 [PASS]
+Test  545:  d_prec_width_nofit_nofit_pos               [PASS]
+Test  546:  d_prec_width_nofit_nofit_neg               [PASS]
+Test  547:  d_prec_width_fit_fit_pos_lj                [PASS]
+Test  548:  d_prec_width_fit_fit_neg_lj                [PASS]
+Test  549:  d_prec_width_fit_fit_zero_lj               [PASS]
+Test  550:  d_prec_width_nofit_fit_pos_lj              [PASS]
+Test  551:  d_prec_width_nofit_fit_neg_lj              [PASS]
+Test  552:  d_prec_width_fit_nofit_pos_lj              [PASS]
+Test  553:  d_prec_width_fit_nofit_neg_lj              [PASS]
+Test  554:  d_prec_width_nofit_nofit_pos_lj            [PASS]
+Test  555:  d_prec_width_nofit_nofit_neg_lj            [PASS]
+Test  556:  d_prec_width_fit_fit_pos_as                [PASS]
+Test  557:  d_prec_width_fit_fit_neg_as                [PASS]
+Test  558:  d_prec_width_fit_fit_zero_as               [PASS]
+Test  559:  d_prec_width_nofit_fit_pos_as              [PASS]
+Test  560:  d_prec_width_nofit_fit_neg_as              [PASS]
+Test  561:  d_prec_width_fit_nofit_pos_as              [PASS]
+Test  562:  d_prec_width_fit_nofit_neg_as              [PASS]
+Test  563:  d_prec_width_nofit_nofit_pos_as            [PASS]
+Test  564:  d_prec_width_nofit_nofit_neg_as            [PASS]
+Test  565:  d_prec_width_fit_fit_pos_ljas              [PASS]
+Test  566:  d_prec_width_fit_fit_neg_ljas              [PASS]
+Test  567:  d_prec_width_fit_fit_zero_ljas             [PASS]
+Test  568:  d_prec_width_nofit_fit_pos_ljas            [PASS]
+Test  569:  d_prec_width_nofit_fit_neg_ljas            [PASS]
+Test  570:  d_prec_width_fit_nofit_pos_ljas            [PASS]
+Test  571:  d_prec_width_fit_nofit_neg_ljas            [PASS]
+Test  572:  d_prec_width_nofit_nofit_pos_ljas          [PASS]
+Test  573:  d_prec_width_nofit_nofit_neg_ljas          [PASS]
+Test  574:  d_prec_width_ff_pos_zp                     [PASS]
+Test  575:  d_prec_width_ff_neg_zp                     [PASS]
+Test  576:  d_prec_width_ff_zero_zp                    [PASS]
+Test  577:  d_prec_width_nf_pos_zp                     [PASS]
+Test  578:  d_prec_width_nf_neg_zp                     [PASS]
+Test  579:  d_prec_width_fn_pos_zp                     [PASS]
+Test  580:  d_prec_width_fn_neg_zp                     [PASS]
+Test  581:  d_prec_width_nn_pos_zp                     [PASS]
+Test  582:  d_prec_width_nn_neg_zp                     [PASS]
+Test  583:  d_prec_width_ff_pos_lj_zp_ignoreflag       [PASS]
+Test  584:  d_prec_width_ff_neg_ljzp_ignoreflag        [PASS]
+Test  585:  d_prec_width_ff_zero_ljzp_ignoreflag       [PASS]
+Test  586:  d_prec_width_nf_pos_ljzp_ignoreflag        [PASS]
+Test  587:  d_prec_width_nf_neg_ljzp_ignoreflag        [PASS]
+Test  588:  d_prec_width_fn_pos_ljzp_ignoreflag        [PASS]
+Test  589:  d_prec_width_fn_neg_ljzp_ignoreflag        [PASS]
+Test  590:  d_prec_width_nn_pos_ljzp_ignoreflag        [PASS]
+Test  591:  d_prec_width_nn_neg_ljzp_ignoreflag        [PASS]
+Test  618:  d_size_hh_pos_ref                          [PASS]
+Test  619:  d_size_hh_neg_ref                          [PASS]
+Test  620:  d_size_h_pos_ref                           [PASS]
+Test  621:  d_size_h_neg_ref                           [PASS]
+Test  622:  d_size_l_pos_ref                           [PASS]
+Test  623:  d_size_l_pos_ref_lmax                      [PASS]
+Test  624:  d_size_ll_pos_ref_llmax                    [PASS]
+Test  625:  d_size_l_neg_ref                           [PASS]
+Test  626:  d_size_ll_pos_ref                          [PASS]
+Test  627:  d_size_ll_neg_ref                          [PASS]
+Test  628:  d_size_l_pos_big                           [PASS]
+Test  629:  d_size_l_neg_big                           [PASS]
+Test  630:  d_size_ll_pos_big                          [PASS]
+Test  631:  d_size_ll_neg_big                          [PASS]
+Test  632:  d_llmax                                    [PASS]
+Test  633:  d_llmin                                    [PASS]
+Test  634:  d_lmax                                     [PASS]
+Test  635:  d_lmin                                     [PASS]
+Test  636:  d_hmax                                     [PASS]
+Test  637:  d_hmin                                     [PASS]
+Test  638:  d_hhmax                                    [PASS]
+Test  639:  d_hhmin                                    [PASS]
+Test  641:  d_size_l_neg_big_prec                      [PASS]
+Test  642:  d_size_ll_pos_big_width                    [PASS]
+Test  643:  d_size_ll_neg_big_lj                       [PASS]
+Test  645:  d_size_follows_i_i                         [PASS]
+Test  646:  d_size_follows_i_l                         [PASS]
+Test  647:  d_size_follows_i_ll                        [PASS]
+Test  648:  d_size_follows_i_h                         [PASS]
+Test  649:  d_size_follows_i_hh                        [PASS]
+Test  650:  d_size_ll_hh_ll                            [PASS]
+Test  651:  d_size_h_l_hh                              [PASS]
+Test  652:  d_size_l_hh_h                              [PASS]
+Test  653:  d_size_n_ll_hh                             [PASS]
+Test  654:  d_size_ll_n_l                              [PASS]
+Test  655:  d_basic_i_pos_sp                           [PASS]
+Test  656:  d_basic_i_neg_sp                           [PASS]
+Test  657:  d_basic_i_zero_sp                          [PASS]
+Test  658:  d_basic_i_onlypos_sp                       [PASS]
+Test  659:  d_basic_i_onlyneg_sp                       [PASS]
+Test  660:  d_basic_i_onlyzero_sp                      [PASS]
+Test  661:  d_basic_i_pos_d_sp                         [PASS]
+Test  662:  d_basic_i_neg_d_sp                         [PASS]
+Test  663:  d_basic_i_zero_d_sp                        [PASS]
+Test  664:  d_intmax_sp                                [PASS]
+Test  665:  d_intmin_sp                                [PASS]
+Test  666:  d_assp_pos_ignoreflag                      [PASS]
+Test  667:  d_assp_neg_ignoreflag                      [PASS]
+Test  668:  d_intmax_assp_ignoreflag                   [PASS]
+Test  669:  d_width_pos_fits_sp                        [PASS]
+Test  670:  d_width_neg_fits_sp                        [PASS]
+Test  671:  d_width_zero_fits_sp                       [PASS]
+Test  672:  d_width_pos_exactfit_sp                    [PASS]
+Test  673:  d_width_neg_exactfit_sp                    [PASS]
+Test  674:  d_width_pos_nofit_sp                       [PASS]
+Test  675:  d_width_neg_nofit_sp                       [PASS]
+Test  676:  d_width_pos_fits_lj_sp                     [PASS]
+Test  677:  d_width_neg_fits_lj_sp                     [PASS]
+Test  678:  d_width_zero_fits_lj_sp                    [PASS]
+Test  679:  d_width_pos_exactfit_lj_sp                 [PASS]
+Test  680:  d_width_neg_exactfit_lj_sp                 [PASS]
+Test  681:  d_width_pos_nofit_lj_sp                    [PASS]
+Test  682:  d_width_neg_nofit_lj_sp                    [PASS]
+Test  683:  d_width_assp_pos_ignoreflag                [PASS]
+Test  684:  d_width_assp_zero_ignoreflag               [PASS]
+Test  685:  d_width_intmax_assp_ignoreflag             [PASS]
+Test  686:  d_prec_fits_pos_sp                         [PASS]
+Test  687:  d_prec_fits_neg_sp                         [PASS]
+Test  688:  d_prec_fits_zero_sp                        [PASS]
+Test  689:  d_prec_exactfit_pos_sp                     [PASS]
+Test  690:  d_prec_exactfit_neg_sp                     [PASS]
+Test  691:  d_prec_nofit_pos_sp                        [PASS]
+Test  692:  d_prec_nofit_neg_sp                        [PASS]
+Test  693:  d_prec_assp_pos_ignoreflag                 [PASS]
+Test  694:  d_prec_assp_neg_ignoreflag                 [PASS]
+Test  695:  d_prec_assp_pos_nofit_ignoreflag           [PASS]
+Test  704:  d_prec_width_fit_fit_pos_sp                [PASS]
+Test  705:  d_prec_width_fit_fit_neg_sp                [PASS]
+Test  706:  d_prec_width_fit_fit_zero_sp               [PASS]
+Test  707:  d_prec_width_nofit_fit_pos_sp              [PASS]
+Test  708:  d_prec_width_nofit_fit_neg_sp              [PASS]
+Test  709:  d_prec_width_fit_nofit_pos_sp              [PASS]
+Test  710:  d_prec_width_fit_nofit_neg_sp              [PASS]
+Test  711:  d_prec_width_nofit_nofit_pos_sp            [PASS]
+Test  712:  d_prec_width_nofit_nofit_neg_sp            [PASS]
+Test  713:  d_prec_width_fit_fit_pos_lj_sp             [PASS]
+Test  714:  d_prec_width_fit_fit_neg_lj_sp             [PASS]
+Test  715:  d_prec_width_fit_fit_zero_lj_sp            [PASS]
+Test  716:  d_prec_width_nofit_fit_pos_lj_sp           [PASS]
+Test  717:  d_prec_width_nofit_fit_neg_lj_sp           [PASS]
+Test  718:  d_prec_width_fit_nofit_pos_lj_sp           [PASS]
+Test  719:  d_prec_width_fit_nofit_neg_lj_sp           [PASS]
+Test  720:  d_prec_width_nofit_nofit_pos_lj_sp         [PASS]
+Test  721:  d_prec_width_nofit_nofit_neg_lj_sp         [PASS]
+Test  722:  d_prec_width_fit_fit_pos_assp_ignoreflag   [PASS]
+Test  723:  d_prec_width_fit_fit_neg_assp_ignoreflag   [PASS]
+Test  724:  d_prec_width_fit_fit_zero_assp_ignoreflag  [PASS]
+Test  725:  d_prec_width_nofit_fit_pos_assp_ignoreflag [PASS]
+Test  726:  d_prec_width_nofit_fit_neg_assp_ignoreflag [PASS]
+Test  727:  d_prec_width_fit_nofit_pos_assp_ignoreflag [PASS]
+Test  728:  d_prec_width_fit_nofit_neg_assp_ignoreflag [PASS]
+Test  729:  d_prec_width_nofit_nofit_pos_assp_ignoreflag [PASS]
+Test  730:  d_prec_width_nofit_nofit_neg_assp_ignoreflag [PASS]
+Test  731:  d_prec_width_fit_fit_pos_lj_assp_ignoreflag [PASS]
+Test  732:  d_prec_width_fit_fit_neg_lj_assp_ignoreflag [PASS]
+Test  733:  d_prec_width_fit_fit_zero_lj_assp_ignoreflag [PASS]
+Test  734:  d_prec_width_nofit_fit_pos_lj_assp_ignoreflag [PASS]
+Test  735:  d_prec_width_nofit_fit_neg_lj_assp_ignoreflag [PASS]
+Test  736:  d_prec_width_fit_nofit_pos_lj_assp_ignoreflag [PASS]
+Test  737:  d_prec_width_fit_nofit_neg_lj_assp_ignoreflag [PASS]
+Test  738:  d_prec_width_nofit_nofit_pos_lj_assp_ignoreflag [PASS]
+Test  739:  d_prec_width_nofit_nofit_neg_lj_assp_ignoreflag [PASS]
+Test  796:  d_llmax_sp                                 [PASS]
+Test  797:  d_llmin_sp                                 [PASS]
+Test  798:  d_lmax_sp                                  [PASS]
+Test  799:  d_lmin_sp                                  [PASS]
+Test  800:  d_hmax_sp                                  [PASS]
+Test  801:  d_hmin_sp                                  [PASS]
+Test  802:  d_hhmax_sp                                 [PASS]
+Test  803:  d_hhmin_sp                                 [PASS]
+Test  804:  d_prec0val0_basic                          [PASS]
+Test  805:  d_prec0val0_implicit                       [PASS]
+Test  806:  d_prec0val0_w                              [PASS]
+Test  807:  d_prec0val0_w_impl                         [PASS]
+Test  808:  d_prec0val0_wlj                            [PASS]
+Test  809:  d_prec0val0_wlj_impl                       [PASS]
+Test  810:  d_prec0val0_as                             [PASS]
+Test  811:  d_prec0val0_as_impl                        [PASS]
+Test  812:  d_prec0val0_was                            [PASS]
+Test  813:  d_prec0val0_was_impl                       [PASS]
+Test  814:  d_prec0val0_waslj                          [PASS]
+Test  815:  d_prec0val0_waslj_impl                     [PASS]
+Test  816:  mix_hhi_str_lli_str                        [PASS]
+Test  817:  mix_str_hi_str_li                          [PASS]
+Test  818:  mix_str_hi_str_li_emptystr                 [PASS]
+Test  819:  u_basic_u_pos                              [PASS]
+Test  820:  u_basic_u_zero                             [PASS]
+Test  821:  u_basic_u_onlypos                          [PASS]
+Test  822:  u_uintmax                                  [PASS]
+Test  823:  u_width_pos_fits                           [PASS]
+Test  824:  u_width_zero_fits                          [PASS]
+Test  825:  u_width_pos_exactfit                       [PASS]
+Test  826:  u_width_pos_nofit                          [PASS]
+Test  827:  u_width_pos_fits_lj                        [PASS]
+Test  828:  u_width_zero_fits_lj                       [PASS]
+Test  829:  u_width_pos_exactfit_lj                    [PASS]
+Test  830:  u_width_pos_nofit_lj                       [PASS]
+Test  831:  u_prec_fits_pos                            [PASS]
+Test  832:  u_prec_fits_zero                           [PASS]
+Test  833:  u_prec_exactfit_pos                        [PASS]
+Test  834:  u_prec_nofit_pos                           [PASS]
+Test  835:  u_zp_pos_fits                              [PASS]
+Test  836:  u_zp_zero_fits                             [PASS]
+Test  837:  u_zp_pos_exactfit                          [PASS]
+Test  838:  u_prec_width_fit_fit_pos                   [PASS]
+Test  839:  u_prec_width_fit_fit_zero                  [PASS]
+Test  840:  u_prec_width_nofit_fit_pos                 [PASS]
+Test  841:  u_prec_width_fit_nofit_pos                 [PASS]
+Test  842:  u_prec_width_nofit_nofit_pos               [PASS]
+Test  843:  u_prec_width_fit_fit_pos_lj                [PASS]
+Test  844:  u_prec_width_fit_fit_zero_lj               [PASS]
+Test  845:  u_prec_width_nofit_fit_pos_lj              [PASS]
+Test  846:  u_prec_width_fit_nofit_pos_lj              [PASS]
+Test  847:  u_prec_width_nofit_nofit_pos_lj            [PASS]
+Test  848:  u_prec_width_ff_pos_zp                     [PASS]
+Test  849:  u_prec_width_ff_zero_zp                    [PASS]
+Test  850:  u_prec_width_nf_pos_zp                     [PASS]
+Test  851:  u_prec_width_fn_pos_zp                     [PASS]
+Test  852:  u_prec_width_nn_pos_zp                     [PASS]
+Test  853:  u_prec_width_ff_pos_ljzp_ignoreflag        [PASS]
+Test  854:  u_prec_width_ff_zero_ljzp_ignoreflag       [PASS]
+Test  855:  u_prec_width_nf_pos_ljzp_ignoreflag        [PASS]
+Test  856:  u_prec_width_fn_pos_ljzp_ignoreflag        [PASS]
+Test  857:  u_prec_width_nn_pos_ljzp_ignoreflag        [PASS]
+Test  858:  u_size_hh_pos_casted                       [PASS]
+Test  859:  u_size_h_pos_casted                        [PASS]
+Test  860:  u_size_l_pos_casted                        [PASS]
+Test  861:  u_size_ll_pos_casted                       [PASS]
+Test  862:  u_size_hh_pos_ref                          [PASS]
+Test  863:  u_size_h_pos_ref                           [PASS]
+Test  864:  u_size_l_pos_ref                           [PASS]
+Test  865:  u_size_ll_pos_ref                          [PASS]
+Test  866:  u_size_l_pos_big                           [PASS]
+Test  867:  u_size_ll_pos_big                          [PASS]
+Test  868:  u_ullmax                                   [PASS]
+Test  869:  u_ulmax                                    [PASS]
+Test  870:  u_uhmax                                    [PASS]
+Test  871:  u_uhhmax                                   [PASS]
+Test  873:  u_size_ll_pos_big_width                    [PASS]
+Test  874:  u_size_ll_hh_ll                            [PASS]
+Test  875:  u_size_h_l_hh                              [PASS]
+Test  876:  u_size_l_hh_h                              [PASS]
+Test  877:  u_size_n_ll_hh                             [PASS]
+Test  878:  u_size_ll_n_l                              [PASS]
+Test  879:  u_prec0val0_basic                          [PASS]
+Test  880:  u_prec0val0_implicit                       [PASS]
+Test  881:  u_prec0val0_w                              [PASS]
+Test  882:  u_prec0val0_w_impl                         [PASS]
+Test  883:  u_prec0val0_wlj                            [PASS]
+Test  884:  u_prec0val0_wlj_impl                       [PASS]
+Test  885:  mix_hhu_str_llu_str                        [PASS]
+Test  886:  mix_str_hu_str_lu                          [PASS]
+Test  887:  mixed_test_0001                            [PASS]
+Test  888:  x_basic_pos                                [PASS]
+Test  889:  x_basic_zero                               [PASS]
+Test  890:  x_basic_onlypos                            [PASS]
+Test  891:  x_hexlmax                                  [PASS]
+Test  892:  x_width_pos_fits                           [PASS]
+Test  893:  x_width_zero_fits                          [PASS]
+Test  894:  x_width_pos_exactfit                       [PASS]
+Test  895:  x_width_pos_nofit                          [PASS]
+Test  896:  x_width_pos_fits_lj                        [PASS]
+Test  897:  x_width_zero_fits_lj                       [PASS]
+Test  898:  x_width_pos_exactfit_lj                    [PASS]
+Test  899:  x_width_pos_nofit_lj                       [PASS]
+Test  900:  x_prec_fits_pos                            [PASS]
+Test  901:  x_prec_fits_zero                           [PASS]
+Test  902:  x_prec_exactfit_pos                        [PASS]
+Test  903:  x_prec_nofit_pos                           [PASS]
+Test  904:  x_zp_pos_fits                              [PASS]
+Test  905:  x_zp_zero_fits                             [PASS]
+Test  906:  x_zp_pos_exactfit                          [PASS]
+Test  907:  x_prec_width_fit_fit_pos                   [PASS]
+Test  908:  x_prec_width_fit_fit_zero                  [PASS]
+Test  909:  x_prec_width_nofit_fit_pos                 [PASS]
+Test  910:  x_prec_width_fit_nofit_pos                 [PASS]
+Test  911:  x_prec_width_nofit_nofit_pos               [PASS]
+Test  912:  x_prec_width_fit_fit_pos_lj                [PASS]
+Test  913:  x_prec_width_fit_fit_zero_lj               [PASS]
+Test  914:  x_prec_width_nofit_fit_pos_lj              [PASS]
+Test  915:  x_prec_width_fit_nofit_pos_lj              [PASS]
+Test  916:  x_prec_width_nofit_nofit_pos_lj            [PASS]
+Test  917:  x_prec_width_ff_pos_zp                     [PASS]
+Test  918:  x_prec_width_ff_zero_zp                    [PASS]
+Test  919:  x_prec_width_nf_pos_zp                     [PASS]
+Test  920:  x_prec_width_fn_pos_zp                     [PASS]
+Test  921:  x_prec_width_nn_pos_zp                     [PASS]
+Test  922:  x_prec_width_ff_pos_ljzp_ignoreflag        [PASS]
+Test  923:  x_prec_width_ff_zero_ljzp_ignoreflag       [PASS]
+Test  924:  x_prec_width_nf_pos_ljzp_ignoreflag        [PASS]
+Test  925:  x_prec_width_fn_pos_ljzp_ignoreflag        [PASS]
+Test  926:  x_prec_width_nn_pos_ljzp_ignoreflag        [PASS]
+Test  927:  x_size_hh_pos_casted                       [PASS]
+Test  928:  x_size_h_pos_casted                        [PASS]
+Test  929:  x_size_l_pos_casted                        [PASS]
+Test  930:  x_size_ll_pos_casted                       [PASS]
+Test  931:  x_size_hh_pos_ref                          [PASS]
+Test  932:  x_size_h_pos_ref                           [PASS]
+Test  933:  x_size_l_pos_ref                           [PASS]
+Test  934:  x_size_ll_pos_ref                          [PASS]
+Test  935:  x_size_l_pos_big                           [PASS]
+Test  936:  x_size_ll_pos_big                          [PASS]
+Test  937:  x_ullmax                                   [PASS]
+Test  938:  x_ulmax                                    [PASS]
+Test  939:  x_uhmax                                    [PASS]
+Test  940:  x_uhhmax                                   [PASS]
+Test  942:  x_size_ll_pos_big_width                    [PASS]
+Test  943:  x_size_ll_hh_ll                            [PASS]
+Test  944:  x_size_h_l_hh                              [PASS]
+Test  945:  x_size_l_hh_h                              [PASS]
+Test  946:  x_size_n_ll_hh                             [PASS]
+Test  947:  x_size_ll_n_l                              [PASS]
+Test  948:  x_basic_pos_af                             [PASS]
+Test  949:  x_basic_zero_af                            [PASS]
+Test  950:  x_basic_onlypos_af                         [PASS]
+Test  951:  x_hexlmax_af                               [PASS]
+Test  952:  x_width_pos_fits_af                        [PASS]
+Test  953:  x_width_zero_fits_af                       [PASS]
+Test  954:  x_width_pos_exactfit_af                    [PASS]
+Test  955:  x_width_pos_nofit_af                       [PASS]
+Test  956:  x_width_pos_fits_lj_af                     [PASS]
+Test  957:  x_width_zero_fits_lj_af                    [PASS]
+Test  958:  x_width_pos_exactfit_lj_af                 [PASS]
+Test  959:  x_width_pos_nofit_lj_af                    [PASS]
+Test  997:  x_ullmax_af                                [PASS]
+Test  998:  x_ulmax_af                                 [PASS]
+Test  999:  x_uhmax_af                                 [PASS]
+Test 1000:  x_uhhmax_af                                [PASS]
+Test 1008:  x_prec0val0_basic                          [PASS]
+Test 1009:  x_prec0val0_implicit                       [PASS]
+Test 1010:  x_prec0val0_w                              [PASS]
+Test 1011:  x_prec0val0_w_impl                         [PASS]
+Test 1012:  x_prec0val0_wlj                            [PASS]
+Test 1013:  x_prec0val0_wlj_impl                       [PASS]
+Test 1020:  X_basic_hexu_pos                           [PASS]
+Test 1021:  X_basic_hexu_zero                          [PASS]
+Test 1022:  X_basic_hexu_onlypos                       [PASS]
+Test 1023:  X_hexumax                                  [PASS]
+Test 1024:  X_width_pos_fits                           [PASS]
+Test 1025:  X_width_zero_fits                          [PASS]
+Test 1026:  X_width_pos_exactfit                       [PASS]
+Test 1027:  X_width_pos_nofit                          [PASS]
+Test 1028:  X_width_pos_fits_lj                        [PASS]
+Test 1029:  X_width_zero_fits_lj                       [PASS]
+Test 1030:  X_width_pos_exactfit_lj                    [PASS]
+Test 1031:  X_width_pos_nofit_lj                       [PASS]
+Test 1032:  X_prec_fits_pos                            [PASS]
+Test 1033:  X_prec_fits_zero                           [PASS]
+Test 1034:  X_prec_exactfit_pos                        [PASS]
+Test 1035:  X_prec_nofit_pos                           [PASS]
+Test 1036:  X_zp_pos_fits                              [PASS]
+Test 1037:  X_zp_zero_fits                             [PASS]
+Test 1038:  X_zp_pos_exactfit                          [PASS]
+Test 1039:  X_prec_width_fit_fit_pos                   [PASS]
+Test 1040:  X_prec_width_fit_fit_zero                  [PASS]
+Test 1041:  X_prec_width_nofit_fit_pos                 [PASS]
+Test 1042:  X_prec_width_fit_nofit_pos                 [PASS]
+Test 1043:  X_prec_width_nofit_nofit_pos               [PASS]
+Test 1044:  X_prec_width_fit_fit_pos_lj                [PASS]
+Test 1045:  X_prec_width_fit_fit_zero_lj               [PASS]
+Test 1046:  X_prec_width_nofit_fit_pos_lj              [PASS]
+Test 1047:  X_prec_width_fit_nofit_pos_lj              [PASS]
+Test 1048:  X_prec_width_nofit_nofit_pos_lj            [PASS]
+Test 1049:  X_prec_width_ff_pos_zp                     [PASS]
+Test 1050:  X_prec_width_ff_zero_zp                    [PASS]
+Test 1051:  X_prec_width_nf_pos_zp                     [PASS]
+Test 1052:  X_prec_width_fn_pos_zp                     [PASS]
+Test 1053:  X_prec_width_nn_pos_zp                     [PASS]
+Test 1054:  X_prec_width_ff_pos_ljzp_ignoreflag        [PASS]
+Test 1055:  X_prec_width_ff_zero_ljzp_ignoreflag       [PASS]
+Test 1056:  X_prec_width_nf_pos_ljzp_ignoreflag        [PASS]
+Test 1057:  X_prec_width_fn_pos_ljzp_ignoreflag        [PASS]
+Test 1058:  X_prec_width_nn_pos_ljzp_ignoreflag        [PASS]
+Test 1059:  X_size_hh_pos_casted                       [PASS]
+Test 1060:  X_size_h_pos_casted                        [PASS]
+Test 1061:  X_size_l_pos_casted                        [PASS]
+Test 1062:  X_size_ll_pos_casted                       [PASS]
+Test 1063:  X_size_hh_pos_ref                          [PASS]
+Test 1064:  X_size_h_pos_ref                           [PASS]
+Test 1065:  X_size_l_pos_ref                           [PASS]
+Test 1066:  X_size_ll_pos_ref                          [PASS]
+Test 1067:  X_size_l_pos_big                           [PASS]
+Test 1068:  X_size_ll_pos_big                          [PASS]
+Test 1069:  X_ullmax                                   [PASS]
+Test 1070:  X_ulmax                                    [PASS]
+Test 1071:  X_uhmax                                    [PASS]
+Test 1072:  X_uhhmax                                   [PASS]
+Test 1074:  X_size_ll_pos_big_width                    [PASS]
+Test 1075:  X_size_ll_hh_ll                            [PASS]
+Test 1076:  X_size_h_l_hh                              [PASS]
+Test 1077:  X_size_l_hh_h                              [PASS]
+Test 1078:  X_size_n_ll_hh                             [PASS]
+Test 1079:  X_size_ll_n_l                              [PASS]
+Test 1080:  X_basic_hexu_pos_af                        [PASS]
+Test 1081:  X_basic_hexu_zero_af                       [PASS]
+Test 1082:  X_basic_hexu_onlypos_af                    [PASS]
+Test 1083:  X_hexumax_af                               [PASS]
+Test 1084:  X_width_pos_fits_af                        [PASS]
+Test 1085:  X_width_zero_fits_af                       [PASS]
+Test 1086:  X_width_pos_exactfit_af                    [PASS]
+Test 1087:  X_width_pos_nofit_af                       [PASS]
+Test 1088:  X_width_pos_fits_lj_af                     [PASS]
+Test 1089:  X_width_zero_fits_lj_af                    [PASS]
+Test 1090:  X_width_pos_exactfit_lj_af                 [PASS]
+Test 1091:  X_width_pos_nofit_lj_af                    [PASS]
+Test 1129:  X_ullmax_af                                [PASS]
+Test 1130:  X_ulmax_af                                 [PASS]
+Test 1131:  X_uhmax_af                                 [PASS]
+Test 1132:  X_uhhmax_af                                [PASS]
+Test 1140:  X_prec0val0_basic                          [PASS]
+Test 1141:  X_prec0val0_implicit                       [PASS]
+Test 1142:  X_prec0val0_w                              [PASS]
+Test 1143:  X_prec0val0_w_impl                         [PASS]
+Test 1144:  X_prec0val0_wlj                            [PASS]
+Test 1145:  X_prec0val0_wlj_impl                       [PASS]
+Test 1152:  o_basic_octl_pos                           [PASS]
+Test 1153:  o_basic_octl_zero                          [PASS]
+Test 1154:  o_basic_octl_onlypos                       [PASS]
+Test 1155:  o_octlmax                                  [PASS]
+Test 1156:  o_width_pos_fits                           [PASS]
+Test 1157:  o_width_zero_fits                          [PASS]
+Test 1158:  o_width_pos_exactfit                       [PASS]
+Test 1159:  o_width_pos_nofit                          [PASS]
+Test 1160:  o_width_pos_fits_lj                        [PASS]
+Test 1161:  o_width_zero_fits_lj                       [PASS]
+Test 1162:  o_width_pos_exactfit_lj                    [PASS]
+Test 1163:  o_width_pos_nofit_lj                       [PASS]
+Test 1164:  o_prec_fits_pos                            [PASS]
+Test 1165:  o_prec_fits_zero                           [PASS]
+Test 1166:  o_prec_exactfit_pos                        [PASS]
+Test 1167:  o_prec_nofit_pos                           [PASS]
+Test 1168:  o_zp_pos_fits                              [PASS]
+Test 1169:  o_zp_zero_fits                             [PASS]
+Test 1170:  o_zp_pos_exactfit                          [PASS]
+Test 1171:  o_prec_width_fit_fit_pos                   [PASS]
+Test 1172:  o_prec_width_fit_fit_zero                  [PASS]
+Test 1173:  o_prec_width_nofit_fit_pos                 [PASS]
+Test 1174:  o_prec_width_fit_nofit_pos                 [PASS]
+Test 1175:  o_prec_width_nofit_nofit_pos               [PASS]
+Test 1176:  o_prec_width_fit_fit_pos_lj                [PASS]
+Test 1177:  o_prec_width_fit_fit_zero_lj               [PASS]
+Test 1178:  o_prec_width_nofit_fit_pos_lj              [PASS]
+Test 1179:  o_prec_width_fit_nofit_pos_lj              [PASS]
+Test 1180:  o_prec_width_nofit_nofit_pos_lj            [PASS]
+Test 1181:  o_prec_width_ff_pos_zp                     [PASS]
+Test 1182:  o_prec_width_ff_zero_zp                    [PASS]
+Test 1183:  o_prec_width_nf_pos_zp                     [PASS]
+Test 1184:  o_prec_width_fn_pos_zp                     [PASS]
+Test 1185:  o_prec_width_nn_pos_zp                     [PASS]
+Test 1186:  o_prec_width_ff_pos_ljzp_ignoreflag        [PASS]
+Test 1187:  o_prec_width_ff_zero_ljzp_ignoreflag       [PASS]
+Test 1188:  o_prec_width_nf_pos_ljzp_ignoreflag        [PASS]
+Test 1189:  o_prec_width_fn_pos_ljzp_ignoreflag        [PASS]
+Test 1190:  o_prec_width_nn_pos_ljzp_ignoreflag        [PASS]
+Test 1191:  o_size_hh_pos_casted                       [PASS]
+Test 1192:  o_size_h_pos_casted                        [PASS]
+Test 1193:  o_size_l_pos_casted                        [PASS]
+Test 1194:  o_size_ll_pos_casted                       [PASS]
+Test 1195:  o_size_hh_pos_ref                          [PASS]
+Test 1196:  o_size_h_pos_ref                           [PASS]
+Test 1197:  o_size_l_pos_ref                           [PASS]
+Test 1198:  o_size_ll_pos_ref                          [PASS]
+Test 1199:  o_size_l_pos_big                           [PASS]
+Test 1200:  o_size_ll_pos_big                          [PASS]
+Test 1201:  o_ullmax                                   [PASS]
+Test 1202:  o_ulmax                                    [PASS]
+Test 1203:  o_uhmax                                    [PASS]
+Test 1204:  o_uhhmax                                   [PASS]
+Test 1206:  o_size_ll_pos_big_width                    [PASS]
+Test 1207:  o_size_ll_hh_ll                            [PASS]
+Test 1208:  o_size_h_l_hh                              [PASS]
+Test 1209:  o_size_l_hh_h                              [PASS]
+Test 1210:  o_size_n_ll_hh                             [PASS]
+Test 1211:  o_size_ll_n_l                              [PASS]
+Test 1212:  o_basic_octl_pos_af                        [PASS]
+Test 1213:  o_basic_octl_zero_af                       [PASS]
+Test 1214:  o_basic_octl_onlypos_af                    [PASS]
+Test 1215:  o_octlmax_af                               [PASS]
+Test 1216:  o_width_pos_fits_af                        [PASS]
+Test 1217:  o_width_zero_fits_af                       [PASS]
+Test 1218:  o_width_pos_exactfit_af                    [PASS]
+Test 1219:  o_width_pos_nofit_af                       [PASS]
+Test 1220:  o_width_pos_fits_lj_af                     [PASS]
+Test 1221:  o_width_zero_fits_lj_af                    [PASS]
+Test 1222:  o_width_pos_exactfit_lj_af                 [PASS]
+Test 1223:  o_width_pos_nofit_lj_af                    [PASS]
+Test 1261:  o_ullmax_af                                [PASS]
+Test 1262:  o_ulmax_af                                 [PASS]
+Test 1263:  o_uhmax_af                                 [PASS]
+Test 1264:  o_uhhmax_af                                [PASS]
+Test 1272:  o_prec0val0_basic                          [PASS]
+Test 1273:  o_prec0val0_implicit                       [PASS]
+Test 1274:  o_prec0val0_w                              [PASS]
+Test 1275:  o_prec0val0_w_impl                         [PASS]
+Test 1276:  o_prec0val0_wlj                            [PASS]
+Test 1277:  o_prec0val0_wlj_impl                       [PASS]
+Test 1284:  p_null                                     [PASS]
+Test 1289:  p_ftfc_5w_throwswarning                    [PASS]
+Test 1290:  p_basic                                    [PASS]
+Test 1291:  p_width_fit                                [PASS]
+Test 1292:  p_width_nofit                              [PASS]
+Test 1293:  p_width_16                                 [PASS]
+Test 1294:  p_width_8                                  [PASS]
+Test 1295:  p_width_32                                 [PASS]
+Test 1296:  p_width_fit_lj                             [PASS]
+Test 1297:  p_width_nofit_lj                           [PASS]
+Test 1298:  p_width_16_lj                              [PASS]
+Test 1299:  p_width_8_lj                               [PASS]
+Test 1300:  p_width_32_lj                              [PASS]
+Test 1301:  c_allprintable_combined                    [PASS]
+Test 1302:  c_1_31_combined                            [PASS]
+Test 1303:  c_128_255_combined                         [PASS]
+Test 1304:  c_allprintable_width                       [PASS]
+Test 1305:  c_1_31_width                               [PASS]
+Test 1306:  c_128_255_width                            [PASS]
+Test 1307:  c_allprintable_width_lj                    [PASS]
+Test 1308:  c_1_31_width_lj                            [PASS]
+Test 1309:  c_128_255_width_lj                         [PASS]
+Test 1310:  c_nullterm_basic                           [PASS]
+Test 1311:  c_nullterm_5w                              [PASS]
+Test 1312:  c_nullterm_5wlj                            [PASS]
+Test 1313:  f_basic_1                                  [PASS]
+Test 1314:  f_basic_fltonly                            [PASS]
+Test 1315:  f_basic_whole                              [PASS]
+Test 1316:  f_basic_negative                           [PASS]
+Test 1317:  f_basic_positive_3_3                       [PASS]
+Test 1318:  f_basic_negative_3_3                       [PASS]
+Test 1319:  f_basic_positive_smallfpart                [FAIL]
+Test 1320:  f_basic_positive_allsmall                  [PASS]
+Test 1321:  f_basic_negative_smallfpart                [PASS]
+Test 1322:  f_basic_negative_allsmall                  [PASS]
+Test 1323:  f_basic_limits_allsmall_pos                [FAIL]
+Test 1324:  f_basic_limits_allsmall_neg                [FAIL]
+Test 1325:  f_basic_limits_smallfpart_pos              [PASS]
+Test 1326:  f_basic_limits_smallfpart_neg              [FAIL]
+Test 1327:  f_basic_limits_allbig_pos                  [PASS]
+Test 1328:  f_basic_limits_allbig_neg                  [PASS]
+Test 1329:  f_basic_limits_bigfpart_pos                [PASS]
+Test 1330:  f_basic_limits_bigfpart_neg                [PASS]
+Test 1331:  f_rndd_pos                                 [PASS]
+Test 1332:  f_rndd_neg                                 [PASS]
+Test 1333:  f_rndu_pos                                 [FAIL]
+Test 1334:  f_rndu_neg                                 [PASS]
+Test 1335:  f_rndu_multidigit_pos                      [FAIL]
+Test 1336:  f_rndu_multidigit_neg                      [FAIL]
+Test 1337:  f_rndd_multidigit_pos                      [PASS]
+Test 1338:  f_rndd_multidigit_neg                      [PASS]
+Test 1339:  f_rndd_wholnobump_pos                      [PASS]
+Test 1340:  f_rndd_wholnobump_neg                      [PASS]
+Test 1341:  f_rndu_bumpwhole_pos                       [FAIL]
+Test 1342:  f_rndu_bumpwhole_neg                       [FAIL]
+Test 1343:  f_prec0_1                                  [FAIL]
+Test 1344:  f_prec0_fltonly                            [PASS]
+Test 1345:  f_prec0_whole                              [PASS]
+Test 1346:  f_prec0_negative                           [FAIL]
+Test 1347:  f_prec0_positive_3_3                       [FAIL]
+Test 1348:  f_prec0_negative_3_3                       [PASS]
+Test 1349:  f_prec0_positive_smallfpart                [PASS]
+Test 1350:  f_prec0_positive_allsmall                  [PASS]
+Test 1351:  f_prec0_negative_smallfpart                [PASS]
+Test 1352:  f_prec0_negative_allsmall                  [PASS]
+Test 1353:  f_prec1_1                                  [PASS]
+Test 1354:  f_prec1_fltonly                            [PASS]
+Test 1355:  f_prec1_whole                              [PASS]
+Test 1356:  f_prec1_negative                           [FAIL]
+Test 1357:  f_prec1_positive_3_3                       [PASS]
+Test 1358:  f_prec1_negative_3_3                       [PASS]
+Test 1359:  f_prec1_positive_smallfpart                [PASS]
+Test 1360:  f_prec1_positive_allsmall                  [PASS]
+Test 1361:  f_prec1_negative_smallfpart                [PASS]
+Test 1362:  f_prec1_negative_allsmall                  [PASS]
+Test 1363:  f_prec3_1                                  [PASS]
+Test 1364:  f_prec3_fltonly                            [PASS]
+Test 1365:  f_prec3_whole                              [PASS]
+Test 1366:  f_prec3_negative                           [PASS]
+Test 1367:  f_prec3_positive_3_3                       [PASS]
+Test 1368:  f_prec3_negative_3_3                       [PASS]
+Test 1369:  f_prec3_positive_smallfpart                [PASS]
+Test 1370:  f_prec3_positive_allsmall                  [PASS]
+Test 1371:  f_prec3_negative_smallfpart                [PASS]
+Test 1372:  f_prec3_negative_allsmall                  [PASS]
+Test 1373:  f_prec7_1                                  [PASS]
+Test 1374:  f_prec7_fltonly                            [PASS]
+Test 1375:  f_prec7_whole                              [PASS]
+Test 1376:  f_prec7_negative                           [PASS]
+Test 1377:  f_prec7_positive_3_3                       [PASS]
+Test 1378:  f_prec7_negative_3_3                       [PASS]
+Test 1379:  f_prec7_positive_smallfpart                [FAIL]
+Test 1380:  f_prec7_positive_allsmall                  [PASS]
+Test 1381:  f_prec7_negative_smallfpart                [PASS]
+Test 1382:  f_prec7_negative_allsmall                  [PASS]
+Test 1383:  f_prec7_limits_allsmall_pos                [FAIL]
+Test 1384:  f_prec7_limits_allsmall_neg                [FAIL]
+Test 1385:  f_prec7_limits_smallfpart_pos              [PASS]
+Test 1386:  f_prec7_limits_smallfpart_neg              [FAIL]
+Test 1387:  f_prec7_limits_allbig_pos                  [PASS]
+Test 1388:  f_prec7_limits_allbig_neg                  [PASS]
+Test 1389:  f_prec7_limits_bigfpart_pos                [PASS]
+Test 1390:  f_prec7_limits_bigfpart_neg                [PASS]
+Test 1391:  f_rnd_prec7_rndd_pos                       [FAIL]
+Test 1392:  f_rnd_prec7_rndd_neg                       [FAIL]
+Test 1393:  f_rnd_prec7_rndu_pos                       [PASS]
+Test 1394:  f_rnd_prec7_rndu_neg                       [FAIL]
+Test 1395:  f_rnd_prec7_rndu_multidigit_pos            [FAIL]
+Test 1396:  f_rnd_prec7_rndu_multidigit_neg            [PASS]
+Test 1397:  f_rnd_prec7_rndd_multidigit_pos            [FAIL]
+Test 1398:  f_rnd_prec7_rndd_multidigit_neg            [FAIL]
+Test 1399:  f_rnd_prec7_rndd_wholnobump_pos            [FAIL]
+Test 1400:  f_rnd_prec7_rndd_wholnobump_neg            [FAIL]
+Test 1401:  f_rnd_prec7_rndu_bumpwhole_pos             [PASS]
+Test 1402:  f_prec8_1                                  [PASS]
+Test 1403:  f_prec8_fltonly                            [PASS]
+Test 1404:  f_prec8_whole                              [PASS]
+Test 1405:  f_prec8_negative                           [PASS]
+Test 1406:  f_prec8_positive_3_3                       [PASS]
+Test 1407:  f_prec8_negative_3_3                       [PASS]
+Test 1408:  f_prec8_positive_smallfpart                [FAIL]
+Test 1409:  f_prec8_positive_allsmall                  [PASS]
+Test 1410:  f_prec8_negative_smallfpart                [PASS]
+Test 1411:  f_prec8_negative_allsmall                  [PASS]
+Test 1412:  f_prec8_limits_allsmall_pos                [PASS]
+Test 1413:  f_prec8_limits_allsmall_neg                [PASS]
+Test 1414:  f_prec8_limits_smallfpart_pos              [PASS]
+Test 1415:  f_prec8_limits_smallfpart_neg              [FAIL]
+Test 1416:  f_prec8_limits_allbig_pos                  [PASS]
+Test 1417:  f_prec8_limits_allbig_neg                  [PASS]
+Test 1418:  f_prec8_limits_bigfpart_pos                [PASS]
+Test 1419:  f_prec8_limits_bigfpart_neg                [PASS]
+Test 1420:  f_rnd_prec8_rndd_pos                       [FAIL]
+Test 1421:  f_rnd_prec8_rndd_neg                       [FAIL]
+Test 1422:  f_rnd_prec8_rndu_pos                       [PASS]
+Test 1423:  f_rnd_prec8_rndu_neg                       [FAIL]
+Test 1424:  f_rnd_prec8_rndu_multidigit_pos            [FAIL]
+Test 1425:  f_rnd_prec8_rndu_multidigit_neg            [PASS]
+Test 1426:  f_rnd_prec8_rndd_multidigit_pos            [FAIL]
+Test 1427:  f_rnd_prec8_rndd_multidigit_neg            [FAIL]
+Test 1428:  f_rnd_prec8_rndd_wholnobump_pos            [PASS]
+Test 1429:  f_rnd_prec8_rndd_wholnobump_neg            [PASS]
+Test 1430:  f_rnd_prec8_rndu_bumpwhole_pos             [PASS]
+Test 1514:  f_af_prec0p                                [PASS]
+Test 1515:  f_af_prec1p                                [PASS]
+Test 1516:  f_af_prec0n                                [PASS]
+Test 1517:  f_af_prec1n                                [PASS]
+Test 1522:  f_wprec0p                                  [PASS]
+Test 1523:  f_wprec1p                                  [PASS]
+Test 1524:  f_wprec3p                                  [PASS]
+Test 1525:  f_wprec6p                                  [PASS]
+Test 1526:  f_wprec0n                                  [PASS]
+Test 1527:  f_wprec1n                                  [PASS]
+Test 1528:  f_wprec3n                                  [PASS]
+Test 1529:  f_wprec6n                                  [PASS]
+Test 1538:  f_wlj_prec0p                               [PASS]
+Test 1539:  f_wlj_prec1p                               [PASS]
+Test 1540:  f_wlj_prec3p                               [PASS]
+Test 1541:  f_wlj_prec6p                               [PASS]
+Test 1542:  f_wlj_prec0n                               [PASS]
+Test 1543:  f_wlj_prec1n                               [PASS]
+Test 1544:  f_wlj_prec3n                               [PASS]
+Test 1545:  f_wlj_prec6n                               [PASS]
+Test 1618:  f_wsp_prec0p                               [PASS]
+Test 1619:  f_wsp_prec1p                               [PASS]
+Test 1620:  f_wsp_prec3p                               [PASS]
+Test 1621:  f_wsp_prec6p                               [PASS]
+Test 1622:  f_wsp_prec0n                               [PASS]
+Test 1623:  f_wsp_prec1n                               [PASS]
+Test 1624:  f_wsp_prec3n                               [PASS]
+Test 1625:  f_wsp_prec6n                               [PASS]
+Test 1634:  f_wljsp_prec0p                             [PASS]
+Test 1635:  f_wljsp_prec1p                             [PASS]
+Test 1636:  f_wljsp_prec3p                             [PASS]
+Test 1637:  f_wljsp_prec6p                             [PASS]
+Test 1638:  f_wljsp_prec0n                             [PASS]
+Test 1639:  f_wljsp_prec1n                             [PASS]
+Test 1640:  f_wljsp_prec3n                             [PASS]
+Test 1641:  f_wljsp_prec6n                             [PASS]
+Test 1704:  f_limits_dblmin_prec0                      [PASS]
+Test 1705:  f_limits_dblmin_prec3                      [PASS]
+Test 1706:  f_limits_dblmin_precd                      [PASS]
+Test 1707:  f_limits_dblmin_prec8                      [PASS]
+Test 1711:  f_limits_ndblmin_prec0                     [PASS]
+Test 1712:  f_limits_ndblmin_prec3                     [PASS]
+Test 1713:  f_limits_ndblmin_precd                     [PASS]
+Test 1714:  f_limits_ndblmin_prec8                     [PASS]
+Test 1776:  f_L_rndd_pos                               [PASS]
+Test 1777:  f_L_rndd_neg                               [PASS]
+Test 1778:  f_L_rndu_pos                               [FAIL]
+Test 1779:  f_L_rndu_neg                               [PASS]
+Test 1780:  f_L_rndu_multidigit_pos                    [FAIL]
+Test 1781:  f_L_rndu_multidigit_neg                    [FAIL]
+Test 1782:  f_L_rndd_multidigit_pos                    [PASS]
+Test 1783:  f_L_rndd_multidigit_neg                    [PASS]
+Test 1784:  f_L_rndd_wholnobump_pos                    [PASS]
+Test 1785:  f_L_rndd_wholnobump_neg                    [PASS]
+Test 1786:  f_L_rndu_bumpwhole_pos                     [FAIL]
+Test 1787:  f_L_rndu_bumpwhole_neg                     [FAIL]
+Test 1788:  f_L_prec7_1                                [PASS]
+Test 1789:  f_L_prec7_fltonly                          [PASS]
+Test 1790:  f_L_prec7_whole                            [PASS]
+Test 1791:  f_L_prec7_negative                         [PASS]
+Test 1792:  f_L_prec7_positive_3_3                     [PASS]
+Test 1793:  f_L_prec7_negative_3_3                     [PASS]
+Test 1794:  f_L_prec7_positive_smallfpart              [PASS]
+Test 1795:  f_L_prec7_positive_allsmall                [PASS]
+Test 1796:  f_L_prec7_negative_smallfpart              [PASS]
+Test 1797:  f_L_prec7_negative_allsmall                [PASS]
+Test 1798:  f_L_prec7_limits_allsmall_pos              [PASS]
+Test 1799:  f_L_prec7_limits_allsmall_neg              [PASS]
+Test 1800:  f_L_prec7_limits_smallfpart_pos            [PASS]
+Test 1801:  f_L_prec7_limits_smallfpart_neg            [FAIL]
+Test 1802:  f_L_prec7_limits_allbig_pos                [PASS]
+Test 1803:  f_L_prec7_limits_allbig_neg                [PASS]
+Test 1804:  f_L_prec7_limits_bigfpart_pos              [PASS]
+Test 1805:  f_L_prec7_limits_bigfpart_neg              [PASS]
+Test 1806:  f_L_rnd_prec7_rndd_pos                     [FAIL]
+Test 1807:  f_L_rnd_prec7_rndd_neg                     [FAIL]
+Test 1808:  f_L_rnd_prec7_rndu_pos                     [PASS]
+Test 1809:  f_L_rnd_prec7_rndu_neg                     [PASS]
+Test 1810:  f_L_rnd_prec7_rndu_multidigit_pos          [PASS]
+Test 1811:  f_L_rnd_prec7_rndu_multidigit_neg          [PASS]
+Test 1812:  f_L_rnd_prec7_rndd_multidigit_pos          [FAIL]
+Test 1813:  f_L_rnd_prec7_rndd_multidigit_neg          [FAIL]
+Test 1814:  f_L_rnd_prec7_rndd_wholnobump_pos          [FAIL]
+Test 1815:  f_L_rnd_prec7_rndd_wholnobump_neg          [FAIL]
+Test 1816:  f_L_rnd_prec7_rndu_bumpwhole_pos           [PASS]
+Test 1817:  f_L_prec8_1                                [PASS]
+Test 1818:  f_L_prec8_fltonly                          [PASS]
+Test 1819:  f_L_prec8_whole                            [PASS]
+Test 1820:  f_L_prec8_negative                         [PASS]
+Test 1821:  f_L_prec8_positive_3_3                     [PASS]
+Test 1822:  f_L_prec8_negative_3_3                     [PASS]
+Test 1823:  f_L_prec8_positive_smallfpart              [PASS]
+Test 1824:  f_L_prec8_positive_allsmall                [PASS]
+Test 1825:  f_L_prec8_negative_smallfpart              [PASS]
+Test 1826:  f_L_prec8_negative_allsmall                [PASS]
+Test 1827:  f_L_prec8_limits_allsmall_pos              [PASS]
+Test 1828:  f_L_prec8_limits_allsmall_neg              [PASS]
+Test 1829:  f_L_prec8_limits_smallfpart_pos            [PASS]
+Test 1830:  f_L_prec8_limits_smallfpart_neg            [FAIL]
+Test 1831:  f_L_prec8_limits_allbig_pos                [PASS]
+Test 1832:  f_L_prec8_limits_allbig_neg                [PASS]
+Test 1833:  f_L_prec8_limits_bigfpart_pos              [PASS]
+Test 1834:  f_L_prec8_limits_bigfpart_neg              [PASS]
+Test 1835:  f_L_rnd_prec8_rndd_pos                     [FAIL]
+Test 1836:  f_L_rnd_prec8_rndd_neg                     [FAIL]
+Test 1837:  f_L_rnd_prec8_rndu_pos                     [PASS]
+Test 1838:  f_L_rnd_prec8_rndu_neg                     [PASS]
+Test 1839:  f_L_rnd_prec8_rndu_multidigit_pos          [PASS]
+Test 1840:  f_L_rnd_prec8_rndu_multidigit_neg          [PASS]
+Test 1841:  f_L_rnd_prec8_rndd_multidigit_pos          [PASS]
+Test 1842:  f_L_rnd_prec8_rndd_multidigit_neg          [PASS]
+Test 1843:  f_L_rnd_prec8_rndd_wholnobump_pos          [PASS]
+Test 1844:  f_L_rnd_prec8_rndd_wholnobump_neg          [PASS]
+Test 1845:  f_L_rnd_prec8_rndu_bumpwhole_pos           [PASS]
+Test 1989:  f_L_limits_dblmin_prec0                    [PASS]
+Test 1990:  f_L_limits_dblmin_prec3                    [PASS]
+Test 1991:  f_L_limits_dblmin_precd                    [PASS]
+Test 1992:  f_L_limits_dblmin_prec8                    [PASS]
+Test 1996:  f_L_limits_ndblmin_prec0                   [PASS]
+Test 1997:  f_L_limits_ndblmin_prec3                   [PASS]
+Test 1998:  f_L_limits_ndblmin_precd                   [PASS]
+Test 1999:  f_L_limits_ndblmin_prec8                   [PASS]
+Test 2019:  mix_test_0                                 [PASS]
+Test 2020:  mix_test_1                                 [PASS]
+Test 2021:  mix_test_2                                 [PASS]
+Test 2022:  mix_test_3                                 [PASS]
+Test 2023:  mix_test_4                                 [PASS]
+Test 2024:  mix_test_5                                 [PASS]
+Test 2025:  mix_test_6                                 [PASS]
+Test 2026:  mix_test_7                                 [PASS]
+Test 2027:  mix_test_8                                 [PASS]
+Test 2028:  mix_test_9                                 [PASS]
+Test 2029:  mix_test_10                                [PASS]
+Test 2030:  mix_test_11                                [PASS]
+Test 2031:  mix_test_12                                [PASS]
+Test 2032:  mix_test_13                                [PASS]
+Test 2033:  mix_test_14                                [PASS]
+Test 2034:  mix_test_15                                [PASS]
+Test 2035:  mix_test_16                                [PASS]
+Test 2036:  mix_test_17                                [PASS]
+Test 2037:  mix_test_18                                [PASS]
+Test 2038:  mix_test_19                                [PASS]
+Test 2039:  mix_test_20                                [PASS]
+Test 2040:  mix_test_21                                [PASS]
+Test 2041:  mix_test_22                                [PASS]
+Test 2042:  mix_test_23                                [PASS]
+Test 2043:  mix_test_24                                [PASS]
+Test 2044:  mix_test_25                                [PASS]
+Test 2045:  mix_test_26                                [PASS]
+Test 2046:  mix_test_27                                [PASS]
+Test 2047:  mix_test_28                                [PASS]
+Test 2048:  mix_test_29                                [PASS]
+Test 2049:  mix_test_30                                [PASS]
+Test 2050:  mix_test_31                                [PASS]
+Test 2051:  mix_test_32                                [PASS]
+Test 2052:  mix_test_33                                [PASS]
+Test 2053:  mix_test_34                                [PASS]
+Test 2054:  mix_test_35                                [PASS]
+Test 2055:  mix_test_36                                [PASS]
+Test 2056:  mix_test_37                                [PASS]
+Test 2057:  mix_test_38                                [PASS]
+Test 2058:  mix_test_39                                [PASS]
+Test 2059:  mix_test_40                                [PASS]
+Test 2060:  mix_test_41                                [PASS]
+Test 2061:  mix_test_42                                [PASS]
+Test 2062:  mix_test_43                                [PASS]
+Test 2063:  mix_test_44                                [PASS]
+Test 2064:  mix_test_45                                [PASS]
+Test 2065:  mix_test_46                                [PASS]
+Test 2066:  mix_test_47                                [PASS]
+Test 2067:  mix_test_48                                [PASS]
+Test 2068:  mix_test_49                                [PASS]
+Test 2069:  mix_test_50                                [PASS]
+Test 2070:  mix_test_51                                [PASS]
+Test 2071:  mix_test_52                                [PASS]
+Test 2072:  mix_test_53                                [PASS]
+Test 2073:  mix_test_54                                [PASS]
+Test 2074:  mix_test_55                                [PASS]
+Test 2075:  mix_test_56                                [PASS]
+Test 2076:  mix_test_57                                [PASS]
+Test 2077:  mix_test_58                                [PASS]
+Test 2078:  mix_test_59                                [PASS]
+Test 2079:  mix_test_60                                [PASS]
+Test 2080:  mix_test_61                                [PASS]
+Test 2081:  mix_test_62                                [PASS]
+Test 2082:  mix_test_63                                [PASS]
+Test 2083:  mix_test_64                                [PASS]
+Test 2084:  mix_test_65                                [PASS]
+Test 2085:  mix_test_66                                [PASS]
+Test 2086:  mix_test_67                                [PASS]
+Test 2087:  mix_test_68                                [PASS]
+Test 2088:  mix_test_69                                [PASS]
+Test 2089:  mix_test_70                                [PASS]
+Test 2090:  mix_test_71                                [PASS]
+Test 2091:  mix_test_72                                [PASS]
+Test 2092:  mix_test_73                                [PASS]
+Test 2093:  mix_test_74                                [PASS]
+Test 2094:  mix_test_75                                [PASS]
+Test 2095:  mix_test_76                                [PASS]
+Test 2096:  mix_test_77                                [PASS]
+Test 2097:  mix_test_78                                [PASS]
+Test 2098:  mix_test_79                                [PASS]
+Test 2099:  mix_test_80                                [PASS]
+Test 2100:  mix_test_81                                [PASS]
+Test 2101:  mix_test_82                                [PASS]
+Test 2102:  mix_test_83                                [PASS]
+Test 2103:  mix_test_84                                [PASS]
+Test 2104:  mix_test_85                                [PASS]
+Test 2105:  mix_test_86                                [PASS]
+Test 2106:  mix_test_87                                [PASS]
+Test 2107:  mix_test_88                                [PASS]
+Test 2108:  mix_test_89                                [PASS]
+Test 2109:  mix_test_90                                [PASS]
+Test 2110:  mix_test_91                                [PASS]
+Test 2111:  mix_test_92                                [PASS]
+Test 2112:  mix_test_93                                [PASS]
+Test 2113:  mix_test_94                                [PASS]
+Test 2114:  mix_test_95                                [PASS]
+Test 2115:  mix_test_96                                [PASS]
+Test 2116:  mix_test_97                                [PASS]
+Test 2117:  mix_test_98                                [PASS]
+Test 2118:  mix_test_99                                [PASS]
+Test 2119:  mix_test_100                               [PASS]
+Test 2120:  mix_test_101                               [PASS]
+Test 2121:  mix_test_102                               [PASS]
+Test 2122:  mix_test_103                               [PASS]
+Test 2123:  mix_test_104                               [PASS]
+Test 2124:  mix_test_105                               [PASS]
+Test 2125:  mix_test_106                               [PASS]
+Test 2126:  mix_test_107                               [PASS]
+Test 2127:  mix_test_108                               [PASS]
+Test 2128:  mix_test_109                               [PASS]
+Test 2129:  mix_test_110                               [PASS]
+Test 2130:  mix_test_111                               [PASS]
+Test 2131:  mix_test_112                               [PASS]
+Test 2132:  mix_test_113                               [PASS]
+Test 2133:  mix_test_114                               [PASS]
+Test 2134:  mix_test_115                               [PASS]
+Test 2135:  mix_test_116                               [PASS]
+Test 2136:  mix_test_117                               [PASS]
+Test 2137:  mix_test_118                               [PASS]
+Test 2138:  mix_test_119                               [PASS]
+Test 2139:  mix_test_120                               [PASS]
+Test 2140:  mix_test_121                               [PASS]
+Test 2141:  mix_test_122                               [PASS]
+Test 2142:  mix_test_123                               [PASS]
+Test 2143:  mix_test_124                               [PASS]
+Test 2144:  mix_test_125                               [PASS]
+Test 2145:  mix_test_126                               [PASS]
+Test 2146:  mix_test_127                               [PASS]
+Test 2147:  mix_test_128                               [PASS]
+Test 2148:  mix_test_129                               [PASS]
+Test 2149:  mix_test_130                               [PASS]
+Test 2150:  mix_test_131                               [PASS]
+Test 2151:  mix_test_132                               [PASS]
+Test 2152:  mix_test_133                               [PASS]
+Test 2153:  mix_test_134                               [PASS]
+Test 2154:  mix_test_135                               [PASS]
+Test 2155:  mix_test_136                               [PASS]
+Test 2156:  mix_test_137                               [PASS]
+Test 2157:  mix_test_138                               [PASS]
+Test 2158:  mix_test_139                               [PASS]
+Test 2159:  mix_test_140                               [PASS]
+Test 2160:  mix_test_141                               [PASS]
+Test 2161:  mix_test_142                               [PASS]
+Test 2162:  mix_test_143                               [PASS]
+Test 2163:  mix_test_144                               [PASS]
+Test 2164:  mix_test_145                               [PASS]
+Test 2165:  mix_test_146                               [PASS]
+Test 2166:  mix_test_147                               [PASS]
+Test 2167:  mix_test_148                               [PASS]
+Test 2168:  mix_test_149                               [PASS]
+Test 2169:  mix_test_150                               [PASS]
+Test 2170:  mix_test_151                               [PASS]
+Test 2171:  mix_test_152                               [PASS]
+Test 2172:  mix_test_153                               [PASS]
+Test 2173:  mix_test_154                               [PASS]
+Test 2174:  mix_test_155                               [PASS]
+Test 2175:  mix_test_156                               [PASS]
+Test 2176:  mix_test_157                               [PASS]
+Test 2177:  mix_test_158                               [PASS]
+Test 2178:  mix_test_159                               [PASS]
+Test 2179:  mix_test_160                               [PASS]
+Test 2180:  mix_test_161                               [PASS]
+Test 2181:  mix_test_162                               [PASS]
+Test 2182:  mix_test_163                               [PASS]
+Test 2183:  mix_test_164                               [PASS]
+Test 2184:  mix_test_165                               [PASS]
+Test 2185:  mix_test_166                               [PASS]
+Test 2186:  mix_test_167                               [PASS]
+Test 2187:  mix_test_168                               [PASS]
+Test 2188:  mix_test_169                               [PASS]
+Test 2189:  mix_test_170                               [PASS]
+Test 2190:  mix_test_171                               [PASS]
+Test 2191:  mix_test_172                               [PASS]
+Test 2192:  mix_test_173                               [PASS]
+Test 2193:  mix_test_174                               [PASS]
+Test 2194:  mix_test_175                               [PASS]
+Test 2195:  mix_test_176                               [PASS]
+Test 2196:  mix_test_177                               [PASS]
+Test 2197:  mix_test_178                               [PASS]
+Test 2198:  mix_test_179                               [PASS]
+Test 2199:  mix_test_180                               [PASS]
+Test 2200:  mix_test_181                               [PASS]
+Test 2201:  mix_test_182                               [PASS]
+Test 2202:  mix_test_183                               [PASS]
+Test 2203:  mix_test_184                               [PASS]
+Test 2204:  mix_test_185                               [PASS]
+Test 2205:  mix_test_186                               [PASS]
+Test 2206:  mix_test_187                               [PASS]
+Test 2207:  mix_test_188                               [PASS]
+Test 2208:  mix_test_189                               [PASS]
+Test 2209:  mix_test_190                               [PASS]
+Test 2210:  mix_test_191                               [PASS]
+Test 2211:  mix_test_192                               [PASS]
+Test 2212:  mix_test_193                               [PASS]
+Test 2213:  mix_test_194                               [PASS]
+Test 2214:  mix_test_195                               [PASS]
+Test 2215:  mix_test_196                               [PASS]
+Test 2216:  mix_test_197                               [PASS]
+Test 2217:  mix_test_198                               [PASS]
+Test 2218:  mix_test_199                               [PASS]
+Test 2219:  mix_test_extra_1                           [PASS]
+Test 2220:  mix_test_extra_2                           [PASS]
+Test 2221:  mix_test_extra_3                           [PASS]
+Test 2222:  mix_test_extra_4                           [PASS]
+Test 2223:  mix_test_extra_5                           [PASS]
+Test 2224:  mix_test_extra_6                           [PASS]
+Test 2225:  mix_test_extra_7                           [PASS]
+Test 2226:  mix_test_extra_8                           [PASS]
+Test 2227:  mix_test_extra_9                           [PASS]
+Test 2228:  mix_test_extra_10                          [PASS]
+Test 2229:  mix_successive_0                           [PASS]
+Test 2230:  mix_successive_1                           [PASS]
+Test 2231:  mix_successive_2                           [PASS]
+Test 2232:  mix_successive_3                           [PASS]
+Test 2233:  mix_successive_4                           [PASS]
+Test 2234:  mix_successive_5                           [PASS]
+Test 2235:  mix_successive_6                           [PASS]
+Test 2236:  mix_successive_7                           [PASS]
+Test 2237:  mix_successive_8                           [PASS]
+Test 2238:  mix_successive_9                           [PASS]
+Test 2239:  mix_successive_10                          [PASS]
+Test 2240:  mix_successive_11                          [PASS]
+Test 2241:  mix_successive_12                          [PASS]
+Test 2242:  mix_successive_13                          [PASS]
+Test 2243:  mix_successive_14                          [PASS]
+Test 2244:  mix_successive_15                          [PASS]
+Test 2245:  mix_successive_16                          [PASS]
+Test 2246:  mix_successive_17                          [PASS]
+Test 2247:  mix_successive_18                          [PASS]
+Test 2248:  mix_successive_19                          [PASS]
+Test 2249:  mix_successive_20                          [PASS]
+Test 2250:  mix_successive_21                          [PASS]
+Test 2251:  mix_successive_22                          [PASS]
+Test 2252:  mix_successive_23                          [PASS]
+Test 2253:  mix_successive_24                          [PASS]
+Test 2254:  mix_successive_25                          [PASS]
+Test 2255:  mix_successive_26                          [PASS]
+Test 2256:  mix_successive_27                          [PASS]
+Test 2257:  mix_successive_28                          [PASS]
+Test 2258:  mix_successive_29                          [PASS]
+Test 2259:  mix_successive_30                          [PASS]
+Test 2260:  mix_successive_31                          [PASS]
+Test 2261:  mix_successive_32                          [PASS]
+Test 2262:  mix_successive_33                          [PASS]
+Test 2263:  mix_successive_34                          [PASS]
+Test 2264:  mix_successive_35                          [PASS]
+Test 2265:  mix_successive_36                          [PASS]
+Test 2266:  mix_successive_37                          [PASS]
+Test 2267:  mix_successive_38                          [PASS]
+Test 2268:  mix_successive_39                          [PASS]
+Test 2269:  mix_successive_40                          [PASS]
+Test 2270:  mix_successive_41                          [PASS]
+Test 2271:  mix_successive_42                          [PASS]
+Test 2272:  mix_successive_43                          [PASS]
+Test 2273:  mix_successive_44                          [PASS]
+Test 2274:  mix_successive_45                          [PASS]
+Test 2275:  mix_successive_46                          [PASS]
+Test 2276:  mix_successive_47                          [PASS]
+Test 2277:  mix_successive_48                          [PASS]
+Test 2278:  mix_successive_49                          [PASS]
+Test 2279:  mix_successive_50                          [PASS]
+Test 2280:  mix_successive_51                          [PASS]
+Test 2281:  mix_successive_52                          [PASS]
+Test 2282:  mix_successive_53                          [PASS]
+Test 2283:  mix_successive_54                          [PASS]
+Test 2284:  mix_successive_55                          [PASS]
+Test 2285:  mix_successive_56                          [PASS]
+Test 2286:  mix_successive_57                          [PASS]
+Test 2287:  mix_successive_58                          [PASS]
+Test 2288:  mix_successive_59                          [PASS]
+Test 2289:  mix_successive_60                          [PASS]
+Test 2290:  mix_successive_61                          [PASS]
+Test 2291:  mix_successive_62                          [PASS]
+Test 2292:  mix_successive_63                          [PASS]
+Test 2293:  mix_successive_64                          [PASS]
+Test 2294:  mix_successive_65                          [PASS]
+Test 2295:  mix_successive_66                          [PASS]
+Test 2296:  mix_successive_67                          [PASS]
+Test 2297:  mix_successive_68                          [PASS]
+Test 2298:  mix_successive_69                          [PASS]
+Test 2299:  mix_successive_70                          [PASS]
+Test 2321:  nocrash_nullarg_1                          [PASS]
+Test 2322:  nocrash_nullarg_2                          [PASS]
+Test 2323:  nocrash_nullarg_3                          [PASS]
+Test 2324:  nocrash_nullarg_4                          [PASS]
+Test 2325:  nocrash_nullarg_5                          [PASS]
+Test 2326:  nocrash_nullarg_6                          [PASS]
+Test 2327:  nocrash_nullarg_9                          [PASS]
+Test 2328:  nocrash_nullarg_10                         [PASS]
+Test 2329:  nocrash_nullarg_11                         [PASS]
+Test 2330:  nocrash_nullarg_12                         [PASS]
+Test 2331:  nocrash_nullarg_13                         [PASS]
+Test 2332:  nocrash_nullarg_14                         [PASS]
+Test 2333:  nocrash_nullarg_15                         [PASS]
+Test 2334:  nocrash_nullarg_16                         [PASS]
+Test 2335:  nocrash_nullarg_17                         [PASS]
+Test 2336:  nocrash_nullarg_18                         [PASS]
+Test 2337:  nocrash_nullarg_19                         [PASS]
+Test 2338:  nocrash_nullarg_20                         [PASS]
+Test 2339:  nocrash_nullarg_21                         [PASS]
+Test 2340:  nocrash_nullarg_22                         [PASS]
+Test 2341:  nocrash_nullarg_23                         [PASS]
+Test 2342:  nocrash_nullarg_24                         [PASS]
+Test 2343:  nocrash_nullarg_25                         [PASS]
+Test 2344:  nocrash_mandatory_wformat_undefbehav_01    [PASS]
+Test 2345:  nocrash_mandatory_wformat_undefbehav_02    [PASS]
+Test 2346:  nocrash_mandatory_wformat_undefbehav_03    [PASS]
+Test 2347:  nocrash_mandatory_wformat_undefbehav_04    [PASS]
+Test 2348:  nocrash_mandatory_wformat_undefbehav_05    [PASS]
+Test 2349:  nocrash_mandatory_wformat_undefbehav_06    [PASS]
+Test 2350:  nocrash_mandatory_wformat_undefbehav_07    [PASS]
+Test 2351:  nocrash_mandatory_wformat_undefbehav_08    [PASS]
+Test 2352:  nocrash_mandatory_wformat_undefbehav_09    [PASS]
+Test 2353:  nocrash_mandatory_wformat_undefbehav_10    [PASS]
+Test 2354:  nocrash_mandatory_wformat_undefbehav_11    [PASS]
+Test 2355:  nocrash_mandatory_wformat_undefbehav_12    [PASS]
+Test 2356:  nocrash_mandatory_wformat_undefbehav_13    [PASS]
+Test 2357:  nocrash_mandatory_wformat_undefbehav_14    [PASS]
+Test 2358:  nocrash_mandatory_wformat_undefbehav_15    [PASS]
+Test 2359:  nocrash_mandatory_wformat_undefbehav_16    [PASS]
+Test 2360:  nocrash_mandatory_wformat_undefbehav_17    [PASS]
+Test 2361:  nocrash_mandatory_wformat_undefbehav_18    [PASS]
+Test 2362:  nocrash_mandatory_wformat_undefbehav_19    [PASS]
+Test 2363:  nocrash_mandatory_wformat_undefbehav_20    [PASS]
+Test 2364:  nocrash_mandatory_wformat_undefbehav_21    [PASS]
+Test 2365:  nocrash_mandatory_wformat_undefbehav_22    [PASS]
+Test 2366:  nocrash_mandatory_wformat_undefbehav_23    [PASS]
+Test 2367:  nocrash_mandatory_wformat_undefbehav_24    [PASS]
+Test 2368:  nocrash_mandatory_wformat_undefbehav_25    [PASS]
+Test 2369:  nocrash_mandatory_wformat_undefbehav_26    [PASS]
+Test 2370:  nocrash_mandatory_wformat_undefbehav_27    [PASS]
+Test 2371:  nocrash_mandatory_wformat_undefbehav_28    [PASS]
+Test 2372:  nocrash_mandatory_wformat_undefbehav_29    [PASS]
+Test 2373:  nocrash_mandatory_wformat_undefbehav_30    [PASS]
+Test 2374:  nocrash_mandatory_wformat_undefbehav_31    [PASS]
+Test 2375:  nocrash_mandatory_wformat_undefbehav_32    [PASS]
+Test 2376:  nocrash_mandatory_wformat_undefbehav_33    [PASS]
+Test 2377:  nocrash_mandatory_wformat_undefbehav_34    [PASS]
+Test 2378:  nocrash_mandatory_wformat_undefbehav_35    [PASS]
+Test 2379:  nocrash_mandatory_wformat_undefbehav_36    [PASS]
+Test 2380:  nocrash_mandatory_wformat_undefbehav_37    [PASS]
+Test 2381:  nocrash_mandatory_wformat_undefbehav_38    [PASS]
+Test 2382:  nocrash_mandatory_wformat_undefbehav_39    [PASS]
+Test 2383:  nocrash_mandatory_wformat_undefbehav_40    [PASS]
+Test 2384:  nocrash_mandatory_dupflag_d_asas           [PASS]
+Test 2385:  nocrash_mandatory_dupflag_d_spsp           [PASS]
+Test 2386:  nocrash_mandatory_dupflag_d_spassp         [PASS]
+Test 2387:  nocrash_mandatory_dupflag_d_ljljw          [PASS]
+Test 2388:  nocrash_mandatory_dupflag_d_ljasljw        [PASS]
+Test 2389:  nocrash_mandatory_dupflag_x_afaf           [PASS]
+Test 2390:  nocrash_mandatory_dupflag_x_afasasafljw    [SIGABRT]
+Test 2391:  nocrash_mandatory_c_prec_1                 [PASS]
+Test 2392:  nocrash_mandatory_c_prec_2                 [PASS]
+Test 2393:  nocrash_mandatory_c_af                     [PASS]
+Test 2394:  nocrash_mandatory_c_zp_1                   [PASS]
+Test 2395:  nocrash_mandatory_c_zp_2                   [PASS]
+Test 2396:  nocrash_mandatory_c_as_1                   [PASS]
+Test 2397:  nocrash_mandatory_c_as_2                   [PASS]
+Test 2398:  nocrash_mandatory_c_sp_1                   [PASS]
+Test 2399:  nocrash_mandatory_c_sp_2                   [PASS]
+Test 2400:  nocrash_mandatory_c_size_hh                [PASS]
+Test 2401:  nocrash_mandatory_c_size_h                 [PASS]
+Test 2402:  nocrash_mandatory_c_size_l                 [PASS]
+Test 2403:  nocrash_mandatory_c_size_ll                [PASS]
+Test 2404:  nocrash_mandatory_c_size_L                 [PASS]
+Test 2405:  nocrash_mandatory_c_lj_nowidth             [PASS]
+Test 2406:  nocrash_mandatory_s_af                     [PASS]
+Test 2407:  nocrash_mandatory_s_zp_1                   [PASS]
+Test 2408:  nocrash_mandatory_s_zp_2                   [PASS]
+Test 2409:  nocrash_mandatory_s_as_1                   [PASS]
+Test 2410:  nocrash_mandatory_s_sp_1                   [PASS]
+Test 2411:  nocrash_mandatory_s_size_hh                [PASS]
+Test 2412:  nocrash_mandatory_s_size_h                 [PASS]
+Test 2413:  nocrash_mandatory_s_size_l                 [PASS]
+Test 2414:  nocrash_mandatory_s_size_ll                [PASS]
+Test 2415:  nocrash_mandatory_s_size_L                 [PASS]
+Test 2416:  nocrash_mandatory_s_lj_nowidth             [PASS]
+Test 2417:  nocrash_mandatory_p_prec_1                 [PASS]
+Test 2418:  nocrash_mandatory_p_prec_2                 [PASS]
+Test 2419:  nocrash_mandatory_p_af                     [PASS]
+Test 2420:  nocrash_mandatory_p_zp_1                   [PASS]
+Test 2421:  nocrash_mandatory_p_zp_2                   [PASS]
+Test 2422:  nocrash_mandatory_p_as_1                   [PASS]
+Test 2423:  nocrash_mandatory_p_as_2                   [PASS]
+Test 2424:  nocrash_mandatory_p_sp_1                   [PASS]
+Test 2425:  nocrash_mandatory_p_sp_2                   [PASS]
+Test 2426:  nocrash_mandatory_p_size_hh                [PASS]
+Test 2427:  nocrash_mandatory_p_size_h                 [PASS]
+Test 2428:  nocrash_mandatory_p_size_l                 [PASS]
+Test 2429:  nocrash_mandatory_p_size_ll                [PASS]
+Test 2430:  nocrash_mandatory_p_size_L                 [PASS]
+Test 2431:  nocrash_mandatory_p_lj_nowidth             [PASS]
+Test 2432:  nocrash_mandatory_d_size_L                 [PASS]
+Test 2433:  nocrash_mandatory_d_af                     [PASS]
+Test 2434:  nocrash_mandatory_d_size_hhh               [PASS]
+Test 2435:  nocrash_mandatory_d_size_hhhh              [PASS]
+Test 2436:  nocrash_mandatory_d_size_hhl               [PASS]
+Test 2437:  nocrash_mandatory_d_size_hhll              [PASS]
+Test 2438:  nocrash_mandatory_d_size_llh               [PASS]
+Test 2439:  nocrash_mandatory_d_size_lll               [PASS]
+Test 2440:  nocrash_mandatory_i_size_L                 [PASS]
+Test 2441:  nocrash_mandatory_i_af                     [PASS]
+Test 2442:  nocrash_mandatory_i_size_hhh               [PASS]
+Test 2443:  nocrash_mandatory_i_lj_nowidth             [PASS]
+Test 2444:  nocrash_mandatory_o_as                     [SIGABRT]
+Test 2445:  nocrash_mandatory_o_sp                     [SIGABRT]
+Test 2446:  nocrash_mandatory_o_size_L                 [PASS]
+Test 2447:  nocrash_mandatory_o_size_hhh               [PASS]
+Test 2448:  nocrash_mandatory_o_size_hhhh              [PASS]
+Test 2449:  nocrash_mandatory_o_size_hhl               [PASS]
+Test 2450:  nocrash_mandatory_o_size_hhll              [PASS]
+Test 2451:  nocrash_mandatory_o_size_llh               [PASS]
+Test 2452:  nocrash_mandatory_o_size_lll               [PASS]
+Test 2453:  nocrash_mandatory_o_lj_nowidth             [PASS]
+Test 2454:  nocrash_mandatory_u_size_L                 [PASS]
+Test 2455:  nocrash_mandatory_u_af                     [PASS]
+Test 2456:  nocrash_mandatory_u_as                     [PASS]
+Test 2457:  nocrash_mandatory_u_sp                     [PASS]
+Test 2458:  nocrash_mandatory_u_size_hhh               [PASS]
+Test 2459:  nocrash_mandatory_u_size_hhhh              [PASS]
+Test 2460:  nocrash_mandatory_u_size_hhl               [PASS]
+Test 2461:  nocrash_mandatory_u_size_hhll              [PASS]
+Test 2462:  nocrash_mandatory_u_size_llh               [PASS]
+Test 2463:  nocrash_mandatory_u_size_lll               [PASS]
+Test 2464:  nocrash_mandatory_u_lj_nowidth             [PASS]
+Test 2465:  nocrash_mandatory_x_size_L                 [PASS]
+Test 2466:  nocrash_mandatory_x_as                     [SIGABRT]
+Test 2467:  nocrash_mandatory_x_sp                     [SIGABRT]
+Test 2468:  nocrash_mandatory_x_size_hhh               [PASS]
+Test 2469:  nocrash_mandatory_x_size_hhhh              [PASS]
+Test 2470:  nocrash_mandatory_x_size_hhl               [PASS]
+Test 2471:  nocrash_mandatory_x_size_hhll              [PASS]
+Test 2472:  nocrash_mandatory_x_size_llh               [PASS]
+Test 2473:  nocrash_mandatory_x_size_lll               [PASS]
+Test 2474:  nocrash_mandatory_X_size_L                 [PASS]
+Test 2475:  nocrash_mandatory_X_as                     [SIGABRT]
+Test 2476:  nocrash_mandatory_X_sp                     [SIGABRT]
+Test 2477:  nocrash_mandatory_X_size_hhh               [PASS]
+Test 2478:  nocrash_mandatory_X_size_llh               [PASS]
+Test 2479:  nocrash_mandatory_x_lj_nowidth             [PASS]
+Test 2480:  nocrash_mandatory_f_size_hh                [PASS]
+Test 2481:  nocrash_mandatory_f_size_h                 [PASS]
+Test 2482:  nocrash_mandatory_f_size_ll                [PASS]
+Test 2483:  nocrash_mandatory_f_size_lll               [PASS]
+Test 2484:  nocrash_mandatory_f_size_llll              [PASS]
+Test 2485:  nocrash_mandatory_f_size_LL                [PASS]
+Test 2486:  nocrash_mandatory_f_size_Ll                [PASS]
+Test 2487:  nocrash_mandatory_f_size_lL                [PASS]
+Test 2488:  nocrash_mandatory_f_lj_nowidth             [PASS]
+Test 2489:  moul_s_1                                   [PASS]
+Test 2490:  moul_s_2                                   [PASS]
+Test 2491:  moul_s_3                                   [PASS]
+Test 2492:  moul_s_4                                   [PASS]
+Test 2493:  moul_s_5_this_ones_a_doozy                 [PASS]
+Test 2494:  moul_d_1                                   [PASS]
+Test 2495:  moul_d_2                                   [PASS]
+Test 2496:  moul_d_3                                   [PASS]
+Test 2497:  moul_d_4                                   [PASS]
+Test 2498:  moul_d_5                                   [PASS]
+Test 2499:  moul_d_6                                   [PASS]
+Test 2500:  moul_d_7                                   [PASS]
+Test 2501:  moul_d_8                                   [PASS]
+Test 2502:  moul_d_9                                   [PASS]
+Test 2503:  moul_d_10                                  [PASS]
+Test 2504:  moul_d_11                                  [PASS]
+Test 2505:  moul_d_12                                  [PASS]
+Test 2506:  moul_mix_1                                 [PASS]
+Test 2507:  moul_c_1                                   [PASS]
+Test 2508:  moul_c_2                                   [PASS]
+Test 2509:  moul_c_3                                   [PASS]
+Test 2510:  moul_c_4                                   [PASS]
+Test 2511:  moul_c_5                                   [PASS]
+Test 2512:  moul_c_5b                                  [PASS]
+Test 2513:  moul_c_6                                   [PASS]
+Test 2514:  moul_c_7                                   [PASS]
+Test 2515:  moul_c_8                                   [PASS]
+Test 2516:  moul_c_9                                   [PASS]
+Test 2517:  moul_c_10                                  [PASS]
+Test 2518:  moul_c_11                                  [PASS]
+Test 2519:  moul_c_12                                  [PASS]
+Test 2520:  moul_c_13                                  [PASS]
+Test 2521:  moul_c_14                                  [PASS]
+Test 2522:  moul_c_15                                  [PASS]
+Test 2523:  moul_c_16                                  [PASS]
+Test 2524:  moul_c_17                                  [PASS]
+Test 2525:  moul_c_18                                  [PASS]
+Test 2526:  moul_c_19                                  [PASS]
+Test 2527:  moul_c_20                                  [PASS]
+Test 2528:  moul_c_21                                  [PASS]
+Test 2529:  moul_c_22                                  [PASS]
+Test 2530:  moul_c_23                                  [PASS]
+Test 2531:  moul_c_24                                  [PASS]
+Test 2532:  moul_c_25                                  [PASS]
+Test 2533:  moul_c_26                                  [PASS]
+Test 2534:  moul_c_27                                  [PASS]
+Test 2535:  moul_c_28                                  [PASS]
+Test 2536:  moul_ld_1_throwswarning                    [PASS]
+Test 2537:  moul_ld_2_throwswarning                    [PASS]
+Test 2538:  moul_ld_3_throwswarning                    [PASS]
+Test 2539:  moul_ld_4_throwswarning                    [PASS]
+Test 2540:  moul_ld_5_throwswarning                    [PASS]
+Test 2541:  moul_ld_6_throwswarning                    [PASS]
+Test 2542:  moul_ld_7_throwswarning                    [PASS]
+Test 2543:  moul_ld_8_throwswarning                    [PASS]
+Test 2544:  moul_ld_9_throwswarning                    [PASS]
+Test 2545:  moul_ld_10_throwswarning                   [PASS]
+Test 2546:  moul_ld_11_throwswarning                   [PASS]
+Test 2547:  moul_ld_12_throwswarning                   [PASS]
+Test 2560:  moul_i_1                                   [PASS]
+Test 2561:  moul_i_2                                   [PASS]
+Test 2562:  moul_i_3                                   [PASS]
+Test 2563:  moul_i_4                                   [PASS]
+Test 2564:  moul_i_5                                   [PASS]
+Test 2565:  moul_i_6                                   [PASS]
+Test 2566:  moul_i_7                                   [PASS]
+Test 2567:  moul_i_8                                   [PASS]
+Test 2568:  moul_i_9                                   [PASS]
+Test 2569:  moul_i_10                                  [PASS]
+Test 2570:  moul_i_11                                  [PASS]
+Test 2571:  moul_i_12                                  [PASS]
+Test 2572:  moul_f_1                                   [PASS]
+Test 2573:  moul_f_2                                   [PASS]
+Test 2574:  moul_f_3                                   [FAIL]
+Test 2575:  moul_f_4                                   [PASS]
+Test 2576:  moul_f_5                                   [PASS]
+Test 2577:  moul_f_6                                   [PASS]
+Test 2578:  moul_f_7                                   [PASS]
+Test 2579:  moul_f_7b                                  [PASS]
+Test 2580:  moul_f_8                                   [PASS]
+Test 2581:  moul_f_9                                   [PASS]
+Test 2582:  moul_f_10                                  [PASS]
+Test 2583:  moul_f_11                                  [PASS]
+Test 2584:  moul_f_12                                  [PASS]
+Test 2599:  moul_o_1                                   [PASS]
+Test 2600:  moul_o_2                                   [PASS]
+Test 2601:  moul_o_3                                   [PASS]
+Test 2602:  moul_o_4                                   [PASS]
+Test 2603:  moul_o_5                                   [PASS]
+Test 2604:  moul_o_6                                   [PASS]
+Test 2605:  moul_o_7                                   [PASS]
+Test 2606:  moul_o_8                                   [PASS]
+Test 2607:  moul_o_9                                   [PASS]
+Test 2608:  moul_o_10                                  [PASS]
+Test 2609:  moul_o_11                                  [PASS]
+Test 2610:  moul_o_12                                  [PASS]
+Test 2611:  moul_u_1                                   [PASS]
+Test 2612:  moul_u_2                                   [PASS]
+Test 2613:  moul_u_3                                   [PASS]
+Test 2614:  moul_u_4                                   [PASS]
+Test 2615:  moul_u_5                                   [PASS]
+Test 2616:  moul_u_6                                   [PASS]
+Test 2617:  moul_u_7                                   [PASS]
+Test 2618:  moul_u_8                                   [PASS]
+Test 2619:  moul_u_9                                   [PASS]
+Test 2620:  moul_u_10                                  [PASS]
+Test 2621:  moul_u_11                                  [PASS]
+Test 2622:  moul_u_12                                  [PASS]
+Test 2623:  moul_x_1                                   [PASS]
+Test 2624:  moul_x_2                                   [PASS]
+Test 2625:  moul_x_3                                   [PASS]
+Test 2626:  moul_x_4                                   [PASS]
+Test 2627:  moul_x_5                                   [PASS]
+Test 2628:  moul_x_6                                   [PASS]
+Test 2629:  moul_x_7                                   [PASS]
+Test 2630:  moul_x_8                                   [PASS]
+Test 2631:  moul_x_9                                   [PASS]
+Test 2632:  moul_x_10                                  [PASS]
+Test 2633:  moul_x_11                                  [PASS]
+Test 2634:  moul_x_12                                  [PASS]
+Test 2635:  moul_hash_1                                [PASS]
+Test 2636:  moul_hash_2                                [PASS]
+Test 2637:  moul_hash_3                                [PASS]
+Test 2638:  moul_hash_4                                [PASS]
+Test 2639:  moul_hash_5                                [PASS]
+Test 2640:  moul_hash_6                                [PASS]
+Test 2641:  moul_hash_7                                [PASS]
+Test 2642:  moul_hash_8                                [PASS]
+Test 2643:  moul_hash_9                                [PASS]
+Test 2644:  moul_hash_10                               [PASS]
+Test 2645:  moul_hash_11                               [PASS]
+Test 2646:  moul_hash_12                               [PASS]
+Test 2647:  moul_prec_1                                [PASS]
+Test 2648:  moul_prec_2                                [PASS]
+Test 2649:  moul_prec_3                                [PASS]
+Test 2650:  moul_prec_4                                [PASS]
+Test 2651:  moul_prec_5                                [PASS]
+Test 2652:  moul_zeropad_1                             [PASS]
+Test 2653:  moul_zeropad_2                             [PASS]
+Test 2654:  moul_zeropad_3                             [PASS]
+Test 2655:  moul_zeropad_4                             [PASS]
+Test 2656:  moul_leftjusty_1                           [PASS]
+Test 2657:  moul_leftjusty_2                           [PASS]
+Test 2658:  moul_leftjusty_3                           [PASS]
+Test 2659:  moul_leftjusty_4                           [PASS]
+Test 2660:  moul_leftjusty_5                           [PASS]
+Test 2661:  moul_leftjusty_6                           [PASS]
+Test 2662:  moul_leftjusty_7                           [PASS]
+Test 2663:  moul_as_1                                  [PASS]
+Test 2664:  moul_as_2                                  [PASS]
+Test 2665:  moul_as_3                                  [PASS]
+Test 2666:  moul_as_4                                  [PASS]
+Test 2667:  moul_sp_1                                  [PASS]
+Test 2668:  moul_sp_2                                  [PASS]
+Test 2669:  moul_sp_3                                  [PASS]
+Tests completed. 1709/1765 tests passed.
+See .pft_results.txt for details.
+
+
+==========================
+  Disabled Tests
+==========================
+
+123: int s_undefbehav_4_flags_diff_order_1(void){return test("%+- 06.06s", s_hidden);}
+124: int s_undefbehav_4_flags_diff_order_2(void){return test("% 0+-6.06s", s_hidden);}
+125: int s_undefbehav_4_flags_diff_order_3(void){return test("%0 +-6.06s", s_hidden);}
+126: int s_undefbehav_4_flags_diff_order_4(void){return test("%+-0 6.06s", s_hidden);}
+127: int s_undefbehav_4_flags_diff_order_5(void){return test("%-+ 06.06s", s_hidden);}
+128: int s_undefbehav_4_flags_diff_order_6(void){return test("% -+06.06s", s_hidden);}
+129: int s_undefbehav_4_flags_sp_padded_diff_order_1(void){return test("%+- 07.06s", s_hidden);}
+130: int s_undefbehav_4_flags_sp_padded_diff_order_2(void){return test("% 0+-8.06s", s_hidden);}
+131: int s_undefbehav_4_flags_sp_padded_diff_order_3(void){return test("%0 +-9.06s", s_hidden);}
+132: int s_undefbehav_4_flags_sp_padded_diff_order_4(void){return test("%+-0 10.06s", s_hidden);}
+133: int s_undefbehav_4_flags_sp_padded_diff_order_5(void){return test("%-+ 011.06s", s_hidden);}
+134: int s_undefbehav_4_flags_sp_padded_diff_order_6(void){return test("% -+012.06s", s_hidden);}
+135: int s_undefbehav_4_flags_as_lj_sp_zero_trunc(void){return test("%+- 06.04s", s_hidden);}
+136: int s_undefbehav_4_flags_sp_zero_as_lj_trunc(void){return test("% 0+-6.04s", s_hidden);}
+137: int s_undefbehav_4_flags_zero_sp_as_lj_trunc(void){return test("%0 +-6.04s", s_hidden);}
+138: int s_undefbehav_4_flags_as_lj_zero_sp_trunc(void){return test("%+-0 6.04s", s_hidden);}
+139: int s_undefbehav_4_flags_lj_as_sp_zero_trunc(void){return test("%-+ 06.04s", s_hidden);}
+140: int s_undefbehav_4_flags_sp_zero_lj_as_trunc(void){return test("% 0-+6.04s", s_hidden);}
+141: int s_undefbehav_4_flags_as_lj_sp_zero__pads(void){return test("%+- 06.09s", s_hidden);}
+142: int s_undefbehav_4_flags_sp_zero_as_lj__pads(void){return test("% 0+-6.09s", s_hidden);}
+143: int s_undefbehav_4_flags_zero_sp_as_lj__pads(void){return test("%0 +-6.09s", s_hidden);}
+144: int s_undefbehav_4_flags_as_lj_zero_sp__pads(void){return test("%+-0 6.09s", s_hidden);}
+145: int s_undefbehav_4_flags_lj_as_sp_zero__pads(void){return test("%-+ 06.09s", s_hidden);}
+146: int s_undefbehav_4_flags_sp_zero_lj_as__pads(void){return test("% 0-+6.09s", s_hidden);}
+147: int s_undefbehav_0_2zero(void){return test("%00s", s_hidden);}
+148: int s_undefbehav_0_3zero(void){return test("%000s", s_hidden);}
+149: int s_undefbehav_0_4zero(void){return test("%0000s", s_hidden);}
+150: int s_undefbehav_0_lj_2zero(void){return test("%-00s", s_hidden);}
+151: int s_undefbehav_0_zero_lj_zero(void){return test("%0-0s", s_hidden);}
+152: int s_undefbehav_0_2zero_lj(void){return test("%00-s", s_hidden);}
+153: int s_undefbehav_0_width_3(void){return test("%03s", s_hidden);}
+154: int s_undefbehav_0_width_9(void){return test("%09s", s_hidden);}
+155: int s_undefbehav_as_0_width_3(void){return test("%+03s", s_hidden);}
+156: int s_undefbehav_as_0_width_9(void){return test("%+09s", s_hidden);}
+157: int s_undefbehav_lj_0_width_3(void){return test("%-03s", s_hidden);}
+158: int s_undefbehav_lj_0_width_9(void){return test("%-09s", s_hidden);}
+159: int s_undefbehav_as_sp_width_3(void){return test("%+ 3s", s_hidden);}
+160: int s_undefbehav_as_sp_width_6(void){return test("%+ 6s", s_hidden);}
+488: int i_ftfc_hhdoutofrange1_might_be_undefbehav(void){return test("%hhi", -129);}
+489: int i_ftfc_hhdoutofrange2_might_be_undefbehav(void){return test("%hhi", 128);}
+490: int i_ftfc_hdoutofrange1_might_be_undefbehav(void){return test("%hi", 32768);}
+491: int i_ftfc_hdoutofrange2_might_be_undefbehav(void){return test("%hi", -32769);}
+1285: int p_ftfc_literal_9w_prec2_undefbehav(void){return test("%9.2p
+", 1234);}
+1286: int p_ftfc_literal_2w_prec9_undefbehav(void){return test("%2.9p
+", 1234);}
+1287: int p_ftfc_zero_prec5_undefbehav(void){return test("%.5p", 0);}
+1288: int p_ftfc_zero_prec0_undefbehav(void){return test("%.0p", 0);}
+1682: int f_overprec_might_be_undefbehav_100(void){return test("%.100f", 0.237);}
+1683: int f_overprec_might_be_undefbehav_32(void){return test("%.32f", 0.237);}
+1684: int f_overprec_might_be_undefbehav_4(void){return test("%.4f", 0.237);}
+1685: int f_overprec_might_be_undefbehav_1000(void){return test("%.4f", -0.106577568068517810765107851705167);}
+1686: int f_overprec_might_be_undefbehav_10_from_0(void){return test("%.10f", 0.0);}
+1687: int f_overprec_might_be_undefbehav_2000(void){return test("%.2000f", 623.28376510723481);}
+1688: int f_overprec_might_be_undefbehav_dblmin(void){return test("%.2000f", DBL_MIN);}
+1689: int f_overprec_might_be_undefbehav_ndblmin(void){return test("%.2000f", -DBL_MIN);}
+1690: int f_limits_dblmax_prec0_notmandatory(void){return test("%.0f", DBL_MAX);}
+1691: int f_limits_dblmax_prec3_notmandatory(void){return test("%.3f", DBL_MAX);}
+1692: int f_limits_dblmax_precd_notmandatory(void){return test("%f", DBL_MAX);}
+1693: int f_limits_dblmax_prec8_notmandatory(void){return test("%.8f", DBL_MAX);}
+1694: int f_stress_limits_dblmax_prec12_notmandatory(void){return test("%.12f", DBL_MAX);}
+1695: int f_stress_limits_dblmax_prec16_notmandatory(void){return test("%.16f", DBL_MAX);}
+1696: int f_stress_limits_dblmax_prec18_notmandatory(void){return test("%.18f", DBL_MAX);}
+1697: int f_limits_ndblmax_prec0_notmandatory(void){return test("%.0f", -DBL_MAX);}
+1698: int f_limits_ndblmax_prec3_notmandatory(void){return test("%.3f", -DBL_MAX);}
+1699: int f_limits_ndblmax_precd_notmandatory(void){return test("%f", -DBL_MAX);}
+1700: int f_limits_ndblmax_prec8_notmandatory(void){return test("%.8f", -DBL_MAX);}
+1701: int f_stress_limits_ndblmax_prec12_notmandatory(void){return test("%.12f", -DBL_MAX);}
+1702: int f_stress_limits_ndblmax_prec16_notmandatory(void){return test("%.16f", -DBL_MAX);}
+1703: int f_stress_limits_ndblmax_prec18_notmandatory(void){return test("%.18f", -DBL_MAX);}
+1718: int f_reserved_values_inf(void){double special; *((unsigned long *)(&special)) = DBL_INF;
+1719: int f_reserved_values_ninf(void){double special; *((unsigned long *)(&special)) = DBL_NINF;
+1720: int f_reserved_values_nan(void){double special; *((unsigned long *)(&special)) = DBL_NAN;
+1721: int f_reserved_values_pzero(void){double special; *((unsigned long *)(&special)) = DBL_PZERO;
+1722: int f_reserved_values_nzero(void){double special; *((unsigned long *)(&special)) = DBL_NZERO;
+1723: int f_reserved_values_inf_6w(void){double special; *((unsigned long *)(&special)) = DBL_INF;
+1724: int f_reserved_values_ninf_6w(void){double special; *((unsigned long *)(&special)) = DBL_NINF;
+1725: int f_reserved_values_nan_6w(void){double special; *((unsigned long *)(&special)) = DBL_NAN;
+1726: int f_reserved_values_pzero_6w(void){double special; *((unsigned long *)(&special)) = DBL_PZERO;
+1727: int f_reserved_values_nzero_6w(void){double special; *((unsigned long *)(&special)) = DBL_NZERO;
+1728: int f_reserved_values_inf_6wlj(void){double special; *((unsigned long *)(&special)) = DBL_INF;
+1729: int f_reserved_values_ninf_6wlj(void){double special; *((unsigned long *)(&special)) = DBL_NINF;
+1730: int f_reserved_values_nan_6wlj(void){double special; *((unsigned long *)(&special)) = DBL_NAN;
+1731: int f_reserved_values_pzero_6wlj(void){double special; *((unsigned long *)(&special)) = DBL_PZERO;
+1732: int f_reserved_values_nzero_6wlj(void){double special; *((unsigned long *)(&special)) = DBL_NZERO;
+1733: int f_reserved_values_inf_6was(void){double special; *((unsigned long *)(&special)) = DBL_INF;
+1734: int f_reserved_values_ninf_6was(void){double special; *((unsigned long *)(&special)) = DBL_NINF;
+1735: int f_reserved_values_nan_6was(void){double special; *((unsigned long *)(&special)) = DBL_NAN;
+1736: int f_reserved_values_pzero_6was(void){double special; *((unsigned long *)(&special)) = DBL_PZERO;
+1737: int f_reserved_values_nzero_6was(void){double special; *((unsigned long *)(&special)) = DBL_NZERO;
+1738: int f_reserved_values_inf_10w_prec7(void){double special; *((unsigned long *)(&special)) = DBL_INF;
+1739: int f_reserved_values_ninf_10w_prec7(void){double special; *((unsigned long *)(&special)) = DBL_NINF;
+1740: int f_reserved_values_nan_10w_prec7(void){double special; *((unsigned long *)(&special)) = DBL_NAN;
+1741: int f_reserved_values_pzero_10w_prec7(void){double special; *((unsigned long *)(&special)) = DBL_PZERO;
+1742: int f_reserved_values_nzero_10w_prec7(void){double special; *((unsigned long *)(&special)) = DBL_NZERO;
+1743: int f_reserved_values_inf_sp_prec7(void){double special; *((unsigned long *)(&special)) = DBL_INF;
+1744: int f_reserved_values_ninf_sp_prec7(void){double special; *((unsigned long *)(&special)) = DBL_NINF;
+1745: int f_reserved_values_nan_sp_prec7(void){double special; *((unsigned long *)(&special)) = DBL_NAN;
+1746: int f_reserved_values_pzero_sp_prec7(void){double special; *((unsigned long *)(&special)) = DBL_PZERO;
+1747: int f_reserved_values_nzero_sp_prec7(void){double special; *((unsigned long *)(&special)) = DBL_NZERO;
+1748: int f_reserved_values_inf_sp(void){double special; *((unsigned long *)(&special)) = DBL_INF;
+1749: int f_reserved_values_ninf_sp(void){double special; *((unsigned long *)(&special)) = DBL_NINF;
+1750: int f_reserved_values_nan_sp(void){double special; *((unsigned long *)(&special)) = DBL_NAN;
+1751: int f_reserved_values_pzero_sp(void){double special; *((unsigned long *)(&special)) = DBL_PZERO;
+1752: int f_reserved_values_nzero_sp(void){double special; *((unsigned long *)(&special)) = DBL_NZERO;
+1753: int f_reserved_values_inf_6wzp(void){double special; *((unsigned long *)(&special)) = DBL_INF;
+1754: int f_reserved_values_ninf_6wzp(void){double special; *((unsigned long *)(&special)) = DBL_NINF;
+1755: int f_reserved_values_nan_6wzp(void){double special; *((unsigned long *)(&special)) = DBL_NAN;
+1756: int f_reserved_values_pzero_6wzp(void){double special; *((unsigned long *)(&special)) = DBL_PZERO;
+1757: int f_reserved_values_nzero_6wzp(void){double special; *((unsigned long *)(&special)) = DBL_NZERO;
+1927: int f_L_reserved_values_inf(void){long double special; *((unsigned long *)(&special)) = FTPF_LDBL_INF; FTPF_LDBL_BYTE5(special) = 0x7FFF;
+1928: int f_L_reserved_values_ninf(void){long double special; *((unsigned long *)(&special)) = FTPF_LDBL_INF; FTPF_LDBL_BYTE5(special) = 0xFFFF;
+1929: int f_L_reserved_values_nan(void){long double special; *((unsigned long *)(&special)) = 8ull;FTPF_LDBL_BYTE5(special) = 0xFFFF;
+1930: int f_L_reserved_values_pzero(void){long double special; *((unsigned long *)(&special)) = 0ull;FTPF_LDBL_BYTE5(special) = 0;
+1931: int f_L_reserved_values_nzero(void){long double special; *((unsigned long *)(&special)) = 0ull;FTPF_LDBL_BYTE5(special) = 0;
+1932: int f_L_reserved_values_inf_6w(void){long double special; *((unsigned long *)(&special)) = FTPF_LDBL_INF; FTPF_LDBL_BYTE5(special) = 0x7FFF;
+1933: int f_L_reserved_values_ninf_6w(void){long double special; *((unsigned long *)(&special)) = FTPF_LDBL_INF;FTPF_LDBL_BYTE5(special) = 0xFFFF;
+1934: int f_L_reserved_values_nan_6w(void){long double special; *((unsigned long *)(&special)) = 8ull;FTPF_LDBL_BYTE5(special) = 0xFFFF;
+1935: int f_L_reserved_values_pzero_6w(void){long double special; *((unsigned long *)(&special)) = 0ull;FTPF_LDBL_BYTE5(special) = 0;
+1936: int f_L_reserved_values_nzero_6w(void){long double special; *((unsigned long *)(&special)) = 0ull;FTPF_LDBL_BYTE5(special) = 0;
+1937: int f_L_reserved_values_inf_6wlj(void){long double special; *((unsigned long *)(&special)) = FTPF_LDBL_INF; FTPF_LDBL_BYTE5(special) = 0x7FFF;
+1938: int f_L_reserved_values_ninf_6wlj(void){long double special; *((unsigned long *)(&special)) = FTPF_LDBL_INF;FTPF_LDBL_BYTE5(special) = 0xFFFF;
+1939: int f_L_reserved_values_nan_6wlj(void){long double special; *((unsigned long *)(&special)) = 8ull;FTPF_LDBL_BYTE5(special) = 0xFFFF;
+1940: int f_L_reserved_values_pzero_6wlj(void){long double special; *((unsigned long *)(&special)) = 0ull;FTPF_LDBL_BYTE5(special) = 0;
+1941: int f_L_reserved_values_nzero_6wlj(void){long double special; *((unsigned long *)(&special)) = 0ull;FTPF_LDBL_BYTE5(special) = 0;
+1942: int f_L_reserved_values_inf_6was(void){long double special; *((unsigned long *)(&special)) = FTPF_LDBL_INF; FTPF_LDBL_BYTE5(special) = 0x7FFF;
+1943: int f_L_reserved_values_ninf_6was(void){long double special; *((unsigned long *)(&special)) = FTPF_LDBL_INF;FTPF_LDBL_BYTE5(special) = 0xFFFF;
+1944: int f_L_reserved_values_nan_6was(void){long double special; *((unsigned long *)(&special)) = 8ull;FTPF_LDBL_BYTE5(special) = 0xFFFF;
+1945: int f_L_reserved_values_pzero_6was(void){long double special; *((unsigned long *)(&special)) = 0ull;FTPF_LDBL_BYTE5(special) = 0;
+1946: int f_L_reserved_values_nzero_6was(void){long double special; *((unsigned long *)(&special)) = 0ull;FTPF_LDBL_BYTE5(special) = 0;
+1947: int f_L_reserved_values_inf_10w_prec7(void){long double special; *((unsigned long *)(&special)) = FTPF_LDBL_INF;  FTPF_LDBL_BYTE5(special) = 0x7FFF;
+1948: int f_L_reserved_values_ninf_10w_prec7(void){long double special; *((unsigned long *)(&special)) = FTPF_LDBL_INF;FTPF_LDBL_BYTE5(special) = 0xFFFF;
+1949: int f_L_reserved_values_nan_10w_prec7(void){long double special; *((unsigned long *)(&special)) = 8ull;FTPF_LDBL_BYTE5(special) = 0xFFFF;
+1950: int f_L_reserved_values_pzero_10w_prec7(void){long double special; *((unsigned long *)(&special)) = 0ull;FTPF_LDBL_BYTE5(special) = 0;
+1951: int f_L_reserved_values_nzero_10w_prec7(void){long double special; *((unsigned long *)(&special)) = 0ull;FTPF_LDBL_BYTE5(special) = 0;
+1952: int f_L_reserved_values_inf_sp_prec7(void){long double special; *((unsigned long *)(&special)) = FTPF_LDBL_INF;  FTPF_LDBL_BYTE5(special) = 0x7FFF;
+1953: int f_L_reserved_values_ninf_sp_prec7(void){long double special; *((unsigned long *)(&special)) = FTPF_LDBL_INF;FTPF_LDBL_BYTE5(special) = 0xFFFF;
+1954: int f_L_reserved_values_nan_sp_prec7(void){long double special; *((unsigned long *)(&special)) = 8ull;FTPF_LDBL_BYTE5(special) = 0xFFFF;
+1955: int f_L_reserved_values_pzero_sp_prec7(void){long double special; *((unsigned long *)(&special)) = 0ull;FTPF_LDBL_BYTE5(special) = 0;
+1956: int f_L_reserved_values_nzero_sp_prec7(void){long double special; *((unsigned long *)(&special)) = 0ull;FTPF_LDBL_BYTE5(special) = 0;
+1957: int f_L_reserved_values_inf_sp(void){long double special; *((unsigned long *)(&special)) = FTPF_LDBL_INF; FTPF_LDBL_BYTE5(special) = 0x7FFF;
+1958: int f_L_reserved_values_ninf_sp(void){long double special; *((unsigned long *)(&special)) = FTPF_LDBL_INF;FTPF_LDBL_BYTE5(special) = 0xFFFF;
+1959: int f_L_reserved_values_nan_sp(void){long double special; *((unsigned long *)(&special)) = 8ull;FTPF_LDBL_BYTE5(special) = 0xFFFF;
+1960: int f_L_reserved_values_pzero_sp(void){long double special; *((unsigned long *)(&special)) = 0ull;FTPF_LDBL_BYTE5(special) = 0;
+1961: int f_L_reserved_values_nzero_sp(void){long double special; *((unsigned long *)(&special)) = 0ull;FTPF_LDBL_BYTE5(special) = 0;
+1962: int f_L_reserved_values_inf_6wzp(void){long double special; *((unsigned long *)(&special)) = FTPF_LDBL_INF; FTPF_LDBL_BYTE5(special) = 0x7FFF;
+1963: int f_L_reserved_values_ninf_6wzp(void){long double special; *((unsigned long *)(&special)) = FTPF_LDBL_INF;FTPF_LDBL_BYTE5(special) = 0xFFFF;
+1964: int f_L_reserved_values_nan_6wzp(void){long double special; *((unsigned long *)(&special)) = 8ull;FTPF_LDBL_BYTE5(special) = 0xFFFF;
+1965: int f_L_reserved_values_pzero_6wzp(void){long double special; *((unsigned long *)(&special)) = 0ull;FTPF_LDBL_BYTE5(special) = 0;
+1966: int f_L_reserved_values_nzero_6wzp(void){long double special; *((unsigned long *)(&special)) = 0ull;FTPF_LDBL_BYTE5(special) = 0;
+1967: int f_L_overprec_might_be_undefbehav_100(void){return test("%.100Lf", 0.237l);}
+1968: int f_L_overprec_might_be_undefbehav_32(void){return test("%.32Lf", 0.237l);}
+1969: int f_L_overprec_might_be_undefbehav_4(void){return test("%.4Lf", 0.237l);}
+1970: int f_L_overprec_might_be_undefbehav_1000(void){return test("%.4Lf", -0.106577568068517810765107851705167l);}
+1971: int f_L_overprec_might_be_undefbehav_10_from_0(void){return test("%.10Lf", 0.0l);}
+1972: int f_L_overprec_might_be_undefbehav_2000(void){return test("%.2000Lf", 623.28376510723481l);}
+1973: int f_L_overprec_might_be_undefbehav_dblmin(void){return test("%.2000Lf", LDBL_MIN);}
+1974: int f_L_overprec_might_be_undefbehav_ndblmin(void){return test("%.2000Lf", -LDBL_MIN);}
+1975: int f_L_limits_dblmax_prec0_notmandatory(void){return test("%.0Lf", LDBL_MAX);}
+1976: int f_L_limits_dblmax_prec3_notmandatory(void){return test("%.3Lf", LDBL_MAX);}
+1977: int f_L_limits_dblmax_precd_notmandatory(void){return test("%Lf", LDBL_MAX);}
+1978: int f_L_limits_dblmax_prec8_notmandatory(void){return test("%.8Lf", LDBL_MAX);}
+1979: int f_L_stress_limits_dblmax_prec12_notmandatory(void){return test("%.12Lf", LDBL_MAX);}
+1980: int f_L_stress_limits_dblmax_prec16_notmandatory(void){return test("%.16Lf", LDBL_MAX);}
+1981: int f_L_stress_limits_dblmax_prec18_notmandatory(void){return test("%.18Lf", LDBL_MAX);}
+1982: int f_L_limits_ndblmax_prec0_notmandatory(void){return test("%.0Lf", -LDBL_MAX);}
+1983: int f_L_limits_ndblmax_prec3_notmandatory(void){return test("%.3Lf", -LDBL_MAX);}
+1984: int f_L_limits_ndblmax_precd_notmandatory(void){return test("%Lf", -LDBL_MAX);}
+1985: int f_L_limits_ndblmax_prec8_notmandatory(void){return test("%.8Lf", -LDBL_MAX);}
+1986: int f_L_stress_limits_ndblmax_prec12_notmandatory(void){return test("%.12Lf", -LDBL_MAX);}
+1987: int f_L_stress_limits_ndblmax_prec16_notmandatory(void){return test("%.16Lf", -LDBL_MAX);}
+1988: int f_L_stress_limits_ndblmax_prec18_notmandatory(void){return test("%.18Lf", -LDBL_MAX);}
+2003: int  argnum_simple_swap(void){return test("%2$s, %1$s!", "world", "hello");} //CAN-SEGFAULT
+2004: int  argnum_swap_around_pct(void){return test("%2$s %% %1$s!", "world", "hello");} //CAN-SEGFAULT
+2005: int  argnum_swap_strfloat(void){return test("%2$f, %1$s!", "world", 5.75);} //CAN-SEGFAULT
+2006: int  argnum_swap_floatstr(void){return test("%2$s, %1$f!", 5.75, "abc");} //CAN-SEGFAULT
+2007: int  argnum_swap_ldblstr(void){return test("%2$s, %1$Lf!", 5.75L, "abc");} //CAN-SEGFAULT
+2008: int  argnum_swap_strldbl(void){return test("%2$Lf, %1$s!", "world", 5.75L);} //CAN-SEGFAULT
+2009: int  argnum_swap_ldblchar(void){return test("%2$c, %1$Lf!", 5.75L, 'c');} //CAN-SEGFAULT
+2010: int  argnum_swap_charldbl(void){return test("%2$Lf, %1$c!", 'c', 5.75L);} //CAN-SEGFAULT
+2011: int  argnum_swap_floatstr_around_pct(void){return test("%2$s %% %1$f!", 5.75, "abc");} //CAN-SEGFAULT
+2012: int  argnum_swap_strfloat_around_pct(void){return test("%2$f %% %1$s!", "world", 5.75);} //CAN-SEGFAULT
+2013: int  argnum_loopback_throwswarning(void){return test("%i %i %1$i %i %i", 1, 2, 3);} //CAN-SEGFAULT
+2014: int  argnum_onlyone(void){return test("%1$s %1$s %1$s %1$s %1$s %1$s %1$s %1$s.", "buffalo");} //CAN-SEGFAULT
+2015: int  argnum_start2thentofloatthen1_throwswarning(void){return test("%2$s %f %1$i", 5, "abc", 5.75f);} //CAN-SEGFAULT
+2016: int  argnum_ultimate_1_throwswarning(void){return test("%2$s %f %1$i %s %f %2$s %1$i %s %1$i %3$f %1$i %s %f %2$s", 5, "abc", 5.75);} //CAN-SEGFAULT
+2017: int  argnum_ultimate_2_throwswarning(void){return test("%4$.5s %.4i %lli %1$Lf %c %7$20.6s %5$i %2$c %1$.2Lf %c %i", //CAN-SEGFAULT
+2018: int  argnum_ultimate_2_with_pct_throwswarning(void){return test("%% %4$.5s %.4i %lli %% %1$Lf %c %7$20.6s %5$i %% %2$c %1$.2Lf %c %i", //CAN-SEGFAULT
+2300: int  nocrash_noarg_1_notmandatory(void){return test("%1$"); }
+2301: int  nocrash_noarg_2_notmandatory(void){return test("%0"); }
+2302: int  nocrash_noarg_3_notmandatory(void){return test("% "); }
+2303: int  nocrash_noarg_4_notmandatory(void){return test("%#"); }
+2304: int  nocrash_noarg_5_notmandatory(void){return test("%-"); }
+2305: int  nocrash_noarg_6_notmandatory(void){return test("%+"); }
+2306: int  nocrash_noarg_9_notmandatory(void){return test("%23"); }
+2307: int  nocrash_noarg_10_notmandatory(void){return test("%."); }
+2308: int  nocrash_noarg_11_notmandatory(void){return test("%hh"); }
+2309: int  nocrash_noarg_12_notmandatory(void){return test("%h"); }
+2310: int  nocrash_noarg_13_notmandatory(void){return test("%ll"); }
+2311: int  nocrash_noarg_14_notmandatory(void){return test("%l"); }
+2312: int  nocrash_noarg_15_notmandatory(void){return test("%L"); }
+2313: int  nocrash_noarg_16_notmandatory(void){return test("%p"); }
+2314: int  nocrash_noarg_17_notmandatory(void){return test("%d"); }
+2315: int  nocrash_noarg_19_notmandatory(void){return test("%u"); }
+2316: int  nocrash_noarg_20_notmandatory(void){return test("%x"); }
+2317: int  nocrash_noarg_21_notmandatory(void){return test("%X"); }
+2318: int  nocrash_noarg_22_notmandatory(void){return test("%f"); }
+2319: int  nocrash_noarg_24_notmandatory(void){return test("%c"); }
+2320: int  nocrash_noarg_25_notmandatory(void){return test("%o"); }
+2548: int moul_D_1_notmandatory(void){return test("%D", 42);}
+2549: int moul_D_2_notmandatory(void){return test("Kashim a %D histoires √† raconter", 1001);}
+2550: int moul_D_3_notmandatory(void){return test("Il fait au moins %D
+", -8000);}
+2551: int moul_D_4_notmandatory(void){return test("%D", -0);}
+2552: int moul_D_5_notmandatory(void){return test("%D", 0);}
+2553: int moul_D_6_notmandatory(void){return test("%D", INT_MAX);}
+2554: int moul_D_7_notmandatory(void){return test("%D", INT_MIN);}
+2555: int moul_D_8_notmandatory(void){return test("%D", INT_MIN - 1);}
+2556: int moul_D_9_notmandatory(void){return test("%D", INT_MAX + 1);}
+2557: int moul_D_10_notmandatory(void){return test("%%D 0000042 == |%D|
+", 0000042);}
+2558: int moul_D_11_notmandatory(void){return test("%%D 	 == |%D|
+", '	');}
+2559: int moul_D_12_notmandatory(void){return test("%%D Lydie == |%D|
+", 'L'+'y'+'d'+'i'+'e');}
+2585: int moul_F_1_notmandatory(void){return test("%F", (double)42);}
+2586: int moul_F_2_notmandatory(void){return test("Kashim a %F histoires √† raconter", (double)1001);}
+2587: int moul_F_3_notmandatory(void){return test("Il fait au moins %F
+", (double)-8000);}
+2588: int moul_F_4_notmandatory(void){return test("%F", (double)-0);}
+2589: int moul_F_5_notmandatory(void){return test("%F", (double)0);}
+2590: int moul_F_6_notmandatory(void){return test("%F", (double)INT_MAX);}
+2591: int moul_F_7_notmandatory(void){return test("%F", (double)INT_MIN);}
+2592: int moul_F_8_notmandatory(void){return test("%F", (double)INT_MIN - 1);}
+2593: int moul_F_9_notmandatory(void){return test("%F", (double)INT_MAX + 1);}
+2594: int moul_F_10_notmandatory(void){return test("%%F 0000042 == |%F|
+", (double)0000042);}
+2595: int moul_F_11_notmandatory(void){return test("%%F 	 == |%F|
+", (double)'	');}
+2596: int moul_F_12_notmandatory(void){return test("%%F Lydie == |%F|
+", (double)'L'+'y'+'d'+'i'+'e');}
+2597: int moul_F_13_notmandatory(void){return test("%%F 42.42 == |%F|
+", 42.42);}
+2598: int moul_F_14_notmandatory(void){return test("%%F 42.42 == |%.2F|
+", 42.42);}
+2670: int moul_notmandatory_e_1(void){return test("%e", (double)42);}
+2671: int moul_notmandatory_e_2(void){return test("Kashim a %e histoires √† raconter", (double)1001);}
+2672: int moul_notmandatory_e_3(void){return test("Il fait au moins %e
+", (double)-8000);}
+2673: int moul_notmandatory_e_4(void){return test("%e", (double)-0);}
+2674: int moul_notmandatory_e_5(void){return test("%e", (double)0);}
+2675: int moul_notmandatory_e_6(void){return test("%e", (double)INT_MAX);}
+2676: int moul_notmandatory_e_7(void){return test("%e", (double)INT_MIN);}
+2677: int moul_notmandatory_e_8(void){return test("%e", (double)INT_MIN - 1);}
+2678: int moul_notmandatory_e_9(void){return test("%e", (double)INT_MAX + 1);}
+2679: int moul_notmandatory_e_10(void){return test("%%e 0000042 == |%e|
+", (double)0000042);}
+2680: int moul_notmandatory_e_11(void){return test("%%e 	 == |%e|
+", (double)'	');}
+2681: int moul_notmandatory_e_12(void){return test("%%e Lydie == |%e|
+", (double)'L'+'y'+'d'+'i'+'e');}
+2682: int moul_notmandatory_e_13(void){return test("%%e 42.42 == |%e|
+", 42.42);}
+2683: int moul_notmandatory_e_14(void){return test("%E", (double)42);}
+2684: int moul_notmandatory_e_15(void){return test("Kashim a %E histoires √† raconter", (double)1001);}
+2685: int moul_notmandatory_e_16(void){return test("Il fait au moins %E
+", (double)-8000);}
+2686: int moul_notmandatory_e_17(void){return test("%E", (double)-0);}
+2687: int moul_notmandatory_e_18(void){return test("%E", (double)0);}
+2688: int moul_notmandatory_e_19(void){return test("%E", (double)INT_MAX);}
+2689: int moul_notmandatory_e_20(void){return test("%E", (double)INT_MIN);}
+2690: int moul_notmandatory_e_21(void){return test("%E", (double)INT_MIN - 1);}
+2691: int moul_notmandatory_e_22(void){return test("%E", (double)INT_MAX + 1);}
+2692: int moul_notmandatory_e_23(void){return test("%%E 0000042 == |%E|
+", (double)0000042);}
+2693: int moul_notmandatory_e_24(void){return test("%%E 	 == |%E|
+", (double)'	');}
+2694: int moul_notmandatory_e_25(void){return test("%%E Lydie == |%E|
+", (double)'L'+'y'+'d'+'i'+'e');}
+2695: int moul_notmandatory_e_26(void){return test("%%E 42.42 == |%E|
+", 42.42);}
+2696: int moul_notmandatory_e_27(void){return test("%%E 42.42 == |%.2E|
+", 42.42);}
+2697: int moul_notmandatory_g_1(void){return test("%g", (double)42);}
+2698: int moul_notmandatory_g_2(void){return test("Kashim a %g histoires √† raconter", (double)1001);}
+2699: int moul_notmandatory_g_3(void){return test("Il fait au moins %g
+", (double)-8000);}
+2700: int moul_notmandatory_g_4(void){return test("%g", (double)-0);}
+2701: int moul_notmandatory_g_5(void){return test("%g", (double)0);}
+2702: int moul_notmandatory_g_5b(void){return test("%g", (double)INT_MAX);}
+2703: int moul_notmandatory_g_6(void){return test("%g", (double)INT_MIN);}
+2704: int moul_notmandatory_g_7(void){return test("%g", (double)INT_MIN - 1);}
+2705: int moul_notmandatory_g_8(void){return test("%g", (double)INT_MAX + 1);}
+2706: int moul_notmandatory_g_9(void){return test("%%g 0000042 == |%g|
+", (double)0000042);}
+2707: int moul_notmandatory_g_10(void){return test("%%g 	 == |%g|
+", (double)'	');}
+2708: int moul_notmandatory_g_11(void){return test("%%g Lydie == |%g|
+", (double)'L'+'y'+'d'+'i'+'e');}
+2709: int moul_notmandatory_g_12(void){return test("%%g 42.42 == |%g|
+", 42.42);}
+2710: int moul_notmandatory_g_13(void){return test("%G", (double)42);}
+2711: int moul_notmandatory_g_14(void){return test("Kashim a %G histoires √† raconter", (double)1001);}
+2712: int moul_notmandatory_g_15(void){return test("Il fait au moins %G
+", (double)-8000);}
+2713: int moul_notmandatory_g_16(void){return test("%G", (double)-0);}
+2714: int moul_notmandatory_g_17(void){return test("%G", (double)0);}
+2715: int moul_notmandatory_g_18(void){return test("%G", (double)INT_MAX);}
+2716: int moul_notmandatory_g_19(void){return test("%G", (double)INT_MIN);}
+2717: int moul_notmandatory_g_20(void){return test("%G", (double)INT_MIN - 1);}
+2718: int moul_notmandatory_g_21(void){return test("%G", (double)INT_MAX + 1);}
+2719: int moul_notmandatory_g_22(void){return test("%%G 0000042 == |%G|
+", (double)0000042);}
+2720: int moul_notmandatory_g_23(void){return test("%%G 	 == |%G|
+", (double)'	');}
+2721: int moul_notmandatory_g_24(void){return test("%%G Lydie == |%G|
+", (double)'L'+'y'+'d'+'i'+'e');}
+2722: int moul_notmandatory_g_25(void){return test("%%G 42.42 == |%G|
+", 42.42);}
+2723: int moul_notmandatory_g_26(void){return test("%%G 42.42 == |%.2G|
+", 42.42);}
+2724: int moul_notmandatory_a_1(void){return test("%a", (double)42);}
+2725: int moul_notmandatory_a_2(void){return test("Kashim a %a histoires √† raconter", (double)1001);}
+2726: int moul_notmandatory_a_3(void){return test("Il fait au moins %a
+", (double)-8000);}
+2727: int moul_notmandatory_a_4(void){return test("%a", (double)-0);}
+2728: int moul_notmandatory_a_5(void){return test("%a", (double)0);}
+2729: int moul_notmandatory_a_6(void){return test("%a", (double)INT_MAX);}
+2730: int moul_notmandatory_a_7(void){return test("%a", (double)INT_MIN);}
+2731: int moul_notmandatory_a_8(void){return test("%a", (double)INT_MIN - 1);}
+2732: int moul_notmandatory_a_9(void){return test("%a", (double)INT_MAX + 1);}
+2733: int moul_notmandatory_a_11(void){return test("%%a 0000042 == |%a|
+", (double)0000042);}
+2734: int moul_notmandatory_a_12(void){return test("%%a 	 == |%a|
+", (double)'	');}
+2735: int moul_notmandatory_a_13(void){return test("%%a Lydie == |%a|
+", (double)'L'+'y'+'d'+'i'+'e');}
+2736: int moul_notmandatory_a_14(void){return test("%%a 42.42 == |%a|
+", 42.42);}
+2737: int moul_notmandatory_a_15(void){return test("%A", (double)42);}
+2738: int moul_notmandatory_a_16(void){return test("Kashim a %A histoires √† raconter", (double)1001);}
+2739: int moul_notmandatory_a_17(void){return test("Il fait au moins %A
+", (double)-8000);}
+2740: int moul_notmandatory_a_18(void){return test("%A", (double)-0);}
+2741: int moul_notmandatory_a_19(void){return test("%A", (double)0);}
+2742: int moul_notmandatory_a_20(void){return test("%A", (double)INT_MAX);}
+2743: int moul_notmandatory_a_21(void){return test("%A", (double)INT_MIN);}
+2744: int moul_notmandatory_a_22(void){return test("%A", (double)INT_MIN - 1);}
+2745: int moul_notmandatory_a_23(void){return test("%A", (double)INT_MAX + 1);}
+2746: int moul_notmandatory_a_24(void){return test("%%A 0000042 == |%A|
+", (double)0000042);}
+2747: int moul_notmandatory_a_25(void){return test("%%A 	 == |%A|
+", (double)'	');}
+2748: int moul_notmandatory_a_26(void){return test("%%A Lydie == |%A|
+", (double)'L'+'y'+'d'+'i'+'e');}
+2749: int moul_notmandatory_a_27(void){return test("%%A 42.42 == |%A|
+", 42.42);}
+2750: int moul_notmandatory_a_28(void){return test("%%A 42.42 == |%.2A|
+", 42.42);}
+2751: int moul_notmandatory_star_1(void){return test("%%-*.3s LYDI == |%-*.3s|
+", 5, "LYDI");}
+2752: int moul_notmandatory_star_2(void){return test("%% *.5i 42 == |% *.5i|
+", 4, 42);}
+2753: int moul_notmandatory_star_3(void){return test("%%*i 42 == |%*i|
+", 5, 42);}
+2754: int moul_notmandatory_star_4(void){return test("%%*i 42 == |%*i|
+", 3, 42);}
+2755: int moul_notmandatory_star_5(void){return test("%%*i 42 == |%*i|
+", 2, 42);}
+2756: int moul_notmandatory_widechar_mix2_throwswarning(void){return test("Lalalala, %d%% des gens qui parlent %C Ly adorent %s. Ou Presque. %d, %u, %X, %c", 100, L'√†', "Ly", 2, 10, 10000, '
+', "√¥Hohoho");}
+2757: int moul_notmandatory_widechar_basic1(void){wchar_t c = L'Ç'; return test("%C
+", c);}
+2758: int moul_notmandatory_widechar_basic2(void){return test("%C
+", L'√∏');}
+2759: int moul_notmandatory_widestr_basic2(void){wchar_t wz[3] = L"@@"; return test("%ls", wz);}
+

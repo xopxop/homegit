@@ -6,7 +6,7 @@
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 11:21:14 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/30 10:24:24 by dthan            ###   ########.fr       */
+/*   Updated: 2020/02/10 09:22:30 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ static int	getsizenumber(unsigned long long nb)
 
 char		*ft_itoa_signed_longlong(long long n)
 {
-	char			*string;
+	char				*string;
 	unsigned long long	nbr;
-	unsigned int	index;
-	unsigned int	size;
+	unsigned int		index;
+	unsigned int		size;
 
 	index = 0;
 	if (n < 0)

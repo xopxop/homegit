@@ -13,50 +13,6 @@
 #include "../../includes/ft_printf.h"
 
 /*
-** ft_isnan return 1 if not a number
-**                 0 if is number
-*/
-
-int				ft_isnan(double num)
-{
-	return (num != num);
-}
-
-/*
-** ft_isinf return 1 if the number divide 0,
-**                 0 if not
-*/
-
-int				ft_isinf(double num)
-{
-	if (num == (10.0 / 0.0) || num == (-10.0 / 0.0))
-		return (1);
-	return (0);
-}
-
-/*
-** Return 1 if there is any special case: not a number, positive/ negative
-** infinity and the string, "nan" for not a number, "inf" for the 2 later
-*/
-
-int				special_case(char **s, double num)
-{
-	char *new;
-
-	new = ft_strnew(3);
-	if (ft_isnan(num) || ft_isinf(num))
-	{
-		if (ft_isnan(num))
-			ft_strcpy(new, "nan");
-		else if (ft_isinf(num))
-			ft_strcpy(new, "inf");
-		*s = new;
-		return (1);
-	}
-	return (0);
-}
-
-/*
 ** Finding the modulo for decimal part
 ** if the decimal part of the number / 10 not equal to 0
 ** ex: 332.32(double) -> 332(int) / 10
@@ -120,15 +76,19 @@ void			ft_handle_decimal(long double *nb, char **str, int *i, \
 void			ft_handle_fractional(char **str, int *i, long double nb, \
 		t_info *info)
 {
-	int		j;
 	int		tmp;
 	char	*s;
 
 	nb *= 10;
-	j = 0;
 	s = *str;
+	if (info->percision == 0)
+	{
+		if (info->flags & HASH_SIGN)
+			s[*i] = '.';
+		return ;
+	}
 	s[(*i)++] = '.';
-	while (j++ < info->percision)
+	while (info->percision-- > 0)
 	{
 		if ((int)nb == 0)
 		{
