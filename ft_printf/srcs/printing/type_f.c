@@ -11,6 +11,27 @@
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
+#define ROUNDED 1
+#define NOT_ROUNDED 0
+
+/*
+** This is a simple function to check if the number need to round or not
+*/
+
+static int need_to_round(long double nb, int lap)
+{
+	int i;
+
+	i = 0;
+	nb = (nb - (int)nb) * 10;
+	while (i++ < lap)
+	{
+		if ((int) nb != 9)
+			return (0);
+		nb = (nb - (int)nb) * 10;
+	}
+	return (1);
+}
 
 /*
 ** Finding the modulo for decimal part
@@ -46,16 +67,26 @@ long double		ft_calc_modulo(double num, int *str_size)
 */
 
 void			ft_handle_decimal(long double *nb, char **str, int *i, \
-		long double modulo)
+		long double modulo, int *check_rounded)
 {
 	char *s;
+	long double temp;
 
 	s = *str;
 	if ((int)*nb == 0)
 		s[(*i)++] = '0';
 	else
-		while ((int)*nb != 0)
+		while ((int)modulo != 0)
 		{
+			if (*check_rounded == NOT_ROUNDED)
+			{
+				temp = *nb;
+				if (need_to_round(temp, 3))
+				{
+					*check_rounded = ROUNDED;
+					*nb = *nb + (long double)0.001;
+				}
+			}
 			s[(*i)++] = (char)((*nb / modulo) + '0');
 			*nb -= (int)(*nb / modulo) * modulo;
 			modulo /= 10;
@@ -66,13 +97,39 @@ void			ft_handle_decimal(long double *nb, char **str, int *i, \
 ** Handle the fractional part
 ** NOTE: This is not an accurate method, the accurate method will take way
 ** longer for reference: dtoa function : http://www.netlib.org/fp/dtoa.c
-** - Push one by one the fractional part to decimal by multiply with 10 then
-** put the nbr we got into the str
-** Rouding the nb with 0.01
-** Why?
-** Read this: https://en.wikipedia.org/wiki/IEEE_754
+** FYI: https://en.wikipedia.org/wiki/IEEE_754
 */
 
+void			ft_handle_fractional(char **str, int *i, long double nb, \
+		t_info *info, int *check_rounded)
+{
+	char	*s;
+
+	nb *= 10;
+	s = *str;
+	if (info->percision == 0)
+	{
+		if (info->flags & HASH_SIGN)
+			s[*i] = '.';
+		return ;
+	}
+	s[(*i)++] = '.';
+	if (*check_rounded == ROUNDED)
+		ft_memset(s + *i, '0', info->percision);
+	else
+		while (info->percision-- > 0)
+		{
+			if (*check_rounded == NOT_ROUNDED)
+				if (need_to_round(nb, info->percision))
+				{
+					*check_rounded = ROUNDED;
+					nb = nb + (long double)0.0001;
+				}
+			s[(*i)++] = (char)((int)nb + 48);
+			nb = (nb - (int)nb) * 10;
+		}
+}
+/*
 void			ft_handle_fractional(char **str, int *i, long double nb, \
 		t_info *info)
 {
@@ -96,12 +153,12 @@ void			ft_handle_fractional(char **str, int *i, long double nb, \
 			nb *= 10;
 			continue;
 		}
-		tmp = ((int)nb != 9) ? (int)(nb + 0.00000001) : (int)nb;
+		tmp = ((int)nb != 9) ? (int)(nb + 0.01) : (int)nb;
 		s[(*i)++] = (char)(tmp + 48);
 		nb = (nb - tmp) * 10;
 	}
 }
-
+*/
 /*
 ** This function is for floating point type
 ** - first it will take the argument and put its value into the long double
@@ -117,7 +174,9 @@ void			type_f(t_info *info, va_list arg, size_t *ct)
 {
 	long double	num;
 	char		*str;
+	int check_rounded;
 
+	check_rounded = NOT_ROUNDED;
 	if (info->length == len_l)
 		num = (long double)va_arg(arg, double);
 	else if (info->length == len_lup)
@@ -125,13 +184,8 @@ void			type_f(t_info *info, va_list arg, size_t *ct)
 	else
 		num = (long double)va_arg(arg, double);
 	info->percision = (info->percision == -1) ? 6 : info->percision;
-	float_to_string(num, info, &str);
-	if ((info->flags & PLUS_SIGN || info->flags & SPACE) && str[0] != '-')
-	{
-		str = ft_strjoin_and_free_string2((info->flags & SPACE) ? " " : "+", \
-				str);
-		str[0] = (info->flags & PLUS_SIGN) ? '+' : str[0];
-	}
+	float_to_string(num, info, &str, &check_rounded);
+	flag_control(info, &str);
 	width_ctrl(info, &str);
 	write(STDOUT, str, *ct = ft_strlen(str));
 	free(str);

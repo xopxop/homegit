@@ -7,25 +7,28 @@
 int main(void)
 {	
 	printf(RED"Test\n");
-	printf("%#.3x\n", 32123142);
-	printf("%x\n", 32123142);
-//	printf("%#++#-5x\n", 42);
-//	printf("%+o\n", 42);
-//	printf("% o\n", 42);
-//	printf("%+x\n", 42);
-//	printf("% x\n", 42);
-//	printf("%+X\n", 42);
-//	printf("% X\n", 42);
-//	printf("Il fait au moins %f\n", (double)-8000);
-	
-//	ft_printf(RESET"Test\n");
-//	ft_printf("% 5x\n");
-//	ft_printf("%#++#-5x\n", 42);
-//	ft_printf("%+o\n", 42);
-//	ft_printf("% o\n", 42);
-//	ft_printf("%+x\n", 42);
-//	ft_printf("% x\n", 42);
-//	ft_printf("%+X\n", 42);
-//	ft_printf("% X\n", 42);
-//	ft_printf("Il fait au moins %f\n", (double)-8000);
+/*	printf("%f\n", 23.00041);
+	printf("%f\n", 0.000001);
+	printf("%f\n", -875.000001);
+	printf("%f\n", 0.0894255);
+	printf("%f\n", 43.4399999);
+	printf("%f\n", -5.0299999);
+	printf("%f\n", 3.9999999);
+	printf("%f\n", -5.9999999);
+	printf("this %.0f float\n", 1.6);
+	printf("%.0f\n", -3.85);
+*/	printf("Il fait au moins %015Lf\n", (long double)-8000);
+
+	ft_printf(RESET"Test\n");
+/*	ft_printf("%f\n", 23.00041);
+	ft_printf("%f\n", 0.000001);
+	ft_printf("%f\n", -875.000001);
+	ft_printf("%f\n", 0.0894255);
+	ft_printf("%f\n", 43.4399999);
+	ft_printf("%f\n", -5.0299999);
+	ft_printf("%f\n", 3.9999999);
+	ft_printf("%f\n", -5.9999999);
+	ft_printf("this %.0f float\n", 1.6);
+	ft_printf("%.0f\n", -3.85);
+*/	ft_printf("Il fait au moins %015Lf\n", (long double)-8000);
 }

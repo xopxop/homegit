@@ -74,7 +74,8 @@ unsigned long long	get_unsigned_argument(t_info *info, va_list arg)
 ** - Filling the Fractional part
 */
 
-void				float_to_string(long double num, t_info *info, char **str)
+void				float_to_string(long double num, t_info *info, char **str, \
+			int *check_rounded)
 {
 	long double	modulo;
 	int			str_size;
@@ -96,8 +97,8 @@ void				float_to_string(long double num, t_info *info, char **str)
 	*str = ft_strnew(str_size);
 	if (negative_sign)
 		*str[i++] = negative_sign;
-	ft_handle_decimal(&num, str, &i, modulo);
-	ft_handle_fractional(str, &i, num, info);
+	ft_handle_decimal(&num, str, &i, modulo, check_rounded);
+	ft_handle_fractional(str, &i, num, info, check_rounded);
 }
 
 /*

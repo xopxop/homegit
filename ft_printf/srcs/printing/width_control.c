@@ -26,8 +26,8 @@ void	pad_right(t_info *info, char **str, char *new)
 	extra = 0;
 	if (info->flags & ZERO)
 	{
-		extra = (!ft_isdigit((*str)[0]) && info->specifier == spec_int)\
-				? (*str)[0] : 0;
+		extra = (!ft_isdigit((*str)[0]) && (info->specifier == spec_int \
+				|| info->specifier == spec_float)) ? (*str)[0] : 0;
 		ft_memset(new, '0', info->field_width - ft_strlen(*str) + \
 				!!extra);
 		if (extra)

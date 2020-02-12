@@ -139,12 +139,13 @@ void				prec_ctrl_nums(t_info *info, char **str);
 void				prec_ctrl_oct_hex(t_info *info, char **str, char *hash_str);
 
 /*
-** Get number to string file
+** nbr_to_str.c
 */
 
 char				*ft_number_conversion(unsigned long long num, int mask, \
 		int shiff_nbr, char *s);
-void				float_to_string(long double num, t_info *info, char **str);
+void				float_to_string(long double num, t_info *info, char **str, \
+		int *not_rounded);
 long long			get_signed_argument(t_info *info, va_list arg);
 unsigned long long	get_unsigned_argument(t_info *info, va_list arg);
 
@@ -201,9 +202,9 @@ int					ft_isinf(double num);
 int					special_case(char **s, double num);
 long double			ft_calc_modulo(double num, int *str_size);
 void				ft_handle_decimal(long double *nb, char **str, int *i, \
-		long double modulo);
+		long double modulo, int *check_rounded);
 void				ft_handle_fractional(char **str, int *i, long double nb, \
-		t_info *info);
+		t_info *info, int *check_rounded);
 void				type_f(t_info *info, va_list arg, size_t *ct);
 
 /*
