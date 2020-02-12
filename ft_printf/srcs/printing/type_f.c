@@ -24,12 +24,15 @@ static int need_to_round(long double nb, int lap)
 
 	i = 0;
 	nb = (nb - (int)nb) * 10;
-	while (i++ < lap)
-	{
-		if ((int) nb != 9)
-			return (0);
-		nb = (nb - (int)nb) * 10;
-	}
+	if ((int)nb != 9)
+		return (0);
+	else
+		while (i++ < lap)
+		{
+			if ((int) nb != 9)
+				return (0);
+			nb = (nb - (int)nb) * 10;
+		}
 	return (1);
 }
 
@@ -100,15 +103,16 @@ void			ft_handle_decimal(long double *nb, char **str, int *i, \
 ** FYI: https://en.wikipedia.org/wiki/IEEE_754
 */
 
-void rounding(char **str, int first_position, int last_position, long double nb, int *check_rounded)
+void rounding(char **str, long double temp_nb, int first_position, int last_position, long double nb, int *check_rounded)
 {
 	char *s;
 
 	s = *str;
-//	printf("String:%s\nfirst:%d\nLast:%d\nnb:%d\n", *str, first_position, last_position, (int)nb);
+	printf("String:%s\nfirst:%d\nLast:%d\nnb:%d\ntemp_nb:%d", *str, first_position, last_position, (int)nb, (int)temp_nb);
 //	printf("%s\n", s);
 	if ((int)nb > 4)
 	{
+		
 //		printf("Here\n");
 //		printf("%c\n", s[last_position]);
 		if (s[last_position] != '9')
@@ -119,16 +123,17 @@ void rounding(char **str, int first_position, int last_position, long double nb,
 		{
 			while(first_position++ < last_position)
 			{
+			//	printf("%d\n", (int)temp_nb);
 				if (*check_rounded == NOT_ROUNDED)
 				{
-					if (need_to_round(nb, last_position - first_position))
+					if (need_to_round(temp_nb, last_position - first_position))
 					{
 						s[first_position - 1] += 1;
-						ft_memset(s + first_position, '0', last_position - first_position);
+						ft_memset(s + first_position, '0', last_position - first_position + 1);
 						break ;
 					}
 				}
-				nb = (nb - (int)(nb)) * 10;
+				temp_nb = (temp_nb - (int)(temp_nb)) * 10;
 			}
 		}
 	}
@@ -139,7 +144,9 @@ void			ft_handle_fractional(char **str, int *i, long double nb, \
 {
 	char	*s;
 	int temp_position;
+	long double temp_nb;
 
+	temp_nb = nb;
 	nb *= 10;
 	s = *str;
 	if (info->percision == 0)
@@ -166,7 +173,7 @@ void			ft_handle_fractional(char **str, int *i, long double nb, \
 		}
 //	printf("%Lf\n", nb);
 //	printf("Temp:%d\nI%d\n", temp_position, *i);
-	rounding(str, temp_position, *i - 1, nb, check_rounded);
+	rounding(str, temp_nb, nb, );
 }
 /*
 void			ft_handle_fractional(char **str, int *i, long double nb, \

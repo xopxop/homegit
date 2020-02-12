@@ -23,7 +23,7 @@ int main(void)
 
 */
 //	ft_printf(RESET"Test\n");
-	ft_printf("%f\n", 23.00041);
+//	ft_printf("%f\n", 23.00041);
 /*	ft_printf("%f\n", 0.000001);
 	ft_printf("%f\n", -875.000001);
 	ft_printf("%f\n", 0.0894255);
@@ -35,4 +35,6 @@ int main(void)
 	ft_printf("%.0f\n", -3.85);
 	ft_printf("Il fait au moins %015Lf\n", (long double)-8000);
 */
+	printf("%f\n", 43.4399999);
+	ft_printf("%f\n", 43.4399999);
 }

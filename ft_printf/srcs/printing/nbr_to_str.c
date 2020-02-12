@@ -73,7 +73,136 @@ unsigned long long	get_unsigned_argument(t_info *info, va_list arg)
 ** then the next position need to be the radix point
 ** - Filling the Fractional part
 */
+/*
+void			ft_handle_decimal(long double *nb, char **str, int *i, \
+		long double modulo, int *check_rounded)
+{
+	char *s;
+	long double temp;
 
+	s = *str;
+	if ((int)*nb == 0)
+		s[(*i)++] = '0';
+	else
+		while ((int)modulo != 0)
+		{
+			if (*check_rounded == NOT_ROUNDED)
+			{
+				temp = *nb;
+				if (need_to_round(temp, 3))
+				{
+					*check_rounded = ROUNDED;
+					*nb = *nb + (long double)0.001;
+				}
+			}
+			s[(*i)++] = (char)((*nb / modulo) + '0');
+			*nb -= (int)(*nb / modulo) * modulo;
+			modulo /= 10;
+		}
+}
+*/
+
+/*
+void			ft_handle_fractional(char **str, int *i, long double nb, \
+		t_info *info)
+{
+	int		tmp;
+	char	*s;
+
+	nb *= 10;
+	s = *str;
+	if (info->percision == 0)
+	{
+		if (info->flags & HASH_SIGN)
+			s[*i] = '.';
+		return ;
+	}
+	s[(*i)++] = '.';
+	while (info->percision-- > 0)
+	{
+		if ((int)nb == 0)
+		{
+			s[(*i)++] = '0';
+			nb *= 10;
+			continue;
+		}
+		tmp = ((int)nb != 9) ? (int)(nb + 0.01) : (int)nb;
+		s[(*i)++] = (char)(tmp + 48);
+		nb = (nb - tmp) * 10;
+	}
+}
+*/
+
+int ft_pow(int x, int y)
+{
+	int temp;
+
+	if (y == 0)
+		return (1);
+	temp = ft_pow(x, y / 2);
+	if (y % 2 == 0)
+		return (temp * temp);
+	else
+		return (x * temp * temp);
+}
+
+void rounding_up(long double *nb, t_info *info)
+{
+
+	*nb *= ft_pow(10, info->percision);
+	*nb += 0.5;
+}
+
+char *ft_handle_fractional2(long double nb, t_info *info)
+{
+	char radix_point;
+	char *str;
+	long double temp_nb;
+
+	str[0] = '.';
+	if (info->percision > 0)
+	{
+		nb = nb - (int)nb;
+		nb *= ft_pow(10, (double)info->percision);
+		str + 1 = ft_itoa_unsigned_longlong((long long)nb)
+	}
+	return (str);	
+}
+
+char *ft_handle_decimal2(long double nb)
+{
+	char *str;
+
+	str = ft_itoa_unsigned_longlong((long long)nb);
+	nb = (int)(nb) - nb;
+	return (str);
+}
+
+void				float_to_string(long double num, t_info *info, char **str, \
+			int *check_rounded)
+{
+	long double temp_num;
+	int radix_position;
+	char negative;
+
+	if (special_case(str, num))
+		return ;
+	negative = 0;
+	if (num < 0)
+	{
+		num *= -1;
+		negative = '-';
+	}
+	temp_num = num;
+	radix_position = 0;
+	while ((int)(temp_num /= 10) != 0)
+		radix_position++;
+	rounding_up(&num, info);
+	str = ft_itoa_unsigned_longlong((long long)num);
+	
+}
+
+/*
 void				float_to_string(long double num, t_info *info, char **str, \
 			int *check_rounded)
 {
@@ -100,7 +229,7 @@ void				float_to_string(long double num, t_info *info, char **str, \
 	ft_handle_decimal(&num, str, &i, modulo, check_rounded);
 	ft_handle_fractional(str, &i, num, info, check_rounded);
 }
-
+*/
 /*
 ** The ft_number_conversion is using for reversing the string s
 ** the reason using this function is using for putting the number of type_x
