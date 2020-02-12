@@ -29,8 +29,8 @@ void	flag_control(t_info *info, char **str)
 			&& info->specifier != spec_octal)
 		**str = '\0';
 	if ((info->flags & PLUS_SIGN || info->flags & SPACE) && *str[0] != '-' \
-		&& !(info->specifier == spec_uint && info->specifier == spec_octal && \
-		info->specifier == spec_hexlowcase && info->specifier == spec_hexupcase))
+		&& !(info->specifier == spec_uint || info->specifier == spec_octal || \
+		info->specifier == spec_hexlowcase || info->specifier == spec_hexupcase))
 	{
 		*str = ft_strjoin_and_free_string2((info->flags & SPACE) ? " " : "+", \
 				*str);

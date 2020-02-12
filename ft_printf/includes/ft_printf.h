@@ -17,6 +17,8 @@
 # include <stdint.h>
 # include "libft.h"
 
+#include <stdio.h>
+
 /*
 ** Flags uses a binary addressing system
 ** ZERO : pad with zero

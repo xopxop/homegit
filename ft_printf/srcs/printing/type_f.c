@@ -100,10 +100,45 @@ void			ft_handle_decimal(long double *nb, char **str, int *i, \
 ** FYI: https://en.wikipedia.org/wiki/IEEE_754
 */
 
+void rounding(char **str, int first_position, int last_position, long double nb, int *check_rounded)
+{
+	char *s;
+
+	s = *str;
+//	printf("String:%s\nfirst:%d\nLast:%d\nnb:%d\n", *str, first_position, last_position, (int)nb);
+//	printf("%s\n", s);
+	if ((int)nb > 4)
+	{
+//		printf("Here\n");
+//		printf("%c\n", s[last_position]);
+		if (s[last_position] != '9')
+		{
+			s[last_position] += 1;
+		}
+		else
+		{
+			while(first_position++ < last_position)
+			{
+				if (*check_rounded == NOT_ROUNDED)
+				{
+					if (need_to_round(nb, last_position - first_position))
+					{
+						s[first_position - 1] += 1;
+						ft_memset(s + first_position, '0', last_position - first_position);
+						break ;
+					}
+				}
+				nb = (nb - (int)(nb)) * 10;
+			}
+		}
+	}
+}
+
 void			ft_handle_fractional(char **str, int *i, long double nb, \
 		t_info *info, int *check_rounded)
 {
 	char	*s;
+	int temp_position;
 
 	nb *= 10;
 	s = *str;
@@ -114,20 +149,24 @@ void			ft_handle_fractional(char **str, int *i, long double nb, \
 		return ;
 	}
 	s[(*i)++] = '.';
+	temp_position = *i;
 	if (*check_rounded == ROUNDED)
 		ft_memset(s + *i, '0', info->percision);
 	else
 		while (info->percision-- > 0)
 		{
-			if (*check_rounded == NOT_ROUNDED)
-				if (need_to_round(nb, info->percision))
-				{
-					*check_rounded = ROUNDED;
-					nb = nb + (long double)0.0001;
-				}
+//			if (*check_rounded == NOT_ROUNDED)
+//				if (need_to_round(nb, info->percision))
+//				{
+//					*check_rounded = ROUNDED;
+//					nb = nb + (long double)0.0001;
+//				}
 			s[(*i)++] = (char)((int)nb + 48);
 			nb = (nb - (int)nb) * 10;
 		}
+//	printf("%Lf\n", nb);
+//	printf("Temp:%d\nI%d\n", temp_position, *i);
+	rounding(str, temp_position, *i - 1, nb, check_rounded);
 }
 /*
 void			ft_handle_fractional(char **str, int *i, long double nb, \
