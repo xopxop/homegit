@@ -17,8 +17,6 @@
 # include <stdint.h>
 # include "libft.h"
 
-#include <stdio.h>
-
 /*
 ** Flags uses a binary addressing system
 ** ZERO : pad with zero
@@ -146,8 +144,6 @@ void				prec_ctrl_oct_hex(t_info *info, char **str, char *hash_str);
 
 char				*ft_number_conversion(unsigned long long num, int mask, \
 		int shiff_nbr, char *s);
-void				float_to_string(long double num, t_info *info, char **str, \
-		int *not_rounded);
 long long			get_signed_argument(t_info *info, va_list arg);
 unsigned long long	get_unsigned_argument(t_info *info, va_list arg);
 
@@ -199,14 +195,11 @@ void				big_x(char **output);
 ** Type floating point
 */
 
-int					ft_isnan(double num);
-int					ft_isinf(double num);
-int					special_case(char **s, double num);
-long double			ft_calc_modulo(double num, int *str_size);
-void				ft_handle_decimal(long double *nb, char **str, int *i, \
-		long double modulo, int *check_rounded);
-void				ft_handle_fractional(char **str, int *i, long double nb, \
-		t_info *info, int *check_rounded);
+
+float ft_pow(float x, int y);
+char *ft_decimal(long double *nbr);
+char *ft_fractional(long double nbr, t_info *info);
+void				float_to_string(long double num, t_info *info, char **str);
 void				type_f(t_info *info, va_list arg, size_t *ct);
 
 /*
@@ -222,5 +215,8 @@ void				type_percent(t_info *info, __attribute__((unused)) \
 
 char				*ft_strjoin_and_free_string1(char *string1, char *string2);
 char				*ft_strjoin_and_free_string2(char *string1, char *string2);
+int					ft_isnan(double num);
+int					ft_isinf(double num);
+int					special_case(char **s, double num);
 
 #endif
