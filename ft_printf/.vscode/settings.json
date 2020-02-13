@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "ft_printf.h": "c",
-        "stdint.h": "c",
-        "string.h": "c",
-        "cmath": "c",
-        "limits": "c"
-    }
-}
