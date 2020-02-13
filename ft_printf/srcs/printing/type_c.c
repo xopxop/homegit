@@ -12,11 +12,6 @@
 
 #include "../../includes/ft_printf.h"
 
-/*
-** ft printing for type_c
-** Taking the argument, put into a string and padding (if)
-*/
-
 void	type_c(t_info *info, va_list arg, size_t *ct)
 {
 	char	chr;

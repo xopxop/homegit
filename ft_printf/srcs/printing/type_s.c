@@ -12,11 +12,6 @@
 
 #include "../../includes/ft_printf.h"
 
-/*
-** This function is for printing type string
-** geting the string, taking care of the precison and padding
-*/
-
 void	type_s(t_info *info, va_list arg, size_t *ct)
 {
 	char *ctemp;

@@ -27,6 +27,8 @@ int	parse_and_print(const char *format, va_list args, size_t *pos, t_info *info)
 	int position_copy;
 
 	position_copy = *pos;
+	if (format[*pos] == '\0')
+		return (0);
 	parsing(format, args, pos, info);
 	if (info->specifier == spec_none)
 	{

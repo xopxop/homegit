@@ -70,7 +70,7 @@ void	prec_ctrl_nums(t_info *info, char **str)
 }
 
 /*
-** This prec_ctrl_nums is using for type_octal and type_hexadicimal
+** This prec_ctrl_oct_hex is using for type_octal and type_hexadicimal
 */
 
 void	prec_ctrl_oct_hex(t_info *info, char **str, char *hash_str)

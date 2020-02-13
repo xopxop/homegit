@@ -14,16 +14,6 @@
 #define HEX_MASK 15
 #define SHIFF_HEX_MASK 4
 
-/*
-** This ft will taking care of type pointer
-** Getting the adress from the argument then put it in an unsigned long long
-** interger
-** Convered the number into a string with ft_number_conversion, using the
-** mask to get the hex value
-** Ft_percison_hex to deal with the precision
-** Ft_pd_handle to deal with the padding
-*/
-
 void	type_p(t_info *info, va_list arg, size_t *ct)
 {
 	unsigned long long	num;

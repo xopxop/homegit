@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 23:45:44 by dthan             #+#    #+#             */
-/*   Updated: 2020/02/10 09:13:32 by dthan            ###   ########.fr       */
+/*   Updated: 2020/02/13 18:48:07 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,10 +195,9 @@ void				big_x(char **output);
 ** Type floating point
 */
 
-
-float ft_pow(float x, int y);
-char *ft_decimal(long double *nbr);
-char *ft_fractional(long double nbr, t_info *info);
+float				ft_pow(float x, int y);
+char				*ft_decimal(long double *nbr);
+char				*ft_fractional(long double nbr, t_info *info);
 void				float_to_string(long double num, t_info *info, char **str);
 void				type_f(t_info *info, va_list arg, size_t *ct);
 

@@ -6,30 +6,31 @@
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 04:25:23 by dthan             #+#    #+#             */
-/*   Updated: 2020/01/06 21:10:29 by dthan            ###   ########.fr       */
+/*   Updated: 2020/02/13 18:41:06 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 
-float ft_pow(float x, int y)  
-{  
-    float temp;  
-    if(y == 0)  
-        return 1;  
-    temp = ft_pow(x, y / 2);  
-    if (y % 2 == 0)  
-        return (temp * temp);  
-    else
-    {  
-        if(y > 0)  
-            return (x * temp * temp);  
-        else
-            return ((temp * temp) / x);  
-    }  
+float	ft_pow(float x, int y)
+{
+	float temp;
+
+	if (y == 0)
+		return (1);
+	temp = ft_pow(x, y / 2);
+	if (y % 2 == 0)
+		return (temp * temp);
+	else
+	{
+		if (y > 0)
+			return (x * temp * temp);
+		else
+			return ((temp * temp) / x);
+	}
 }
 
-char *ft_decimal(long double *nbr)
+char	*ft_decimal(long double *nbr)
 {
 	char *str;
 
@@ -38,14 +39,16 @@ char *ft_decimal(long double *nbr)
 	return (str);
 }
 
-char *ft_fractional(long double nbr, t_info *info)
+char	*ft_fractional(long double nbr, t_info *info)
 {
-	char *str;
-	int i;
+	char	*str;
+	int		i;
 
+	str = NULL;
 	nbr *= 10;
 	i = 1;
-	if (info->percision > 0 || (info->percision == 0 && info->flags & HASH_SIGN))
+	if (info->percision > 0 || (info->percision == 0 && \
+				info->flags & HASH_SIGN))
 	{
 		str = ft_strnew(info->percision + 1);
 		str[0] = '.';
@@ -61,11 +64,11 @@ char *ft_fractional(long double nbr, t_info *info)
 	return (str);
 }
 
-void				float_to_string(long double num, t_info *info, char **str)
+void	float_to_string(long double num, t_info *info, char **str)
 {
-	char *str_decimal;
-	char *str_fractional;
-	int negative;
+	char	*str_decimal;
+	char	*str_fractional;
+	int		negative;
 
 	if (special_case(str, num))
 		return ;
@@ -75,29 +78,20 @@ void				float_to_string(long double num, t_info *info, char **str)
 		negative = 1;
 		num *= -1;
 	}
-	num += (0.5 * ft_pow(0.1, info->percision));
+	if (!negative || info->percision < 6)
+		num += (0.5 * ft_pow(0.1, info->percision));
+	else
+		num += (0.1 * ft_pow(0.1, info->percision));
 	str_decimal = ft_decimal(&num);
 	str_fractional = ft_fractional(num, info);
 	*str = ft_strjoin(str_decimal, str_fractional);
 	if (negative)
 		*str = ft_strjoin_and_free_string2("-", *str);
 	free(str_decimal);
-	if (*str_fractional)
-		free(str_fractional);
+	free(str_fractional);
 }
 
-/*
-** This function is for floating point type
-** - first it will take the argument and put its value into the long double
-** number
-** - then it check the percision, if there is no percision then it will take
-** the default percision which is 6
-** - next is putting the floating point into the string
-** - next step is flags checking, flags '+' and ' '
-** - finally, paddling for field width
-*/
-
-void			type_f(t_info *info, va_list arg, size_t *ct)
+void	type_f(t_info *info, va_list arg, size_t *ct)
 {
 	long double	num;
 	char		*str;

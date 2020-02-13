@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 07:36:35 by dthan             #+#    #+#             */
-/*   Updated: 2020/02/10 07:39:45 by dthan            ###   ########.fr       */
+/*   Updated: 2020/02/13 18:41:49 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ void	flag_control(t_info *info, char **str)
 			info->flags ^= HASH_SIGN;
 	}
 	if (info->percision == 0 && !ft_strcmp("0", *str)\
-			&& info->specifier != spec_octal)
+			&& info->specifier != spec_octal && info->specifier != spec_float)
 		**str = '\0';
 	if ((info->flags & PLUS_SIGN || info->flags & SPACE) && *str[0] != '-' \
-		&& !(info->specifier == spec_uint || info->specifier == spec_octal || \
-		info->specifier == spec_hexlowcase || info->specifier == spec_hexupcase))
+	&& !(info->specifier == spec_uint || info->specifier == spec_octal || \
+	info->specifier == spec_hexlowcase || info->specifier == spec_hexupcase))
 	{
 		*str = ft_strjoin_and_free_string2((info->flags & SPACE) ? " " : "+", \
 				*str);

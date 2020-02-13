@@ -29,7 +29,7 @@ ft_strchr.c ft_strdup.c ft_memset.c ft_memalloc.c ft_bzero.c \
 ft_itoa.c ft_strjoin.c ft_strcpy.c ft_strcat.c ft_strnew.c ft_strcmp.c ft_strncpy.c\
 ft_toupper.c ft_isalnum.c ft_strrev.c)
 
-SRCS_OBJ = core.o parsing.c printing.o \
+SRCS_OBJ = core.o parsing.o printing.o \
 fill_struct.o parsing_helper.o \
 nbr_to_str.o width_control.o percision_control.o flag_control.o \
 printing_helper.o \

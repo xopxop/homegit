@@ -12,12 +12,6 @@
 
 #include "../../includes/ft_printf.h"
 
-/*
-** this function is for type unsigned integer (type_u) only
-** the way for dealing with this is the same for type signed integer (type d,i)
-** but not negative sign here
-*/
-
 void	type_u(t_info *info, va_list arg, size_t *ct)
 {
 	unsigned long long	num;

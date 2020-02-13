@@ -14,19 +14,6 @@
 #define HEX_MASK 15
 #define SHIFF_HEX_MASK 4
 
-/*
-** This function type x is for hexadecimal number
-** - First getting the length of the argument and put it into the unsigned
-** long long type (the biggest data type for unsigned number)
-** - Secondly, convert the number into the string with the ft_number_conversion
-** - Next is checking the flags, ZERO, PLUS, SPACE
-** - Next, handle the precision for type hex
-** - Next, handle the spacial case so it will print like normal printf
-** when there is a HASH, ZERO flags and flied width is bigger than strlen
-** - Finally, handle the padding, if there is special case already been handled,
-** this padding function will be skiped
-*/
-
 void	small_x(t_info *info, va_list arg, char **output)
 {
 	unsigned long long	num;
@@ -42,13 +29,6 @@ void	small_x(t_info *info, va_list arg, char **output)
 	width_ctrl(info, &str);
 	*output = str;
 }
-
-/*
-** This fuction type_x_up is for type hexadecimal (type x) but in the upper
-** case (Type_X)
-** It take the value from type lower case x then change the lower case letter
-** to upper case
-*/
 
 void	big_x(char **output)
 {
