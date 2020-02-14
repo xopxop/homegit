@@ -21,7 +21,7 @@
 
 void	prec_ctrl_str(t_info *info, char **str)
 {
-	if (info->percision <= -1)
+	if (info->percision < 0)
 		return ;
 	if (ft_strlen(*str) <= (size_t)info->percision)
 		return ;
