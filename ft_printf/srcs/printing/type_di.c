@@ -19,9 +19,11 @@ void	type_di(t_info *info, va_list arg, size_t *ct)
 
 	num = get_signed_argument(info, arg);
 	str = ft_itoa_signed_longlong(num);
-	flag_control(info, &str);
+	flag_ignore(info);
+//	flag_control(info, &str); change order
 	prec_ctrl_nums(info, &str);
 	width_ctrl(info, &str);
+	flag_control(info, &str);
 	write(STDOUT, str, *ct = ft_strlen(str));
 	free(str);
 }

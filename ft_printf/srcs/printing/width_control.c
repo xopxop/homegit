@@ -19,6 +19,7 @@
 ** - cp new string to the output string
 */
 
+/*
 void	pad_right(t_info *info, char **str, char *new)
 {
 	char extra;
@@ -46,6 +47,7 @@ void	pad_right(t_info *info, char **str, char *new)
 	ft_strcpy(new + info->field_width - ft_strlen(*str) + !!extra, *str \
 			+ !!extra);
 }
+*/
 
 /*
 ** This function width_ctrl will be used for padding, type d,i,u,c,s,f,p
@@ -70,11 +72,38 @@ void	width_ctrl(t_info *info, char **str)
 				- ft_strlen(*str));
 	}
 	else
+	{
+		ft_strcpy(new + ft_strlen(*str), *str);
+		ft_memset(*str, ' ', info->field_width - ft_strlen(*str));
+	}
+	free(*str);
+	*str = new;
+	return ;
+}
+
+/*
+
+void	width_ctrl(t_info *info, char **str)
+{
+	char *new;
+
+	if (info->field_width == 0 || ft_strlen(*str) >= \
+			(size_t)info->field_width)
+		return ;
+	new = ft_strnew(info->field_width);
+	if (info->flags & MINUS_SIGN)
+	{
+		ft_strcpy(new, *str);
+		ft_memset(new + ft_strlen(*str), ' ', info->field_width \
+				- ft_strlen(*str));
+	}
+	else
 		pad_right(info, str, new);
 	free(*str);
 	*str = new;
 	return ;
 }
+*/
 
 /*
 ** ---------------------HEXADECIMAL----------------------------
