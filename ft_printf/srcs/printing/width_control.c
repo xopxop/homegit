@@ -19,7 +19,7 @@
 ** - cp new string to the output string
 */
 
-/*
+
 void	pad_right(t_info *info, char **str, char *new)
 {
 	char extra;
@@ -27,14 +27,24 @@ void	pad_right(t_info *info, char **str, char *new)
 	extra = 0;
 	if (info->flags & ZERO)
 	{
-		extra = (!ft_isdigit((*str)[0]) && (info->specifier == spec_int \
-				|| info->specifier == spec_float)) ? (*str)[0] : 0;
-		ft_memset(new, '0', info->field_width - ft_strlen(*str) + \
-				!!extra);
-		if (extra)
+		if (info->flags & HASH_SIGN && (info->specifier == spec_hexupcase || info->specifier == spec_hexlowcase))
 		{
-			new[0] = extra;
-			(*str)[0] = '0';
+			ft_strncpy(new, *str, 2);
+			ft_memset(new + 2, '0', info->field_width - ft_strlen(*str));
+			ft_strcpy(new + 2 + info->field_width - ft_strlen(*str), *str + 2);
+			return ;
+		}
+		else
+		{
+			extra = (!ft_isdigit((*str)[0]) && (info->specifier == spec_int \
+				|| info->specifier == spec_float)) ? (*str)[0] : 0;
+			ft_memset(new, '0', info->field_width - ft_strlen(*str) + \
+					!!extra);
+			if (extra)
+			{
+				new[0] = extra;
+				(*str)[0] = '0';
+			}
 		}
 	}
 	else
@@ -47,7 +57,7 @@ void	pad_right(t_info *info, char **str, char *new)
 	ft_strcpy(new + info->field_width - ft_strlen(*str) + !!extra, *str \
 			+ !!extra);
 }
-*/
+
 
 /*
 ** This function width_ctrl will be used for padding, type d,i,u,c,s,f,p
@@ -56,7 +66,7 @@ void	pad_right(t_info *info, char **str, char *new)
 ** if MINUS flags, apply left justify
 ** else, right justification is the default
 */
-
+/*
 void	width_ctrl(t_info *info, char **str)
 {
 	char *new;
@@ -80,8 +90,8 @@ void	width_ctrl(t_info *info, char **str)
 	*str = new;
 	return ;
 }
+*/
 
-/*
 
 void	width_ctrl(t_info *info, char **str)
 {
@@ -103,7 +113,7 @@ void	width_ctrl(t_info *info, char **str)
 	*str = new;
 	return ;
 }
-*/
+
 
 /*
 ** ---------------------HEXADECIMAL----------------------------

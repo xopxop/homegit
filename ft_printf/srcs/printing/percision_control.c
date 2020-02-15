@@ -44,27 +44,25 @@ void	prec_ctrl_str(t_info *info, char **str)
 ** -Finally, filling the digit from the string to new string
 */
 
-void	prec_ctrl_nums(t_info *info, char **str)
+void	prec_ctrl_nums(t_info *info, char **str, int negative)
 {
 	char *new;
-	char extra;
 	char *orig;
 
 	orig = *str;
-	if (!**str)
+	if (info->percision <= (int)ft_strlen(*str))
+	{
+		if (info->percision == 0 && !(ft_strcmp("0", *str)))
+			*str[0] = 0;
 		return ;
-	if (info->percision == -1)
-		info->percision = 1;
-	if (info->percision < (int)ft_strlen(*str))
-		return ;
-	extra = (!ft_isdigit((*str)[0])) ? (*str)[0] : 0;
-	if (extra)
+	}
+	if (negative)
 		(*str)++;
-	new = ft_strnew(info->percision + !!extra);
-	ft_memset(new + !!extra, '0', info->percision - ft_strlen(*str));
-	ft_strcpy(new + info->percision - ft_strlen(*str) + !!extra, *str);
-	if (extra)
-		new[0] = extra;
+	new = ft_strnew(info->percision + negative);
+	ft_memset(new + negative, '0', info->percision - ft_strlen(*str));
+	ft_strcpy(new + info->percision - ft_strlen(*str) + negative, *str);
+	if (negative)
+		new[0] = '-';
 	free(orig);
 	*str = new;
 }
@@ -73,6 +71,23 @@ void	prec_ctrl_nums(t_info *info, char **str)
 ** This prec_ctrl_oct_hex is using for type_octal and type_hexadicimal
 */
 
+void	prec_ctrl_oct_hex(t_info *info, char **str)
+{
+	char	*new;
+
+	if (info->percision <= (int)ft_strlen(*str))
+	{
+		if (info->percision == 0 && !(ft_strcmp("0", *str)))
+			*str[0] = 0;
+		return ;
+	}
+	new = ft_strnew(info->percision);
+	ft_memset(new, '0', info->percision - ft_strlen(*str));
+	ft_strcpy(new + info->percision - ft_strlen(*str), *str);
+	free(*str);
+	*str = new;
+}
+/*
 void	prec_ctrl_oct_hex(t_info *info, char **str, char *hash_str)
 {
 	char	*new;
@@ -92,3 +107,4 @@ void	prec_ctrl_oct_hex(t_info *info, char **str, char *hash_str)
 	free(*str);
 	*str = new;
 }
+*/

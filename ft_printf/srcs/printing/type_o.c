@@ -23,8 +23,9 @@ void	type_o(t_info *info, va_list arg, size_t *ct)
 	oct = "01234567";
 	num = get_unsigned_argument(info, arg);
 	str = ft_number_conversion(num, OCTAL_MASK, SHIFF_OCTAL_MASK, oct);
-	flag_control(info, &str);
-	prec_ctrl_oct_hex(info, &str, "0");
+	flag_ignore(info, str);
+	prec_ctrl_oct_hex(info, &str);
+	flag_control(info, &str,0);
 	width_ctrl(info, &str);
 	write(STDOUT, str, *ct = ft_strlen(str));
 	free(str);

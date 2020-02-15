@@ -23,6 +23,7 @@ void	struct_init(t_info *info)
 	info->percision = -1;
 	info->length = len_none;
 	info->specifier = spec_none;
+	info->dup_first_args = 0;
 }
 
 /*

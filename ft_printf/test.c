@@ -1,7 +1,8 @@
 #include <stdio.h>
+#include "includes/ft_printf.h"
 
 int main()
 {
-	printf("--%010.5x--\n", 42);
+	ft_printf("--%.0d--\n", 0);
 	return (0);
 }

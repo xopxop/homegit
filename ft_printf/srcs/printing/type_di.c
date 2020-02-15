@@ -16,14 +16,17 @@ void	type_di(t_info *info, va_list arg, size_t *ct)
 {
 	long long	num;
 	char		*str;
+	int	negative;
 
+	negative = 0;
 	num = get_signed_argument(info, arg);
+	if (num < 0)
+		negative = 1;
 	str = ft_itoa_signed_longlong(num);
-	flag_ignore(info);
-//	flag_control(info, &str); change order
-	prec_ctrl_nums(info, &str);
+	flag_ignore(info, str);
+	prec_ctrl_nums(info, &str, negative);
+	flag_control(info, &str, negative);
 	width_ctrl(info, &str);
-	flag_control(info, &str);
 	write(STDOUT, str, *ct = ft_strlen(str));
 	free(str);
 }

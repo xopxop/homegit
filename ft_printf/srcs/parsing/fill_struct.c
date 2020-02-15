@@ -54,6 +54,7 @@ void	get_field_width(const char *format, size_t *pos, va_list arg, \
 	{
 		(*pos)++;
 		info->field_width = va_arg(arg, int);
+		info->dup_first_args = info->field_width;
 		if (info->field_width < 0)
 		{
 			info->field_width *= -1;
@@ -83,6 +84,8 @@ void	get_precision(const char *format, size_t *pos, va_list arg, \
 		{
 			(*pos)++;
 			info->percision = va_arg(arg, int);
+			if (info->dup_first_args != 0)
+				info->dup_first_args = info->percision;
 		}
 		else
 			info->percision = 0;

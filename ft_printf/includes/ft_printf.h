@@ -17,6 +17,8 @@
 # include <stdint.h>
 # include "libft.h"
 
+# include <stdio.h>
+
 /*
 ** Flags uses a binary addressing system
 ** ZERO : pad with zero
@@ -69,6 +71,7 @@ typedef struct		s_info
 	int				percision;
 	t_length		length;
 	t_specifier		specifier;
+	int				dup_first_args;
 }					t_info;
 
 /*
@@ -118,7 +121,8 @@ int					printing(t_info *info, va_list arg);
 ** Flag_control.c
 */
 
-void				flag_control(t_info *info, char **str);
+void				flag_control(t_info *info, char **str, int negative);
+void flag_ignore(t_info *info, char *str);
 
 /*
 ** Width_control.c
@@ -135,8 +139,9 @@ void				ft_special_case(t_info *info, char **str);
 */
 
 void				prec_ctrl_str(t_info *info, char **str);
-void				prec_ctrl_nums(t_info *info, char **str);
-void				prec_ctrl_oct_hex(t_info *info, char **str, char *hash_str);
+void				prec_ctrl_nums(t_info *info, char **str, int negative);
+//void				prec_ctrl_oct_hex(t_info *info, char **str, char *hash_str);
+void	prec_ctrl_oct_hex(t_info *info, char **str);
 
 /*
 ** nbr_to_str.c

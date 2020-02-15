@@ -19,8 +19,8 @@ void	type_u(t_info *info, va_list arg, size_t *ct)
 
 	num = get_unsigned_argument(info, arg);
 	str = ft_itoa_unsigned_longlong(num);
-	flag_control(info, &str);
-	prec_ctrl_nums(info, &str);
+	flag_control(info, &str, 0);
+	prec_ctrl_nums(info, &str, 0);
 	width_ctrl(info, &str);
 	write(STDOUT, str, *ct = ft_strlen(str));
 	free(str);

@@ -12,79 +12,52 @@
 
 #include "../../includes/ft_printf.h"
 
-void zero_flag(t_info *info, char **str, int negative)
+void space_flag(t_info *info, char **str)
 {
-	int position;
-
-	if (info->flags & ZERO)
-	{
-		position = 0;
-		while (**str != ' ')
-			position++;
-		ft_memset(*str, '0', position);
-		if (negative)
-			*str[0] = '-';
-	}
+	if (info->flags & SPACE && info->specifier)
+		*str = ft_strjoin_and_free_string2(" ", *str);
 }
 
-void space_flag(t_info *info, char **str, int negative)
+void plus_flag(t_info *info, char **str)
 {
-	if (info->flags & SPACE)
-	{
-		if (!negative)
-			*str = ft_strjoin_and_free_string2("0", *str);
-		else
-			*str[0] = ' ';
-	}
-}
-
-void plus_flag(t_info *info, char **str, int negative)
-{
-	if (info->flags & SPACE)
-	{
-		if (!negative)
-			*str = ft_strjoin_and_free_string2("0", *str);
-		else
-			*str[0] = ' ';
-	}
+	if (info->flags & PLUS_SIGN)
+		*str = ft_strjoin_and_free_string2("+", *str);
 }
 
 void hash_flag(t_info *info, char **str)
 {
 	if (info->flags & HASH_SIGN)
 	{
-
+		if (info->specifier == spec_octal)
+			*str = ft_strjoin_and_free_string2("0", *str);
+		else if ((info->specifier == spec_hexupcase || info->specifier == spec_hexlowcase || info->specifier == spec_ptr) && **str != 0)
+			*str = ft_strjoin_and_free_string2("0x", *str);
 	}
 }
 
-void	flag_control(t_info *info, char **str)
+void	flag_control(t_info *info, char **str, int negative)
 {
-	int negative;
-
-	negative = 0;
-	while (*str)
-		if (**str == '-')
-		{
-			negative = 1;
-			**str = ' ';
-			break ;
-		}
-	zero_flag(info, str, negative);
-	if (!negative || !(info->specifier == spec_octal && info->specifier == spec_hexlowcase && info->specifier == spec_hexupcase))
-	{
-		space_flag(info, str, negative);
-		plus_flag(info, str, negative);
-	}
 	hash_flag(info, str);
+	if ((info->specifier == spec_int && !negative) || info->specifier == spec_ptr)
+	{
+		space_flag(info, str);
+		plus_flag(info, str);
+	}	
 }
 
-void flag_ignore(t_info *info)
+void flag_ignore(t_info *info, char *str)
 {
-	if ((info->percision > -1 || info->flags & MINUS_SIGN) && info->flags & ZERO)
+	if (info->flags & MINUS_SIGN && info->flags & ZERO)
 		info->flags ^= ZERO;
-	if (info->flags & PLUS_SIGN && info->flags & ZERO)
+	if (info->flags & PLUS_SIGN && info->flags & SPACE)
 		info->flags ^= SPACE;
 	if (info->flags & HASH_SIGN && (info->specifier == spec_int || info->specifier == spec_uint))
+		info->flags ^= HASH_SIGN;
+	if (info->flags & HASH_SIGN && info->percision > (int)ft_strlen(str) && info->specifier == spec_octal)
+		info->flags ^= HASH_SIGN;
+	if (info->flags & ZERO && info->percision > (int)ft_strlen(str))
+		info->flags ^= ZERO;
+	if (info->flags & HASH_SIGN && ((!ft_strcmp("0x", str) || !ft_strcmp("0", str)) && info->percision != 0))
 		info->flags ^= HASH_SIGN;
 }
 

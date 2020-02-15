@@ -23,9 +23,9 @@ void	small_x(t_info *info, va_list arg, char **output)
 	hex = "0123456789abcdef";
 	num = get_unsigned_argument(info, arg);
 	str = ft_number_conversion(num, HEX_MASK, SHIFF_HEX_MASK, hex);
-	flag_control(info, &str);
-	prec_ctrl_oct_hex(info, &str, "0x");
-	ft_special_case(info, &str);
+	flag_ignore(info, str);
+	prec_ctrl_oct_hex(info, &str);
+	flag_control(info, &str, 0);
 	width_ctrl(info, &str);
 	*output = str;
 }

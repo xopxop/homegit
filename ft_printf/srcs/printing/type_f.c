@@ -35,7 +35,7 @@ char	*ft_decimal(long double *nbr)
 	char *str;
 
 	str = ft_itoa_unsigned_longlong((long long)*nbr);
-	*nbr = *nbr - (int)*nbr;
+	*nbr = *nbr - (long)*nbr;
 	return (str);
 }
 
@@ -90,7 +90,7 @@ void	float_to_string(long double num, t_info *info, char **str)
 	free(str_decimal);
 	free(str_fractional);
 }
-
+/*
 void	type_f(t_info *info, va_list arg, size_t *ct)
 {
 	long double	num;
@@ -105,6 +105,25 @@ void	type_f(t_info *info, va_list arg, size_t *ct)
 	info->percision = (info->percision == -1) ? 6 : info->percision;
 	float_to_string(num, info, &str);
 	flag_control(info, &str);
+	width_ctrl(info, &str);
+	write(STDOUT, str, *ct = ft_strlen(str));
+	free(str);
+}
+*/
+
+void	type_f(t_info *info, va_list arg, size_t *ct)
+{
+	long double	num;
+	char		*str;
+
+	if (info->length == len_l)
+		num = (long double)va_arg(arg, double);
+	else if (info->length == len_lup)
+		num = va_arg(arg, long double);
+	else
+		num = (long double)va_arg(arg, double);
+	info->percision = (info->percision == -1) ? 6 : info->percision;
+	float_to_string(num, info, &str);
 	width_ctrl(info, &str);
 	write(STDOUT, str, *ct = ft_strlen(str));
 	free(str);

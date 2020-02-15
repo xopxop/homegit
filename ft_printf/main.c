@@ -6,9 +6,15 @@
 
 int main(void)
 {
-	printf(RED"Test\n");
-	printf("%");
+	int i;
+//	printf("%15.9p\n", 1234567);
+//	printf("%+0#- 2.9p\n", 1234567);
+printf("%#08x\n", 42); 
+//	printf("hese%");
 
-	ft_printf(RESET"\nTest\n");
-	ft_printf("%");
+	ft_printf(RED"Test\n");
+ft_printf("%#08x\n", 42); 
+//	ft_printf("%15.9p\n", 1234567);
+//	ft_printf("%+0#- 2.9p\n", 1234567);
+//	ft_printf("%");
 }

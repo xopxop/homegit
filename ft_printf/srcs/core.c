@@ -25,15 +25,25 @@
 int	parse_and_print(const char *format, va_list args, size_t *pos, t_info *info)
 {
 	int position_copy;
+	char *str;
 
 	position_copy = *pos;
 	if (format[*pos] == '\0')
-		return (0);
+		return (-1);
 	parsing(format, args, pos, info);
 	if (info->specifier == spec_none)
 	{
+		if (args)
+		{
+			*pos = position_copy + 1;
+			str = ft_itoa_signed_longlong((long long)info->dup_first_args);
+			write(STDOUT, "%", 1);
+			write(STDOUT, str, ft_strlen(str));
+			free(str);
+			return (ft_strlen(str) + 2);
+		}
 		*pos = position_copy;
-		write(STDOUT, " ", 1);
+		write(STDOUT, "%", 1);
 		return (0);
 	}
 	return (printing(info, args));
@@ -43,9 +53,11 @@ int	full_str_printing(const char *format, va_list args, t_info *info)
 {
 	size_t	pos;
 	int		len;
+	int spurious_traling_case;
 
 	pos = 0;
 	len = 0;
+	spurious_traling_case = 0;
 	while (format[pos] != '\0')
 	{
 		if (format[pos] != '%')
@@ -57,7 +69,10 @@ int	full_str_printing(const char *format, va_list args, t_info *info)
 		{
 			pos++;
 			len += parse_and_print(format, args, &pos, info);
+			if (len < spurious_traling_case)
+				return (-1);
 		}
+		spurious_traling_case = len;
 	}
 	return (len);
 }
