@@ -1,15 +1,50 @@
+<!DOCTYPE HTML>
 <HTML>
     <HEAD>
         <TITLE>Basics</TITLE>
         <STYLE>
-            BODY {background-color:pink;}
-	    H1 {color:white;
-            text-align:center}
+            * {
+                box-sizing: border-box;
+            }
+            BODY {background-color: pink;}
+	        H1 {
+                color: white;
+                text-align: center}
+            .row {
+                clear: both;
+                display: table;
+            }
+            .column {
+                float: left;
+                width: 50%;
+                padding: 5px;
+            }
+            IMG.picture {
+                width: 100%;
+            }
+            P.link {
+                text-align: center;
+            }
+            P.coppyright {
+                text-align: right;
+                font-family: monospace;
+                font-style: italic;
+            }
         </STYLE>
         <BODY>
-		<H1>so bigger&Xi;</H1>
-		<div>
-		</div>
+        <H1>&hearts;-so bigger-&hearts;</H1>
+        <DIV class="row">
+            <DIV class="column">
+                <IMG class="picture" src="http://bit.ly/2tZgvW2" alt="Amazon" title="Amazon">
+                    <P class="link"><A href="https://www.amazon.com/">Amazon</a></P>
+            </DIV>
+            <DIV class="column">
+                <IMG class="picture" src="http://bit.ly/2vzEZG3" alt="AliExpress" title="AliExpress">
+                    <P class="link"><A href="https://www.amazon.com/">AliExpress</a></P>
+            </DIV>
+        </DIV>
+        <HR>
+        <P class="coppyright">"&copy;dthan 2020"</P>
         </BODY>
     </HEAD>
 </HTML>
