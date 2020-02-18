@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 08:51:30 by dthan             #+#    #+#             */
-/*   Updated: 2020/02/10 08:40:53 by dthan            ###   ########.fr       */
+/*   Updated: 2020/02/18 00:03:36 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	type_o(t_info *info, va_list arg, size_t *ct)
 	str = ft_number_conversion(num, OCTAL_MASK, SHIFF_OCTAL_MASK, oct);
 	flag_ignore(info, str);
 	prec_ctrl_oct_hex(info, &str);
-	flag_control(info, &str,0);
+	flag_control(info, &str, 0);
 	width_ctrl(info, &str);
 	write(STDOUT, str, *ct = ft_strlen(str));
 	free(str);

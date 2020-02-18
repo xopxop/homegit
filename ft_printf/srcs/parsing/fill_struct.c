@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 04:38:41 by dthan             #+#    #+#             */
-/*   Updated: 2020/01/06 20:51:47 by dthan            ###   ########.fr       */
+/*   Updated: 2020/02/18 02:06:43 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	get_flags(const char *format, size_t *pos, t_info *info)
 }
 
 /*
-** same like ft get_persion, it will take the number or the argument then put it
-** into the int field_width of the struct into
+** same like ft get_percision, it will take the number or the argument then put
+** it into the int field_width of the struct into
 ** However, there is a note here, if the argument is < 0 (ex: -10...)
 ** we regconize there is a minus flag here and using OR bitwise operand to store
 ** the minus sign flag
@@ -48,17 +48,20 @@ void	get_flags(const char *format, size_t *pos, t_info *info)
 void	get_field_width(const char *format, size_t *pos, va_list arg, \
 		t_info *info)
 {
-	if (ft_isdigit(format[*pos]))
-		info->field_width = ft_skip_atoi(format, pos);
-	else if (format[*pos] == '*')
+	while (ft_isdigit(format[*pos]) || format[*pos] == '*')
 	{
-		(*pos)++;
-		info->field_width = va_arg(arg, int);
-		info->dup_first_args = info->field_width;
-		if (info->field_width < 0)
+		if (ft_isdigit(format[*pos]))
+			info->field_width = ft_skip_atoi(format, pos);
+		else if (format[*pos] == '*')
 		{
-			info->field_width *= -1;
-			info->flags |= MINUS_SIGN;
+			(*pos)++;
+			info->field_width = va_arg(arg, int);
+			info->dup_first_args = info->field_width;
+			if (info->field_width < 0)
+			{
+				info->field_width *= -1;
+				info->flags |= MINUS_SIGN;
+			}
 		}
 	}
 }

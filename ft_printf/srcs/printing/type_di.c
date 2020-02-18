@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 04:43:51 by dthan             #+#    #+#             */
-/*   Updated: 2020/01/06 21:04:44 by dthan            ###   ########.fr       */
+/*   Updated: 2020/02/18 00:01:47 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	type_di(t_info *info, va_list arg, size_t *ct)
 {
 	long long	num;
 	char		*str;
-	int	negative;
+	int			negative;
 
 	negative = 0;
 	num = get_signed_argument(info, arg);

@@ -6,7 +6,7 @@
 /*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 04:25:23 by dthan             #+#    #+#             */
-/*   Updated: 2020/02/13 18:41:06 by dthan            ###   ########.fr       */
+/*   Updated: 2020/02/18 00:05:05 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,14 @@ char	*ft_fractional(long double nbr, t_info *info)
 	str = NULL;
 	nbr *= 10;
 	i = 1;
-	if (info->percision > 0 || (info->percision == 0 && \
-				info->flags & HASH_SIGN))
+	if (info->percision > 0)
 	{
 		str = ft_strnew(info->percision + 1);
 		str[0] = '.';
-		if (info->percision > 0)
+		while (info->percision-- > 0)
 		{
-			while (info->percision-- > 0)
-			{
-				str[i++] = (int)nbr + '0';
-				nbr = (nbr - (int)nbr) * 10;
-			}
+			str[i++] = (int)nbr + '0';
+			nbr = (nbr - (int)nbr) * 10;
 		}
 	}
 	return (str);
@@ -90,40 +86,26 @@ void	float_to_string(long double num, t_info *info, char **str)
 	free(str_decimal);
 	free(str_fractional);
 }
-/*
+
 void	type_f(t_info *info, va_list arg, size_t *ct)
 {
 	long double	num;
 	char		*str;
+	int			negative;
 
+	negative = 0;
 	if (info->length == len_l)
 		num = (long double)va_arg(arg, double);
 	else if (info->length == len_lup)
 		num = va_arg(arg, long double);
 	else
 		num = (long double)va_arg(arg, double);
+	if (num < 0)
+		negative = 1;
 	info->percision = (info->percision == -1) ? 6 : info->percision;
 	float_to_string(num, info, &str);
-	flag_control(info, &str);
-	width_ctrl(info, &str);
-	write(STDOUT, str, *ct = ft_strlen(str));
-	free(str);
-}
-*/
-
-void	type_f(t_info *info, va_list arg, size_t *ct)
-{
-	long double	num;
-	char		*str;
-
-	if (info->length == len_l)
-		num = (long double)va_arg(arg, double);
-	else if (info->length == len_lup)
-		num = va_arg(arg, long double);
-	else
-		num = (long double)va_arg(arg, double);
-	info->percision = (info->percision == -1) ? 6 : info->percision;
-	float_to_string(num, info, &str);
+	flag_ignore(info, str);
+	flag_control(info, &str, negative);
 	width_ctrl(info, &str);
 	write(STDOUT, str, *ct = ft_strlen(str));
 	free(str);
