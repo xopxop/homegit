@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 23:45:44 by dthan             #+#    #+#             */
-/*   Updated: 2020/02/13 18:48:07 by dthan            ###   ########.fr       */
+/*   Updated: 2020/02/18 02:00:58 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,8 +121,11 @@ int					printing(t_info *info, va_list arg);
 ** Flag_control.c
 */
 
+void				space_flag(t_info *info, char **str);
+void				plus_flag(t_info *info, char **str);
+void				hash_flag(t_info *info, char **str);
 void				flag_control(t_info *info, char **str, int negative);
-void flag_ignore(t_info *info, char *str);
+void				flag_ignore(t_info *info, char *str);
 
 /*
 ** Width_control.c
@@ -130,9 +133,6 @@ void flag_ignore(t_info *info, char *str);
 
 void				width_ctrl(t_info *info, char **str);
 void				pad_right(t_info *info, char **str, char *new);
-void				ft_right_just_special_case(t_info *info, char **str, \
-		char *new);
-void				ft_special_case(t_info *info, char **str);
 
 /*
 ** Percision_control.c
@@ -140,8 +140,7 @@ void				ft_special_case(t_info *info, char **str);
 
 void				prec_ctrl_str(t_info *info, char **str);
 void				prec_ctrl_nums(t_info *info, char **str, int negative);
-//void				prec_ctrl_oct_hex(t_info *info, char **str, char *hash_str);
-void	prec_ctrl_oct_hex(t_info *info, char **str);
+void				prec_ctrl_oct_hex(t_info *info, char **str);
 
 /*
 ** nbr_to_str.c
@@ -153,25 +152,35 @@ long long			get_signed_argument(t_info *info, va_list arg);
 unsigned long long	get_unsigned_argument(t_info *info, va_list arg);
 
 /*
-** Type_C
+** Printing helper.c
+*/
+
+char				*ft_strjoin_and_free_string1(char *string1, char *string2);
+char				*ft_strjoin_and_free_string2(char *string1, char *string2);
+int					ft_isnan(double num);
+int					ft_isinf(double num);
+int					special_case(char **s, double num);
+
+/*
+** Type character
 */
 
 void				type_c(t_info *info, va_list arg, size_t *ct);
 
 /*
-** Type_S
+** Type string
 */
 
 void				type_s(t_info *info, va_list arg, size_t *ct);
 
 /*
-** TYPE_P
+** Type pointer
 */
 
 void				type_p(t_info *info, va_list arg, size_t *ct);
 
 /*
-** TYPE SIGNED INTEGER
+** Type signed Integer
 */
 
 void				type_di(t_info *info, va_list arg, size_t *ct);
@@ -192,9 +201,9 @@ void				type_o(t_info *info, va_list arg, size_t *ct);
 ** Type Hexadecimal number
 */
 
-void				type_x(t_info *info, va_list arg, size_t *ct);
 void				small_x(t_info *info, va_list arg, char **output);
 void				big_x(char **output);
+void				type_x(t_info *info, va_list arg, size_t *ct);
 
 /*
 ** Type floating point
@@ -212,15 +221,5 @@ void				type_f(t_info *info, va_list arg, size_t *ct);
 
 void				type_percent(t_info *info, __attribute__((unused)) \
 		va_list arg, size_t *ct);
-
-/*
-** Printing helper
-*/
-
-char				*ft_strjoin_and_free_string1(char *string1, char *string2);
-char				*ft_strjoin_and_free_string2(char *string1, char *string2);
-int					ft_isnan(double num);
-int					ft_isinf(double num);
-int					special_case(char **s, double num);
 
 #endif

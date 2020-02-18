@@ -13,7 +13,7 @@
 #include "../../includes/ft_printf.h"
 #define HEX_MASK 15
 #define SHIFF_HEX_MASK 4
-/*
+
 void	type_p(t_info *info, va_list arg, size_t *ct)
 {
 	unsigned long long	num;
@@ -23,36 +23,11 @@ void	type_p(t_info *info, va_list arg, size_t *ct)
 	hex = "0123456789abcdef";
 	num = (long long)va_arg(arg, long long);
 	str = ft_number_conversion(num, HEX_MASK, SHIFF_HEX_MASK, hex);
-	prec_ctrl_str(info, &str);
-	if (num == 0)
-		str = ft_strdup("(nil)");
-	else
-		str = ft_strjoin_and_free_string2("0x", str);
-	width_ctrl(info, &str);
-	write(STDOUT, str, *ct = ft_strlen(str));
-	free(str);
-}
-*/
-void	type_p(t_info *info, va_list arg, size_t *ct)
-{
-	unsigned long long	num;
-	char				*str;
-	char				*hex;
-
-	hex = "0123456789abcdef";
-	num = (long long)va_arg(arg, long long);
-	if (num == 0)
-		str = ft_strdup("(nil)");
-	else
-	{
-		str = ft_number_conversion(num, HEX_MASK, SHIFF_HEX_MASK, hex);
-		flag_ignore(info, str);
-		if (!(info->flags & HASH_SIGN))
-			info->flags ^= HASH_SIGN;
-		prec_ctrl_oct_hex(info, &str);
-//		str = ft_strjoin_and_free_string2("0x", str);
-		flag_control(info, &str, 0);
-	}
+	flag_ignore(info, str);
+	if (!(info->flags & HASH_SIGN))
+		info->flags ^= HASH_SIGN;
+	prec_ctrl_oct_hex(info, &str);
+	flag_control(info, &str, 0);
 	width_ctrl(info, &str);
 	write(STDOUT, str, *ct = ft_strlen(str));
 	free(str);

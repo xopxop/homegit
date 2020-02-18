@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 20:40:30 by dthan             #+#    #+#             */
-/*   Updated: 2020/01/06 20:48:41 by dthan            ###   ########.fr       */
+/*   Updated: 2020/02/18 02:07:51 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 ** it will return the function coresponding to the specifier type
 */
 
-void	(*get_func(t_specifier specifier))(t_info*, va_list, size_t *ct)
+static void	(*get_func(t_specifier specifier))(t_info*, va_list, size_t *ct)
 {
-	void	(*func[SPECIFIER_COUNT])(t_info*, va_list, size_t *ct);
+	static void	(*func[SPECIFIER_COUNT])(t_info*, va_list, size_t *ct);
 
 	func[spec_char] = &type_c;
 	func[spec_str] = &type_s;
@@ -37,7 +37,7 @@ void	(*get_func(t_specifier specifier))(t_info*, va_list, size_t *ct)
 }
 
 /*
-** The printing ft will take the pared struc info and the argument va_list
+** The printing ft will take the pared struct info and the argument va_list
 ** First, using the dispatch table the get the function which coresponding to
 ** the specifier and take that address of that specific function into print_func
 ** output_str will be the returned string from the choosen function
@@ -45,10 +45,10 @@ void	(*get_func(t_specifier specifier))(t_info*, va_list, size_t *ct)
 ** Return value: length of the output_str
 */
 
-int		printing(t_info *info, va_list arg)
+int			printing(t_info *info, va_list arg)
 {
-	void	(*print_func)(t_info*, va_list, size_t *ct);
-	size_t	ct;
+	static void	(*print_func)(t_info*, va_list, size_t *ct);
+	size_t		ct;
 
 	ct = 0;
 	print_func = get_func(info->specifier);
