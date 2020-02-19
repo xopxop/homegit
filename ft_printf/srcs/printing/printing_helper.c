@@ -93,9 +93,9 @@ int		special_case(char **s, double num)
 {
 	char *new;
 
-	new = ft_strnew(3);
 	if (ft_isnan(num) || ft_isinf(num))
 	{
+		new = ft_strnew(3);
 		if (ft_isnan(num))
 			ft_strcpy(new, "nan");
 		else if (ft_isinf(num))

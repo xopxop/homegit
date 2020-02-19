@@ -34,7 +34,7 @@ void	hash_flag(t_info *info, char **str)
 				spec_hexlowcase) && **str != 0) || info->specifier == spec_ptr)
 			*str = ft_strjoin_and_free_string2("0x", *str);
 		else if (info->specifier == spec_float && info->percision == 0)
-			*str = ft_strjoin(*str, ".");
+			*str = ft_strjoin_and_free_string1(*str, ".");
 	}
 }
 
