@@ -8,14 +8,14 @@ int main(int argc, char **argv)
     {
         while (*argv[1])
         {
-            if((*argv[1] >= 'a' && *argv[1] < 'z') || (*argv[1] >= 'A' && *argv[1] < 'Z'))
+            if((*argv[1] > 'm' && *argv[1] <= 'z') || (*argv[1] > 'M' && *argv[1] <= 'Z'))
             {
-                temp = *argv[1] + 1;
+                temp = *argv[1] - 13;
                 write (1, &temp, 1);
             }
-            else if (*argv[1] == 'z' || *argv[1] >= 'Z')
+            else if ((*argv[1] >= 'a' && *argv[1] <= 'm') || (*argv[1] >= 'A' && *argv[1] <= 'M'))
             {
-                temp = *argv[1] - 25;
+                temp = *argv[1] + 13;
                 write (1, &temp, 1);
             }
             else

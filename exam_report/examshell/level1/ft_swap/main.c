@@ -1,25 +1,14 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/13 11:10:52 by dthan             #+#    #+#             */
-/*   Updated: 2019/11/13 11:18:08 by dthan            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <stdio.h>
 
-void	ft_swap(int *a, int *b);
+void ft_swap(int *a, int *b);
 
-int	main(void)
+int main()
 {
-	int first = 3;
-	int second = 6;
+	int a = 1;
+	int b = 2;
 
-	printf("FIRST: %d\nSECOND: %d\n", first, second);
-	ft_swap(&first, &second);
-	printf("FIRST: %d\nSECOND: %d\n", first, second);
+	printf("a = %d, b = %d\n", a , b);
+	ft_swap(&a, &b);
+	printf("a = %d, b = %d\n", a , b);
+	return (0);
 }
