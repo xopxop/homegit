@@ -17,6 +17,7 @@ int	parse_and_print(const char *format, va_list args, size_t *pos, t_info *info)
 {
 	int		position_copy;
 	char	*str;
+	int		ct;
 
 	position_copy = *pos;
 	if (format[*pos] == '\0')
@@ -28,10 +29,11 @@ int	parse_and_print(const char *format, va_list args, size_t *pos, t_info *info)
 		{
 			*pos = position_copy + 1;
 			str = ft_itoa_signed_longlong((long long)info->dup_first_args);
+			ct = ft_strlen(str) + 2;
 			write(STDOUT, "%", 1);
 			write(STDOUT, str, ft_strlen(str));
 			free(str);
-			return (ft_strlen(str) + 2);
+			return (ct);
 		}
 		*pos = position_copy;
 		write(STDOUT, "%", 1);

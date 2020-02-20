@@ -1101,7 +1101,7 @@ void	f(void)
  	ft_printf("'%-020.4Lf'\n'%-10.5f'\n", lf_n, f_n);
 	printf("'%-020.4Lf'\n'%-10.5f'\n", lf_n, f_n);
 
-	LEFT ALIGNED TEST END
+	//LEFT ALIGNED TEST END
 	ft_printf("\n******************  LEFT ALIGNED TESTS END ******************\n\n");
 	
 
