@@ -46,5 +46,12 @@
 # include <grp.h>
 # include <stdio.h>
 # include <string.h>
+# include "../libft/includes/libft.h"
+
+# define L_OPTION 1
+# define CAP_R_OPTION 2
+# define A_OPTION 4
+# define R_OPTION 8
+# define T_OPTION 16
 
 #endif

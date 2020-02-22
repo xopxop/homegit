@@ -14,14 +14,18 @@ NAME = ft_ls
 
 INCLUDES = includes/
 
-CFLAGS = -Wall -Wextra- Werror -g
+CFLAGS = -Wall -Wextra -Werror -g
 
-SRCS_CODES = 
+SRCS_CODES = srcs/ft_ls.c
 
 SRCS_OBJ = 
 
 all: $(NAME)
-	@gcc $(CFLAGS) $(SRCS_CODES) -I$(INCLUDES) -o $(NAME)
+
+$(NAME):
+	@make -s -C libft/ fclean && make -s -C libft/
+	@echo "\033[32mCreated My Library\033[0m"
+	@gcc $(CFLAGS) $(SRCS_CODES) -I$(INCLUDES) -L./libft -lft -o $(NAME)
 	@echo "\033[32mCreated ft_ls Program\033[0m"
 
 clean:
