@@ -1,0 +1,50 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+c1r6p3.hive.fi
+Darwin 18.7.0 x86_64
+$> date
+Tue Feb 25 14:07:13 EET 2020
+$> gcc --version
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/include/c++/4.2.1
+Apple LLVM version 10.0.1 (clang-1001.0.46.4)
+Target: x86_64-apple-darwin18.7.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+$> clang --version
+Apple LLVM version 10.0.1 (clang-1001.0.46.4)
+Target: x86_64-apple-darwin18.7.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: auto-exam/2020/c-exam-alone-in-the-dark-beginner/exam_20200225/dthan
+
+= Git history ==================================================================
+$> git -C /tmp/tmpbY6Vfy/user log --pretty='%H - %an, %ad : %s'
+4368f1dbd25d229c290f4c7a4bb3baeda4b962fa - Exam 42, Tue Feb 25 14:06:24 2020 +0200 : OK
+ 
+= Collected files ==========================================
+$> ls -lAR /tmp/tmpbY6Vfy/user
+total 8
+-rw-r--r--  1 root  wheel  208 Feb 25 14:07 __GIT_HISTORY
+drwxr-xr-x  3 root  wheel   96 Feb 25 14:07 aff_z
+
+/tmp/tmpbY6Vfy/user/aff_z:
+total 8
+-rw-r--r--  1 root  wheel  979 Feb 25 14:07 aff_z.c
+ 
+= aff_z ========================================================================
+$> gcc -Wextra -Wall -Werror aff_z.c -o user_exe 
+aff_z.c:15:14: error: unused parameter 'ac' [-Werror,-Wunused-parameter]
+int     main(int ac, char **av)
+                 ^
+aff_z.c:15:25: error: unused parameter 'av' [-Werror,-Wunused-parameter]
+int     main(int ac, char **av)
+                            ^
+2 errors generated.
+
+Could not compile 'user_exe'
+Grade: 0
+
+= Final grade: 0 ===============================================================

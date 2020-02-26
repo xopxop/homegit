@@ -1,0 +1,53 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+c3r3p4.hive.fi
+Darwin 18.7.0 x86_64
+$> date
+Tue Feb 25 14:11:57 EET 2020
+$> gcc --version
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/4.2.1
+Apple clang version 11.0.0 (clang-1100.0.33.17)
+Target: x86_64-apple-darwin18.7.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+$> clang --version
+Apple clang version 11.0.0 (clang-1100.0.33.17)
+Target: x86_64-apple-darwin18.7.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: auto-exam/2020/c-exam-alone-in-the-dark-beginner/exam_20200225/dthan
+
+= Git history ==================================================================
+$> git -C /tmp/tmp9353f1/user log --pretty='%H - %an, %ad : %s'
+d28f380790edc113a9bb1e7468429a75a0a361ef - Exam 42, Tue Feb 25 14:11:40 2020 +0200 : hello
+4368f1dbd25d229c290f4c7a4bb3baeda4b962fa - Exam 42, Tue Feb 25 14:06:24 2020 +0200 : OK
+ 
+= Collected files ==========================================
+$> ls -lAR /tmp/tmp9353f1/user
+total 8
+-rw-r--r--  1 root  wheel  419 Feb 25 14:11 __GIT_HISTORY
+drwxr-xr-x  3 root  wheel   96 Feb 25 14:11 aff_z
+drwxr-xr-x  3 root  wheel   96 Feb 25 14:11 hello
+
+/tmp/tmp9353f1/user/aff_z:
+total 8
+-rw-r--r--  1 root  wheel  979 Feb 25 14:11 aff_z.c
+
+/tmp/tmp9353f1/user/hello:
+total 8
+-rw-r--r--  1 root  wheel  965 Feb 25 14:11 hello.c
+ 
+= hello ========================================================================
+$> gcc -Wextra -Wall -Werror hello.c -o user_exe 
+
+= Test 1 ===================================================
+$> ./mqb08pax5rbpprt6ywcbat9c test1.prm
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+Diff OK :D
+Grade: 1
+
+= Final grade: 1 ===============================================================

@@ -1,0 +1,95 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+c1r3p8.hive.fi
+Darwin 18.7.0 x86_64
+$> date
+Tue Feb 25 14:36:35 EET 2020
+$> gcc --version
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/4.2.1
+Apple clang version 11.0.0 (clang-1100.0.33.17)
+Target: x86_64-apple-darwin18.7.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+$> clang --version
+Apple clang version 11.0.0 (clang-1100.0.33.17)
+Target: x86_64-apple-darwin18.7.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: auto-exam/2020/c-exam-alone-in-the-dark-beginner/exam_20200225/dthan
+
+= Git history ==================================================================
+$> git -C /tmp/tmpT9IP7S/user log --pretty='%H - %an, %ad : %s'
+f07e00c7492cb06a871dc1ce6dbe98e8322933ac - Exam 42, Tue Feb 25 14:36:03 2020 +0200 : max
+a021f624d0281b3aa8ca9496f24f5d33a0d7255d - Exam 42, Tue Feb 25 14:19:53 2020 +0200 : rev_print
+d28f380790edc113a9bb1e7468429a75a0a361ef - Exam 42, Tue Feb 25 14:11:40 2020 +0200 : hello
+4368f1dbd25d229c290f4c7a4bb3baeda4b962fa - Exam 42, Tue Feb 25 14:06:24 2020 +0200 : OK
+ 
+= Collected files ==========================================
+$> ls -lAR /tmp/tmpT9IP7S/user
+total 8
+-rw-r--r--  1 root  wheel  868 Feb 25 14:36 __GIT_HISTORY
+drwxr-xr-x  3 root  wheel   96 Feb 25 14:36 aff_z
+drwxr-xr-x  3 root  wheel   96 Feb 25 14:36 hello
+drwxr-xr-x  3 root  wheel   96 Feb 25 14:36 max
+drwxr-xr-x  3 root  wheel   96 Feb 25 14:36 rev_print
+
+/tmp/tmpT9IP7S/user/aff_z:
+total 8
+-rw-r--r--  1 root  wheel  979 Feb 25 14:36 aff_z.c
+
+/tmp/tmpT9IP7S/user/hello:
+total 8
+-rw-r--r--  1 root  wheel  965 Feb 25 14:36 hello.c
+
+/tmp/tmpT9IP7S/user/max:
+total 8
+-rw-r--r--  1 root  wheel  1093 Feb 25 14:36 max.c
+
+/tmp/tmpT9IP7S/user/rev_print:
+total 8
+-rw-r--r--  1 root  wheel  1104 Feb 25 14:36 rev_print.c
+ 
+= max ==========================================================================
+$> gcc -Wextra -Wall -Werror main.c max.c -o user_exe 
+
+= Test 1 ===================================================
+$> ./9vp25qfdx13dtyu7s23ar2yd 
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./7ubntvb98vmz8dbcs3nnfpqh "-20"
+$> diff -U 3 user_output_test2 test2.output | cat -e
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./zbl183nx5rjuch8nh87rtdgz "6" "-9" "-4" "-6" "12" "-14" "-12" "0" "2" "-19" "1" "6" "16" "-10" "9" "11" "4" "-11" "7"
+$> diff -U 3 user_output_test3 test3.output | cat -e
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./mwxogu4slnihfoffc7jju5l7 "1" "-14" "-2" "-20" "-5" "5" "1" "20" "-10" "-8" "18" "11" "-20" "-9" "10" "-16" "-5"
+$> diff -U 3 user_output_test4 test4.output | cat -e
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./wqvikywlpjxw14abzqa3rsle "13" "4" "13" "-12" "-10" "5" "-1" "6" "17" "-14" "-17" "15" "12" "-2" "-1" "4" "-15" "9" "3" "16"
+$> diff -U 3 user_output_test5 test5.output | cat -e
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./l6k9xrpajr2u488ksbi9cr34 "0" "-12" "3" "-9" "10" "9" "7" "-1" "7" "-15" "16" "17" "-9" "14" "4" "-18" "-9" "-5" "-7" "-6" "-1" "-20" "-12" "14" "-19" "17" "16" "-16" "9"
+$> diff -U 3 user_output_test6 test6.output | cat -e
+--- user_output_test6	2020-02-25 12:36:42.000000000 +0000$
++++ test6.output	2020-02-25 12:36:42.000000000 +0000$
+@@ -1 +1 @@$
+-0$
++17$
+
+Diff KO :(
+Grade: 0
+
+= Final grade: 0 ===============================================================
