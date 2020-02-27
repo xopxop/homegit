@@ -20,7 +20,7 @@
 ** ==> read a direcotry.
 ** closedir <sys/types.h><dirent.h>
 ** ==> close a directory.
-** stat _none_
+** stat <sys/types.h><sys/stat.h><unistd.h>
 ** ==> Display file or file system status.
 ** lstat <sys/types.h><sys/stat.h><unistd.h>
 ** ==> get file status.
@@ -41,6 +41,7 @@
 */
 
 # include <sys/types.h>
+# include <sys/stat.h>
 # include <dirent.h>
 # include <pwd.h>
 # include <grp.h>
@@ -48,10 +49,28 @@
 # include <string.h>
 # include "../libft/includes/libft.h"
 
-# define L_OPTION 1
-# define CAP_R_OPTION 2
-# define A_OPTION 4
-# define R_OPTION 8
-# define T_OPTION 16
+
+# define LONG_LIST_FORMAT 1
+# define LIST_SUBDIR_RECUSIVELY 2
+# define LIST_HIDDEN 4
+# define REVERSE_ORDER 8
+# define SORT_BY_NEWEST_FIRST 16
+
+# define OK 0
+# define MINOR_PROBLEMS 1
+# define SERIOUS_TROUBLE 2
+
+typedef struct      s_dinfo
+{
+    char            *dir_name;
+    struct s_dinfo  *next;
+}                   t_dinfo;
+
+typedef struct      s_finfo
+{
+    
+}                   t_finfo;
+
+
 
 #endif
