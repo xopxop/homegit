@@ -64,14 +64,17 @@ void output(/*int options, */t_dinfo *dir)
     while(dir != NULL)
     {
         current_dir = opendir(dir->dir_name);
+        ft_printf("open return%d\n", opendir(dir->dir_name));
         while ((entry = readdir(current_dir)))
         {
             //Test
-            stat(entry->d_name, &filestat);
-            if (S_ISDIR(filestat.st_mode))
-                ft_printf("%s: %s\n", "DIR", entry->d_name);
-            else
-                ft_printf("%s: %s\n", "FILE", entry->d_name);
+            ft_printf("%s\nstat return: %d\n", entry->d_name, stat(entry->d_name, &filestat));
+            ft_printf("with octal number %s : %o\n", entry->d_name, filestat.st_mode);
+            ft_printf("----------");
+            // if (S_ISDIR(filestat.st_mode))
+            //     ft_printf("%s: %s\n", "DIR", entry->d_name);
+            // else
+            //     ft_printf("%s: %s\n", "FILE", entry->d_name);
         }
         closedir(current_dir);
         dir = dir->next;
