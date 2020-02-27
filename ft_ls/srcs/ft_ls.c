@@ -11,49 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/ft_ls.h"
-# define ISFLAG 1
-# define IS_NOT_FLAG 0
-
-int get_options(char *input, int *options)
-{
-    input++;
-    while(*input)
-    {
-        if (*input++ == 'l')
-            *options |= LONG_LIST_FORMAT; 
-        else if (*input++ == 'R')
-            *options |= LIST_SUBDIR_RECUSIVELY;
-        else if (*input++ == 'a')
-            *options |= LIST_HIDDEN;
-        else if (*input++ == 'r')
-            *options |= REVERSE_ORDER;
-        else if (*input++ == 't')
-            *options |= SORT_BY_NEWEST_FIRST;
-        else
-            return(SERIOUS_TROUBLE);
-    }
-    return (OK);
-}
-
-int get_dir(char *input, t_dinfo **ldir)
-{
-    DIR *current_dir;
-    t_dinfo *new;
-
-    if (!(new = (t_dinfo*)ft_memalloc(sizeof(t_dinfo))))
-        return (MINOR_PROBLEMS);
-    new->dir_name = ft_strdup(input);
-    current_dir = opendir(new->dir_name);
-    if (current_dir == NULL)
-        return (MINOR_PROBLEMS);
-    closedir(current_dir);
-    new->next = NULL;
-    if (!*ldir)
-        *ldir = new;
-    else
-        (*ldir)->next = new;
-    return (OK);
-}
 
 void output(/*int options, */t_dinfo *dir)
 {
@@ -64,13 +21,13 @@ void output(/*int options, */t_dinfo *dir)
     while(dir != NULL)
     {
         current_dir = opendir(dir->dir_name);
-        ft_printf("open return%d\n", opendir(dir->dir_name));
         while ((entry = readdir(current_dir)))
         {
+            stat(entry->d_name, &filestat);
             //Test
-            ft_printf("%s\nstat return: %d\n", entry->d_name, stat(entry->d_name, &filestat));
-            ft_printf("with octal number %s : %o\n", entry->d_name, filestat.st_mode);
-            ft_printf("----------");
+            ft_printf("name: %s\n", entry->d_name);
+            //ft_printf("with octal number %s : %o\n", entry->d_name, filestat.st_mode);
+            //ft_printf("----------");
             // if (S_ISDIR(filestat.st_mode))
             //     ft_printf("%s: %s\n", "DIR", entry->d_name);
             // else

@@ -71,6 +71,16 @@ typedef struct      s_finfo
     
 }                   t_finfo;
 
+/*
+**  options.c
+*/
 
+int get_options(char *input, int *options);
+
+/*
+** dir_info.c
+*/
+
+int get_dir(char *input, t_dinfo **ldir);
 
 #endif
