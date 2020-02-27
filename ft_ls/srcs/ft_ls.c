@@ -12,6 +12,12 @@
 
 #include "../includes/ft_ls.h"
 
+/*
+** To do: Learn about binary tree
+** I think it can be the way to deal with a directory with 2 types file
+** 1 is directory and 2 is a file, so i can create a path to go to the subdirectory
+*/
+
 void output(/*int options, */t_dinfo *dir)
 {
     DIR *current_dir;
