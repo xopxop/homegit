@@ -18,7 +18,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 SRCS_CODES = srcs/ft_ls.c
 
-SRCS_OBJ = 
+SRCS_OBJ = ft_ls.o
 
 all: $(NAME)
 
@@ -29,10 +29,12 @@ $(NAME):
 	@echo "\033[32mCreated ft_ls Program\033[0m"
 
 clean:
+	@make clean -s -C libft/
 	@rm -f $(SRCS_OBJ)
 	@echo "\033[32mRemoved Object files\033[0m"
 
 fclean:
+	@make fclean -s -C libft/
 	@rm -f $(NAME)
 	@echo "\033[32mRemoved Object files and ft_ls Program\033[0m"
 
