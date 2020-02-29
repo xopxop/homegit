@@ -16,9 +16,10 @@ INCLUDES = includes/
 
 CFLAGS = -Wall -Wextra -Werror -g
 
-SRCS_CODES = srcs/ft_ls.c srcs/options.c srcs/dir_info.c
+SRCS_CODES = srcs/ft_ls.c srcs/options.c srcs/utility/parser.c srcs/error_handle.c \
+srcs/dir_info.c
 
-SRCS_OBJ = ft_ls.o options.o dir_info.o
+SRCS_OBJ = ft_ls.o options.o parser.o error_handle.o dir_info.o
 
 all: $(NAME)
 

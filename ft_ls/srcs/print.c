@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dir_info.c                                         :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/27 16:31:31 by dthan             #+#    #+#             */
-/*   Updated: 2020/02/27 16:31:32 by dthan            ###   ########.fr       */
+/*   Created: 2020/02/28 14:15:40 by dthan             #+#    #+#             */
+/*   Updated: 2020/02/28 14:15:42 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_ls.h"
 
-void get_dir(char *dir_name, t_dir **ldir)
+void print_long_list(t_info *file)
 {
-    t_dir *new;
-    t_dir *ptr;
-
-    if (!(new = (t_dir*)ft_memalloc(sizeof(t_dir))))
-        ft_err_malloc();
-    new->name = ft_strdup(dir_name);
-    new->next = NULL;
-    if (!*ldir)
-        *ldir = new;
-    else
-    {
-        ptr = *ldir;
-        while (ptr->next)
-            ptr = ptr->next;
-        ptr->next = new;
-    }
+    //... + (owner + group + other +) extended atratribute +
+    // owner name + group name + filezie + month + date + 
+    // hour:second + filename
+    ft_printf("%s %s %s %d %s....")
 }
+
+void print_output(t_finfo *file, int options)
+{
+    if (options & LONG_LIST_FORMAT)
+        print_long_list(file);
+    ft_printf("%s\n", file->name);
+}
+
+void display(t_file *file)

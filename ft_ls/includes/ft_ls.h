@@ -48,7 +48,7 @@
 # include <stdio.h>
 # include <string.h>
 # include "../libft/includes/libft.h"
-
+# include <errno.h>
 
 # define LONG_LIST_FORMAT 1
 # define LIST_SUBDIR_RECUSIVELY 2
@@ -56,31 +56,67 @@
 # define REVERSE_ORDER 8
 # define SORT_BY_NEWEST_FIRST 16
 
+
+# define STD_ERR 2
+# define STD_OUT 1
+/*
+**
+*/
+
+# define OPTIONS_ERROR 256
+
 # define OK 0
 # define MINOR_PROBLEMS 1
 # define SERIOUS_TROUBLE 2
 
-typedef struct      s_dinfo
+typedef struct      s_dir
 {
-    char            *dir_name;
-    struct s_dinfo  *next;
-}                   t_dinfo;
+    char            *name;
+    struct stat     stat;
+    struct s_dir    *next;
+    struct s_file   *file;
+}                   t_dir;
 
-typedef struct      s_finfo
+typedef struct      s_file
 {
-    
-}                   t_finfo;
+    char            *name;
+    char            *path;
+    struct  stat    stat;
+    char            *user_name;
+    char            *group_name;
+    int            link;
+    int             size;
+    struct  s_file  *next;
+}                   t_file;
+
+/*
+**  Error
+*/
+
+void    ft_err_can_not_access(char *invalid_file_or_dir);
+void    ft_err_invalid_option(char *invalid_option, int dashno);
+void    ft_err_malloc();
+void     ft_err_permission_dinied(char *dirname);
 
 /*
 **  options.c
 */
 
-int get_options(char *input, int *options);
+int get_options(char *input);
+int get_short_options(char *input);
+int get_long_option(char *input);
 
 /*
 ** dir_info.c
 */
+void get_dir(char *dir_name, t_dir **ldir);
 
-int get_dir(char *input, t_dinfo **ldir);
+//////
+
+int ft_isoptions(char chr);
+int ft_is_short_options(char chr1, char chr2);
+int ft_is_long_option(char chr1, char chr2);
+int ft_isdir(char *dir_name);
+
 
 #endif

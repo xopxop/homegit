@@ -12,65 +12,152 @@
 
 #include "../includes/ft_ls.h"
 
-/*
-** To do: Learn about binary tree
-** I think it can be the way to deal with a directory with 2 types file
-** 1 is directory and 2 is a file, so i can create a path to go to the subdirectory
-*/
-
-void output(/*int options, */t_dinfo *dir)
+char *ft_get_user_name(uid_t id)
 {
-    DIR *current_dir;
-    struct dirent *entry;
+    struct passwd *pwd;
+
+    if (!(pwd = getpwuid(id)))
+        return (ft_itoa(id));
+    return (ft_strdup(pwd->pw_name));
+}
+
+char *ft_get_group_name(gid_t id)
+{
+    struct group *grp;
+
+    if (!(grp = getgrgid(id)))
+        return (ft_itoa(id));
+    return (ft_strdup(grp->gr_name));
+}
+
+char *ft_get_time(time_t time)
+{
+    
+    return (str);
+}
+
+void ft_get_file_info(t_file **lfile, char *filename, char *path)
+{
+    t_file *file;
+    t_file *ptr;
     struct stat filestat;
 
-    while(dir != NULL)
+    if (!(file = (t_file*)malloc(sizeof(t_file))))
+        ft_err_malloc();
+    file->name = ft_strdup(filename);
+    file->path = ft_strjoin_and_free_string1(ft_strjoin(path, "/"), file->name);
+    stat(file->path, &filestat);
+    file->link = filestat.st_nlink;
+    file->user_name = ft_get_user_name(filestat.st_uid);
+    file->group_name = ft_get_group_name(filestat.st_gid);
+    file->size = filestat.st_size;
+    file->time = ft_get_time(filestat.st_mtime);
+    file->next = NULL;
+    if (*lfile == NULL)
+        *lfile = file;
+    else
     {
-        current_dir = opendir(dir->dir_name);
-        while ((entry = readdir(current_dir)))
-        {
-            stat(entry->d_name, &filestat);
-            //Test
-            ft_printf("name: %s\n", entry->d_name);
-            //ft_printf("with octal number %s : %o\n", entry->d_name, filestat.st_mode);
-            //ft_printf("----------");
-            // if (S_ISDIR(filestat.st_mode))
-            //     ft_printf("%s: %s\n", "DIR", entry->d_name);
-            // else
-            //     ft_printf("%s: %s\n", "FILE", entry->d_name);
-        }
-        closedir(current_dir);
-        dir = dir->next;
+        ptr = *lfile;
+        while (ptr->next)
+            ptr = ptr->next;
+        ptr->next = file;
     }
 }
 
-int ft_ls(char **input)
+
+void ft_print_long_list(t_file *lfile)
+{
+    while (lfile)
+    {
+        ft_printf("%u  %s  %s  %d  %s\n", lfile->link, lfile->user_name, lfile->group_name, \
+        lfile->size , lfile->name);
+        lfile = lfile->next;
+    }
+}
+
+void display(t_file *lfile, int options)
+{
+    if (options & LONG_LIST_FORMAT)
+        ft_print_long_list(lfile);
+    else
+    {
+        while (lfile)
+        {
+            ft_printf("%s\n", lfile->name);
+            lfile = lfile->next;
+        }
+    }
+}
+
+void free_lfile(t_file *file)
+{
+    t_file *temp;
+
+    while (file)
+    {
+        temp = file;
+        free(file->name);
+        free(file->path);
+        free(file->user_name);
+        free(file->group_name);
+        file = file->next;
+        free(temp);
+    }
+}
+
+void fill_tree(t_dir *lst_dir_input, int options)
+{
+    DIR *ptr_dir;
+    struct dirent *ptr_entry;
+    t_file *file;
+
+    while(lst_dir_input)
+    {
+        file = NULL;
+        if(!(ptr_dir = opendir(lst_dir_input->name)))
+            ft_err_permission_dinied(lst_dir_input->name);
+        while ((ptr_entry = readdir(ptr_dir)))
+            ft_get_file_info(&file, ptr_entry->d_name, lst_dir_input->name);
+        closedir(ptr_dir);
+        display(file, options);
+        free_lfile(file);
+        lst_dir_input = lst_dir_input->next;
+    }
+}
+
+void ft_ls(char **input)
 {
     int arg_nbr;
     int options;
-    int exit_status;
-    t_dinfo *ldir;
+    t_dir *ldir;
 
     arg_nbr = 1;
+    options = 0;
     ldir = NULL;
     while(input[arg_nbr])
     {
-        if (input[arg_nbr][0] == '-')
-            exit_status = get_options(input[arg_nbr], &options);
-        else
-            exit_status = get_dir(input[arg_nbr], &ldir);
-        if (exit_status == MINOR_PROBLEMS || exit_status == SERIOUS_TROUBLE)
-            return (exit_status);
+        if (ft_isoptions(input[arg_nbr][0]))
+            options |= get_options(input[arg_nbr]);
+        else if (ft_isdir(input[arg_nbr]))
+            get_dir(input[arg_nbr], &ldir);
         arg_nbr++;
     }
-    output(/*options, */ ldir);
-    return (OK);
+    if (ldir == NULL)
+        get_dir(".", &ldir);
+    fill_tree(ldir, options);
+    t_dir *temp;
+    while (ldir)
+    {
+        temp = ldir;
+        ldir = ldir->next;
+        free(temp->name);
+        free(temp);
+    }
 }
 
 int main(int ac, char **av)
 {
-    // test ac
-    if (ac > -3)
-        return (ft_ls(av));
-    return (0);
+    (void)ac;
+    ft_ls(av);
+    return (EXIT_SUCCESS);
 }
