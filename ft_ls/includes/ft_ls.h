@@ -49,6 +49,7 @@
 # include <string.h>
 # include "../libft/includes/libft.h"
 # include <errno.h>
+# include <time.h>
 
 # define LONG_LIST_FORMAT 1
 # define LIST_SUBDIR_RECUSIVELY 2
@@ -86,6 +87,7 @@ typedef struct      s_file
     char            *group_name;
     int            link;
     int             size;
+    char            *time;
     struct  s_file  *next;
 }                   t_file;
 

@@ -32,7 +32,10 @@ char *ft_get_group_name(gid_t id)
 
 char *ft_get_time(time_t time)
 {
-    
+    char *str;
+
+    str = ft_strnew(12);
+    ft_strncpy(str, ctime(&time)+ 4, 12);
     return (str);
 }
 
@@ -69,8 +72,8 @@ void ft_print_long_list(t_file *lfile)
 {
     while (lfile)
     {
-        ft_printf("%u  %s  %s  %d  %s\n", lfile->link, lfile->user_name, lfile->group_name, \
-        lfile->size , lfile->name);
+        ft_printf("%u | %s | %s | %d | %s | %s\n", lfile->link, lfile->user_name, lfile->group_name, \
+        lfile->size , lfile->time, lfile->name);
         lfile = lfile->next;
     }
 }
