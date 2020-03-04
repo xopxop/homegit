@@ -39,6 +39,63 @@ char *ft_get_time(time_t time)
     return (str);
 }
 
+char *ft_get_file_permission(mode_t mode)
+{
+    char *str;
+
+    str = ft_strnew(9);
+    str[0] = (mode & S_IRUSR) ? 'r' : '-';
+    str[1] = (mode & S_IWUSR) ? 'w' : '-';
+    str[2] = (mode & S_IXUSR) ? 'x' : '-';
+    str[3] = (mode & S_IRGRP) ? 'r' : '-';
+    str[4] = (mode & S_IWGRP) ? 'w' : '-';
+    str[5] = (mode & S_IXGRP) ? 'x' : '-';
+    str[6] = (mode & S_IROTH) ? 'r' : '-';
+    str[7] = (mode & S_IWOTH) ? 'w' : '-';
+    str[8] = (mode & S_IXOTH) ? 'x' : '-';
+    return (str);
+}
+
+char ft_get_data_type(mode_t mode)
+{
+    if (S_ISBLK(mode))
+        return ('b');
+    else if (S_ISCHR(mode))
+        return ('c');
+    if (S_ISDIR(mode))
+        return ('d');
+    else if (S_ISLNK(mode))
+        return ('l');
+    else if (S_ISFIFO(mode))
+        return ('p');
+//    else if (S_IFSOCK(mode))
+//        return ('s');
+//    else if (S_ISBLK(mode))
+//        return ('b');
+    else
+        return ('-');
+}
+
+/*
+
+char ft_get_data_type(mode_t mode)
+{
+    if ((mode & __S_IFMT) == __S_IFDIR)
+        return ('d');
+    else if ((mode & __S_IFMT) == __S_IFCHR)
+        return ('c');
+    else if ((mode & __S_IFMT) == __S_IFLNK)
+        return ('l');
+    else if ((mode & __S_IFMT) == __S_IFIFO)
+        return ('p');
+    else if ((mode & __S_IFMT) == __S_IFSOCK)
+        return ('s');
+    else if ((mode & __S_IFMT) == __S_IFBLK)
+        return ('b');
+    return ('-');
+}
+*/
+
 void ft_get_file_info(t_file **lfile, char *filename, char *path)
 {
     t_file *file;
@@ -50,6 +107,8 @@ void ft_get_file_info(t_file **lfile, char *filename, char *path)
     file->name = ft_strdup(filename);
     file->path = ft_strjoin_and_free_string1(ft_strjoin(path, "/"), file->name);
     stat(file->path, &filestat);
+    file->type = ft_get_data_type(filestat.st_mode);
+    file->file_permission = ft_get_file_permission(filestat.st_mode);
     file->link = filestat.st_nlink;
     file->user_name = ft_get_user_name(filestat.st_uid);
     file->group_name = ft_get_group_name(filestat.st_gid);
@@ -72,7 +131,8 @@ void ft_print_long_list(t_file *lfile)
 {
     while (lfile)
     {
-        ft_printf("%u | %s | %s | %d | %s | %s\n", lfile->link, lfile->user_name, lfile->group_name, \
+        ft_printf("%c%s | %u | %s | %s | %d | %s | %s\n", lfile->type, lfile->file_permission, \
+        lfile->link, lfile->user_name, lfile->group_name, \
         lfile->size , lfile->time, lfile->name);
         lfile = lfile->next;
     }

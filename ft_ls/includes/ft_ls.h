@@ -88,6 +88,8 @@ typedef struct      s_file
     int            link;
     int             size;
     char            *time;
+    char            *file_permission;
+    char            type;
     struct  s_file  *next;
 }                   t_file;
 
