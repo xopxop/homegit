@@ -12,12 +12,12 @@
 
 #include "../includes/ft_ls.h"
 
-void get_dir(char *dir_name, t_dir **ldir)
+void get_dir(char *dir_name, t_file **ldir)
 {
-    t_dir *new;
-    t_dir *ptr;
+    t_file *new;
+    t_file *ptr;
 
-    if (!(new = (t_dir*)ft_memalloc(sizeof(t_dir))))
+    if (!(new = (t_file*)ft_memalloc(sizeof(t_file))))
         ft_err_malloc();
     new->name = ft_strdup(dir_name);
     new->next = NULL;

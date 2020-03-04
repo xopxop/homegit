@@ -68,33 +68,13 @@ char ft_get_data_type(mode_t mode)
         return ('l');
     else if (S_ISFIFO(mode))
         return ('p');
-//    else if (S_IFSOCK(mode))
-//        return ('s');
-//    else if (S_ISBLK(mode))
-//        return ('b');
+    else if (S_ISSOCK(mode))
+        return ('s');
+    else if (S_ISBLK(mode))
+        return ('b');
     else
         return ('-');
 }
-
-
-/*
-char ft_get_data_type(mode_t mode)
-{
-    if ((mode & __S_IFMT) == __S_IFDIR)
-        return ('d');
-    else if ((mode & __S_IFMT) == __S_IFCHR)
-        return ('c');
-    else if ((mode & __S_IFMT) == __S_IFLNK)
-        return ('l');
-    else if ((mode & __S_IFMT) == __S_IFIFO)
-        return ('p');
-    else if ((mode & __S_IFMT) == __S_IFSOCK)
-        return ('s');
-    else if ((mode & __S_IFMT) == __S_IFBLK)
-        return ('b');
-    return ('-');
-}
-*/
 
 void ft_get_file_info(t_file **lfile, char *filename, char *path)
 {
@@ -138,18 +118,21 @@ void ft_print_long_list(t_file *lfile)
     }
 }
 
+void ft_print_short_list(t_file *lfile)
+{
+    while (lfile)
+    {
+        ft_printf("%s\n", lfile->name);
+        lfile = lfile->next;
+    }
+}
+
 void display(t_file *lfile, int options)
 {
     if (options & LONG_LIST_FORMAT)
         ft_print_long_list(lfile);
     else
-    {
-        while (lfile)
-        {
-            ft_printf("%s\n", lfile->name);
-            lfile = lfile->next;
-        }
-    }
+        ft_print_short_list(lfile);
 }
 
 void free_lfile(t_file *file)
@@ -168,7 +151,23 @@ void free_lfile(t_file *file)
     }
 }
 
-void fill_tree(t_dir *lst_dir_input, int options)
+void recusion(t_file *folder, int options)
+{
+    t_file* file;
+
+    file = NULL;
+    if(!(ptr_dir = opendir(folder->)))
+        ft_err_permission_dinied(lst_dir_input->name);
+    while ((ptr_entry = readdir(ptr_dir)))
+        ft_get_file_info(&file, ptr_entry->d_name, lst_dir_input->name);
+    closedir(ptr_dir);
+    display(file, options);
+    recusion(file, options);
+    free_lfile(file);
+    st_dir_input = lst_dir_input->next;
+}
+
+void fill_tree(t_file *lst_dir_input, int options)
 {
     DIR *ptr_dir;
     struct dirent *ptr_entry;
@@ -183,6 +182,7 @@ void fill_tree(t_dir *lst_dir_input, int options)
             ft_get_file_info(&file, ptr_entry->d_name, lst_dir_input->name);
         closedir(ptr_dir);
         display(file, options);
+        recusion(file, options);
         free_lfile(file);
         lst_dir_input = lst_dir_input->next;
     }
@@ -192,7 +192,7 @@ void ft_ls(char **input)
 {
     int arg_nbr;
     int options;
-    t_dir *ldir;
+    t_file *ldir;
 
     arg_nbr = 1;
     options = 0;
@@ -207,15 +207,8 @@ void ft_ls(char **input)
     }
     if (ldir == NULL)
         get_dir(".", &ldir);
-    fill_tree(ldir, options);
-    t_dir *temp;
-    while (ldir)
-    {
-        temp = ldir;
-        ldir = ldir->next;
-        free(temp->name);
-        free(temp);
-    }
+    while(ldir)
+        recusion(ldir, options);
 }
 
 int main(int ac, char **av)
