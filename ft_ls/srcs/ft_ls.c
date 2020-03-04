@@ -76,8 +76,8 @@ char ft_get_data_type(mode_t mode)
         return ('-');
 }
 
-/*
 
+/*
 char ft_get_data_type(mode_t mode)
 {
     if ((mode & __S_IFMT) == __S_IFDIR)
@@ -106,7 +106,7 @@ void ft_get_file_info(t_file **lfile, char *filename, char *path)
         ft_err_malloc();
     file->name = ft_strdup(filename);
     file->path = ft_strjoin_and_free_string1(ft_strjoin(path, "/"), file->name);
-    stat(file->path, &filestat);
+    lstat(file->path, &filestat);
     file->type = ft_get_data_type(filestat.st_mode);
     file->file_permission = ft_get_file_permission(filestat.st_mode);
     file->link = filestat.st_nlink;
