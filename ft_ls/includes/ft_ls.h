@@ -70,19 +70,13 @@
 # define MINOR_PROBLEMS 1
 # define SERIOUS_TROUBLE 2
 
-typedef struct      s_dir
-{
-    char            *name;
-    struct stat     stat;
-    struct s_dir    *next;
-    struct s_file   *file;
-}                   t_dir;
+# define YES 1
+# define NO 0
 
 typedef struct      s_file
 {
     char            *name;
     char            *path;
-    struct  stat    stat;
     char            *user_name;
     char            *group_name;
     int            link;
@@ -90,6 +84,8 @@ typedef struct      s_file
     char            *time;
     char            *file_permission;
     char            type;
+    int             is_hidden;
+    int             allow_open;
     struct  s_file  *next;
 }                   t_file;
 
@@ -113,7 +109,7 @@ int get_long_option(char *input);
 /*
 ** dir_info.c
 */
-void get_dir(char *dir_name, t_dir **ldir);
+void get_dir(char *dir_name, t_file **ldir);
 
 //////
 

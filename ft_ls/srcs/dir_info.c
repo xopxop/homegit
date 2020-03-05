@@ -20,6 +20,7 @@ void get_dir(char *dir_name, t_file **ldir)
     if (!(new = (t_file*)ft_memalloc(sizeof(t_file))))
         ft_err_malloc();
     new->name = ft_strdup(dir_name);
+    new->path = ft_strdup(dir_name);
     new->next = NULL;
     if (!*ldir)
         *ldir = new;

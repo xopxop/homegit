@@ -15,7 +15,7 @@
 
 void     ft_err_permission_dinied(char *dirname)
 {
-    ft_putstr_fd("ls: cannot open directory '", STD_ERR);
+    ft_putstr_fd("ft_ls: cannot open directory '", STD_ERR);
     ft_putstr_fd(dirname, STD_ERR);
     ft_putstr_fd("': Permission denied\n", STD_ERR);
     // need to return error value here
@@ -32,7 +32,7 @@ void    ft_err_invalid_option(char *invalid_option, int dashno)
 {
     if (dashno == 1)
     {
-        ft_putstr_fd("ls: cannot access ", STD_ERR);
+        ft_putstr_fd("ft_ls: cannot access ", STD_ERR);
         ft_putchar_fd(*invalid_option, STD_ERR);
         ft_putstr_fd(": ", STD_ERR);
         ft_putstr_fd(strerror(ENOENT), STD_ERR);

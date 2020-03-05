@@ -27,18 +27,19 @@ int get_short_options(char *input)
     input++;
     while(*input)
     {
-        if (*input++ == 'l')
+        if (*input == 'l')
             options |= LONG_LIST_FORMAT; 
-        else if (*input++ == 'R')
+        else if (*input == 'R')
             options |= LIST_SUBDIR_RECUSIVELY;
-        else if (*input++ == 'a')
+        else if (*input == 'a')
             options |= LIST_HIDDEN;
-        else if (*input++ == 'r')
+        else if (*input == 'r')
             options |= REVERSE_ORDER;
-        else if (*input++ == 't')
+        else if (*input == 't')
             options |= SORT_BY_NEWEST_FIRST;
         else
             ft_err_invalid_option(input, 1);
+        input++;
     }
     return (options);
 }

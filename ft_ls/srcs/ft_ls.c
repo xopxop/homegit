@@ -76,6 +76,21 @@ char ft_get_data_type(mode_t mode)
         return ('-');
 }
 
+void initialize_struct(t_file *file)
+{
+    file->name = NULL;
+    file->path = NULL;
+    file->user_name = NULL;
+    file->group_name = NULL;
+    file->link = 0;
+    file->size = 0;
+    file->time = NULL;
+    file->file_permission = NULL;
+    file->type = '\0';
+    file->is_hidden = NO;
+    file->allow_open = YES;
+}
+
 void ft_get_file_info(t_file **lfile, char *filename, char *path)
 {
     t_file *file;
@@ -84,6 +99,7 @@ void ft_get_file_info(t_file **lfile, char *filename, char *path)
 
     if (!(file = (t_file*)malloc(sizeof(t_file))))
         ft_err_malloc();
+    initialize_struct(file);
     file->name = ft_strdup(filename);
     file->path = ft_strjoin_and_free_string1(ft_strjoin(path, "/"), file->name);
     lstat(file->path, &filestat);
@@ -94,6 +110,10 @@ void ft_get_file_info(t_file **lfile, char *filename, char *path)
     file->group_name = ft_get_group_name(filestat.st_gid);
     file->size = filestat.st_size;
     file->time = ft_get_time(filestat.st_mtime);
+    if (file->name[0] == '.')
+        file->is_hidden = YES;
+    if (!(ft_strcmp(".", file->name))  || !(ft_strcmp("..", file->name)))
+        file->allow_open = NO;
     file->next = NULL;
     if (*lfile == NULL)
         *lfile = file;
@@ -133,6 +153,8 @@ void display(t_file *lfile, int options)
         ft_print_long_list(lfile);
     else
         ft_print_short_list(lfile);
+    if (options & LIST_SUBDIR_RECUSIVELY)
+        ft_printf("\n");
 }
 
 void free_lfile(t_file *file)
@@ -151,41 +173,32 @@ void free_lfile(t_file *file)
     }
 }
 
-void recusion(t_file *folder, int options)
-{
-    t_file* file;
-
-    file = NULL;
-    if(!(ptr_dir = opendir(folder->)))
-        ft_err_permission_dinied(lst_dir_input->name);
-    while ((ptr_entry = readdir(ptr_dir)))
-        ft_get_file_info(&file, ptr_entry->d_name, lst_dir_input->name);
-    closedir(ptr_dir);
-    display(file, options);
-    recusion(file, options);
-    free_lfile(file);
-    st_dir_input = lst_dir_input->next;
-}
-
-void fill_tree(t_file *lst_dir_input, int options)
+void recusion(t_file **input_file, int options)
 {
     DIR *ptr_dir;
     struct dirent *ptr_entry;
-    t_file *file;
+    t_file* file;
 
-    while(lst_dir_input)
+    file = NULL;
+    if(!(ptr_dir = opendir((*input_file)->path)))
+        ft_err_permission_dinied((*input_file)->name);
+    else
     {
-        file = NULL;
-        if(!(ptr_dir = opendir(lst_dir_input->name)))
-            ft_err_permission_dinied(lst_dir_input->name);
         while ((ptr_entry = readdir(ptr_dir)))
-            ft_get_file_info(&file, ptr_entry->d_name, lst_dir_input->name);
+            ft_get_file_info(&file, ptr_entry->d_name, (*input_file)->path);
         closedir(ptr_dir);
         display(file, options);
-        recusion(file, options);
+        if (options & LIST_SUBDIR_RECUSIVELY)
+            while (file)
+            {
+                if (file->type == 'd' && file->allow_open == YES)
+                    recusion(&file, options);
+                else
+                    file = file->next;
+            }
         free_lfile(file);
-        lst_dir_input = lst_dir_input->next;
     }
+    *input_file = (*input_file)->next;
 }
 
 void ft_ls(char **input)
@@ -208,7 +221,7 @@ void ft_ls(char **input)
     if (ldir == NULL)
         get_dir(".", &ldir);
     while(ldir)
-        recusion(ldir, options);
+        recusion(&ldir, options);
 }
 
 int main(int ac, char **av)
