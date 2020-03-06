@@ -72,8 +72,10 @@ char ft_get_data_type(mode_t mode)
         return ('s');
     else if (S_ISBLK(mode))
         return ('b');
-    else
+    else if (S_ISREG(mode))
         return ('-');
+    else
+        return ('?');
 }
 
 void initialize_struct(t_file *file)
