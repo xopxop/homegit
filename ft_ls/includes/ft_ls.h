@@ -86,6 +86,7 @@ typedef struct      s_file
     char            type;
     int             is_hidden;
     int             allow_open;
+    int             blocks;
     struct  s_file  *next;
 }                   t_file;
 

@@ -110,6 +110,7 @@ void ft_get_file_info(t_file **lfile, char *filename, char *path)
     file->group_name = ft_get_group_name(filestat.st_gid);
     file->size = filestat.st_size;
     file->time = ft_get_time(filestat.st_mtime);
+    file->blocks = filestat.st_blocks / 2;
     if (file->name[0] == '.')
         file->is_hidden = YES;
     if (!(ft_strcmp(".", file->name))  || !(ft_strcmp("..", file->name)))
@@ -129,6 +130,17 @@ void ft_get_file_info(t_file **lfile, char *filename, char *path)
 
 void ft_print_long_list(t_file *lfile)
 {
+    int block_ct;
+    t_file *tmp;
+
+    block_ct = 0;
+    tmp = lfile;
+    while (tmp)
+    {
+        block_ct += tmp->blocks;
+        tmp = tmp->next;
+    }
+    ft_printf ("total %d\n", block_ct);
     while (lfile)
     {
         ft_printf("%c%s | %u | %s | %s | %d | %s | %s\n", lfile->type, lfile->file_permission, \
@@ -215,11 +227,13 @@ void ft_ls(char **input)
         if (ft_isoptions(input[arg_nbr][0]))
             options |= get_options(input[arg_nbr]);
         else if (ft_isdir(input[arg_nbr]))
-            get_dir(input[arg_nbr], &ldir);
+            ft_get_file_info(&ldir, input[arg_nbr], ".");
+//            get_dir(input[arg_nbr], &ldir);
         arg_nbr++;
     }
     if (ldir == NULL)
-        get_dir(".", &ldir);
+        ft_get_file_info(&ldir, ".", ".");
+//        get_dir(".", &ldir);
     while(ldir)
         recusion(&ldir, options);
 }
