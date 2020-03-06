@@ -101,7 +101,10 @@ void ft_get_file_info(t_file **lfile, char *filename, char *path)
         ft_err_malloc();
     initialize_struct(file);
     file->name = ft_strdup(filename);
-    file->path = ft_strjoin_and_free_string1(ft_strjoin(path, "/"), file->name);
+    if (path == NULL)
+        file->path = ft_strdup(filename);
+    else
+        file->path = ft_strjoin_and_free_string1(ft_strjoin(path, "/"), file->name);
     lstat(file->path, &filestat);
     file->type = ft_get_data_type(filestat.st_mode);
     file->file_permission = ft_get_file_permission(filestat.st_mode);
@@ -128,33 +131,47 @@ void ft_get_file_info(t_file **lfile, char *filename, char *path)
 }
 
 
-void ft_print_long_list(t_file *lfile)
+void ft_print_long_list(t_file *lfile, int options)
 {
     int block_ct;
     t_file *tmp;
 
     block_ct = 0;
     tmp = lfile;
+ //   ft_printf("%s:\n", lfile->path);
     while (tmp)
     {
-        block_ct += tmp->blocks;
-        tmp = tmp->next;
+        if (!(options & LIST_HIDDEN) && tmp->is_hidden == YES)
+            tmp = tmp->next;
+        else
+        {
+            block_ct += tmp->blocks;
+            tmp = tmp->next;
+        }
     }
     ft_printf ("total %d\n", block_ct);
     while (lfile)
     {
-        ft_printf("%c%s | %u | %s | %s | %d | %s | %s\n", lfile->type, lfile->file_permission, \
-        lfile->link, lfile->user_name, lfile->group_name, \
-        lfile->size , lfile->time, lfile->name);
+        if (!(options & LIST_HIDDEN) && lfile->is_hidden == YES)
+            ;
+        else
+        {
+            ft_printf("%c%s | %u | %s | %s | %d | %s | %s\n", lfile->type, lfile->file_permission, \
+            lfile->link, lfile->user_name, lfile->group_name, \
+            lfile->size , lfile->time, lfile->name);
+        }
         lfile = lfile->next;
     }
 }
 
-void ft_print_short_list(t_file *lfile)
+void ft_print_short_list(t_file *lfile, int options)
 {
     while (lfile)
     {
-        ft_printf("%s\n", lfile->name);
+        if (!(options & LIST_HIDDEN) && lfile->is_hidden == YES)
+            ;
+        else
+            ft_printf("%s\n", lfile->name);
         lfile = lfile->next;
     }
 }
@@ -162,11 +179,9 @@ void ft_print_short_list(t_file *lfile)
 void display(t_file *lfile, int options)
 {
     if (options & LONG_LIST_FORMAT)
-        ft_print_long_list(lfile);
+        ft_print_long_list(lfile, options);
     else
-        ft_print_short_list(lfile);
-    if (options & LIST_SUBDIR_RECUSIVELY)
-        ft_printf("\n");
+        ft_print_short_list(lfile, options);
 }
 
 void free_lfile(t_file *file)
@@ -176,11 +191,13 @@ void free_lfile(t_file *file)
     while (file)
     {
         temp = file;
-        free(file->name);
-        free(file->path);
-        free(file->user_name);
-        free(file->group_name);
         file = file->next;
+        free(temp->name);
+        free(temp->path);
+        free(temp->user_name);
+        free(temp->group_name);
+        free(temp->time);
+        free(temp->file_permission);
         free(temp);
     }
 }
@@ -199,12 +216,16 @@ void recusion(t_file **input_file, int options)
         while ((ptr_entry = readdir(ptr_dir)))
             ft_get_file_info(&file, ptr_entry->d_name, (*input_file)->path);
         closedir(ptr_dir);
+        ft_printf("%s:\n", (*input_file)->path);
         display(file, options);
         if (options & LIST_SUBDIR_RECUSIVELY)
             while (file)
             {
                 if (file->type == 'd' && file->allow_open == YES)
+                {
+                    ft_printf("\n");
                     recusion(&file, options);
+                }
                 else
                     file = file->next;
             }
@@ -218,6 +239,7 @@ void ft_ls(char **input)
     int arg_nbr;
     int options;
     t_file *ldir;
+    t_file *temp;
 
     arg_nbr = 1;
     options = 0;
@@ -227,15 +249,17 @@ void ft_ls(char **input)
         if (ft_isoptions(input[arg_nbr][0]))
             options |= get_options(input[arg_nbr]);
         else if (ft_isdir(input[arg_nbr]))
-            ft_get_file_info(&ldir, input[arg_nbr], ".");
+            ft_get_file_info(&ldir, input[arg_nbr], NULL);
 //            get_dir(input[arg_nbr], &ldir);
         arg_nbr++;
     }
     if (ldir == NULL)
         ft_get_file_info(&ldir, ".", ".");
 //        get_dir(".", &ldir);
+    temp = ldir;
     while(ldir)
         recusion(&ldir, options);
+    free_lfile(temp);
 }
 
 int main(int ac, char **av)
