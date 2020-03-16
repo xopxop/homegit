@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "libft.h": "c",
-        "*.tcc": "c"
+        "*.tcc": "c",
+        "ft_ls.h": "c",
+        "ioctl.h": "c"
     }
 }

@@ -51,6 +51,8 @@
 # include <errno.h>
 # include <time.h>
 
+#include <sys/ioctl.h>
+
 # define LONG_LIST_FORMAT 1
 # define LIST_SUBDIR_RECUSIVELY 2
 # define LIST_HIDDEN 4
@@ -73,7 +75,7 @@
 # define YES 1
 # define NO 0
 
-typedef struct      s_file
+typedef struct s_stat
 {
     char            *name;
     char            *path;
@@ -87,8 +89,23 @@ typedef struct      s_file
     int             is_hidden;
     int             allow_open;
     int             blocks;
-    struct  s_file  *next;
-}                   t_file;
+}               t_stat;
+
+
+typedef struct      s_node
+{
+    t_stat          status;
+    struct  s_node  *next;
+}                   t_node;
+
+typedef struct      s_window
+{
+    int             columns;
+    int             rows;
+    int             lst_len;
+    int             lm;
+    int             max;
+}                   t_window;
 
 /*
 **  Error
@@ -110,14 +127,45 @@ int get_long_option(char *input);
 /*
 ** dir_info.c
 */
-void get_dir(char *dir_name, t_file **ldir);
+// void get_dir(char *dir_name, t_node **ldir);
 
 //////
 
 int ft_isoptions(char chr);
 int ft_is_short_options(char chr1, char chr2);
 int ft_is_long_option(char chr1, char chr2);
-int ft_isdir(char *dir_name);
+int ft_isfile(char *dir_name, int *ret);
 
+/*
+** Free
+*/
+void free_lfile(t_node *file);
+
+/*
+** Display
+*/
+
+void display(t_node *lfile, int options);
+void ft_print_short_list(t_node *lfile, int options);
+void ft_print_long_list(t_node *lfile, int options);
+
+/*
+** Get_file_info
+*/
+
+char *ft_get_user_name(uid_t id);
+char *ft_get_group_name(gid_t id);
+char *ft_get_time(time_t time);
+char *ft_get_file_permission(mode_t mode);
+char ft_get_data_type(mode_t mode);
+
+/*
+** Sort
+*/
+
+void ft_sort(t_node *lst, int options);
+void    ft_sort_alphabet(t_node *lst);
+int     cmp(t_stat file1, t_stat file2);
+void    ft_swap_stat(t_stat *file1, t_stat *file2);
 
 #endif

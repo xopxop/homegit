@@ -7,10 +7,6 @@ int main(void)
     struct stat filestat;
 
     
-    printf("%s\nstat return: %d\n", "Makefile", stat("ft_ls.c", &filestat));
-    printf("with octal number %s : %o\n", "ft_ls", filestat.st_mode);
-    if (S_ISDIR(filestat.st_mode))
-         printf("%s: %s\n", "DIR", entry->d_name);
-    else
-    printf("%s: %s\n", "FILE", entry->d_name);
+    printf("stat return: %d\n", lstat("Makefile1", &filestat));
+    return (0);
 }

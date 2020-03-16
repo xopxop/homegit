@@ -17,9 +17,10 @@ INCLUDES = includes/
 CFLAGS = -Wall -Wextra -Werror -g
 
 SRCS_CODES = srcs/ft_ls.c srcs/options.c srcs/utility/parser.c srcs/error_handle.c \
-srcs/dir_info.c
+srcs/free.c srcs/print.c srcs/get_file_info.c srcs/sort.c #srcs/dir_info.c
 
-SRCS_OBJ = ft_ls.o options.o parser.o error_handle.o dir_info.o
+SRCS_OBJ = ft_ls.o options.o parser.o error_handle.o free.o print.o\
+get_file_info.o sort.o #dir_info.o
 
 all: $(NAME)
 
@@ -35,7 +36,7 @@ clean:
 	@rm -f $(SRCS_OBJ)
 	@echo "\033[32mRemoved Object files\033[0m"
 
-fclean:
+fclean: clean
 	@make fclean -s -C libft/
 	@rm -f $(NAME)
 	@echo "\033[32mRemoved Object files and ft_ls Program\033[0m"

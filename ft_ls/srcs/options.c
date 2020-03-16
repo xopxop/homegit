@@ -50,11 +50,11 @@ int get_long_option(char *input)
 
     option = 0;
     input = input + 2;
-    if (ft_strcmp(input, "all"))
+    if (!ft_strcmp(input, "all"))
         option |= LIST_HIDDEN;
-    else if (ft_strcmp(input, "reverse"))
+    else if (!ft_strcmp(input, "reverse"))
         option |= REVERSE_ORDER;
-    else if (ft_strcmp(input, "recursive"))
+    else if (!ft_strcmp(input, "recursive"))
         option |= LIST_SUBDIR_RECUSIVELY;
     else
         ft_err_invalid_option(input, 2);

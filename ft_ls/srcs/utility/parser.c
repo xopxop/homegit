@@ -27,12 +27,13 @@ int ft_is_long_option(char chr1, char chr2)
     return ((chr1 == '-' && chr2 == '-'));
 }
 
-int ft_isdir(char *dir_name)
+int ft_isfile(char *dir_name, int *ret)
 {
-    DIR *dir;
+    struct stat filestat;
 
-    if (!(dir = opendir(dir_name)))
-        ft_err_can_not_access(dir_name);
-    closedir(dir);
-    return (1);
+    if (!(lstat(dir_name, &filestat)))
+        return (YES);
+    *ret = MINOR_PROBLEMS;
+    ft_err_can_not_access(dir_name);
+    return (NO);
 }
