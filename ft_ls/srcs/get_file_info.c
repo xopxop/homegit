@@ -41,9 +41,9 @@ char *ft_get_time(time_t time_file)
     t = ctime(&time_file);
     ft_strncpy(str, t + 4, 7);
     if (time_file > (now + 15778463) || time_file < (now - 15778463))
-        ft_strncpy(str + 8, t + 19, 5);
+        ft_strncpy(str + 7, t + 19, 5);
     else
-        ft_strncpy(str + 8, t + 11, 5);    
+        ft_strncpy(str + 7, t + 11, 5);    
     return (str);
 }
 
