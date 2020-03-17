@@ -14,7 +14,21 @@
 
 int     cmp(t_stat file1, t_stat file2)
 {
-    return (ft_strcmp(file1.name, file2.name) > 0);
+    int check1;
+    int check2;
+
+    check1 = 0;
+    check2 = 0;
+    if (file1.allow_open && file2.allow_open)
+    {
+        if (file1.is_hidden)
+            file1.name++;
+        if (file2.is_hidden)
+            file2.name++;
+        check1 = (ft_isupper(file1.name[0])) ? 32 : 0;
+        check2 = (ft_isupper(file2.name[0])) ? 32 : 0;             
+    }
+    return (ft_strcmp(file1.name, file2.name) + check1 - check2 > 0);
 }
 
 void    ft_swap_stat(t_stat *file1, t_stat *file2)
