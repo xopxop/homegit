@@ -30,12 +30,20 @@ char *ft_get_group_name(gid_t id)
     return (ft_strdup(grp->gr_name));
 }
 
-char *ft_get_time(time_t time)
+char *ft_get_time(time_t time_file)
 {
     char *str;
+    time_t now;
+    char *t;
 
+    now = time(0);
     str = ft_strnew(12);
-    ft_strncpy(str, ctime(&time)+ 4, 12);
+    t = ctime(&time_file);
+    ft_strncpy(str, t + 4, 7);
+    if (time_file > (now + 15778463) || time_file < (now - 15778463))
+        ft_strncpy(str + 8, t + 19, 5);
+    else
+        ft_strncpy(str + 8, t + 11, 5);    
     return (str);
 }
 

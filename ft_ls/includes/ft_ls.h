@@ -51,8 +51,6 @@
 # include <errno.h>
 # include <time.h>
 
-# include <linux/types.h>
-
 #include <sys/ioctl.h>
 
 # define LONG_LIST_FORMAT 1

@@ -121,7 +121,7 @@ void ft_sort_rever_alphabet(t_node *lst)
 
 int     cmp_time(t_node *file1, t_node *file2)
 {
-    return (file1->status.stats.st_mtim.tv_sec < file2->status.stats.st_mtim.tv_sec);
+    return (file1->status.stats.st_mtime < file2->status.stats.st_mtime);
 }
 
 void ft_sort_time(t_node *lst)
@@ -148,8 +148,10 @@ void ft_sort_time(t_node *lst)
 
 void ft_sort(t_node *lst, int options)
 {
-    (void)options;
-//    ft_sort_alphabet(lst);
-//    ft_sort_rever_alphabet(lst);
-    ft_sort_time(lst);
+    if (options & REVERSE_ORDER)
+        ft_sort_rever_alphabet(lst);
+    else if (options & SORT_BY_NEWEST_FIRST)
+        ft_sort_time(lst);
+    else
+        ft_sort_alphabet(lst);
 }
