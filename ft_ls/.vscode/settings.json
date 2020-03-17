@@ -3,6 +3,8 @@
         "libft.h": "c",
         "*.tcc": "c",
         "ft_ls.h": "c",
-        "ioctl.h": "c"
-    }
+        "ioctl.h": "c",
+        "time.h": "c"
+    },
+    "C_Cpp.dimInactiveRegions": false
 }

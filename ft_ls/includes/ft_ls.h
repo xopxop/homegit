@@ -51,6 +51,8 @@
 # include <errno.h>
 # include <time.h>
 
+# include <linux/types.h>
+
 #include <sys/ioctl.h>
 
 # define LONG_LIST_FORMAT 1
@@ -89,6 +91,7 @@ typedef struct s_stat
     int             is_hidden;
     int             allow_open;
     int             blocks;
+    struct stat      stats;
 }               t_stat;
 
 

@@ -46,6 +46,7 @@ void    ft_swap_stat(t_stat *file1, t_stat *file2)
     temp.is_hidden = file1->is_hidden;
     temp.allow_open = file1->allow_open;
     temp.blocks = file1->blocks;
+    temp.stats = file1->stats;
 
     file1->name = file2->name;
     file1->path = file2->path;
@@ -58,6 +59,7 @@ void    ft_swap_stat(t_stat *file1, t_stat *file2)
     file1->is_hidden = file2->is_hidden;
     file1->allow_open = file2->allow_open;
     file1->blocks = file2->blocks;
+    file1->stats = file2->stats;
 
     file2->name = temp.name;
     file2->path = temp.path;
@@ -70,6 +72,7 @@ void    ft_swap_stat(t_stat *file1, t_stat *file2)
     file2->is_hidden = temp.is_hidden;
     file2->allow_open = temp.allow_open;
     file2->blocks = temp.blocks;
+    file2->stats = temp.stats;
 }
 
 void    ft_sort_alphabet(t_node *lst)
@@ -94,8 +97,59 @@ void    ft_sort_alphabet(t_node *lst)
     }
 }
 
+void ft_sort_rever_alphabet(t_node *lst)
+{
+    int is_in_order;
+    t_node *ptr;
+
+    is_in_order = NO;
+    while(is_in_order == NO && (lst))
+    {
+        ptr = lst;
+        is_in_order = YES;
+        while (ptr->next)
+        {
+            if (!cmp(ptr->status, ptr->next->status))
+            {
+                ft_swap_stat(&ptr->status, &ptr->next->status);
+                is_in_order = NO;
+            }
+            ptr = ptr->next;
+        }
+    }
+}
+
+int     cmp_time(t_node *file1, t_node *file2)
+{
+    return (file1->status.stats.st_mtim.tv_sec < file2->status.stats.st_mtim.tv_sec);
+}
+
+void ft_sort_time(t_node *lst)
+{
+    int is_in_order;
+    t_node *ptr;
+
+    is_in_order = NO;
+    while(is_in_order == NO && (lst))
+    {
+        ptr = lst;
+        is_in_order = YES;
+        while (ptr->next)
+        {
+            if (cmp_time(ptr, ptr->next))
+            {
+                ft_swap_stat(&ptr->status, &ptr->next->status);
+                is_in_order = NO;
+            }
+            ptr = ptr->next;
+        }
+    }
+}
+
 void ft_sort(t_node *lst, int options)
 {
     (void)options;
-    ft_sort_alphabet(lst);
+//    ft_sort_alphabet(lst);
+//    ft_sort_rever_alphabet(lst);
+    ft_sort_time(lst);
 }

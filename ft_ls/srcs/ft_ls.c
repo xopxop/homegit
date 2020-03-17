@@ -50,6 +50,7 @@ void ft_get_file_info(t_node **lnode, char *filename, char *path)
     node->status.size = filestat.st_size;
     node->status.time = ft_get_time(filestat.st_mtime);
     node->status.blocks = filestat.st_blocks / 2;
+    node->status.stats = filestat;
     if (node->status.name[0] == '.')
         node->status.is_hidden = YES;
     if (!(ft_strcmp(".", node->status.name))  || !(ft_strcmp("..", node->status.name)))
