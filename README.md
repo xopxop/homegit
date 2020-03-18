@@ -15,4 +15,6 @@ Name | Status | Score
 *ft_ls* | `In Process`| N/A
 *exam_shell* | `In Process` | N/A
 *Piscine_PHP* | `On Hold` | N/A
+*Push_swap* | `On Hold` | N/A
+*fdf* | `On Hold` | N/A
 ___
