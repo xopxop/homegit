@@ -601,11 +601,19 @@ docker-machine ls
 
 *Resouces:*
 + [Dockerfile reference](https://docs.docker.com/engine/reference/builder/)
-+ ex00: [Alpine Linux package management](https://wiki.alpinelinux.org/wiki/Alpine_Linux_package_management)
++ [Alpine Linux package management](https://wiki.alpinelinux.org/wiki/Alpine_Linux_package_management)
 + [How Dockerfile naming works?](https://stackoverflow.com/questions/35511604/docker-unable-to-prepare-context-unable-to-evaluate-symlinks-in-dockerfile-pat)
 
-*Answer*
+*Answer:*
+```
+FROM alpine                                       ---> From alpine
 
+MAINTAINER Du Than <dthan@student.hive.fi>        ---> Producer
+
+RUN apk update && apk upgrade && apk add vim      ---> Update, upgrade and install vim
+
+ENTRYPOINT vim                                    ---> Run vim
+```
 *How to test:*
 ```
 docker build -t ex00 .
