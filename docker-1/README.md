@@ -357,8 +357,7 @@ docker exec -e FLASK_APP=/root/app.py Abathur flask run --host=0.0.0.0 --port 30
 -e, --env list             Set environment variables
 ```
 *Result:*
-
-____________________________________________________________________
+An html page displaying "Hello World" through port 3000
 
 #### 20: Create a local swarm, the Char virtual machine should be its manager.
 *Answer:*
