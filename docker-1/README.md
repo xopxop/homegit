@@ -342,6 +342,7 @@ Create a bind mount. If you specify, -v /HOST-DIR:/CONTAINER-DIR, Docker bind mo
 
 For more info:
 [Docker run reference](https://docs.docker.com/engine/reference/run/)
+
 [python version](https://hub.docker.com/_/python)
 
 -dit : Run container in background and print container ID, Keep STDIN open even if not attached, Allocate a pseudo-TTY
