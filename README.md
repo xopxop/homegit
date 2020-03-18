@@ -1,5 +1,5 @@
 # Welcome
-In this repository are my projects from Hive Helsinki
+In this repository you can find all of my projects from Hive Helsinki
 
 Projects:
 
@@ -12,3 +12,4 @@ Name | Status | Score
 *init* | `Finished` | <image src="images/init.png" width = 100 height = 60 >
 *roger-skyline-1* | `Finished` | <image src="images/roger-skyline-1.png" width = 100 height = 60 >
 *docker-1* | `Finished` | <image src="images/docker-1.png" width = 100 height = 60 >
+___
