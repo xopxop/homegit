@@ -24,7 +24,7 @@ The way it works is it tales all the services that make up the Linux server (Net
 
 ***Resources:*** 
 + [learning docker](https://www.linkedin.com/learning/learning-docker-2)
-+ Thanks to [VBrazhnik/docker-1](https://github.com/VBrazhnik/docker-1/wiki) in order to finish this project
++ A Milion Thanks to [VBrazhnik/docker-1](https://github.com/VBrazhnik/docker-1/wiki)
 
 ## Mandatory Part
 ### 00_how_to_docker
