@@ -544,8 +544,9 @@ docker service rm $(docker service ls -q)
 ```
 
 *Explaination:*
+```
 -q, --quiet           Only display IDs
-
+```
 *Result:*
 `docker service ls`
 
@@ -556,12 +557,13 @@ docker rm -f $(docker ps -a -q)
 ```
 
 *Explaination:*
+```
 docker rm           Remove one or more containers
 -f, --force         Force the removal of a running container (uses SIGKILL)
 docker ps           List containers
 -a, --all           Show all containers (default shows just running)
 -q, --quiet         Only display numeric IDs
-
+```
 *Result:*
 `docker ps`
 
