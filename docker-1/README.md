@@ -515,7 +515,9 @@ docker service ps marines
 ```
 
 *Explaination:*
+```
 ps                  List the tasks of one or more services
+```
 
 *Result:*
 Tasks of marines service
@@ -527,9 +529,10 @@ docker service scale -d marines=20
 ```
 
 *Explaination:*
+```
 scale           Scale one or multiple replicated services
 -d, --detach    Exit immediately instead of waiting for the service to converge
-
+```
 *Result:*
 `docker service ps marines`
 There is 20 marines
