@@ -75,6 +75,22 @@
 # define YES 1
 # define NO 0
 
+typedef struct s_max
+{
+    int width_of_link;
+    int width_of_user_name;
+    int width_of_group_name;
+    int width_of_size;
+}t_max;
+
+typedef struct s_min
+{
+    int width_of_link;
+    int width_of_user_name;
+    int width_of_group_name;
+    int width_of_size;
+}t_min;
+
 typedef struct s_stat
 {
     char            *name;
@@ -90,8 +106,8 @@ typedef struct s_stat
     int             allow_open;
     int             blocks;
     struct stat      stats;
+    struct s_min    min_of;
 }               t_stat;
-
 
 typedef struct      s_node
 {

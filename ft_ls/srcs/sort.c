@@ -47,6 +47,7 @@ void    ft_swap_stat(t_stat *file1, t_stat *file2)
     temp.allow_open = file1->allow_open;
     temp.blocks = file1->blocks;
     temp.stats = file1->stats;
+    temp.min_of = file1->min_of;
 
     file1->name = file2->name;
     file1->path = file2->path;
@@ -61,6 +62,7 @@ void    ft_swap_stat(t_stat *file1, t_stat *file2)
     file1->allow_open = file2->allow_open;
     file1->blocks = file2->blocks;
     file1->stats = file2->stats;
+    file1->min_of = file2->min_of;
 
     file2->name = temp.name;
     file2->path = temp.path;
@@ -75,6 +77,7 @@ void    ft_swap_stat(t_stat *file1, t_stat *file2)
     file2->allow_open = temp.allow_open;
     file2->blocks = temp.blocks;
     file2->stats = temp.stats;
+    file2->min_of = temp.min_of;
 }
 
 void    ft_sort_alphabet(t_node *lst)

@@ -27,6 +27,17 @@ void initialize_struct(t_node *node)
     node->status.allow_open = YES;
 }
 
+t_min ft_get_min(t_node *node)
+{
+    t_min min;
+
+    min.width_of_link = ft_strlen(ft_itoa(node->status.link)); // not using itoa, memory leak
+    min.width_of_user_name = ft_strlen(node->status.user_name);
+    min.width_of_group_name = ft_strlen(node->status.group_name);
+    min.width_of_size = ft_strlen(ft_itoa(node->status.size)); //need to change later
+    return (min);
+}
+
 void ft_get_file_info(t_node **lnode, char *filename, char *path)
 {
     t_node *node;
@@ -51,6 +62,7 @@ void ft_get_file_info(t_node **lnode, char *filename, char *path)
     node->status.time = ft_get_time(filestat.st_mtime);
     node->status.blocks = filestat.st_blocks / 2;
     node->status.stats = filestat;
+    node->status.min_of = ft_get_min(node);
     if (node->status.name[0] == '.')
         node->status.is_hidden = YES;
     if (!(ft_strcmp(".", node->status.name))  || !(ft_strcmp("..", node->status.name)))

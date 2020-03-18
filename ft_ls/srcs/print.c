@@ -63,35 +63,71 @@ void ft_print_short_list(t_node *lst, int options)
     }
 }
 
-void ft_print_long_list(t_node *lst, int options)
+int ft_blockct(t_node *lst, int options)
 {
-    int block_ct;
-    t_node *ptr;
+    int total_block;
 
-    block_ct = 0;
-    ptr = lst;
- //   ft_printf("%s:\n", lfile->path);
-    while (ptr)
+    total_block = 0;
+    while (lst)
     {
-        if (!(options & LIST_HIDDEN) && ptr->status.is_hidden == YES)
-            ptr = ptr->next;
+        if (!(options & LIST_HIDDEN) && lst->status.is_hidden == YES)
+            ;
+        else
+            total_block += lst->status.blocks;
+        lst = lst->next;
+    }
+    return (total_block);
+}
+
+void ft_init_struct_max(t_max *max)
+{
+    max->width_of_link = 0;
+    max->width_of_user_name = 0;
+    max->width_of_group_name = 0;
+    max->width_of_size = 0;
+}
+
+void ft_get_max(t_max *max, t_node *lst, int options)
+{
+    ft_init_struct_max(max);
+    while(lst)
+    {
+        if (!(options & LIST_HIDDEN) && lst->status.is_hidden == YES)
+            ;
         else
         {
-            block_ct += ptr->status.blocks;
-            ptr = ptr->next;
+            if (max->width_of_link < lst->status.min_of.width_of_link)
+                max->width_of_link = lst->status.min_of.width_of_link;
+            if (max->width_of_user_name < lst->status.min_of.width_of_user_name)
+                max->width_of_user_name = lst->status.min_of.width_of_user_name;
+            if (max->width_of_group_name < lst->status.min_of.width_of_group_name)
+                max->width_of_group_name = lst->status.min_of.width_of_group_name;
+            if (max->width_of_size < lst->status.min_of.width_of_size)
+                max->width_of_size = lst->status.min_of.width_of_size;
         }
+        lst = lst->next;
     }
-    ft_printf ("total %d\n", block_ct);
+}
+
+void ft_print_long_list(t_node *lst, int options)
+{
+    int total_block;
+    t_max max;
+
+    total_block = ft_blockct(lst, options);
+    ft_printf ("total %d\n", total_block, options);
+    ft_get_max(&max, lst, options);
     while (lst)
     {
         if (!(options & LIST_HIDDEN) && lst->status.is_hidden == YES)
             ;
         else
         {
-            ft_printf("%c%s | %u | %s | %s | %d | %s | %s\n", lst->status.type, \
-            lst->status.file_permission, lst->status.link, lst->status.user_name, \
-            lst->status.group_name, lst->status.size , lst->status.time, \
-            lst->status.name);
+            ft_printf("%c%s %*u %*s %*s %*d %s %s\n", lst->status.type, \
+            lst->status.file_permission, max.width_of_link ,lst->status.link, \
+            max.width_of_user_name, lst->status.user_name, max.width_of_group_name, \
+            lst->status.group_name, max.width_of_size, lst->status.size , \
+            lst->status.time, lst->status.name);
         }
         lst = lst->next;
     }
