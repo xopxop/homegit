@@ -1,7 +1,7 @@
 # Welcome
 In this repository you can find all of my projects from Hive Helsinki
 
-Projects:
+Lists of Projects:
 
 Name | Status | Score
 ---|---|---
