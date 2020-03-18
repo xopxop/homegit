@@ -721,7 +721,7 @@ EXPOSE 443 80 22
 
 ENTRYPOINT (/opt/gitlab/embedded/bin/runsvdir-start &) && gitlab-ctl reconfigure && tail -f /dev/null
 ```
-*Explaination:*
+*Resources:*
 + [Issue fixing](https://gitlab.com/gitlab-org/omnibus-gitlab/issues/3212)
 
 *TEST*
