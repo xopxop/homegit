@@ -339,8 +339,11 @@ docker run --name Abathur python: -v ~/:/root -p 3000:3000 -dit python:2-slim
 -v|--volume[=[[HOST-DIR:]CONTAINER-DIR[:OPTIONS]]]
 
 Create a bind mount. If you specify, -v /HOST-DIR:/CONTAINER-DIR, Docker bind mounts /HOST-DIR in the host to /CONTAINER-DIR in the Docker container. If 'HOST-DIR' is omitted,  Docker automatically creates the new volume on the host.
-For more info[Docker run reference](https://docs.docker.com/engine/reference/run/)
+
+For more info:
+[Docker run reference](https://docs.docker.com/engine/reference/run/)
 [python version](https://hub.docker.com/_/python)
+
 -dit : Run container in background and print container ID, Keep STDIN open even if not attached, Allocate a pseudo-TTY
 ```
 docker exec Abathur pip install Flask
