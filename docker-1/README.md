@@ -391,8 +391,13 @@ docker-machine ssh Aiur "docker swarm join --token $(docker swarm join-token wor
 ```
 
 *Explaination:*
-docker-machine ssh Aiur                          log in to Aiur
+```
+docker-machine ssh Aiur
+```
+Log into Aiur machine
+```
 docker swarm join --token $(docker swarm join-token worker -q) $(docker-machine ip Char):2377
+```
 [add nodes](https://docs.docker.com/engine/swarm/swarm-tutorial/add-nodes/)
 
 *Result:*
