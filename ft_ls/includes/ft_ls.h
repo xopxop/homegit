@@ -124,6 +124,12 @@ typedef struct      s_window
     int             max;
 }                   t_window;
 
+typedef struct      s_args
+{
+    struct s_node   *file;
+    struct s_node   *dir;
+}t_args;
+
 /*
 **  Error
 */
@@ -162,9 +168,10 @@ void free_lfile(t_node *file);
 ** Display
 */
 
-void display(t_node *lfile, int options);
+void display(t_node *parent,t_node *lchild, int options);
 void ft_print_short_list(t_node *lfile, int options);
-void ft_print_long_list(t_node *lfile, int options);
+void ft_long_list(t_node* parent, t_node *lchild, int options);
+void ft_print_long_list(t_node *node, t_max max);
 
 /*
 ** Get_file_info

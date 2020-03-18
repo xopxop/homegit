@@ -12,17 +12,14 @@
 
 #include "../includes/ft_ls.h"
 
-void display(t_node *head, int options)
+void display(t_node *parent, t_node *lchild, int options)
 {
-    if (options & LIST_SUBDIR_RECUSIVELY)
-    {
-        ft_putstr_fd(head->status.path, STD_OUT);
-        write(STD_OUT, "\n", 1);
-    }
+    if (options & LIST_SUBDIR_RECUSIVELY && lchild != NULL)
+            ft_printf("%s:\n", parent->status.path);
     if (options & LONG_LIST_FORMAT)
-        ft_print_long_list(head, options);
+        ft_long_list(parent, lchild, options);
     else
-        ft_print_short_list(head, options);
+        ft_print_short_list(lchild, options);
 }
 
 int get_terminal_width()
@@ -89,7 +86,6 @@ void ft_init_struct_max(t_max *max)
 
 void ft_get_max(t_max *max, t_node *lst, int options)
 {
-    ft_init_struct_max(max);
     while(lst)
     {
         if (!(options & LIST_HIDDEN) && lst->status.is_hidden == YES)
@@ -109,26 +105,35 @@ void ft_get_max(t_max *max, t_node *lst, int options)
     }
 }
 
-void ft_print_long_list(t_node *lst, int options)
+void ft_print_long_list(t_node *node, t_max max)
+{
+    ft_printf("%c%s %*u %*s %*s %*d %s %s\n", node->status.type, \
+    node->status.file_permission, max.width_of_link ,node->status.link, \
+    max.width_of_user_name, node->status.user_name, max.width_of_group_name, \
+    node->status.group_name, max.width_of_size, node->status.size , \
+    node->status.time, node->status.name);
+}
+
+void ft_long_list(t_node* parent, t_node *lchild, int options)
 {
     int total_block;
     t_max max;
 
-    total_block = ft_blockct(lst, options);
-    ft_printf ("total %d\n", total_block, options);
-    ft_get_max(&max, lst, options);
-    while (lst)
+    ft_init_struct_max(&max);
+    if (lchild)
     {
-        if (!(options & LIST_HIDDEN) && lst->status.is_hidden == YES)
-            ;
-        else
+        total_block = ft_blockct(lchild, options);
+        ft_printf ("total %d\n", total_block, options);
+        ft_get_max(&max, lchild, options);
+        while (lchild)
         {
-            ft_printf("%c%s %*u %*s %*s %*d %s %s\n", lst->status.type, \
-            lst->status.file_permission, max.width_of_link ,lst->status.link, \
-            max.width_of_user_name, lst->status.user_name, max.width_of_group_name, \
-            lst->status.group_name, max.width_of_size, lst->status.size , \
-            lst->status.time, lst->status.name);
+            if (!(options & LIST_HIDDEN) && lchild->status.is_hidden == YES)
+                ;
+            else
+                ft_print_long_list(lchild, max);
+            lchild = lchild->next;
         }
-        lst = lst->next;
     }
+    else
+        ft_print_long_list(parent, max);
 }
