@@ -463,7 +463,7 @@ create                      Create a new service
 --network network           Network attachments
 --name string               Service name
 --replicas uint             Number of tasks
--e, --env list                           Set environment variables
+-e, --env list              Set environment variables
 ```
 From [engineering/bay](https://hub.docker.com/r/42school/engineering-bay/)
 + OC_USERNAME : Username used to access to orbital-command
@@ -479,12 +479,16 @@ docker service logs -f $(docker service ps engineering-bay -f "name=engineering-
 ```
 
 *Explaination:*
-logs        Fetch the logs of a service or task
+```
+logs                 Fetch the logs of a service or task
 -f, --follow         Follow log output
-In `(docker service ps engineering-bay -f "name=engineering-bay.1" -q)`
-ps          List the tasks of one or more services
+```
+In (docker service ps engineering-bay -f "name=engineering-bay.1" -q)
+```
+ps                    List the tasks of one or more services
 -f, --filter filter   Filter output based on conditions provided
 -q, --quiet           Only display task IDs
+```
 [docker service ps](https://docs.docker.com/engine/reference/commandline/service_ps/)
 
 *Result:*
