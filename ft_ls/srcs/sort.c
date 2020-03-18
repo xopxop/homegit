@@ -54,6 +54,7 @@ void    ft_swap_stat(t_stat *file1, t_stat *file2)
     file1->group_name = file2->group_name;
     file1->link = file2->link;
     file1->size = file2->size;
+    file1->time = file2->time;
     file1->file_permission = file2->file_permission;
     file1->type = file2->type;
     file1->is_hidden = file2->is_hidden;
@@ -67,6 +68,7 @@ void    ft_swap_stat(t_stat *file1, t_stat *file2)
     file2->group_name = temp.group_name;
     file2->link = temp.link;
     file2->size = temp.size;
+    file2->time = temp.time;
     file2->file_permission = temp.file_permission;
     file2->type = temp.type;
     file2->is_hidden = temp.is_hidden;

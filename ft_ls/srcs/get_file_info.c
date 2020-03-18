@@ -36,7 +36,7 @@ char *ft_get_time(time_t time_file)
     time_t now;
     char *t;
 
-    now = time(0);
+    now = time(&now);
     str = ft_strnew(12);
     t = ctime(&time_file);
     ft_strncpy(str, t + 4, 7);
