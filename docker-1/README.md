@@ -456,6 +456,7 @@ docker service create -d --network overmind --name engineering-bay --replicas 2 
 ```
 
 *Explaination:*
+```
 service                     Manage services
 create                      Create a new service
 -d, --detach                Exit immediately instead of waiting for the service to converge
@@ -463,6 +464,7 @@ create                      Create a new service
 --name string               Service name
 --replicas uint             Number of tasks
 -e, --env list                           Set environment variables
+```
 From [engineering/bay](https://hub.docker.com/r/42school/engineering-bay/)
 + OC_USERNAME : Username used to access to orbital-command
 + OC_PASSWD : Password used to access to orbital-command
