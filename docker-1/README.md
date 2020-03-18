@@ -598,15 +598,20 @@ docker-machine ls
 ### Dockerfiles
 #### Excercise 00: vim/emacs
 **From an alpine image you’ll add to your container your favorite text editor, vim oremacs, that will launch along with your container.**
+
 *Resouces:*
 + [Dockerfile reference](https://docs.docker.com/engine/reference/builder/)
 + ex00: [Alpine Linux package management](https://wiki.alpinelinux.org/wiki/Alpine_Linux_package_management)
++ [How Dockerfile naming works?](https://stackoverflow.com/questions/35511604/docker-unable-to-prepare-context-unable-to-evaluate-symlinks-in-dockerfile-pat)
+
+*Answer*
+
 *How to test:*
 ```
 docker build -t ex00 .
 docker run --rm -it ex00
 ```
-*Note:* [How Dockerfile naming works?](https://stackoverflow.com/questions/35511604/docker-unable-to-prepare-context-unable-to-evaluate-symlinks-in-dockerfile-pat)
+[How Dockerfile naming works?](https://stackoverflow.com/questions/35511604/docker-unable-to-prepare-context-unable-to-evaluate-symlinks-in-dockerfile-pat)
 
 #### Excercise 01: BYOTSS
 **From a debian image you will add the appropriate sources to create a TeamSpeak server, that will launch along with your container. It will be deemed valid if at least one user can connect to it and engage in a normal discussion (no far-fetched setup), so be sure to create your Dockerfile with the right options. Your program should get the sources when it builds, they cannot be in your repository.**
