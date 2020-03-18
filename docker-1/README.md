@@ -661,13 +661,47 @@ EXPOSE 3000
 CMD ["rails", "s", "-b", "0.0.0.0", "-p", "3000"]
 ```
 **Your generic container should install, via a ruby container, all the necessary dependencies and gems, then copy your rails application in the /opt/app folder of your container. Docker has to install the approtiate gems when it builds, but also launch the migrations and the db population for your application. The child Dockerfile should launch the rails server (see example below). If you don’t know what commands to use, it’s high time to look at the Ruby on Rails documentation.**
+
+*Explaination:*
+```
+FROM ruby:2.5.1                                                                         ---> From ruby version 2.5.1
+
+MAINTAINER Du Than <dthan@student.hive.fi>                                              ---> Producer
+
+RUN apt-get update && apt-get install -y nodejs && rm -rf /var/lib/apt/lists/*          ---> Update, upgrade, install nodejs & remove files
+RUN gem install rails bundler:1.17.3                                                    ---> Install rail, bundler version 1.17.3 by gem
+
+ONBUILD COPY app /opt/app                                                               ---> Put trigger Copy dir 'app' to 'opt/apt'
+ONBUILD WORKDIR /opt/app                                                                ---> Put trigger Work directory
+
+ONBUILD RUN bundler install                                                             ---> Put trigger bundler
+ONBUILD RUN rails db:migrate                                                            ---> Put trigger db:migrate
+ONBUILD RUN rails db:seed                                                               ---> Put trigger db:seed
+```
+*File structure:*
+```
+      ___ft-rails__Dockerfile
+      |
+ex02--|__Dockerfile
+      |
+      |__app
+```
 *How to test:*
 ```
+Step 1: Setting up Dockerfile
+mkdir ft-rails
+mv Dockerfile ft-rails
+echo -e 'FROM ft-rails:on-build\nEXPOSE 3000\nCMD ["rails", "s", "-b", "0.0.0.0", "-p" ,"3000"]' > Dockerfile
+Step 2: Dowloading app
+git clone https://bitbucket.org/railstutorial/sample_app_4th_ed.git app
+
+How to run
++ build the ft-rails:onbuild
 docker build -t ft-rails:on-build .
++ build then run
 docker build -t ex02 .
 docker run -it --rm -p 3000:3000 ex02
 ```
-
 #### Excercise 03: Exercise 03: ... and bacon strips ... and bacon strips ...
 **Docker can be useful to test an application that’s still being developed without polluting your libraries. You will have to design a Dockerfile that gets the development version of Gitlab - Community Edition installs it with all the dependencies and the necessary configurations, and launches the application, all as it builds. The container will be deemed valid if you can access the web client, create users and interact via GIT with this container (HTTPS and SSH). Obviously, you are not allowed to use the official container from Gitlab, it would be a shame...**
 *Explaination:*
