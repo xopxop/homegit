@@ -426,12 +426,14 @@ docker service create -d --network overmind --name orbital-command -e RABBITMQ_D
 ```
 
 *Explaination:*
+```
 service                     Manage services
 create                      Create a new service
 -d, --detach                Exit immediately instead of waiting for the service to converge
 --network network           Network attachments
 --name string               Service name
 -e, --env list              Set environment variables
+```
 From [rabbitmq](https://hub.docker.com/_/rabbitmq/)
 ```
 Setting default user and password
