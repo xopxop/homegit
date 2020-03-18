@@ -3,7 +3,7 @@ In this repository are my projects from Hive Helsinki
 
 Projects:
 
-Name | Status | Result
+Name | Status | Score
 ---|---|---
 Piscine Reloaded | Finished | <image src="images/Piscine_Reloaded.png" width = 100 height = 60 >
 Libft | Finished | <image src="images/Libft.png" width = 100 height = 60 >
