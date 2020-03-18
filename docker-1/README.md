@@ -621,37 +621,38 @@ docker run --rm -it ex00
 ```
 #### Excercise 01: BYOTSS
 **From a debian image you will add the appropriate sources to create a TeamSpeak server, that will launch along with your container. It will be deemed valid if at least one user can connect to it and engage in a normal discussion (no far-fetched setup), so be sure to create your Dockerfile with the right options. Your program should get the sources when it builds, they cannot be in your repository.**
+
+*Resources:*
++ [Dockerhub/TeamSpeak](https://hub.docker.com/_/teamspeak)
++ https://www.youtube.com/watch?v=za65VWo29uQ
+
+*Explaination:*
+```
+FROM debian                                                       ----> from debian image
+
+MAINTAINER DuThan <dthan@student.hive.fi>                         ----> Producer
+
+ENV TS3SERVER_LICENSE=accept                                      ----> set variable "TS3SERVER_LICENSE = accept"
+
+WORKDIR /home/teamspeak                                           ----> work directory
+
+EXPOSE 9987/udp 10011 30033                                       ----> open ports
+
+RUN apt-get update && \                                           ----> Update
+apt-get upgrade -y && \                                           ----> Upgrade
+apt-get install -y wget bzip2 && \                                ----> Install wget & bzip2
+wget https://files.teamspeak-services.com/releases/server/3.12.0/teamspeak3-server_linux_amd64-3.12.0.tar.bz2 && \ ----> Download TeamSpeakServer
+tar -xvf teamspeak3-server_linux_amd64-3.12.0.tar.bz2                                                              -----> Unzip package
+
+WORKDIR teamspeak3-server_linux_amd64                             ----> work directory
+
+ENTRYPOINT sh ts3server_minimal_runscript.sh                      ----> Run scrip
+```
 *How to test:*
 ```
 docker build -t ex01
 docker run --rm 9987:9987/udp -p 10011:10011 -p 30033:30033 ex01
 ```
-*Explaination:*
-```
-FROM debian                 ----> from debian image
-
-MAINTAINER DuThan <dthan@student.hive.fi>                   ----> Producer
-
-ENV TS3SERVER_LICENSE=accept                ----> set variable "TS3SERVER_LICENSE = accept"
-
-WORKDIR /home/teamspeak                     ----> work directory
-
-EXPOSE 9987/udp 10011 30033                 ----> open ports
-
-RUN apt-get update && \
-apt-get upgrade -y && \
-apt-get install -y wget bzip2 && \
-wget http://dl.4players.de/ts/releases/3.0.13.4/teamspeak3-server_linux_amd64-3.0.13.4.tar.bz2 && \
-tar -xvf teamspeak3-server_linux_amd64-3.0.13.4.tar.bz2
-
-WORKDIR teamspeak3-server_linux_amd64
-
-ENTRYPOINT sh ts3server_minimal_runscript.sh
-```
-Resources:
-+ [Dockerhub/TeamSpeak](https://hub.docker.com/_/teamspeak)
-+ https://www.youtube.com/watch?v=za65VWo29uQ
-
 #### Excercise 02: Dockerfile in a Dockerfile... in a Dockerfile ?
 **You are going to create your first Dockerfile to containerize Rails applications. That’s a special configuration: this particular Dockerfile will be generic, and called in another Dockerfile, that will look something like this:**
 ```
