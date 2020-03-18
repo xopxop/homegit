@@ -411,10 +411,11 @@ docker node ls
 docker network create -d overlay overmind
 ```
 *Explaination:*
+```
 network                     Manage networks
 create                      Create a network
 -d, --driver string         Driver to manage the Network (default "bridge")
-
+```
 *Result:*
 overmind is now listed in the network `docker network ls`
 
