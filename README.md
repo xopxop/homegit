@@ -5,7 +5,7 @@ Projects:
 
 Name | Status | Result
 ---|---|---
-Piscine Reloaded | Finished | <image src="images/Piscine_Reloaded.png" width = 80 height = 50 >
+Piscine Reloaded | Finished | <image src="images/Piscine_Reloaded.png" width = 100 height = 60 >
 Libft | Finished | <image src="images/Libft.png" width = 310 height = 248 >
 GET_Next_line | Finished | <image src="images/Get_Next_line.png" width = 310 height = 248 >
 Fillit | Finished | <image src="images/Fillit.png" width = 310 height = 248 >
