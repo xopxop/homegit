@@ -596,11 +596,11 @@ rm           Remove a machine
 docker-machine ls
 
 ### Dockerfiles
-Resouces:
-+ [Dockerfile reference](https://docs.docker.com/engine/reference/builder/)
-+ ex00: [Alpine Linux package management](https://wiki.alpinelinux.org/wiki/Alpine_Linux_package_management)
 #### Excercise 00: vim/emacs
 **From an alpine image you’ll add to your container your favorite text editor, vim oremacs, that will launch along with your container.**
+*Resouces:*
++ [Dockerfile reference](https://docs.docker.com/engine/reference/builder/)
++ ex00: [Alpine Linux package management](https://wiki.alpinelinux.org/wiki/Alpine_Linux_package_management)
 *How to test:*
 ```
 docker build -t ex00 .
