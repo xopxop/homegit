@@ -1,4 +1,4 @@
-# Docker-1
+# Project: Docker-1
 ## Introduction
 *What Is Docker/ What Docker Does?*
 + Carves up a computer into sealed containers that run your code
@@ -254,7 +254,9 @@ docker inspect -f '{{.Config.Env}}' spawning-pool
 the same to **Question 07**
 
 *Result:*
+```
 [MYSQL_ROOT_PASSWORD=Kerrigan MYSQL_DATABASE=zerglings PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin GOSU_VERSION=1.7 MYSQL_MAJOR=8.0 MYSQL_VERSION=8.0.19-1debian9]
+```
 
 #### 14:Launch a wordpress container as a background task, just for fun. The container should be named lair, its 80 port should be bound to the 8080 port of the virtual machine, and it should be able to use the spawning-pool container as a database service. You can try to access lair on your machine via a web browser, with the IP address of the virtual machine as a URL. Congratulations, you just deployed a functional Wordpress website in two commands!
 *Answer:*
@@ -326,7 +328,7 @@ overlord container restared, time on STATUS changed
 ```
 docker run --name Abathur -v ~/:/root -p 3000:3000 -dit python:2-slim
 docker exec Abathur pip install Flask
-docker exec Abathur echo 'from flask import Flask\napp = Flask(__name__)\n@app.route("/")\ndef hello_world():\n\treturn "<h1>Hello, World!</h1>"' > /root/app.py
+docker exec Abathur echo 'from flask import Flask\napp = Flask(__name__)\n@app.route("/")\ndef hello_world():\n\treturn "<h1>Hello World!</h1>"' > /root/app.py
 docker exec -e FLASK_APP=/root/Abathur/app.py Abathur flask run --host=0.0.0.0 --port 3000
 ```
 
@@ -335,10 +337,8 @@ docker exec -e FLASK_APP=/root/Abathur/app.py Abathur flask run --host=0.0.0.0 -
 docker run --name Abathur python: -v ~/:/root -p 3000:3000 -dit python:2-slim
 ```
 -v|--volume[=[[HOST-DIR:]CONTAINER-DIR[:OPTIONS]]]
-          Create a bind mount. If you specify, -v /HOST-DIR:/CONTAINER-DIR, Docker
-          bind mounts /HOST-DIR in the host to /CONTAINER-DIR in the Docker
-          container. If 'HOST-DIR' is omitted,  Docker automatically creates the new
-          volume on the host. For more info[Docker run reference](https://docs.docker.com/engine/reference/run/)
+Create a bind mount. If you specify, -v /HOST-DIR:/CONTAINER-DIR, Docker bind mounts /HOST-DIR in the host to /CONTAINER-DIR in the Docker container. If 'HOST-DIR' is omitted,  Docker automatically creates the new volume on the host.
+For more info[Docker run reference](https://docs.docker.com/engine/reference/run/)
 [python version](https://hub.docker.com/_/python]
 -dit : Run container in background and print container ID, Keep STDIN open even if not attached, Allocate a pseudo-TTY
 ```
