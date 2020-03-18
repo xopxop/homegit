@@ -574,10 +574,11 @@ docker rmi $(docker images -a -q)
 ```
 
 *Explaination:*
+```
 rmi                 Remove one or more images
 -a, --all           Show all images (default hides intermediate images)
 -q, --quiet         Only show numeric IDs
-
+```
 *Result:*
 `docker images -a`
 
@@ -586,11 +587,11 @@ rmi                 Remove one or more images
 ```
 docker-machine rm -y Aiur
 ```
-
 *Explaination:*
+```
 rm           Remove a machine
 -y           Assumes automatic yes to proceed with remove, without prompting further user confirmation
-
+```
 *Result:*
 docker-machine ls
 
