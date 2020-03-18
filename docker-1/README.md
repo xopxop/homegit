@@ -354,9 +354,8 @@ pip         The pip command is a tool for installing and managing Python package
 [flask instalation](https://flask.palletsprojects.com/en/1.0.x/installation/#installation)
 ```
 docker exec -e FLASK_APP=/root/app.py Abathur flask run --host=0.0.0.0 --port 3000
-```
 -e, --env list             Set environment variables
-
+```
 *Result:*
 
 ____________________________________________________________________
