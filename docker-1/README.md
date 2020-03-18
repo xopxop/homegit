@@ -347,10 +347,11 @@ For more info:
 -dit : Run container in background and print container ID, Keep STDIN open even if not attached, Allocate a pseudo-TTY
 ```
 docker exec Abathur pip install Flask
-```
+
 exec        Run a command in a running container
 pip         The pip command is a tool for installing and managing Python packages
 [flask instalation](https://flask.palletsprojects.com/en/1.0.x/installation/#installation)
+```
 ```
 docker exec -e FLASK_APP=/root/app.py Abathur flask run --host=0.0.0.0 --port 3000
 ```
