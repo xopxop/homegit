@@ -203,6 +203,7 @@ Listed volumes
 docker run -d --name spawning-pool --restart=on-failure:10 -e MYSQL_ROOT_PASSWORD=Kerrigan -e MYSQL_DATABASE=zerglings -v hatchery:/var/lib/mysql mysql --default-authentication-plugin=mysql_native_password
 ```
 *Explaination:*
+```
 -d, --detach                         Run container in background and print container ID
 --name string                        Assign a name to the container
 --restart policy                     Restart policy to apply when a container exits. Supported values are:
@@ -238,6 +239,7 @@ docker run -d --name spawning-pool --restart=on-failure:10 -e MYSQL_ROOT_PASSWOR
 -v, --volume list                    Bind mount a volume
 mysql --default-authentication-plugin=mysql_native_password
 Read here for me detail![native pluggable authentification](https://dev.mysql.com/doc/refman/8.0/en/native-pluggable-authentication.html)
+```
 
 *Result:*
 pulling msq into the images `docker images ls`
