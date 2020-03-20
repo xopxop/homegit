@@ -27,14 +27,32 @@ void initialize_struct(t_node *node)
     node->status.allow_open = YES;
 }
 
+int ft_numlen(int num)
+{
+    int ct;
+
+    ct = 0;
+    if (num < 0)
+    {
+        ct++;
+        num *= -1;
+    }
+    while (num > 9)
+    {
+        num /= 10;
+        ct++;
+    }
+    return (ct + 1);
+}
+
 t_min ft_get_min(t_node *node)
 {
     t_min min;
 
-    min.width_of_link = ft_strlen(ft_itoa(node->status.link)); // not using itoa, memory leak
+    min.width_of_link = ft_numlen(node->status.link); // not using itoa, memory leak
     min.width_of_user_name = ft_strlen(node->status.user_name);
     min.width_of_group_name = ft_strlen(node->status.group_name);
-    min.width_of_size = ft_strlen(ft_itoa(node->status.size)); //need to change later
+    min.width_of_size = ft_numlen(node->status.size); //need to change later
     return (min);
 }
 

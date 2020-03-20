@@ -30,34 +30,122 @@ int get_terminal_width()
     return (w.ws_col);
 }
 
-/*
-t_window ft_calculate(t_file *lfile, int col)
+int ft_get_max_file_name(t_node *node, int options)
 {
-    t_window w;
+    int max;
 
-    w.max = get_max_file_name(lfile);
-    w.lm = get_lm(w.max);
-    w.columns = (col - 1) / w.lm;
-    w.columns = 
-    return (w);
-}
-*/
-
-void ft_print_short_list(t_node *lst, int options)
-{
-//    int col;
-//    t_window window;
-
-//    col = get_terminal_width();
-//    ft_calculate(lfile, col);
-    while (lst)
+    max = 0;
+    while (node)
     {
-        if (!(options & LIST_HIDDEN) && lst->status.is_hidden == YES)
+        if (!(options & LIST_HIDDEN) && node->status.is_hidden == YES)
+            ;
+        else if (max < (int)ft_strlen(node->status.name))
+            max = ft_strlen(node->status.name);
+        node = node->next;
+    }
+    return (max);
+}
+
+void ft_skip_hidden_node(t_node **node, int options)
+{
+    if (!(options & LIST_HIDDEN))
+        while (*node && (*node)->status.is_hidden == YES)
+            *node = (*node)->next;
+}
+
+int ft_get_list_size(t_node* node, int options)
+{
+    int ct;
+
+    ct = 0;
+    while (node)
+    {
+        if (!(options & LIST_HIDDEN) && node->status.is_hidden == YES)
             ;
         else
-            ft_printf("%s\n", lst->status.name);
-        lst = lst->next;
+            ct++;
+        node = node->next;
     }
+    return (ct);
+}
+
+char ***ft_creat_table(int row, int col)
+{
+    char ***table;
+    int i = 0;
+    int j;
+
+    table = (char***)ft_memalloc(sizeof(char***));
+    while (i < row)
+    {
+        table[i] = (char**)malloc(sizeof(char**));
+        j = 0;
+        while (j < col)
+        {
+            table[i][j] = (char*)malloc(sizeof(char*));
+            table[i][j] = NULL;
+            j++;
+        }
+        i++;
+    }
+    return (table);
+}
+
+char ***ft_putlist_into_table(char ***table, t_node *node, int row, int col, int options)
+{
+    int row2 = 0;
+    int col2 = 0;
+
+    while (col2 < col && node != NULL)
+    {
+        row2 = 0;
+        while (row2 < row && node != NULL)
+        {
+            ft_skip_hidden_node(&node, options);
+            table[row2][col2] = node->status.name;
+            node = node->next;
+            row2++;
+        }
+        col2++;
+    }
+    return (table);
+}
+
+void ft_print_table(char ***table, int width, int row, int col)
+{
+    int row2 = 0;
+    int col2 = 0;
+
+    while (row2 < row && table[row2][col2] != NULL)
+    {
+        while (col2 < col && table[row2][col2] != NULL)
+        {
+            ft_printf("%-*s ", width, table[row2][col2]);
+            col2++;
+        }
+        write(1, "\n", 1);
+        col2 = 0;
+        row2++;
+    }
+}
+
+void ft_print_short_list(t_node *lchild, int options)
+{
+    int win_size;
+    int max_name_len;
+    int col;
+    int row;
+    int lst_size;
+    char ***table;
+
+    win_size = get_terminal_width();
+    max_name_len = ft_get_max_file_name(lchild, options);
+    col = win_size / (max_name_len + 1);
+    lst_size = ft_get_list_size(lchild, options);
+    row = (lst_size == col) ? 1 : (lst_size / col) + 1;
+    table = ft_creat_table(row, col);
+    table = ft_putlist_into_table(table, lchild, row, col, options);
+    ft_print_table(table, max_name_len, row, col);
 }
 
 int ft_blockct(t_node *lst, int options)
