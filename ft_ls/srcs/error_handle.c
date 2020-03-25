@@ -20,7 +20,6 @@ void     ft_err_permission_dinied(char *dirname)
     ft_putstr_fd("': ", STD_ERR);
     ft_putstr_fd(strerror(EACCES), STD_ERR);
     ft_putchar_fd('\n', STD_ERR);
-    // need to return error value here
 }
 
 void    ft_err_can_not_access(char *invalid_file_or_dir)
@@ -30,7 +29,6 @@ void    ft_err_can_not_access(char *invalid_file_or_dir)
     ft_putstr_fd("': ", STD_ERR);
     ft_putstr_fd(strerror(ENOENT), STD_ERR);
     ft_putchar_fd('\n', STD_ERR);
-//    exit(SERIOUS_TROUBLE); no exit
 }
 
 void    ft_err_invalid_option(char *invalid_option, int dashno)
@@ -56,4 +54,13 @@ void    ft_err_malloc()
     strerror(ENOMEM);
     ft_putchar_fd('\n', STD_ERR);
     exit(SERIOUS_TROUBLE);
+}
+
+void    ft_err_can_not_read_link(char *path)
+{
+    ft_putstr_fd("ft_ls: cannot read symbolic link '", STD_ERR);
+    ft_putstr_fd(path, STD_ERR);
+    ft_putstr_fd("': ", STD_ERR);
+    ft_putstr_fd(strerror(EACCES), STD_ERR);
+    ft_putchar_fd('\n', STD_ERR);
 }

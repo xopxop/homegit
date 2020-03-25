@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ls.c                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,73 +12,25 @@
 
 #include "../includes/ft_ls.h"
 
-void initialize_struct(t_node *node)
+void ft_get_file_info(t_node *node, char *filename, char *path, int *ret)
 {
-    node->status.name = NULL;
-    node->status.path = NULL;
-    node->status.user_name = NULL;
-    node->status.group_name = NULL;
-    node->status.link = 0;
-    node->status.size = 0;
-    node->status.time = NULL;
-    node->status.file_permission = NULL;
-    node->status.type = '\0';
-    node->status.is_hidden = NO;
-    node->status.allow_open = YES;
-}
-
-int ft_numlen(int num)
-{
-    int ct;
-
-    ct = 0;
-    if (num < 0)
-    {
-        ct++;
-        num *= -1;
-    }
-    while (num > 9)
-    {
-        num /= 10;
-        ct++;
-    }
-    return (ct + 1);
-}
-
-t_min ft_get_min(t_node *node)
-{
-    t_min min;
-
-    min.width_of_link = ft_numlen(node->status.link); // not using itoa, memory leak
-    min.width_of_user_name = ft_strlen(node->status.user_name);
-    min.width_of_group_name = ft_strlen(node->status.group_name);
-    min.width_of_size = ft_numlen(node->status.size); //need to change later
-    return (min);
-}
-
-void ft_get_file_info(t_node *node, char *filename, char *path)
-{
-//    t_node *node;
-//    t_node *ptr;
     struct stat filestat;
 
-//    if (!(node = (t_node*)malloc(sizeof(t_node))))
-//        ft_err_malloc();
-//    initialize_struct(node);
-    node->status.name = ft_strdup(filename);
+    node->status.name = ft_strdup(filename); //ft_get_name && ft_get_path to advoid the edgy case
     if (path == NULL)
         node->status.path = ft_strdup(filename);
+    else if (!ft_strcmp("/", path))
+        node->status.path = ft_strjoin("/", node->status.name);
     else
         node->status.path = ft_strjoin_and_free_string1(ft_strjoin(path, "/"), node->status.name);
     lstat(node->status.path, &filestat);
     node->status.type = ft_get_data_type(filestat.st_mode);
+    if (node->status.type == 'l')
+        node->status.path_sym_link = ft_get_path_sym_link(node->status.path, ret);
     node->status.file_permission = ft_get_file_permission(filestat.st_mode);
-    node->status.link = filestat.st_nlink;
     node->status.user_name = ft_get_user_name(filestat.st_uid);
     node->status.group_name = ft_get_group_name(filestat.st_gid);
-    node->status.size = filestat.st_size;
     node->status.time = ft_get_time(filestat.st_mtime);
-    node->status.blocks = filestat.st_blocks / 2;
     node->status.stats = filestat;
     node->status.min_of = ft_get_min(node);
     if (node->status.name[0] == '.')
@@ -86,34 +38,10 @@ void ft_get_file_info(t_node *node, char *filename, char *path)
     if (!(ft_strcmp(".", node->status.name))  || !(ft_strcmp("..", node->status.name)))
         node->status.allow_open = NO;
     node->next = NULL;
-//    if (*lnode == NULL)
-//        *lnode = node;
-//    else
-//    {
-//        ptr = *lnode;
-//        while (ptr->next)
-//            ptr = ptr->next;
-//        ptr->next = node;
-//    }
 }
 
-void ft_push_node_to_lst(t_node **head, t_node *node)
-{
-    t_node *ptr;
 
-    if (*head == NULL)
-        *head = node;
-    else
-    {
-        ptr = *head;
-        while(ptr->next)
-            ptr = ptr->next;
-        ptr->next = node;
-    }
-    
-}
-
-void recusion(t_node *parent, int options)
+void ft_recusion(t_node *parent, int options, int *ret)
 {
     DIR *ptr_dir;
     struct dirent *ptr_entry;
@@ -126,7 +54,10 @@ void recusion(t_node *parent, int options)
         {
             write(1, "\n", 1);
             if(!(ptr_dir = opendir(parent->status.path)))
+            {
                 ft_err_permission_dinied(parent->status.name);
+                *ret = MINOR_PROBLEMS;
+            }
             else
             {
                 child = NULL;
@@ -135,31 +66,33 @@ void recusion(t_node *parent, int options)
                     if (!(node = (t_node*)malloc(sizeof(t_node))))
                         ft_err_malloc();
                     initialize_struct(node);
-                    ft_get_file_info(node, ptr_entry->d_name, parent->status.path);
+                    ft_get_file_info(node, ptr_entry->d_name, parent->status.path, ret);
                     ft_push_node_to_lst(&child, node);
                 }
                 closedir(ptr_dir);
                 ft_sort(child, options);
-                display(parent ,child, options);
-                recusion(child, options);
-                free_lfile(child);
+                display(parent, NULL, 0 ,child, options);
+                ft_recusion(child, options, ret);
+                free_lst(child);
             }
         }
         parent = parent->next;
     }
 }
 
-int ft_ls(t_args parent, int options)
+void ft_ls(t_args parent, int options, int *ret)
 {
     t_node *child;
     t_node *node;
+    t_node *ptr;
     DIR *ptr_dir;
     struct dirent *ptr_entry;
 
-    while (parent.file)
+    ptr = parent.file;
+    while (ptr)
     {
-        display(parent.file, NULL, options);
-        parent.file = parent.file->next;
+        display(NULL, ptr, 0, NULL, options);
+        ptr = ptr->next;
     }
     while(parent.dir)
     {
@@ -170,61 +103,34 @@ int ft_ls(t_args parent, int options)
             if (!(node = (t_node*)malloc(sizeof(t_node))))
                 ft_err_malloc();
             initialize_struct(node);
-            ft_get_file_info(node, ptr_entry->d_name, parent.dir->status.path);
+            ft_get_file_info(node, ptr_entry->d_name, parent.dir->status.path, ret);
             ft_push_node_to_lst(&child, node);
         }
         closedir(ptr_dir);
         ft_sort(child, options);
-        display(parent.dir, child, options);
+        display(parent.dir, parent.file, ret, child, options);
         if (options & LIST_SUBDIR_RECUSIVELY)
-            recusion(child, options);
-        free_lfile(child);
+            ft_recusion(child, options, ret);
+        free_lst(child);
         parent.dir = parent.dir->next;
     }
-    return (0); // change later
 }
 
-
-void ft_split_input(char *name ,t_args *lst)
+void ft_get_arguments(char **input, int *options, t_args *lst, int *ret)
 {
-    t_node *node;
-
-    if (!(node = (t_node*)malloc(sizeof(t_node))))
-        ft_err_malloc();
-    initialize_struct(node);
-    ft_get_file_info(node, name, NULL);
-    if (node->status.type == 'd')
-        ft_push_node_to_lst(&lst->dir, node);
-    else
-        ft_push_node_to_lst(&lst->file, node);
-}
-
-int get_arguments(char **input, int *options, t_args *lst)
-{
-    int ret;
     int arg_nbr;
 
-    ret = 0;
     arg_nbr = 1;
     while(input[arg_nbr])
     {
         if (ft_isoptions(input[arg_nbr][0]))
             *options |= get_options(input[arg_nbr]);
-        else if (ft_isfile(input[arg_nbr], &ret))
-            ft_split_input(input[arg_nbr], lst);
+        else if (ft_isfile(input[arg_nbr], ret))
+            ft_split_input(input[arg_nbr], lst, ret);
         arg_nbr++;
     }
-    if (lst->dir == NULL && lst->file == NULL)
-        ft_split_input(".", lst);
-    return (ret);
-}
-
-void ft_free_larg(t_args *input_file)
-{
-    if (input_file->file != NULL)
-        free_lfile(input_file->file);
-    if (input_file->dir != NULL)
-        free_lfile(input_file->dir);
+    if (lst->dir == NULL && lst->file == NULL && *ret == 0)
+        ft_split_input(".", lst, ret);
 }
 
 int main(int ac, char **av)
@@ -238,8 +144,8 @@ int main(int ac, char **av)
     input_file.file = NULL;
     input_file.dir = NULL;
     (void)ac;
-    ret = get_arguments(av, &options, &input_file);
-    ret = ft_ls(input_file, options);
+    ft_get_arguments(av, &options, &input_file, &ret);
+    ft_ls(input_file, options, &ret);
     ft_free_larg(&input_file); //need to fix
     if (ret == 1)
         return (MINOR_PROBLEMS);

@@ -12,7 +12,7 @@
 
 #include "../includes/ft_ls.h"
 
-void free_lfile(t_node *node)
+void free_lst(t_node *node)
 {
     t_node *ptr;
 
@@ -26,6 +26,16 @@ void free_lfile(t_node *node)
         free(ptr->status.group_name);
         free(ptr->status.time);
         free(ptr->status.file_permission);
+        if (ptr->status.path_sym_link)
+            free(ptr->status.path_sym_link);
         free(ptr);
     }
+}
+
+void ft_free_larg(t_args *input_file)
+{
+    if (input_file->file != NULL)
+        free_lst(input_file->file);
+    if (input_file->dir != NULL)
+        free_lst(input_file->dir);
 }

@@ -16,11 +16,17 @@ INCLUDES = includes/
 
 CFLAGS = -Wall -Wextra -Werror -g
 
-SRCS_CODES = srcs/ft_ls.c srcs/options.c srcs/utility/parser.c srcs/error_handle.c \
-srcs/free.c srcs/print.c srcs/get_file_info.c srcs/sort.c #srcs/dir_info.c
+SRCS_CODES = srcs/main.c srcs/options.c srcs/error_handle.c \
+srcs/free.c srcs/display.c srcs/sort.c \
+srcs/utility/parser.c srcs/utility/compaser.c srcs/utility/longlist_helper.c \
+srcs/utility/shortlist_helper.c srcs/utility/initializer.c \
+srcs/utility/info_collecter.c srcs/utility/info_collecter2.c \
+srcs/utility/tools.c
 
-SRCS_OBJ = ft_ls.o options.o parser.o error_handle.o free.o print.o\
-get_file_info.o sort.o #dir_info.o
+SRCS_OBJ = main.o options.o error_handle.o free.o display.o\
+sort.o \
+parser.o compaser.o longlist_helper.o shortlist_helper.o \
+initializer.o info_collecter.o info_collecter2.o tools.o
 
 all: $(NAME)
 
