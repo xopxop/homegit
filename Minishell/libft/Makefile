@@ -14,7 +14,7 @@
 
 NAME=libft.a
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 
 INCLUDES=./
 
@@ -181,7 +181,8 @@ utility/ft_ctwords.c \
 utility/ft_itoa.c \
 utility/ft_strjoin_and_free.c \
 utility/ft_itoa_signed_and_unsigned_long_long.c \
-utility/ft_strrev.c
+utility/ft_strrev.c \
+utility/ft_string_count.c
 
 UTILITY_OBJ=ft_memalloc.o \
 ft_memdel.o \
@@ -203,7 +204,8 @@ ft_ctwords.o \
 ft_itoa.o \
 ft_strjoin_and_free.o \
 ft_itoa_signed_and_unsigned_long_long.o \
-ft_strrev.o
+ft_strrev.o \
+ft_string_count.o
 
 all: $(NAME)
 
@@ -213,16 +215,13 @@ $(NAME):
 	@ar rc $(NAME) $(CTYPE_OBJ) $(LIST_OBJ) $(PRINT_OBJ) $(STDIO_OBJ) $(STDLIB_OBJ) $(STRING_OBJ) \
 	$(UTILITY_OBJ) $(GNL_OBJ) $(PRINTF_OBJ)
 	@ranlib $(NAME)
-	@echo "\033[32mCreated LIBFT library\033[0m"
 
 clean:
 	@/bin/rm -f $(CTYPE_OBJ) $(LIST_OBJ) $(PRINT_OBJ) $(STDIO_OBJ) $(STDLIB_OBJ) $(STRING_OBJ) \
 	$(UTILITY_OBJ) $(GNL_OBJ) $(PRINTF_OBJ)
-	@echo "\033[32mRemoved Object files\033[0m"
 
 fclean: clean
 	@/bin/rm -f $(NAME)
-	@echo "\033[32mRemoved LIBFT library\033[0m"
 
 re: fclean all
 
