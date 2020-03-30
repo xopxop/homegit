@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:15:40 by dthan             #+#    #+#             */
-/*   Updated: 2020/03/27 14:54:04 by dthan            ###   ########.fr       */
+/*   Updated: 2020/03/27 22:28:47 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ void	display(t_node *parent_dir, t_node *parent_file, int *ret, \
 
 void	ft_short_list(t_node *lchild, int options)
 {
-	int	win_size;
-	int	max_name_len;
-	int	col;
-	int	row;
-	int	lst_size;
+	int		win_size;
+	int		max_name_len;
+	int		col;
+	int		row;
+	int		lst_size;
 	char	***table;
 
 	lst_size = ft_get_list_size(lchild, options);
@@ -59,7 +59,7 @@ void	ft_short_list(t_node *lchild, int options)
 
 void	ft_long_list(t_node *parent, t_node *lchild, int options)
 {
-	int	total_block;
+	int		total_block;
 	t_max	max;
 
 	ft_init_struct_max(&max);

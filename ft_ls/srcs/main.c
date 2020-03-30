@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 05:33:01 by dthan             #+#    #+#             */
-/*   Updated: 2020/03/27 15:12:37 by dthan            ###   ########.fr       */
+/*   Updated: 2020/03/27 22:30:07 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_get_file_info(t_node *node, char *filename, char *path, int *ret)
 {
-	struct stat filestat;
+	struct stat	filestat;
 
 	node->status.name = ft_strdup(filename); //ft_get_name && ft_get_path to advoid the edgy case
 	if (path == NULL)
@@ -42,10 +42,10 @@ void	ft_get_file_info(t_node *node, char *filename, char *path, int *ret)
 
 void	ft_recusion(t_node *parent, int options, int *ret)
 {
-	DIR		*ptr_dir;
+	DIR				*ptr_dir;
 	struct dirent	*ptr_entry;
-	t_node		*child;
-	t_node		*node;
+	t_node			*child;
+	t_node			*node;
 
 	while (parent)
 	{
@@ -81,10 +81,10 @@ void	ft_recusion(t_node *parent, int options, int *ret)
 
 void	ft_ls(t_args parent, int options, int *ret)
 {
-	t_node		*child;
-	t_node		*node;
-	t_node		*ptr;
-	DIR		*ptr_dir;
+	t_node			*child;
+	t_node			*node;
+	t_node			*ptr;
+	DIR				*ptr_dir;
 	struct dirent	*ptr_entry;
 
 	ptr = parent.file;
@@ -117,7 +117,7 @@ void	ft_ls(t_args parent, int options, int *ret)
 
 void	ft_get_arguments(char **input, int *options, t_args *lst, int *ret)
 {
-	int arg_nbr;
+	int		arg_nbr;
 
 	arg_nbr = 1;
 	while (input[arg_nbr])
@@ -134,9 +134,9 @@ void	ft_get_arguments(char **input, int *options, t_args *lst, int *ret)
 
 int	main(int ac, char **av)
 {
-	int	options;
+	int		options;
 	t_args	input_file;
-	int	ret;
+	int		ret;
 
 	ret = 0;
 	options = 0;

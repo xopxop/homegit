@@ -61,7 +61,7 @@ void	ft_swap_stat(t_stat *file1, t_stat *file2)
 void	ft_sort_alphabet(t_node *lst)
 {
 	t_node	*ptr;
-	int	is_in_order;
+	int		is_in_order;
 
 	is_in_order = NO;
 	while (is_in_order == NO && (lst))
@@ -82,7 +82,7 @@ void	ft_sort_alphabet(t_node *lst)
 
 void	ft_sort_rever_alphabet(t_node *lst)
 {
-	int	is_in_order;
+	int		is_in_order;
 	t_node	*ptr;
 
 	is_in_order = NO;
@@ -104,7 +104,7 @@ void	ft_sort_rever_alphabet(t_node *lst)
 
 void	ft_sort_time(t_node *lst)
 {
-	int	is_in_order;
+	int		is_in_order;
 	t_node	*ptr;
 
 	is_in_order = NO;
