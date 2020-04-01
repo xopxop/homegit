@@ -11,21 +11,31 @@
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+#define Y 1
+#define N 0
 
 char	**echo_cmd(char **words, char **env)
 {
-	if (*words != NULL)
+	char *p;
+	int space;
+
+	p = NULL;
+	space = N;
+	while (*words)
 	{
-		ft_printf(*words);
-		words++;
-		while (*words)
+		if (**words == '~')
 		{
-			ft_printf(" %s", *words);
-			words++;
+			if (*(*words + 1) == '\0')
+				p = ft_call_var("HOME", env) + 5;
 		}
-		ft_putchar('\n');
+		else if (*words[0] == '$' && (p = ft_call_var(*words + 1, env)))
+			p += ft_strlen(*words);
+		else
+			p = *words;
+		if (p != NULL)
+			space = (ft_printf("%*s", ft_strlen(p) + space, p)) ? Y : N;
+		words++;
 	}
-	else
-		ft_putchar('\n');
+	ft_putchar('\n');
 	return (env);
 }
