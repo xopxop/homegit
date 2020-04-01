@@ -12,23 +12,6 @@
 
 #include "../../includes/minishell.h"
 
-
-//same as ft_find_env but there is slightly change, maybe i will fix it
-char	*ft_call_var(char *var_name, char **env)
-{
-	int i;
-
-	while (*env)
-	{
-		i = ft_strlen(var_name);
-		if (!ft_strncmp(var_name, *env, i))
-			if (*(*env + i) == '=')
-				return (*env);
-		env++;
-	}
-	return (NULL);
-}
-
 int		ft_goto_dir_helper(char **subdir)
 {
 	int ct;

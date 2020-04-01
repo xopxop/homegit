@@ -27,6 +27,23 @@ char	*ft_find_env(char *name, char **env)
 	return (NULL);
 }
 
+
+//same as ft_find_env but there is slightly change, maybe i will fix it
+char	*ft_call_var(char *var_name, char **env)
+{
+	int i;
+
+	while (*env)
+	{
+		i = ft_strlen(var_name);
+		if (!ft_strncmp(var_name, *env, i))
+			if (*(*env + i) == '=')
+				return (*env);
+		env++;
+	}
+	return (NULL);
+}
+
 void	ft_fork(char *path, char **arguments, char **env)
 {
 	pid_t pid;

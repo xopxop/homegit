@@ -42,6 +42,7 @@ void	ft_error_handle(char *first, char *second, char *third);
 char	*ft_find_env(char *name, char **env);
 void	ft_fork(char *path, char **arguments, char **env);
 void	ft_free_old_env(char **old_env);
+char	*ft_call_var(char *var_name, char **env);
 
 // internal
 char	**cd_cmd(char **tokens, char **env);

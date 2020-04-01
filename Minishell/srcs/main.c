@@ -34,8 +34,19 @@ char	**ft_load_config(char **variable)
 
 void	ft_promt(char **env)
 {
-	(void)env;
-	ft_putstr("$> ");
+	char *ptr_dir;
+
+	ft_putstr("minishell:");
+	ptr_dir = ft_strrchr(ft_call_var("PWD", env) + 4, '/') + 1;
+	if (*ptr_dir == '\0')
+		ft_putchar('/');
+	else if (!ft_strcmp(ft_call_var("HOME", env) + 5, ft_call_var("PWD", env) + 4))
+		ft_putchar('~');
+	else
+		ft_putstr(ptr_dir);
+	ft_putchar(' ');
+	ft_putstr(ft_call_var("USER", env) + 5);
+	ft_putstr("$ ");
 }
 
 char	**ft_internal_cmd(char **tokens, char **env, int *ret)
