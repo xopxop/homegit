@@ -34,8 +34,8 @@ char	*ft_goto(char *token, char *current_path, char *new_path)
 	char **ptr_free;
 	int size;
 
-	if (token != NULL)
-		token++;
+	token = (!ft_strcmp("$HOME", token)) ? NULL : token;
+	(token != NULL) ? token++ : 0;
 	subdir = ft_strsplit(token, '/');
 	size = ft_strlen(current_path) + ft_goto_dir_helper(subdir);
 	if (!(new_path = (char*)ft_memalloc(sizeof(char) * (size + 1))))
@@ -64,11 +64,12 @@ char	**cd_cmd(char **tokens, char **env)
 	if (tokens[1] == NULL)
 	{	
 		path = NULL;
-		if (*tokens != NULL && *tokens[0] != '~' && *tokens[0] != '/')
+		if (*tokens != NULL && *tokens[0] != '~' && *tokens[0] != '/' \
+				&& (ft_strcmp("$HOME", *tokens)))
 			path = *tokens;
 		else
-			path = ft_goto(*tokens, (*tokens == NULL || *tokens[0] == '~') \
-						? ft_call_var("HOME", env) + 5 : "/", path);
+			path = ft_goto(*tokens, (*tokens[0] == '/') ? \
+				"/" : ft_call_var("HOME", env) + 5, path);
 		if (access(path, F_OK) == 0)
 		{
 			lstat(path, &s);
