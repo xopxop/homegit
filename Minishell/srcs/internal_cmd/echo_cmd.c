@@ -18,7 +18,7 @@ char	**echo_cmd(char **words, char **env)
 	{
 		ft_printf(*words);
 		words++;
-		while(*words)
+		while (*words)
 		{
 			ft_printf(" %s", *words);
 			words++;

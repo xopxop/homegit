@@ -12,8 +12,18 @@
 
 #include "../includes/minishell.h"
 
-void ft_error_malloc(void)
+void	ft_error_malloc(void)
 {
-    ft_putstr_fd("Not enough space/cannot allocate memory\n", STDERR_FILENO);
-    exit(EXIT_FAILURE);
+	ft_putstr_fd("Not enough space/cannot allocate memory\n", STDERR_FILENO);
+	exit(EXIT_FAILURE);
+}
+
+void	ft_error_handle(char *first, char *second, char *third)
+{
+	if (first)
+		ft_putstr_fd(first, STDERR_FILENO);
+	if (second)
+		ft_putstr_fd(second, STDERR_FILENO);
+	if (third)
+		ft_putstr_fd(third, STDERR_FILENO);
 }

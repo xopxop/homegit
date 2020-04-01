@@ -18,7 +18,7 @@ char	**env_cmd(char **tokens, char **env)
 
 	ptr = env;
 	(void)tokens;
-	while(*ptr)
+	while (*ptr)
 	{
 		ft_printf("%s\n", *ptr);
 		ptr++;

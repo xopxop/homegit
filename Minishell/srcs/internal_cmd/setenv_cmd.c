@@ -12,15 +12,27 @@
 
 #include "../../includes/minishell.h"
 
-char	*change_env(char *var_name, char *var_value, char *old_var)
+char	*change_env(char *var_name, char *var_value, char *var)
 {
-	char *new_var;
+	int namelen;
 
-	if (!ft_strcmp(var_value, old_var + (1 + ft_strlen(var_name))))
-		return (old_var);
-	new_var = ft_strjoin_and_free_string1(ft_strjoin(var_name, "="), var_value);
-	free(old_var);
-	return (new_var);
+	namelen = ft_strlen(var_name);
+	if (ft_strcmp(var_value, var + (1 + namelen)) != 0)
+		ft_memcpy(var + namelen + 1, var_value, ft_strlen(var_value) + 1);
+	return (var);
+}
+
+char	*add_last(char *var_name, char *var_value, char *var)
+{
+	char *ptr;
+
+	ptr = var;
+	while (*var_name)
+		*ptr++ = *var_name++;
+	*ptr++ = '=';
+	while (*var_value)
+		*ptr++ = *var_value++;
+	return (var);
 }
 
 char	**add_env(char *var_name, char *var_value, char **old_env)
@@ -39,7 +51,8 @@ char	**add_env(char *var_name, char *var_value, char **old_env)
 		ptr_old_var++;
 		new_var++;
 	}
-	*new_var = ft_strjoin_and_free_string1(ft_strjoin(var_name, "="), var_value);
+	*new_var = (char*)ft_memalloc(sizeof(char) * (NAME_MAX + PATH_MAX + 2));
+	*new_var = add_last(var_name, var_value, *new_var);
 	new_var++;
 	*new_var = NULL;
 	ft_free_old_env(old_env);
@@ -48,8 +61,8 @@ char	**add_env(char *var_name, char *var_value, char **old_env)
 
 char	**setenv_cmd(char **tokens, char **env)
 {
-	int len;
-	char **ptr_env;
+	int		len;
+	char	**ptr_env;
 
 	if (tokens[0] && tokens[1])
 	{

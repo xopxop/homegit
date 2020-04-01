@@ -1,4 +1,4 @@
- /* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
@@ -23,7 +23,8 @@ char	**ft_load_config(char **variable)
 	ptr = list_loaded_variables;
 	while (*variable)
 	{
-		*ptr = ft_strdup(*variable);
+		*ptr = (char*)ft_memalloc(sizeof(char) * (NAME_MAX + PATH_MAX + 2));
+		*ptr = ft_strcpy(*ptr, *variable);
 		variable++;
 		ptr++;
 	}
@@ -119,7 +120,7 @@ int		main(int argc, char **argv, char **envp)
 	while (1)
 	{
 		ft_promt(env);
-		if ((ret = get_next_line(STDERR_FILENO, &line)) <= 0)
+		if ((ret = get_next_line(STDOUT_FILENO, &line)) <= 0)
 			return (EXIT_FAILURE);
 		tokens = ft_strsplit(line, ' ');
 		env = ft_execute(tokens, env);

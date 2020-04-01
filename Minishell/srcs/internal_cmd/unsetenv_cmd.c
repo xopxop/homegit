@@ -31,13 +31,13 @@ static int	ft_count(char **var_name, char **env)
 	return (i);
 }
 
-char	**unsetenv_cmd(char **var_name, char **old_env)
+char		**unsetenv_cmd(char **var_name, char **old_env)
 {
-	char **new_env;
-	char **new_var;
-	char **ptr_old_var;
-	int size;
-	int namelen;
+	char	**new_env;
+	char	**new_var;
+	char	**ptr_old_var;
+	int		size;
+	int		namelen;
 
 	if (*var_name)
 	{

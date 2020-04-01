@@ -16,6 +16,16 @@
 # include <limits.h>
 # include <unistd.h>
 # include <sys/wait.h>
+# include <sys/stat.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+
+# define MY_ENOMEM "Out of memory"
+# define CD_ENOTDIR "cd: not a directory: "
+# define CD_ENOENT "cd: no such file or directory: "
+# define CD_EACCES "cd: permission dinied: "
+# define CD_EMARG "cd: too many arguments "
+# define CD_ENOPWD "cd: string not in pwd: "
 
 typedef struct	s_command
 {
@@ -25,6 +35,7 @@ typedef struct	s_command
 
 // Error
 void ft_error_malloc(void);
+void	ft_error_handle(char *first, char *second, char *third);
 
 // Helper
 
@@ -39,5 +50,8 @@ char	**env_cmd(char **tokens, char **env);
 char	**exit_cmd(char **tokens, char **env);
 char	**setenv_cmd(char **tokens, char **env);
 char	**unsetenv_cmd(char **tokens, char **env);
+
+
+char	*change_env(char *var_name, char *var_value, char *old_var);
 
 #endif
