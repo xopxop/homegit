@@ -12,44 +12,24 @@
 
 #include "../includes/minishell.h"
 
-char	**ft_load_config(char **variable)
-{
-	char		**list_loaded_variables;
-	char		**ptr;
-
-	if (!(list_loaded_variables = (char**)malloc(sizeof(char*) * \
-					(ft_string_count(variable) + 1))))
-		ft_error_malloc();
-	ptr = list_loaded_variables;
-	while (*variable)
-	{
-		*ptr = (char*)ft_memalloc(sizeof(char) * (NAME_MAX + PATH_MAX + 2));
-		*ptr = ft_strcpy(*ptr, *variable);
-		variable++;
-		ptr++;
-	}
-	*ptr = NULL;
-	return (list_loaded_variables);
-}
-
-void	ft_promt(char **env)
+void	ft_promt(void)
 {
 	char *ptr_dir;
 
 	ft_putstr("minishell:");
-	ptr_dir = ft_strrchr(ft_call_var("PWD", env) + 4, '/') + 1;
+	ptr_dir = ft_strrchr(ft_call_value_of("PWD"), '/') + 1;
 	if (*ptr_dir == '\0')
 		ft_putchar('/');
-	else if (!ft_strcmp(ft_call_var("HOME", env) + 5, ft_call_var("PWD", env) + 4))
+	else if (!ft_strcmp(ft_call_value_of("HOME"), ft_call_value_of("PWD")))
 		ft_putchar('~');
 	else
 		ft_putstr(ptr_dir);
 	ft_putchar(' ');
-	ft_putstr(ft_call_var("USER", env) + 5);
+	ft_putstr(ft_call_value_of("USER"));
 	ft_putstr("$ ");
 }
 
-char	**ft_internal_cmd(char **tokens, char **env, int *ret)
+int		ft_internal_cmd(char **tokens)
 {
 	int			i;
 	t_command	*get_built_in;
@@ -68,32 +48,31 @@ char	**ft_internal_cmd(char **tokens, char **env, int *ret)
 	{
 		if (ft_strcmp(tokens[0], get_built_in[i].command) == 0)
 		{
-			env = get_built_in[i].func(tokens + 1, env);
-			*ret = EXIT_SUCCESS;
-			return (env);
+			get_built_in[i].func(tokens + 1);
+			return (EXIT_SUCCESS);
 		}
 		i++;
 	}
-	return (env);
+	return (EXIT_FAILURE);
 }
 
-int		ft_external_cmd(char **tokens, char **env)
+int		ft_external_cmd(char **tokens)
 {
 	char **p;
-	char *path;
+	char *bin_path;
 
-	p = ft_strsplit(ft_find_env("PATH", env), ':');
+	p = ft_strsplit(ft_call_value_of("PATH"), ':');
 	while (*p)
 	{
-		path = ft_strjoin(*p, "/");
-		path = ft_strjoin_and_free_string1(path, *tokens);
-		if (access(path, F_OK) != -1)
+		bin_path = ft_strjoin(*p, "/");
+		bin_path = ft_strjoin_and_free_string1(bin_path, *tokens);
+		if (access(bin_path, F_OK) != -1)
 		{
-			ft_fork(path, tokens, env);
-			free(path);
+			ft_fork(bin_path, tokens);
+			free(bin_path);
 			return (EXIT_SUCCESS);
 		}
-		free(path);
+		free(bin_path);
 		p++;
 	}
 	// need to free p
@@ -104,38 +83,58 @@ int		ft_external_cmd(char **tokens, char **env)
 ** need to change the ft_find_built_in
 */
 
-char	**ft_execute(char **tokens, char **env)
+void	ft_execute(char **tokens)
 {
-	int ret;
 
-	ret = EXIT_FAILURE;
-	if (tokens[0] != NULL)
-	{
-		env = ft_internal_cmd(tokens, env, &ret);
-		if (ret == EXIT_FAILURE && ft_external_cmd(tokens, env) == EXIT_FAILURE)
+	if (*tokens != NULL)
+		if (ft_internal_cmd(tokens) == EXIT_FAILURE && ft_external_cmd(tokens) == EXIT_FAILURE)
 			ft_printf("minishell: command not found: %s\n", *tokens);
+}
+
+void	signal_handeler(int signo)
+{
+	if (signo == SIGINT)
+	{
+		ft_putchar_fd('\n', STDOUT_FILENO);
+		ft_promt();
+		signal(SIGINT, signal_handeler);
 	}
-	return (env);
+}
+
+char	*get_input(int level)
+{
+	char *line;
+
+	if ((get_next_line(STDOUT_FILENO, &line)) <= 0)
+			return (NULL);
+	if (open_d_quote(line, level))
+	{
+		ft_putstr("dquote> ");
+		line = ft_strjoin_and_free_string1(line, "\n");
+		line = ft_strjoin_and_free_string2(line, get_input((int)2));
+	}
+	return (line);
+}
+
+int		minishell()
+{
+	char	*input;
+
+	while (1)
+	{
+		ft_promt();
+		signal(SIGINT, signal_handeler);
+		input = get_input((int)1);
+		ft_execute(&input);
+		free(input);
+	}
 }
 
 int		main(int argc, char **argv, char **envp)
 {
-	char	**env;
-	char	*line;
-	char	**tokens;
-	int		ret;
-
 	(void)argc;
 	(void)argv;
-	env = ft_load_config(envp);
-	while (1)
-	{
-		ft_promt(env);
-		if ((ret = get_next_line(STDOUT_FILENO, &line)) <= 0)
-			return (EXIT_FAILURE);
-		tokens = ft_strsplit(line, ' ');
-		env = ft_execute(tokens, env);
-		free(line);
-	}
-	return (EXIT_SUCCESS);
+
+	env = ft_new_env(NULL, NULL, 0, envp);
+	return (minishell());
 }

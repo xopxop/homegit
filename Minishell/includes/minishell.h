@@ -19,6 +19,7 @@
 # include <sys/stat.h>
 # include <sys/types.h>
 # include <sys/stat.h>
+# include <sys/signal.h>
 
 # define MY_ENOMEM "Out of memory"
 # define CD_ENOTDIR "cd: not a directory: "
@@ -27,32 +28,36 @@
 # define CD_EMARG "cd: too many arguments "
 # define CD_ENOPWD "cd: string not in pwd: "
 
+char **env;
+
 typedef struct	s_command
 {
 	char	*command;
-	char	**(*func)(char**, char**);
+	void	(*func)(char**);
 }		t_command;
 
 // Error
-void ft_error_malloc(void);
+void	ft_error_malloc(void);
 void	ft_error_handle(char *first, char *second, char *third);
 
 // Helper
 
-char	*ft_find_env(char *name, char **env);
-void	ft_fork(char *path, char **arguments, char **env);
+char	**ft_new_env(char *var_name, char *var_value, int step, char **variable);
+char	*ft_call_var(char *var_name);
+char	*ft_call_value_of(char *var_name);
+void	ft_fork(char *path, char **arguments);
 void	ft_free_old_env(char **old_env);
-char	*ft_call_var(char *var_name, char **env);
+int		open_d_quote(char *input, int level);
 
 // internal
-char	**cd_cmd(char **tokens, char **env);
-char	**echo_cmd(char **tokens, char **env);
-char	**env_cmd(char **tokens, char **env);
-char	**exit_cmd(char **tokens, char **env);
-char	**setenv_cmd(char **tokens, char **env);
-char	**unsetenv_cmd(char **tokens, char **env);
+void	cd_cmd(char **tokens);
+void	echo_cmd(char **tokens);
+void	env_cmd(char **tokens);
+void	exit_cmd(char **tokens);
+void	setenv_cmd(char **tokens);
+void	unsetenv_cmd(char **tokens);
 
 
-char	*change_env(char *var_name, char *var_value, char *old_var);
+void	change_var(char *old_value, char *new_value);
 
 #endif

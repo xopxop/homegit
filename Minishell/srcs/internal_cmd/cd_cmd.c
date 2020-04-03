@@ -55,7 +55,7 @@ char	*ft_goto(char *token, char *current_path, char *new_path)
 	return (new_path);
 }
 
-char	**cd_cmd(char **tokens, char **env)
+void	cd_cmd(char **tokens)
 {
 	char *path;
 	struct stat s;
@@ -69,7 +69,7 @@ char	**cd_cmd(char **tokens, char **env)
 			path = *tokens;
 		else
 			path = ft_goto(*tokens, (*tokens[0] == '/') ? \
-				"/" : ft_call_var("HOME", env) + 5, path);
+				"/" : ft_call_value_of("HOME"), path);
 		if (access(path, F_OK) == 0)
 		{
 			lstat(path, &s);
@@ -77,8 +77,8 @@ char	**cd_cmd(char **tokens, char **env)
 				if (access(path, R_OK) == 0)
 				{
 					chdir(path);
-					ft_strcpy(ft_call_var("OLDPWD", env) + 7, ft_call_var("PWD", env) + 4);
-					getcwd(ft_call_var("PWD", env) + 4, PATH_MAX);
+					ft_strcpy(ft_call_var("OLDPWD"), ft_call_value_of("PWD"));
+					getcwd(ft_call_value_of("PWD"), PATH_MAX);
 				}
 				else
 					ft_error_handle(CD_EACCES, path, "\n");
@@ -91,5 +91,4 @@ char	**cd_cmd(char **tokens, char **env)
 	}
 	else
 		ft_error_handle(CD_ENOPWD, "\n", NULL);
-	return (env);
 }

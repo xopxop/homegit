@@ -15,10 +15,7 @@ int	ft_string_count(char **input)
 	int ct;
 
 	ct = 0;
-	while (*input)
-	{
+	while (input[ct])
 		ct++;
-		input++;
-	}
 	return (ct);
 }

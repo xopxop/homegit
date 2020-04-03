@@ -12,9 +12,8 @@
 
 #include "../../includes/minishell.h"
 
-char	**exit_cmd(char **tokens, char **env)
+void	exit_cmd(char **tokens)
 {
 	(void)tokens;
 	exit(EXIT_SUCCESS);
-	return (env);
 }

@@ -12,16 +12,15 @@
 
 #include "../../includes/minishell.h"
 
-char	**env_cmd(char **tokens, char **env)
+void	env_cmd(char **tokens)
 {
-	char **ptr;
+	int i;
 
-	ptr = env;
 	(void)tokens;
-	while (*ptr)
+	i = -1;
+	while (env[++i])
 	{
-		ft_printf("%s\n", *ptr);
-		ptr++;
+		ft_putstr(env[i]);
+		ft_putchar('\n');
 	}
-	return (env);
 }

@@ -14,7 +14,7 @@
 #define Y 1
 #define N 0
 
-char	**echo_cmd(char **words, char **env)
+void	echo_cmd(char **words)
 {
 	char *p;
 	int space;
@@ -26,9 +26,9 @@ char	**echo_cmd(char **words, char **env)
 		if (**words == '~')
 		{
 			if (*(*words + 1) == '\0')
-				p = ft_call_var("HOME", env) + 5;
+				p = ft_call_value_of("HOME");
 		}
-		else if (*words[0] == '$' && (p = ft_call_var(*words + 1, env)))
+		else if (*words[0] == '$' && (p = ft_call_value_of(*words)))
 			p += ft_strlen(*words);
 		else
 			p = *words;
@@ -37,5 +37,4 @@ char	**echo_cmd(char **words, char **env)
 		words++;
 	}
 	ft_putchar('\n');
-	return (env);
 }
