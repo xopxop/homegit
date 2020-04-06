@@ -29,6 +29,7 @@
 # define CD_EMARG "cd: too many arguments"
 # define CD_ENOPWD "cd: string not in pwd: "
 # define SYNTAX_SEMICOLON "minishell : syntax error near unexpected token \';\'"
+# define SYNTAX_CMDNF "minishell : command not found : "
 
 char **env;
 
@@ -85,7 +86,7 @@ int		ft_input_contain_dquote(char *input);
 t_cmd	*ft_split_cmds(char *input, t_cmd *cmds);
 
 // tool for spliting into single arguments
-void	ft_get_lst_cmds(char **tokens_cmd, t_cmd *cmd);
+void	ft_push_node(t_cmd **head, t_cmd *node);
 t_cmd	*ft_get_arg(char *token_cmd, t_cmd *cmd);
 
 // replace argument

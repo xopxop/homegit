@@ -14,15 +14,15 @@
 
 static char	*ft_get_single_shell(char *input, int *tail)
 {
-	char *str;
-	int head;
+	char	*str;
+	int		head;
 
 	head = *tail + 1;
-	while(input[++(*tail)] && input[*tail] != ';')
+	while (input[++(*tail)] && input[*tail] != ';')
 	{
 		if (input[*tail] == '"')
 		{
-			while(input[++(*tail)])
+			while (input[++(*tail)])
 				if (input[*tail] == '"')
 					break ;
 		}
@@ -54,30 +54,60 @@ static int	ft_get_size_shell(char *input)
 
 static char	**ft_strsplit_shell(char *input)
 {
-	char **shell;
-	int size;
-	int i;
-	int pos_input;
+	char	**shell;
+	int		size;
+	int		i;
+	int		pos_input;
 
 	i = -1;
 	pos_input = -1;
 	size = ft_get_size_shell(input);
-	shell = (char**)malloc(sizeof(char*) * (size + 1)); //need to add ERR
+	if (!(shell = (char**)malloc(sizeof(char*) * (size + 1))))
+		ft_error_handle(MY_ENOMEM, NULL, NULL, NULL);
 	while (++i < size)
-		shell[i] = ft_get_single_shell(input, &pos_input); // for sure the str never return NULL because the function was guard with size
+		shell[i] = ft_get_single_shell(input, &pos_input);
 	shell[i] = NULL;
 	return (shell);
 }
 
-t_cmd	*ft_split_cmds(char *input, t_cmd *cmds)
+static void	ft_delete_dquote(t_cmd *lst)
 {
-	char **shell;
-	t_cmd *head;
+	int i;
+	int j;
 
-	shell = (ft_input_contain_dquote(input)) ? ft_strsplit_shell(input) : ft_strsplit(input, ';');
-	cmds = ft_get_arg(shell[0], cmds);
-	head = cmds;
-	ft_get_lst_cmds(&shell[1], cmds);
+	while (lst)
+	{
+		i = -1;
+		while (lst->args[++i])
+			if (ft_input_contain_dquote(lst->args[i]))
+			{
+				j = -1;
+				while (lst->args[i][++j])
+					if (lst->args[i][j] == '"')
+					{
+						ft_strcpy(&lst->args[i][j], &lst->args[i][j + 1]);
+						j = -1;
+					}
+			}
+		lst = lst->next;
+	}
+}
+
+t_cmd		*ft_split_cmds(char *input, t_cmd *cmds)
+{
+	char	**shell;
+	t_cmd	*node;
+	int		i;
+
+	i = -1;
+	shell = (ft_input_contain_dquote(input)) ? ft_strsplit_shell(input) \
+											: ft_strsplit(input, ';');
+	while (shell[++i])
+	{
+		node = ft_get_arg(shell[i], node);
+		ft_push_node(&cmds, node);
+	}
+	ft_delete_dquote(cmds);
 	ft_arraydel(shell);
-	return (head);
+	return (cmds);
 }

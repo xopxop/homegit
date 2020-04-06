@@ -16,7 +16,8 @@ void		unsetenv_cmd(char **var_name)
 {
 	char	**ptr;
 
-	if (*var_name && !ft_strncmp(*var_name, ft_call_var(*var_name), ft_strlen(*var_name)))
+	if (*var_name && !ft_strncmp(*var_name, ft_call_var(*var_name), \
+		ft_strlen(*var_name)))
 	{
 		ptr = env;
 		env = ft_new_env(*var_name, NULL, -1, env);

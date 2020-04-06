@@ -12,7 +12,6 @@
 
 #include "../includes/minishell.h"
 
-
 static void	ft_tild(char *arg)
 {
 	char		*home;
@@ -57,7 +56,7 @@ static void	ft_dollar(char *arg)
 	}
 }
 
-void	ft_replace_args_if_env_var(char **args)
+void		ft_replace_args_if_env_var(char **args)
 {
 	int i;
 

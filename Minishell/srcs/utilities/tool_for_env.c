@@ -14,14 +14,13 @@
 
 char	**ft_new_env(char *var_name, char *var_value, int step, char **env)
 {
-	char **ptr_new_env;
-	char **new_env;
-	int i;
+	char	**ptr_new_env;
+	char	**new_env;
+	int		i;
 
 	i = -1;
 	ptr_new_env = NULL;
-	if (!(new_env = (char**)malloc(sizeof(char*) * (ft_arrayct(env) + step + 1))))
-		ft_error_malloc();
+	new_env = (char**)malloc(sizeof(char*) * (ft_arrayct(env) + step + 1));
 	ptr_new_env = new_env;
 	while (env[++i])
 	{
@@ -63,6 +62,6 @@ char	*ft_call_value_of(char *var_name)
 {
 	char *p;
 
-	return ((p = ft_call_var(var_name)) != NULL) ? &*(p + ft_strlen(var_name) + 1) \
-												: &*p;
+	return ((p = ft_call_var(var_name)) != NULL) ? \
+	&*(p + ft_strlen(var_name) + 1) : &*p;
 }

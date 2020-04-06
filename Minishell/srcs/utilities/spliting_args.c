@@ -40,7 +40,6 @@ static void	ft_jump_arg(char *str, int *i)
 		else
 			(*i)++;
 	}
-
 }
 
 static int	ft_get_nb_of_args(char *input)
@@ -58,64 +57,71 @@ static int	ft_get_nb_of_args(char *input)
 			ft_jump_arg(input, &i);
 		}
 		else
-			i++;		
+			i++;
 	}
 	return (size);
 }
 
 static char	*ft_get_single_arg(char *input, int *tail)
 {
-	char *str;
-	int head;
+	char	*str;
+	int		head;
 
-	head = *tail + 1;
-	while(input[++(*tail)] && !ft_isspace(input[*tail]))
+	head = *tail;
+	while (input[(*tail)] && !ft_isspace(input[*tail]))
 	{
 		if (input[*tail] == '"')
 		{
-			while(input[++(*tail)])
+			while (input[++(*tail)])
 				if (input[*tail] == '"')
 					break ;
 		}
+		(*tail)++;
 	}
 	if (*tail <= head)
 		return (NULL);
 	str = ft_strndup(&input[head], *tail - head);
-	*tail = *tail + 1;
+	while (input[(*tail)] && ft_isspace(input[*tail]))
+		(*tail)++;
 	return (str);
 }
 
 static char	**ft_strsplit_args(char *input)
 {
-	char **tokens;
-	int size;
-	int i;
-	int pos_input;
+	char	**tokens;
+	int		size;
+	int		i;
+	int		pos_input;
 
 	i = -1;
-	pos_input = -1;
+	pos_input = 0;
 	size = ft_get_nb_of_args(input);
-	tokens = (char**)malloc(sizeof(char*) * (size + 1)); //need to add ERR
+	if (!(tokens = (char**)malloc(sizeof(char*) * (size + 1))))
+		ft_error_handle(MY_ENOMEM, NULL, NULL, NULL);
 	while (++i < size)
-		tokens[i] = ft_get_single_arg(input, &pos_input); // for sure the str never return NULL because the function was guard with size
+		tokens[i] = ft_get_single_arg(input, &pos_input);
 	tokens[i] = NULL;
 	return (tokens);
 }
 
-t_cmd	*ft_get_arg(char *token_cmd, t_cmd *cmd)
+t_cmd		*ft_get_arg(char *token_cmd, t_cmd *cmd)
 {
-	char **tokens_args;
-	int i;
+	char	**tokens_args;
+	int		i;
 
-	if (!token_cmd)
-		return (NULL);
 	i = -1;
-	cmd = (t_cmd*)malloc(sizeof(t_cmd));
-	tokens_args = (ft_input_contain_dquote(token_cmd)) ? ft_strsplit_args(token_cmd) : ft_strsplit(token_cmd, ' '); // ' ' need to replace with white space
-	cmd->args = (char**)malloc(sizeof(char*) * (ft_arrayct(tokens_args) + 1));
+	if (!(cmd = (t_cmd*)malloc(sizeof(t_cmd))))
+		ft_error_handle(MY_ENOMEM, NULL, NULL, NULL);
+	tokens_args = (ft_input_contain_dquote(token_cmd)) ? \
+		ft_strsplit_args(token_cmd) : ft_strsplit(token_cmd, ' ');
+	if (!(cmd->args = (char**)malloc(sizeof(char*) * \
+			(ft_arrayct(tokens_args) + 1))))
+		ft_error_handle(MY_ENOMEM, NULL, NULL, NULL);
 	while (tokens_args[++i])
 	{
-		cmd->args[i] = (char*)ft_memalloc(sizeof(char) * sysconf(_SC_ARG_MAX));
+		if (!(cmd->args[i] = (char*)ft_memalloc(sizeof(char) * \
+			sysconf(_SC_ARG_MAX))))
+			ft_error_handle(MY_ENOMEM, NULL, NULL, NULL);
 		cmd->args[i] = ft_strcpy(cmd->args[i], tokens_args[i]);
 	}
 	cmd->args[i] = NULL;
@@ -124,14 +130,17 @@ t_cmd	*ft_get_arg(char *token_cmd, t_cmd *cmd)
 	return (cmd);
 }
 
-void	ft_get_lst_cmds(char **tokens_cmd, t_cmd *cmd)
+void		ft_push_node(t_cmd **head, t_cmd *node)
 {
-	int i;
+	t_cmd *ptr;
 
-	i = -1;
-	while (tokens_cmd[++i])
+	if (*head == NULL)
+		*head = node;
+	else
 	{
-		cmd = ft_get_arg(tokens_cmd[i], cmd);
-		cmd = cmd->next;
+		ptr = *head;
+		while (ptr->next)
+			ptr = ptr->next;
+		ptr->next = node;
 	}
 }

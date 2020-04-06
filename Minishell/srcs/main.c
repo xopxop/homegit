@@ -76,8 +76,6 @@ int		ft_external_cmd(t_cmd *cmd)
 	return (EXIT_FAILURE);
 }
 
-
-
 // void	ft_execute(char *input)
 // {
 // 	char *trimmed_input;
@@ -106,8 +104,8 @@ int		ft_external_cmd(t_cmd *cmd)
 
 void	ft_execute(char *input)
 {
-	t_cmd *cmd;
-	char *trimmed_input;
+	t_cmd	*cmd;
+	char	*trimmed_input;
 
 	cmd = NULL;
 	trimmed_input = ft_strtrim(input);
@@ -119,8 +117,9 @@ void	ft_execute(char *input)
 			while (cmd)
 			{
 				ft_replace_args_if_env_var(cmd->args);
-				if (ft_internal_cmd(cmd) == EXIT_FAILURE && ft_external_cmd(cmd) == EXIT_FAILURE)
-				 	ft_printf("minishell: command not found: %s\n", cmd->args[0]);
+				if (ft_internal_cmd(cmd) == EXIT_FAILURE && \
+					ft_external_cmd(cmd) == EXIT_FAILURE)
+					ft_error_handle(SYNTAX_CMDNF, cmd->args[0], NULL, NULL);
 				cmd = cmd->next;
 			}
 			//remove the linked list
@@ -146,7 +145,7 @@ char	*get_input(int level)
 	char *line;
 
 	if ((get_next_line(STDOUT_FILENO, &line)) <= 0)
-			return (NULL);
+		return (NULL);
 	if (is_open_dquote(line, level))
 	{
 		ft_putstr("dquote> ");
