@@ -29,12 +29,12 @@ void	ft_promt(void)
 	ft_putstr("$ ");
 }
 
-int		ft_internal_cmd(char **tokens)
+int		ft_internal_cmd(t_cmd *cmd)
 {
 	int			i;
-	t_command	*get_built_in;
+	t_builtin	*get_built_in;
 
-	get_built_in = (t_command[8]) {
+	get_built_in = (t_builtin[8]) {
 		{"echo", echo_cmd},
 		{"cd", cd_cmd},
 		{"setenv", setenv_cmd},
@@ -43,20 +43,17 @@ int		ft_internal_cmd(char **tokens)
 		{"exit", exit_cmd},
 		{NULL, NULL}
 	};
-	i = 0;
-	while (get_built_in[i].command)
-	{
-		if (ft_strcmp(tokens[0], get_built_in[i].command) == 0)
+	i = -1;
+	while (get_built_in[++i].command)
+		if (ft_strcmp(cmd->args[0], get_built_in[i].command) == 0)
 		{
-			get_built_in[i].func(tokens + 1);
+			get_built_in[i].func(&cmd->args[1]);
 			return (EXIT_SUCCESS);
 		}
-		i++;
-	}
 	return (EXIT_FAILURE);
 }
 
-int		ft_external_cmd(char **tokens)
+int		ft_external_cmd(t_cmd *cmd)
 {
 	char **p;
 	char *bin_path;
@@ -65,30 +62,73 @@ int		ft_external_cmd(char **tokens)
 	while (*p)
 	{
 		bin_path = ft_strjoin(*p, "/");
-		bin_path = ft_strjoin_and_free_string1(bin_path, *tokens);
+		bin_path = ft_strjoin_and_free_string1(bin_path, cmd->args[0]);
 		if (access(bin_path, F_OK) != -1)
 		{
-			ft_fork(bin_path, tokens);
+			ft_fork(bin_path, cmd->args);
 			free(bin_path);
 			return (EXIT_SUCCESS);
 		}
 		free(bin_path);
 		p++;
 	}
-	// need to free p
+	ft_arraydel(p);
 	return (EXIT_FAILURE);
 }
 
-/*
-** need to change the ft_find_built_in
-*/
 
-void	ft_execute(char **tokens)
+
+// void	ft_execute(char *input)
+// {
+// 	char *trimmed_input;
+// 	char **cmds;
+// 	char **tokens;
+// 	int i;
+
+// 	if (input)
+// 	{
+// 		i = -1;
+// 		trimmed_input = ft_strtrim(input);
+// 		cmds = ft_strsplit(trimmed_input, ';');
+// 		while (cmds[++i])
+// 		{
+// 			tokens = ft_strsplit(cmds[i], ' ');
+// 			if (is_env_var(&tokens[1]) == EXIT_SUCCESS)
+// 				tokens = ft_change_tokens(tokens);
+// 			if (ft_internal_cmd(tokens) == EXIT_FAILURE && ft_external_cmd(tokens) == EXIT_FAILURE)
+// 				ft_printf("minishell: command not found: %s\n", cmds[i]);
+// 			ft_arraydel(tokens);
+// 		}
+// 		ft_arraydel(cmds);
+// 		free(trimmed_input);
+// 	}
+// }
+
+void	ft_execute(char *input)
 {
+	t_cmd *cmd;
+	char *trimmed_input;
 
-	if (*tokens != NULL)
-		if (ft_internal_cmd(tokens) == EXIT_FAILURE && ft_external_cmd(tokens) == EXIT_FAILURE)
-			ft_printf("minishell: command not found: %s\n", *tokens);
+	cmd = NULL;
+	trimmed_input = ft_strtrim(input);
+	if (trimmed_input)
+	{
+		if (trimmed_input[0] != ';')
+		{
+			cmd = ft_split_cmds(trimmed_input, cmd);
+			while (cmd)
+			{
+				ft_replace_args_if_env_var(cmd->args);
+				if (ft_internal_cmd(cmd) == EXIT_FAILURE && ft_external_cmd(cmd) == EXIT_FAILURE)
+				 	ft_printf("minishell: command not found: %s\n", cmd->args[0]);
+				cmd = cmd->next;
+			}
+			//remove the linked list
+		}
+		else
+			ft_error_handle(SYNTAX_SEMICOLON, NULL, NULL, NULL);
+		free(trimmed_input);
+	}
 }
 
 void	signal_handeler(int signo)
@@ -107,7 +147,7 @@ char	*get_input(int level)
 
 	if ((get_next_line(STDOUT_FILENO, &line)) <= 0)
 			return (NULL);
-	if (open_d_quote(line, level))
+	if (is_open_dquote(line, level))
 	{
 		ft_putstr("dquote> ");
 		line = ft_strjoin_and_free_string1(line, "\n");
@@ -116,25 +156,20 @@ char	*get_input(int level)
 	return (line);
 }
 
-int		minishell()
+int		main(int argc, char **argv, char **envp)
 {
 	char	*input;
 
+	(void)argc;
+	(void)argv;
+	env = ft_new_env(NULL, NULL, 0, envp);
 	while (1)
 	{
 		ft_promt();
-		signal(SIGINT, signal_handeler);
+		//signal(SIGINT, signal_handeler);
 		input = get_input((int)1);
-		ft_execute(&input);
+		ft_execute(input);
 		free(input);
 	}
-}
-
-int		main(int argc, char **argv, char **envp)
-{
-	(void)argc;
-	(void)argv;
-
-	env = ft_new_env(NULL, NULL, 0, envp);
-	return (minishell());
+	return (EXIT_SUCCESS);
 }

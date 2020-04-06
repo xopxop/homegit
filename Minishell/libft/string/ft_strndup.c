@@ -1,13 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_config.c                                      :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/26 12:21:18 by dthan             #+#    #+#             */
-/*   Updated: 2020/03/26 12:21:20 by dthan            ###   ########.fr       */
+/*   Created: 2020/04/06 00:18:18 by dthan             #+#    #+#             */
+/*   Updated: 2020/04/06 00:18:19 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/ft_string.h"
 
+char	*ft_strndup(char *str, size_t len)
+{
+	char *new;
+	int i;
+
+	new = ft_strnew(len);
+	i = 0;
+	while (len > 0)
+	{
+		new[i] = str[i];
+		len--;
+		i++;
+	}
+	return (new);
+}

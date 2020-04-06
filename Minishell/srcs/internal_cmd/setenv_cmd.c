@@ -38,7 +38,7 @@ void	setenv_cmd(char **tokens)
 		{
 			ptr = env;
 			env = ft_new_env(tokens[0], tokens[1], 1, env);
-			ft_free_old_env(ptr);
+			ft_arraydel(ptr);
 		}
 	}
 }

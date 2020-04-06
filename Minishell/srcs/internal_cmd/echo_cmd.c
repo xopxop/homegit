@@ -14,27 +14,19 @@
 #define Y 1
 #define N 0
 
-void	echo_cmd(char **words)
+void	echo_cmd(char **args)
 {
-	char *p;
-	int space;
+	int i;
 
-	p = NULL;
-	space = N;
-	while (*words)
+	i = -1;
+	if (args[++i])
 	{
-		if (**words == '~')
+		ft_putstr(args[i]);
+		while (args[++i])
 		{
-			if (*(*words + 1) == '\0')
-				p = ft_call_value_of("HOME");
+			ft_putchar(' ');
+			ft_putstr(args[i]);
 		}
-		else if (*words[0] == '$' && (p = ft_call_value_of(*words)))
-			p += ft_strlen(*words);
-		else
-			p = *words;
-		if (p != NULL)
-			space = (ft_printf("%*s", ft_strlen(p) + space, p)) ? Y : N;
-		words++;
 	}
 	ft_putchar('\n');
 }

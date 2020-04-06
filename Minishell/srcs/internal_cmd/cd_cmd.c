@@ -12,83 +12,28 @@
 
 #include "../../includes/minishell.h"
 
-int		ft_goto_dir_helper(char **subdir)
-{
-	int ct;
-
-	ct = 0;
-	if (subdir)
-	{
-		while (*subdir)
-		{
-			ct = ft_strlen(*subdir) + 1;
-			subdir++;
-		}
-	}
-	return (ct);
-}
-
-char	*ft_goto(char *token, char *current_path, char *new_path)
-{	
-	char **subdir;
-	char **ptr_free;
-	int size;
-
-	token = (!ft_strcmp("$HOME", token)) ? NULL : token;
-	(token != NULL) ? token++ : 0;
-	subdir = ft_strsplit(token, '/');
-	size = ft_strlen(current_path) + ft_goto_dir_helper(subdir);
-	if (!(new_path = (char*)ft_memalloc(sizeof(char) * (size + 1))))
-		ft_error_malloc();
-	new_path = ft_strcpy(new_path, current_path);
-	if (subdir)
-	{
-		ptr_free = subdir;
-		while (*subdir)
-		{	
-			new_path = ft_strcat(new_path, "/");
-			new_path = ft_strcat(new_path, *subdir);
-			subdir++;
-		}
-		ft_free_old_env(ptr_free); // will change later, it should be called free 2D array
-	}
-	return (new_path);
-}
-
 void	cd_cmd(char **tokens)
 {
-	char *path;
-	struct stat s;
+	struct stat	s;
+	char		*path;
 
-	
-	if (tokens[1] == NULL)
-	{	
-		path = NULL;
-		if (*tokens != NULL && *tokens[0] != '~' && *tokens[0] != '/' \
-				&& (ft_strcmp("$HOME", *tokens)))
-			path = *tokens;
-		else
-			path = ft_goto(*tokens, (*tokens[0] == '/') ? \
-				"/" : ft_call_value_of("HOME"), path);
-		if (access(path, F_OK) == 0)
-		{
-			lstat(path, &s);
-			if (S_ISDIR(s.st_mode))
-				if (access(path, R_OK) == 0)
-				{
-					chdir(path);
-					ft_strcpy(ft_call_var("OLDPWD"), ft_call_value_of("PWD"));
-					getcwd(ft_call_value_of("PWD"), PATH_MAX);
-				}
-				else
-					ft_error_handle(CD_EACCES, path, "\n");
-			else
-				ft_error_handle(CD_ENOTDIR, path, "\n");
-		}
-		else
-			ft_error_handle(CD_ENOENT, *tokens, "\n");
-		free(path);
-	}
+	if (tokens[0] && tokens[1])
+		ft_error_handle(CD_ENOPWD, NULL, NULL, NULL);
 	else
-		ft_error_handle(CD_ENOPWD, "\n", NULL);
+	{
+		if (*tokens == NULL)
+			path = ft_call_value_of("HOME");
+		else if (tokens[0] && !tokens[1])
+			path = *tokens;
+		if (access(path, F_OK) == -1)
+			return (ft_error_handle(CD_ENOENT, path, NULL, NULL));
+		lstat(path, &s);
+		if (access(path, R_OK) == -1)
+			return (ft_error_handle(CD_EACCES, path, NULL, NULL));
+		if (!S_ISDIR(s.st_mode))
+			return (ft_error_handle(CD_ENOTDIR, path, NULL, NULL));
+		chdir(path);
+		ft_strcpy(ft_call_value_of("OLDPWD"), ft_call_value_of("PWD"));
+		getcwd(ft_call_value_of("PWD"), PATH_MAX);
+	}
 }

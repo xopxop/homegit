@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_string_count.c                                  :+:      :+:    :+:   */
+/*   ft_arraydel.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/26 13:36:33 by dthan             #+#    #+#             */
-/*   Updated: 2020/03/26 13:37:24 by dthan            ###   ########.fr       */
+/*   Created: 2020/04/04 06:29:33 by dthan             #+#    #+#             */
+/*   Updated: 2020/04/04 06:29:34 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_string_count(char **input)
-{
-	int ct;
+#include "../includes/ft_utility.h"
 
-	ct = 0;
-	while (input[ct])
-		ct++;
-	return (ct);
+void	ft_arraydel(char **string_array)
+{
+	char *ptr;
+
+	while (*string_array)
+	{
+		ptr = *string_array;
+		string_array++;
+		free(ptr);
+	}
+	ptr = *string_array;
+	free(ptr);
 }

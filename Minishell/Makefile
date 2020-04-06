@@ -19,10 +19,16 @@ CFLAGS = -Wall -Wextra -Werror -g
 SRCS_CODES = srcs/main.c srcs/error.c srcs/helper.c\
 srcs/internal_cmd/cd_cmd.c srcs/internal_cmd/echo_cmd.c srcs/internal_cmd/env_cmd.c \
 srcs/internal_cmd/exit_cmd.c srcs/internal_cmd/setenv_cmd.c \
-srcs/internal_cmd/unsetenv_cmd.c
+srcs/internal_cmd/unsetenv_cmd.c \
+srcs/utilities/change_tokens.c srcs/utilities/tool_for_checking.c \
+srcs/utilities/tool_for_env.c \
+srcs/utilities/replace_args.c srcs/utilities/spliting_args.c \
+srcs/utilities/spliting_cmds.c
 
 SRCS_OBJ = main.o error.o helper.o\
-cd_cmd.o echo_cmd.o env_cmd.o exit_cmd.o setenv_cmd.o unsetenv_cmd.o
+cd_cmd.o echo_cmd.o env_cmd.o exit_cmd.o setenv_cmd.o unsetenv_cmd.o \
+change_tokens.o tool_for_checking.o tool_for_env.o \
+replace_args.o spliting_args.o spliting_cmds.o
 
 all: $(NAME)
 

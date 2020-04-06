@@ -3,6 +3,11 @@
         "minishell.h": "c",
         "limits.h": "c",
         "climits": "c",
-        "typeinfo": "c"
+        "typeinfo": "c",
+        "binfmts.h": "c",
+        "capability.h": "c",
+        "unistd.h": "c",
+        "vlimit.h": "c",
+        "features.h": "c"
     }
 }

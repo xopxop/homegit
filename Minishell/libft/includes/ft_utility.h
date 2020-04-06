@@ -37,7 +37,8 @@ char	*ft_itoa_unsigned_longlong(unsigned long long nbr);
 char	*ft_strrev(char *str);
 char	*ft_strjoin_and_free_string2(char *string1, char *string2);
 char	*ft_strjoin_and_free_string1(char *string1, char *string2);
-int     ft_string_count(char **input);
+int     ft_arrayct(char **input);
+void	ft_arraydel(char **string_array);
 
 
 #endif

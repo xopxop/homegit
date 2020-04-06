@@ -18,7 +18,7 @@ void	ft_error_malloc(void)
 	exit(EXIT_FAILURE);
 }
 
-void	ft_error_handle(char *first, char *second, char *third)
+void	ft_error_handle(char *first, char *second, char *third, char *fourth)
 {
 	if (first)
 		ft_putstr_fd(first, STDERR_FILENO);
@@ -26,4 +26,7 @@ void	ft_error_handle(char *first, char *second, char *third)
 		ft_putstr_fd(second, STDERR_FILENO);
 	if (third)
 		ft_putstr_fd(third, STDERR_FILENO);
+	if (fourth)
+		ft_putstr_fd(fourth, STDERR_FILENO);
+	ft_putchar_fd('\n', STDERR_FILENO);
 }

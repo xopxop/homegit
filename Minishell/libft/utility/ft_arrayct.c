@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unsetenv_cmd.c                                     :+:      :+:    :+:   */
+/*   ft_arrayct.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/30 02:25:02 by dthan             #+#    #+#             */
-/*   Updated: 2020/03/30 02:25:03 by dthan            ###   ########.fr       */
+/*   Created: 2020/03/26 13:36:33 by dthan             #+#    #+#             */
+/*   Updated: 2020/03/26 13:37:24 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
-
-void		unsetenv_cmd(char **var_name)
+int	ft_arrayct(char **input)
 {
-	char	**ptr;
+	int ct;
 
-	if (*var_name && !ft_strncmp(*var_name, ft_call_var(*var_name), ft_strlen(*var_name)))
-	{
-		ptr = env;
-		env = ft_new_env(*var_name, NULL, -1, env);
-		ft_arraydel(ptr);
-	}
+	ct = 0;
+	while (input[ct])
+		ct++;
+	return (ct);
 }
