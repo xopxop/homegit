@@ -18,23 +18,29 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 SRCS_CODES = srcs/main.c srcs/error.c \
 srcs/environ/tool_for_env.c \
-srcs/lexer/lexical_analyzer.c srcs/lexer/spliting_args.c \
-srcs/lexer/spliting_cmds.c \
-srcs/parser/syntax_analyzer.c srcs/parser/parse_tree.c srcs/parser/lstpush.c \
+srcs/lexer/spliting_tokens.c \
+srcs/utilities/tool_for_checking.c \
+srcs/parser/syntax_analyzer.c
+#srcs/parser/syntax_analyzer.c srcs/parser/parse_tree.c srcs/parser/lstpush.c \
 srcs/executor/executor.c srcs/executor/replace_args.c \
 srcs/executor/internal_cmd/cd_cmd.c srcs/executor/internal_cmd/echo_cmd.c \
 srcs/executor/internal_cmd/env_cmd.c srcs/executor/internal_cmd/exit_cmd.c \
 srcs/executor/internal_cmd/setenv_cmd.c \
 srcs/executor/internal_cmd/unsetenv_cmd.c \
 srcs/utilities/tool_for_checking.c
-
+#srcs/lexer/lexical_analyzer.c srcs/lexer/spliting_args.c \
+srcs/lexer/spliting_cmds.c \
 
 SRCS_OBJ = main.o error.o \
-tool_for_env.o lexical_analyzer.o spliting_args.o spliting_cmds.o \
-syntax_analyzer.o parse_tree.o lstpush.o \
+tool_for_env.o  \
+spliting_tokens.o  \
+tool_for_checking.o \
+syntax_analyzer
+#syntax_analyzer.o parse_tree.o lstpush.o \
 executor.o replace_args.o \
 cd_cmd.o echo_cmd.o env_cmd.o exit_cmd.o setenv_cmd.o unsetenv_cmd.o \
 tool_for_checking.o
+#lexical_analyzer.o spliting_args.o spliting_cmds.o
 
 all: $(NAME)
 

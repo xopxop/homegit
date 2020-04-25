@@ -42,7 +42,7 @@ t_cmd_name	*cmd_name(t_token *token)
 	return (NULL);
 }
 
-t_cmd_suffix *cmd_suffix(t_token *token)
+t_cmd_suffix *cmd_suffix(t_token **token)
 {
 	t_cmd_suffix	*sf;
 	t_cmd_word		*w;
@@ -57,7 +57,7 @@ t_cmd_suffix *cmd_suffix(t_token *token)
 	return (NULL);
 }
 
-t_simple_cmd	*simple_cmd(t_token *token)
+t_simple_cmd	*simple_cmd(t_token **token)
 {
 	t_simple_cmd 	*sc;
 	t_cmd_name		*cn;
@@ -68,14 +68,16 @@ t_simple_cmd	*simple_cmd(t_token *token)
 	{
 		sc->cmd_name = cn;
 		while((cs = cmd_suffix(token)))
+		{
 			ft_lstpush_cm_suffix(cs, &sc->cmd_suffix);
+		}
 		return (sc);
 	}
 	free(sc);
 	return (NULL);
 }
 
-t_pipe_sequence	*pipe_sequence(t_token *token)
+t_pipe_sequence	*pipe_sequence(t_token **token)
 {
 	t_pipe_sequence *ps;
 	t_simple_cmd	*sc;
@@ -84,11 +86,19 @@ t_pipe_sequence	*pipe_sequence(t_token *token)
 	while ((sc = simple_cmd(token)))
 	{
 		ft_lstpush_simple_cmd(sc, &ps->simple_cmd);
-		if (token->type == T_PIPE)
-			token = token->next;
+		if (*token->type == T_PIPE)
+			*token = *token->next;
 	}
 	if (ps->simple_cmd)
 		return (ps);
 	free(ps);
 	return (NULL);
+}
+
+t_pipe_sequence *buildingast(t_token *token)
+{
+	t_pipe_sequence *ast;
+
+	ast = pipe_sequence(&token);
+	return (ast);
 }

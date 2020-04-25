@@ -31,25 +31,15 @@ static void	ft_promt(void)
 
 static void	ft_execute(char *input)
 {
-	t_cmd	*cmds;
+	t_token	*tokens;
+	t_pipe_sequence	*ast;
 	char	*trimmed_input;
-	t_pipe_sequence ps;
 
-	cmds = NULL;
 	trimmed_input = ft_strtrim(input);
 	if (trimmed_input)
 	{
-		if (trimmed_input[0] != ';')
-		{
-			cmds = lexer(trimmed_input, cmds);
-			if (parser(cmds->token, &ps) == EXIT_SUCCESS)
-				executor(cmds, &ps);
-			// else
-			// 	; // printerror
-			// //delete cmds
-		}
-		else
-			ft_error_handle(SYNTAX_SEMICOLON, NULL, NULL, NULL);
+		tokens = lexer(trimmed_input);
+		ast = building_ast(tokens);
 		free(trimmed_input);
 	}
 }

@@ -31,3 +31,5 @@ void	ft_lstpush_simple_cmd(t_simple_cmd *node, t_simple_cmd **lst)
 		p = p->next;
 	p = node;
 }
+
+//not use
