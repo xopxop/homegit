@@ -13,8 +13,6 @@
 #ifndef CONTACT_CLASS_H
 # define CONTACT_CLASS_H
 # include <iostream>
-# include <string>
-# include <iomanip>
 
 class Contact {
 	public:		

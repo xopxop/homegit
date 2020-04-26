@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.class.hpp"
+#include "phoneBook.hpp"
 
 void add(Contact *phoneBook) {
 	std::string answer;
@@ -35,7 +35,7 @@ void add(Contact *phoneBook) {
 	phoneBook->setEmailAddress(answer);
 	std::cout << "What is your Phone Number?" << std::endl;
 	std::getline (std::cin, answer);
-	phoneBook->setPostalAddress(answer);
+	phoneBook->setPhoneNumber(answer);
 	std::cout << "What is your Birhtday Date?" << std::endl;
 	std::getline (std::cin, answer);
 	phoneBook->setBirthdayDate(answer);
@@ -48,30 +48,30 @@ void add(Contact *phoneBook) {
 	std::cout << "What is your Darkest Secret?" << std::endl;
 	std::getline (std::cin, answer);
 	phoneBook->setDarkestSecret(answer);
+	std::cout << std::endl;
 }
 
-std::string truncatedStr(std::string str) {
-	std::string truncated;
+void getContact(Contact phoneBook[], int len) {
+	int inputIndex;
 
-	truncated.assign(str, 0, 9);
-	truncated.append(1, '.');
-	return (truncated);
-}
-
-std::string extraSpace(std::string str) {
-	std::string newStr;
-
-	newStr.append(10 - str.length(), ' ');
-	newStr.append(str);
-	return (newStr);
-}
-
-std::string fittedStr(std::string str) {
-	if (str.length() > 10)
-		return (truncatedStr(str));
-	else if (str.length() < 10)
-		return (extraSpace(str));
-	return (str);
+	std::cout << "What index entry you want to search?" << std::endl;
+	std::cin >> inputIndex;
+	if (inputIndex < 1 && inputIndex >= len)
+		std::cout << "Index entry is invalid." << std::endl;
+	else {
+		std::cout << phoneBook[inputIndex - 1].getFirstName() << std::endl;
+		std::cout << phoneBook[inputIndex - 1].getLastName() << std::endl;
+		std::cout << phoneBook[inputIndex - 1].getNickname() << std::endl;
+		std::cout << phoneBook[inputIndex - 1].getLogin() << std::endl;
+		std::cout << phoneBook[inputIndex - 1].getPostalAddress() << std::endl;
+		std::cout << phoneBook[inputIndex - 1].getEmailAddress() << std::endl;
+		std::cout << phoneBook[inputIndex - 1].getPhoneNumber() << std::endl;
+		std::cout << phoneBook[inputIndex - 1].getBirthdayDate() << std::endl;
+		std::cout << phoneBook[inputIndex - 1].getFavoriteMeal() << std::endl;
+		std::cout << phoneBook[inputIndex - 1].getUnderwearColor() << std::endl;
+		std::cout << phoneBook[inputIndex - 1].getDarkestSecret() << std::endl;
+	}
+	std::cin.ignore(INT_MAX, '\n');
 }
 
 void search(Contact phoneBook[], int len) {
@@ -83,6 +83,11 @@ void search(Contact phoneBook[], int len) {
 		fittedStr(phoneBook[i].getLastName()) << "|" << \
 		fittedStr(phoneBook[i].getNickname()) << "|" << std::endl;
 	std::cout << "---------------------------------------------" << std::endl;
+	if (len > 0)
+		getContact(phoneBook, len);
+	else
+		std::cout << "Empty Phonebook!" << std::endl;
+	std::cout << std::endl;
 }
 
 int main(void) {
@@ -90,11 +95,11 @@ int main(void) {
 	std::string command;
 	int i;
 
+	std::cout << "Welcome to My Awesome PhoneBook!" << std::endl;
 	i = 0;
 	while(true) {
-		std::cout << "Welcome to My Awesome PhoneBook!" << std::endl;
 		std::cout << "Please enter: ADD for adding new contact, SEARCH for searching and EXIT for get out of the program:" << std::endl;
-		std::getline (std::cin, command);
+		std::getline (std::cin, command, '\n');
 		if (command.compare("ADD") == 0)
 			if (i < 8)
 				add(&phoneBook[i++]);
@@ -105,5 +110,6 @@ int main(void) {
 		else if (command.compare("EXIT") == 0)
 			break ;
 	}
+	std::cout << "Bye!" << std::endl;
 	return (EXIT_SUCCESS);
 }

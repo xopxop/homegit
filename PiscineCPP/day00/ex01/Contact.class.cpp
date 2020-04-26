@@ -40,6 +40,10 @@ std::string Contact::getPhoneNumber(void) const {
 	return this->_phoneNumber;
 }
 
+std::string Contact::getBirthdayDate(void) const {
+	return this->_birthdayDate;
+}
+
 std::string Contact::getFavoriteMeal(void) const {
 	return this->_favoriteMeal;
 }

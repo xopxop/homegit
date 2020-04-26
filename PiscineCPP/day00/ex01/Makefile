@@ -14,9 +14,9 @@ NAME = Phonebook
 
 FLAGS = -Wall -Wextra -Werror -g
 
-SRCS = Contact.class.cpp main.cpp
+SRCS = Contact.class.cpp main.cpp searchHelper.cpp
 
-OBJS = Contact.class.o main.o
+OBJS = Contact.class.o main.o searchHelper.o
 
 COMPILE = clang++
 
