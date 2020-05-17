@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 01:13:54 by dthan             #+#    #+#             */
-/*   Updated: 2020/05/16 10:52:31 by dthan            ###   ########.fr       */
+/*   Updated: 2020/05/17 06:18:25 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,11 @@ void	ft_display_board(char ***board, int const col, int const row, int width_col
 	ft_putchar('\n');
 }
 
+int		char_to_term(int c)
+{
+	return (write(1, &c, 1));
+}
+
 void	ft_display(char **input)
 {
 	struct winsize w;
@@ -94,6 +99,7 @@ void	ft_display(char **input)
 	int row;
 	int width_col;
 
+	// tputs(tgetstr("cl", NULL), 1, char_to_term); 
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 	input_size = ft_arrayct(input);
 	width_col = (ft_finding_longest_input(input) + 1);
@@ -103,46 +109,52 @@ void	ft_display(char **input)
 	ft_display_board(board, col, row, width_col - 1);
 }
 
-char	*init_terminal_data()
+void	init_custom_config(t_terminal *term)
 {
-	char	*termtype;
-	char	*term_buffer;
 	int		ret;
 
-	if ((termtype = getenv("TERM")) == 0)
+	term->termtype = getenv("TERM");
+	tgetent(term->term_buffer, term->termtype);
+	tcgetattr(STDOUT_FILENO, &term->term_attributes);
+	term->term_attributes.c_lflag &= ~(ICANON | ECHO);
+	term->term_attributes.c_cc[VMIN] = 1;
+	term->term_attributes.c_cc[VTIME] = 0;
+	tcsetattr(STDIN_FILENO, TCSANOW, &term->term_attributes);
+	// tputs(tgetstr("ti", NULL), 1, char_to_term);
+	// tputs(tgetstr("vi", NULL), 1, char_to_term);
+}
+
+void	on_key_press(char **av)
+{
+	char	buf[10];
+
+	while (true)
 	{
-		ft_putstr_fd("Specify a terminal type with `setenv TERM <yourtype>`.\n", STDERR_FILENO);
-		exit(EXIT_FAILURE);
+		ft_bzero(buf, 10);
+		ft_display(av);
+		read(STDIN_FILENO, buf, 100);
+		if (buf[0] == 32 && buf[1] == 0 && buf[2] == 0)
+			ft_printf("SPACE KEY PRESSED\n");
+		else if (buf[0] == 27 && buf[1] == 0 && buf[2] == 0)
+			ft_printf("ESCAPE KEY PRESSED\n");
+		else if (buf[0] == 27 && buf[1] == '[' && buf[2] == 'A')
+			ft_printf("UPWARDS_ARROW PRESS\n");
+		else if (buf[0] == 27 && buf[1] == '[' && buf[2] == 'B')
+			ft_printf("DOWNWARDS_ARROW PRESS\n");
+		else if (buf[0] == 27 && buf[1] == '[' && buf[2] == 'C')
+			ft_printf("RIGHTWARDS_ARROW PRESS\n");
+		else if (buf[0] == 27 && buf[1] == '[' && buf[2] == 'D')
+			ft_printf("LEFTWARDS_ARROW PRESS\n");
+		else
+			ft_printf("NOT DETECTED\n");
 	}
-	term_buffer = ft_strnew(2048);
-	ret = tgetent(term_buffer, termtype);
-	if (ret < 0)
-	{
-		ft_putstr_fd("Could not access the termcap database.\n", STDERR_FILENO);
-		exit(EXIT_FAILURE);
-	}
-	else if (ret == 0)
-	{
-		ft_putstr_fd("Terminal type ", STDERR_FILENO);
-		ft_putstr_fd(termtype, STDERR_FILENO);
-		ft_putstr_fd(" is not defined.\n", STDERR_FILENO);
-		exit(EXIT_FAILURE);
-	}
-	return (term_buffer);
 }
 
 void	ft_select(char **av)
 {
-	//first look up the description of the terminal type in use
-	char *term_buffer = init_terminal_data();
-	(void)term_buffer;
-	(void)av;
-
-	// display av
-	// NOTE: (not sure how to use) ft_display(av);
-	// init
-	// input in a loop
-	// free
+	t_terminal	term;
+	init_custom_config(&term);
+	on_key_press(av);
 }
 
 int	main(int ac, char **av)

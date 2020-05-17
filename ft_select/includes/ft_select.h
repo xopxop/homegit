@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 00:53:17 by dthan             #+#    #+#             */
-/*   Updated: 2020/05/16 10:40:57 by dthan            ###   ########.fr       */
+/*   Updated: 2020/05/16 16:17:32 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,17 @@
 # include <fcntl.h>
 # include <signal.h>
 
+# define SPACE_KEY 20
+# define ENTER_KEY 10
+# define UPWARDS_ARROW 24
+# define DOWNWARDS_ARROW 25
+# define RIGHTWARDS_ARROW 26
+# define LEFTWARDS_ARROW 27
+
+typedef struct		s_terminal{
+	struct termios	term_attributes;
+	char			term_buffer[2048];
+	char			*termtype;
+}					t_terminal;
 
 #endif
