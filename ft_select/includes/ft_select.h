@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 00:53:17 by dthan             #+#    #+#             */
-/*   Updated: 2020/05/20 09:30:11 by dthan            ###   ########.fr       */
+/*   Updated: 2020/05/20 16:33:23 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@
 # include <fcntl.h>
 # include <signal.h>
 
-# define SPACE_KEY 32
-# define ENTER_KEY 10
+# define SPACE_KEY(str) ft_strequ(str, " ")
+# define ESCAPE_KEY(str) ft_strequ(str, "\033")
+# define BACKSPACE_KEY(str) ft_strequ(str, "\177")
+# define DELETE_KEY(str) ft_strequ(str, "\033[3~")
 # define UPWARDS_ARROW(str) ft_strequ(str, "\033[A")
 # define DOWNWARDS_ARROW(str) ft_strequ(str, "\033[B")
 # define RIGHTWARDS_ARROW(str) ft_strequ(str, "\033[C")

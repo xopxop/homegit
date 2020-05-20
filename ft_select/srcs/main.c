@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 01:13:54 by dthan             #+#    #+#             */
-/*   Updated: 2020/05/20 09:43:46 by dthan            ###   ########.fr       */
+/*   Updated: 2020/05/20 17:11:20 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ void	ft_print_output(t_lst *lst, t_terminal term, int width_col)
 
 	i = -1;
 	j = 0;
+	if (lst == NULL)
+		ft_printf("list == NULL\n");
+	else
+		ft_printf("list != NULL\n");
 	while (++i < term.rows && lst != NULL)
 	{
 		j = -1;
@@ -86,6 +90,8 @@ void	ft_display(t_select *select)
 	width_col = (ft_finding_longest_elem(select->head) + 1);
 	select->term.cols = w.ws_col / width_col;
 	select->term.rows = (input_size == select->term.cols) ? 1 : (input_size / select->term.cols) + 1;
+	if (select->term.rows > w.ws_row)
+		return ;
 	ft_print_output(select->head, select->term, width_col);
 }
 
@@ -226,32 +232,64 @@ void	ft_move(t_select *select, char *buf)
 
 void	ft_space_key(t_lst *head)
 {
+	t_lst *copy;
+
+	copy = head;
 	while (head->next)
 	{
 		if (head->elem.position == true)
 		{
 			head->elem.selected = (head->elem.selected == false) ? true : false;
+			moveRight(copy);
 			return ;
 		}
 		else
 			head = head->next;
 	}
 	head->elem.selected = (head->elem.selected == false) ? true : false;
+	moveRight(copy);
+}
+
+void	ft_remove_elem(t_lst **lst)
+{
+	t_lst *curr;
+	t_lst *copy;
+
+	curr = *lst;
+	copy = *lst;
+	while (curr)
+	{
+		if (curr->elem.position == true)
+		{
+			moveRight(copy);
+			if (curr->previous != NULL)
+				curr->previous->next = curr->next;
+			if (curr->next != NULL)
+				curr->next->previous = curr->previous;
+			*lst = curr->next;
+			free(curr);
+			return ;
+		}
+		else
+			curr = curr->next;
+	}
 }
 
 void	on_key_press(t_select *select)
 {
-	char	buf[4];
+	char	buf[5];
 
 	while (true)
 	{
-		ft_bzero(buf, 4);
+		ft_bzero(buf, 5);
 		ft_display(select);
-		read(STDIN_FILENO, buf, 100);
-		if (buf[0] == SPACE_KEY)
+		read(STDIN_FILENO, buf, 5);
+		if (SPACE_KEY(buf))
 			ft_space_key(select->head);
-		else if (buf[0] == 27 && buf[1] == 0 && buf[2] == 0)
-			ft_printf("ESCAPE KEY PRESSED\n");
+		else if (ESCAPE_KEY(buf))
+			break ;
+		else if (BACKSPACE_KEY(buf) || DELETE_KEY(buf))
+			ft_remove_elem(&select->head);
 		else
 			ft_move(select, buf);
 	}
