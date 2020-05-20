@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 01:13:54 by dthan             #+#    #+#             */
-/*   Updated: 2020/05/20 17:11:20 by dthan            ###   ########.fr       */
+/*   Updated: 2020/05/20 18:38:28 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,11 @@ void	ft_display(t_select *select)
 	int input_size;
 	int width_col;
 
+	if (select->head == NULL)
+	{
+		tputs(tgetstr("cl", NULL), 1, char_to_term); 
+		exit(EXIT_SUCCESS);
+	}
 	tputs(tgetstr("cl", NULL), 1, char_to_term); 
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 	input_size = ft_count_elems(select->head);
@@ -250,28 +255,41 @@ void	ft_space_key(t_lst *head)
 	moveRight(copy);
 }
 
-void	ft_remove_elem(t_lst **lst)
+void	ft_remove_elem(t_lst **head)
 {
-	t_lst *curr;
-	t_lst *copy;
+	t_lst *q;
+	t_lst *p;
 
-	curr = *lst;
-	copy = *lst;
-	while (curr)
+	q = *head;
+	p = (*head)->next;
+	if (q->elem.position == true)
 	{
-		if (curr->elem.position == true)
+		moveRight(*head);
+		*head = p;
+		if (*head != NULL)
+			(*head)->previous = NULL;
+		free(q);
+	}
+	else
+	{
+		while(p->elem.position != true)
 		{
-			moveRight(copy);
-			if (curr->previous != NULL)
-				curr->previous->next = curr->next;
-			if (curr->next != NULL)
-				curr->next->previous = curr->previous;
-			*lst = curr->next;
-			free(curr);
-			return ;
+			p = p->next;
+			q = q->next;
+		}
+		if (p->next == NULL)
+		{
+			moveLeft(p);
+			q->next = NULL;
+			free(p);
 		}
 		else
-			curr = curr->next;
+		{
+			moveRight(*head);
+			q->next = p->next;
+			p->next->previous = q;
+			free(p);
+		}
 	}
 }
 
@@ -284,10 +302,12 @@ void	on_key_press(t_select *select)
 		ft_bzero(buf, 5);
 		ft_display(select);
 		read(STDIN_FILENO, buf, 5);
-		if (SPACE_KEY(buf))
+		if (ESCAPE_KEY(buf))
+			exit(EXIT_SUCCESS);
+		else if (SPACE_KEY(buf))
 			ft_space_key(select->head);
-		else if (ESCAPE_KEY(buf))
-			break ;
+		// else if (ENTER_KEY(buf))
+		// 	break ;
 		else if (BACKSPACE_KEY(buf) || DELETE_KEY(buf))
 			ft_remove_elem(&select->head);
 		else
