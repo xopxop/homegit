@@ -14,7 +14,7 @@
 # define FT_UTILITY_H
 # include "libft.h"
 
-void    *ft_memalloc(size_t size);
+void	*ft_memalloc(size_t size);
 void	ft_memdel(void **ap);
 char	*ft_strnew(size_t size);
 void	ft_strdel(char **as);
@@ -37,6 +37,5 @@ char	*ft_itoa_unsigned_longlong(unsigned long long nbr);
 char	*ft_strrev(char *str);
 char	*ft_strjoin_and_free_string2(char *string1, char *string2);
 char	*ft_strjoin_and_free_string1(char *string1, char *string2);
-
 
 #endif

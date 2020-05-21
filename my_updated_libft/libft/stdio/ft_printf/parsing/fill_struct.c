@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../../../includes/ft_printf.h"
-#define IS_FLAG(x) ((x)=='-'||(x)=='+'||(x)==' '||(x)=='#'||(x)=='0')
 
 /*
 ** the ft parsing flags will pare the flags at the position of the string format
@@ -21,7 +20,7 @@
 
 void	get_flags(const char *format, size_t *pos, t_info *info)
 {
-	while (IS_FLAG(format[*pos]))
+	while (ft_isflag(format[*pos]))
 	{
 		if (format[*pos] == '-')
 			info->flags |= MINUS_SIGN;

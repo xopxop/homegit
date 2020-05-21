@@ -40,3 +40,17 @@ int	ft_isspecifier(char specifier)
 	}
 	return (0);
 }
+
+int	ft_isflag(char chr)
+{
+	char *list_flags;
+
+	list_flags = "-+ #0";
+	while (list_flags)
+	{
+		if (*list_flags == chr)
+			return (1);
+		list_flags++;
+	}
+	return (0);
+}

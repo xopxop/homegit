@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef FT_CTYPE_H
-# define FT_CTPE_H
+# define FT_CTYPE_H
 # include "libft.h"
 
 int ft_isalpha(int c);

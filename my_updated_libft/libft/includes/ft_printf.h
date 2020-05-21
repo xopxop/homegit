@@ -95,6 +95,7 @@ void				struct_init(t_info *info);
 
 int					ft_skip_atoi(const char *format, size_t *pos);
 int					ft_isspecifier(char specifier);
+int					ft_isflag(char chr);
 
 /*
 ** Filling struct file
