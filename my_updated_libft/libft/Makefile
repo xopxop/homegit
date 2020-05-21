@@ -6,7 +6,7 @@
 #    By: dthan <dthan@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/24 16:34:34 by dthan             #+#    #+#              #
-#    Updated: 2020/05/21 21:25:55 by dthan            ###   ########.fr        #
+#    Updated: 2020/05/21 22:56:05 by dthan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -218,7 +218,7 @@ $(NAME):
 clean:
 	@/bin/rm -f $(CTYPE_OBJ) $(LIST_OBJ) $(PRINT_OBJ) $(STDIO_OBJ) $(STDLIB_OBJ) $(STRING_OBJ) \
 	$(UTILITY_OBJ) $(GNL_OBJ) $(PRINTF_OBJ)
-	@echo "\033[32mRemoved Object files\033[0m"
+	@echo "\033[32mRemoved LIBFT Object files\033[0m"
 
 fclean: clean
 	@/bin/rm -f $(NAME)
