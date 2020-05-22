@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   ft_string_count.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/06 00:18:18 by dthan             #+#    #+#             */
-/*   Updated: 2020/04/06 00:18:19 by dthan            ###   ########.fr       */
+/*   Created: 2020/03/26 13:36:33 by dthan             #+#    #+#             */
+/*   Updated: 2020/03/26 13:37:24 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_string.h"
-
-char	*ft_strndup(char *str, size_t len)
+int	ft_string_count(char **input)
 {
-	char *new;
-	int i;
+	int ct;
 
-	new = ft_strnew(len);
-	i = 0;
-	while (len > 0)
+	ct = 0;
+	while (*input)
 	{
-		new[i] = str[i];
-		len--;
-		i++;
+		ct++;
+		input++;
 	}
-	return (new);
+	return (ct);
 }

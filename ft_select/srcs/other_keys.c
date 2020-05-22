@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   type_u.c                                           :+:      :+:    :+:   */
+/*   other_keys.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/23 08:01:44 by dthan             #+#    #+#             */
-/*   Updated: 2020/05/21 21:40:00 by dthan            ###   ########.fr       */
+/*   Created: 2020/05/22 08:23:11 by dthan             #+#    #+#             */
+/*   Updated: 2020/05/22 17:36:48 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/ft_printf.h"
+#include "../includes/ft_select.h"
 
-void	type_u(t_info *info, va_list arg, size_t *ct, int fd)
+void	ft_space_key(t_lst *head)
 {
-	unsigned long long	num;
-	char				*str;
+	t_lst *copy;
 
-	num = get_unsigned_argument(info, arg);
-	str = ft_itoa_unsigned_longlong(num);
-	flag_ignore(info, str);
-	prec_ctrl_nums(info, &str, 0);
-	flag_control(info, &str, 0);
-	width_ctrl(info, &str);
-	write(fd, str, *ct = ft_strlen(str));
-	free(str);
+	copy = head;
+	while (head->next)
+	{
+		if (head->elem.position == true)
+		{
+			head->elem.selected = (head->elem.selected == false) ? true : false;
+			move_right(copy);
+			return ;
+		}
+		else
+			head = head->next;
+	}
+	head->elem.selected = (head->elem.selected == false) ? true : false;
+	move_right(copy);
 }

@@ -6,7 +6,7 @@
 #    By: dthan <dthan@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/16 00:21:06 by dthan             #+#    #+#              #
-#    Updated: 2020/05/16 11:47:24 by dthan            ###   ########.fr        #
+#    Updated: 2020/05/22 08:37:56 by dthan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME = ft_select
 INCLUDES = includes/
 LIBFT = libft/libft.a
 FLAG = -g #-Wall -Wextra -Werror
-SRCS = srcs/main.c
-OBJS = main.o
+SRCS = srcs/main.c srcs/arrows.c srcs/display.c srcs/elements.c srcs/other_keys.c
+OBJS = main.o arrows.o display.o elements.o other_keys.o
 
 all: $(NAME)
 $(NAME):
@@ -27,7 +27,7 @@ $(NAME):
 clean:
 	@make clean -s -C libft/
 	@rm -f $(OBJS)
-	@echo "\033[32mRemoved Object files\033[0m"
+	@echo "\033[32mRemoved ft_select Object files\033[0m"
 
 fclean: clean
 	@make fclean -s -C libft/

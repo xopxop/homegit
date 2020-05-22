@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 00:53:17 by dthan             #+#    #+#             */
-/*   Updated: 2020/05/20 18:38:56 by dthan            ###   ########.fr       */
+/*   Updated: 2020/05/22 17:36:24 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <signal.h>
-
 # define ENTER_KEY(str) ft_strequ(str, "\n")
 # define SPACE_KEY(str) ft_strequ(str, " ")
 # define ESCAPE_KEY(str) ft_strequ(str, "\033")
@@ -53,6 +52,7 @@ typedef struct		s_terminal
 {
 
 	struct termios	term_attributes;
+	struct termios	old_attributes;
 	char			term_buffer[2048];
 	char			*termtype;
 	int				cols;
@@ -66,5 +66,19 @@ typedef struct		s_select
 	t_terminal		term;
 }					t_select;
 
+int		char_to_term(int c);
+t_lst	*ft_creat_elem(char *input);
+void	ft_display(t_select *select);
+void	ft_space_key(t_lst *head);
+void	ft_remove_elem(t_lst **head);
+void	ft_move(t_select *select, char *buf);
+void	move_right(t_lst *head);
+void	move_left(t_lst *last);
+void	move_down(t_lst *head);
+void	move_up(t_lst *last, t_lst *head);
+int		ft_finding_longest_elem(t_lst *lst);
+int		count_selected_elem(t_lst *head);
+int		ft_count_elems(t_lst *lst);
+void	free_elems(t_lst **head, t_lst **last);
 
 #endif

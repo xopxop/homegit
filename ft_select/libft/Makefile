@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dthan <marvin@42.fr>                       +#+  +:+       +#+         #
+#    By: dthan <dthan@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/24 16:34:34 by dthan             #+#    #+#              #
-#*   Updated: 2019/10/30 09:19:04 by dthan            ###   ########.fr       *#
+#    Updated: 2020/05/21 23:01:25 by dthan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 NAME=libft.a
 
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror
 
 INCLUDES=./
 
@@ -126,7 +126,6 @@ string/ft_memchr.c \
 string/ft_memcmp.c \
 string/ft_strlen.c \
 string/ft_strdup.c \
-string/ft_strndup.c \
 string/ft_strcpy.c \
 string/ft_strncpy.c \
 string/ft_strcat.c \
@@ -148,7 +147,6 @@ ft_memchr.o \
 ft_memcmp.o \
 ft_strlen.o \
 ft_strdup.o \
-ft_strndup.o \
 ft_strcpy.o \
 ft_strncpy.o \
 ft_strcat.o \
@@ -183,9 +181,7 @@ utility/ft_ctwords.c \
 utility/ft_itoa.c \
 utility/ft_strjoin_and_free.c \
 utility/ft_itoa_signed_and_unsigned_long_long.c \
-utility/ft_strrev.c \
-utility/ft_arrayct.c \
-utility/ft_arraydel.c
+utility/ft_strrev.c
 
 UTILITY_OBJ=ft_memalloc.o \
 ft_memdel.o \
@@ -207,9 +203,7 @@ ft_ctwords.o \
 ft_itoa.o \
 ft_strjoin_and_free.o \
 ft_itoa_signed_and_unsigned_long_long.o \
-ft_strrev.o \
-ft_arrayct.o \
-ft_arraydel.o
+ft_strrev.o
 
 all: $(NAME)
 
