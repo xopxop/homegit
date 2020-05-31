@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 22:01:27 by dthan             #+#    #+#             */
-/*   Updated: 2020/03/27 16:16:51 by dthan            ###   ########.fr       */
+/*   Updated: 2020/05/31 18:59:14 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,31 @@ void	ft_swap_stat(t_stat *file1, t_stat *file2)
 	file2->path_sym_link = temp.path_sym_link;
 }
 
-void	ft_sort_alphabet(t_node *lst)
+// void	ft_sort_alphabet(t_node *lst)
+// {
+// 	t_node	*ptr;
+// 	int		is_in_order;
+
+// 	is_in_order = NO;
+// 	while (is_in_order == NO && (lst))
+// 	{
+// 		ptr = lst;
+// 		is_in_order = YES;
+// 		while (ptr->next)
+// 		{
+// 			if (ft_cmp_name(ptr->status, ptr->next->status))
+// 			{
+// 				ft_swap_stat(&ptr->status, &ptr->next->status);
+// 				is_in_order = NO;
+// 			}
+// 			ptr = ptr->next;
+// 		}
+// 	}
+// }
+
+void	ft_separate_hidden_and_non_hidden(t_node *lst)
 {
-	t_node	*ptr;
+	t_node *ptr;
 	int		is_in_order;
 
 	is_in_order = NO;
@@ -70,7 +92,7 @@ void	ft_sort_alphabet(t_node *lst)
 		is_in_order = YES;
 		while (ptr->next)
 		{
-			if (ft_cmp_name(ptr->status, ptr->next->status))
+			if (!ptr->status.is_hidden && ptr->next->status.is_hidden)
 			{
 				ft_swap_stat(&ptr->status, &ptr->next->status);
 				is_in_order = NO;
@@ -78,6 +100,59 @@ void	ft_sort_alphabet(t_node *lst)
 			ptr = ptr->next;
 		}
 	}
+}
+
+void	ft_sort_hidden(t_node *lst)
+{
+	t_node *ptr;
+	int		is_in_order;
+
+	is_in_order = NO;
+	while (is_in_order == NO && (lst))
+	{
+		ptr = lst;
+		is_in_order = YES;
+		while (ptr->next)
+		{
+			if (ptr->status.is_hidden && ptr->next->status.is_hidden \
+			&& (ft_strcmp(ptr->status.name, ptr->next->status.name) > 0))
+			{
+				ft_swap_stat(&ptr->status, &ptr->next->status);
+				is_in_order = NO;
+			}
+			ptr = ptr->next;
+		}
+	}
+}
+
+void	ft_sort_non_hidden(t_node *lst)
+{
+	t_node *ptr;
+	int		is_in_order;
+
+	is_in_order = NO;
+	while (is_in_order == NO && (lst))
+	{
+		ptr = lst;
+		is_in_order = YES;
+		while (ptr->next)
+		{
+			if (!ptr->status.is_hidden && !ptr->status.is_hidden \
+			&& (ft_strcmp(ptr->status.name, ptr->next->status.name) > 0))
+			{
+				ft_swap_stat(&ptr->status, &ptr->next->status);
+				is_in_order = NO;
+			}
+			ptr = ptr->next;
+		}
+	}
+}
+
+void	ft_sort_alphabet(t_node *lst)
+{
+	ft_separate_hidden_and_non_hidden(lst);
+	ft_sort_hidden(lst);
+	ft_sort_non_hidden(lst);
 }
 
 void	ft_sort_rever_alphabet(t_node *lst)
