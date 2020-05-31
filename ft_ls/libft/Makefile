@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dthan <marvin@42.fr>                       +#+  +:+       +#+         #
+#    By: dthan <dthan@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/24 16:34:34 by dthan             #+#    #+#              #
-#*   Updated: 2019/10/30 09:19:04 by dthan            ###   ########.fr       *#
+#    Updated: 2020/05/24 18:04:38 by dthan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -213,16 +213,13 @@ $(NAME):
 	@ar rc $(NAME) $(CTYPE_OBJ) $(LIST_OBJ) $(PRINT_OBJ) $(STDIO_OBJ) $(STDLIB_OBJ) $(STRING_OBJ) \
 	$(UTILITY_OBJ) $(GNL_OBJ) $(PRINTF_OBJ)
 	@ranlib $(NAME)
-	@echo "\033[32mCreated LIBFT library\033[0m"
 
 clean:
 	@/bin/rm -f $(CTYPE_OBJ) $(LIST_OBJ) $(PRINT_OBJ) $(STDIO_OBJ) $(STDLIB_OBJ) $(STRING_OBJ) \
 	$(UTILITY_OBJ) $(GNL_OBJ) $(PRINTF_OBJ)
-	@echo "\033[32mRemoved Object files\033[0m"
 
 fclean: clean
 	@/bin/rm -f $(NAME)
-	@echo "\033[32mRemoved LIBFT library\033[0m"
 
 re: fclean all
 

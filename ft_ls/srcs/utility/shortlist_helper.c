@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shortlist_helper.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 01:20:19 by dthan             #+#    #+#             */
-/*   Updated: 2020/03/25 01:20:20 by dthan            ###   ########.fr       */
+/*   Updated: 2020/05/31 15:59:02 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,12 @@ char	***ft_putlist_into_table(char ***table, t_node *node, int row, int col,\
 		row2 = 0;
 		while (row2 < row && node != NULL)
 		{
-			ft_skip_hidden_node(&node, options);
+			// ft_skip_hidden_node(&node, options);
+			if (!(options & LIST_HIDDEN) && node->status.is_hidden == YES)
+			{
+				node = node->next;
+				continue;
+			}
 			table[row2][col2] = node->status.name;
 			node = node->next;
 			row2++;
@@ -110,9 +115,9 @@ void	ft_print_short_list(char ***table, int width, int row, int col)
 	int col2;
 
 	row2 = 0;
+	col2 = 0;
 	while (row2 < row && table[row2][col2] != NULL)
 	{
-		col2 = 0;
 		while (col2 < col && table[row2][col2] != NULL)
 		{
 			ft_printf("%-*s ", width, table[row2][col2]);
@@ -120,5 +125,6 @@ void	ft_print_short_list(char ***table, int width, int row, int col)
 		}
 		write(1, "\n", 1);
 		row2++;
+		col2 = 0;
 	}
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+         #
+#    By: dthan <dthan@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/21 04:50:06 by dthan             #+#    #+#              #
-#    Updated: 2020/02/21 04:50:07 by dthan            ###   ########.fr        #
+#    Updated: 2020/05/24 18:08:05 by dthan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,16 +35,16 @@ $(NAME):
 	@echo "\033[32mCreated My Library\033[0m"
 	@gcc $(CFLAGS) -I$(INCLUDES) -c $(SRCS_CODES) 
 	@gcc $(CFLAGS) $(SRCS_OBJ) libft/libft.a -o $(NAME)
-	@echo "\033[32mCreated ft_ls Program\033[0m"
+	@echo "\033[32mCreated FT_LS Binary\033[0m"
 
 clean:
 	@make clean -s -C libft/
 	@rm -f $(SRCS_OBJ)
-	@echo "\033[32mRemoved Object files\033[0m"
+	@echo "\033[32mRemoved FT_LS Object files\033[0m"
 
 fclean: clean
 	@make fclean -s -C libft/
 	@rm -f $(NAME)
-	@echo "\033[32mRemoved Object files and ft_ls Program\033[0m"
+	@echo "\033[32mRemoved FT_LS Binary\033[0m"
 
 re: fclean all

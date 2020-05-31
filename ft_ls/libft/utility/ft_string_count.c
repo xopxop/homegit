@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   testnorminette.c                                   :+:      :+:    :+:   */
+/*   ft_string_count.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/27 22:31:28 by dthan             #+#    #+#             */
-/*   Updated: 2020/03/27 23:35:16 by dthan            ###   ########.fr       */
+/*   Created: 2020/03/26 13:36:33 by dthan             #+#    #+#             */
+/*   Updated: 2020/03/26 13:37:24 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(void)
+int	ft_string_count(char **input)
 {
-	char	**env;
-	char	*line;
-	char	**tokens;
-	int ret;
+	int ct;
 
-	return (0);
+	ct = 0;
+	while (*input)
+	{
+		ct++;
+		input++;
+	}
+	return (ct);
 }
