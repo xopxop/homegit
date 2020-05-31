@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 01:14:08 by dthan             #+#    #+#             */
-/*   Updated: 2020/05/31 16:10:48 by dthan            ###   ########.fr       */
+/*   Updated: 2020/05/31 16:14:41 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_get_max(t_max *max, t_node *lst, int options)
 
 void	ft_print_long_list(t_node *node, t_max max)
 {
-	ft_printf("%c%s %*u %*s %*s  %*d %s %s", node->status.type, \
+	ft_printf("%c%s %*u %*s  %*s  %*d %s %s", node->status.type, \
 	node->status.file_permission, max.width_of_link, node->status.stats.st_nlink, \
 	max.width_of_user_name, node->status.user_name, max.width_of_group_name, \
 	node->status.group_name, max.width_of_size, node->status.stats.st_size, \
