@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 22:01:27 by dthan             #+#    #+#             */
-/*   Updated: 2020/05/31 18:59:14 by dthan            ###   ########.fr       */
+/*   Updated: 2020/05/31 19:31:30 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,26 +155,24 @@ void	ft_sort_alphabet(t_node *lst)
 	ft_sort_non_hidden(lst);
 }
 
-void	ft_sort_rever_alphabet(t_node *lst)
+void	ft_sort_rever_alphabet(t_node **lst)
 {
-	int		is_in_order;
-	t_node	*ptr;
+	t_node	*cur;
+	t_node	*pre;
+	t_node	*next;
 
-	is_in_order = NO;
-	while (is_in_order == NO && (lst))
+	cur = *lst;
+	pre = NULL;
+	next = NULL;
+	while (cur != NULL)
 	{
-		ptr = lst;
-		is_in_order = YES;
-		while (ptr->next)
-		{
-			if (!ft_cmp_name(ptr->status, ptr->next->status))
-			{
-				ft_swap_stat(&ptr->status, &ptr->next->status);
-				is_in_order = NO;
-			}
-			ptr = ptr->next;
-		}
+		next = cur->next;
+		cur->next = pre;
+		pre = cur;
+		cur = next;
 	}
+	if (pre != NULL)
+		*lst = pre;
 }
 
 void	ft_sort_time(t_node *lst)
@@ -199,11 +197,11 @@ void	ft_sort_time(t_node *lst)
 	}
 }
 
-void	ft_sort(t_node *lst, int options)
+void	ft_sort(t_node **lst, int options)
 {
-	ft_sort_alphabet(lst);
+	ft_sort_alphabet(*lst);
 	if (options & REVERSE_ORDER)
 		ft_sort_rever_alphabet(lst);
 	else if (options & SORT_BY_NEWEST_FIRST)
-		ft_sort_time(lst);
+		ft_sort_time(*lst);
 }

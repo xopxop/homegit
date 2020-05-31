@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 05:33:01 by dthan             #+#    #+#             */
-/*   Updated: 2020/05/24 18:17:03 by dthan            ###   ########.fr       */
+/*   Updated: 2020/05/31 19:32:34 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	ft_recusion(t_node *parent, int options, int *ret)
 					ft_push_node_to_lst(&child, node);
 				}
 				closedir(ptr_dir);
-				ft_sort(child, options);
+				ft_sort(&child, options);
 				display(parent, NULL, 0, child, options);
 				ft_recusion(child, options, ret);
 				free_lst(child);
@@ -106,7 +106,7 @@ void	ft_ls(t_args parent, int options, int *ret)
 			ft_push_node_to_lst(&child, node);
 		}
 		closedir(ptr_dir);
-		ft_sort(child, options);
+		ft_sort(&child, options);
 		display(parent.dir, parent.file, ret, child, options);
 		if (options & LIST_SUBDIR_RECUSIVELY)
 			ft_recusion(child, options, ret);
