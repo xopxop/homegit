@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 01:03:38 by dthan             #+#    #+#             */
-/*   Updated: 2020/05/31 16:25:31 by dthan            ###   ########.fr       */
+/*   Updated: 2020/05/31 16:27:10 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,5 @@ int	ft_cmp_time(t_node *file1, t_node *file2)
 
 int	ft_cmp_name(t_stat file1, t_stat file2)
 {
-	return (ft_strncmp(file1.name, file2.name, 2));
+	return (ft_strncmp(file1.name, file2.name, 2) > 0);
 }
