@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 22:01:27 by dthan             #+#    #+#             */
-/*   Updated: 2020/05/31 21:21:53 by dthan            ###   ########.fr       */
+/*   Updated: 2020/06/09 23:12:52 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,7 @@ void	ft_sort_alphabet(t_node *lst)
 	ft_sort_non_hidden(lst);
 }
 
-void	ft_sort_rever_alphabet(t_node **lst)
+void	ft_sort_reverse_alphabet(t_node **lst)
 {
 	t_node	*cur;
 	t_node	*pre;
@@ -197,13 +197,18 @@ void	ft_sort_time(t_node *lst)
 	}
 }
 
+// void	ft_sort_reverse_time(t_node *lst)
+// {
+
+// }
+
 void	ft_sort(t_node **lst, int options)
 {
 	ft_sort_alphabet(*lst);
-	if (options & REVERSE_ORDER && options & SORT_BY_NEWEST_FIRST)
-		ft_sort_reverse_time();
-	else if (options & REVERSE_ORDER)
-		ft_sort_rever_alphabet(lst);
+	// if (options & REVERSE_ORDER && options & SORT_BY_NEWEST_FIRST)
+	// 	ft_sort_reverse_time();
+	if (options & REVERSE_ORDER)
+		ft_sort_reverse_alphabet(lst);
 	else if (options & SORT_BY_NEWEST_FIRST)
 		ft_sort_time(*lst);
 }
