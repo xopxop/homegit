@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 01:20:19 by dthan             #+#    #+#             */
-/*   Updated: 2020/06/10 01:05:54 by dthan            ###   ########.fr       */
+/*   Updated: 2020/06/10 01:10:41 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void	ft_print_short_list(char ***table, int width, int row, int col)
 	{
 		while (col2 < col && table[row2][col2] != NULL)
 		{
-			ft_printf("%-*s        ", width, table[row2][col2]);
+			ft_printf("%-*s    ", width, table[row2][col2]);
 			col2++;
 		}
 		write(1, "\n", 1);
