@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 01:20:19 by dthan             #+#    #+#             */
-/*   Updated: 2020/06/09 23:31:41 by dthan            ###   ########.fr       */
+/*   Updated: 2020/06/10 01:05:54 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,13 @@ char	***ft_creat_table(int row, int col)
 	int		j;
 
 	i = 0;
-	table = (char***)ft_memalloc(sizeof(char***));
+	table = (char***)ft_memalloc(sizeof(char**) * row);
 	while (i < row)
 	{
-		table[i] = (char**)malloc(sizeof(char**));
+		table[i] = (char**)malloc(sizeof(char*) * col);
 		j = 0;
 		while (j < col)
 		{
-			table[i][j] = (char*)malloc(sizeof(char*));
 			table[i][j] = NULL;
 			j++;
 		}
@@ -82,7 +81,7 @@ char	***ft_creat_table(int row, int col)
 	return (table);
 }
 
-char	***ft_putlist_into_table(char ***table, t_node *node, int row, int col,\
+void	ft_putlist_into_table(char ***table, t_node *node, int row, int col,\
 			int options)
 {
 	int row2;
@@ -106,7 +105,6 @@ char	***ft_putlist_into_table(char ***table, t_node *node, int row, int col,\
 		}
 		col2++;
 	}
-	return (table);
 }
 
 void	ft_print_short_list(char ***table, int width, int row, int col)

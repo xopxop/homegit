@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 04:58:25 by dthan             #+#    #+#             */
-/*   Updated: 2020/06/09 23:22:41 by dthan            ###   ########.fr       */
+/*   Updated: 2020/06/09 23:58:04 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,7 +216,7 @@ int					ft_get_max_file_name(t_node *node, int options);
 void				ft_skip_hidden_node(t_node **node, int options);
 int					ft_get_list_size(t_node *node, int options);
 char				***ft_creat_table(int row, int col);
-char				***ft_putlist_into_table(char ***table, t_node *node,\
+void				ft_putlist_into_table(char ***table, t_node *node,\
 					int row, int col, int options);
 void				ft_print_short_list(char ***table, int width, int row,\
 					int col);
