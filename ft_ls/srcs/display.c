@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:15:40 by dthan             #+#    #+#             */
-/*   Updated: 2020/03/27 22:28:47 by dthan            ###   ########.fr       */
+/*   Updated: 2020/06/09 23:31:44 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_short_list(t_node *lchild, int options)
 	{
 		win_size = ft_get_terminal_width();
 		max_name_len = ft_get_max_file_name(lchild, options);
-		col = win_size / (max_name_len + 1);
+		col = win_size / (max_name_len + 7);
 		row = (lst_size == col) ? 1 : (lst_size / col) + 1;
 		table = ft_creat_table(row, col);
 		table = ft_putlist_into_table(table, lchild, row, col, options);
