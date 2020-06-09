@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 04:58:25 by dthan             #+#    #+#             */
-/*   Updated: 2020/05/31 19:31:30 by dthan            ###   ########.fr       */
+/*   Updated: 2020/06/09 23:22:41 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,7 +184,7 @@ void				ft_init_struct_max(t_max *max);
 
 void				ft_sort(t_node **lst, int options);
 void				ft_sort_alphabet(t_node *lst);
-void				ft_sort_rever_alphabet(t_node **lst);
+void				ft_sort_reverse_alphabet(t_node **lst);
 void				ft_sort_time(t_node *lst);
 void				ft_swap_stat(t_stat *file1, t_stat *file2);
 

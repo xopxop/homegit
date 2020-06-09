@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 22:01:27 by dthan             #+#    #+#             */
-/*   Updated: 2020/06/09 23:12:52 by dthan            ###   ########.fr       */
+/*   Updated: 2020/06/09 23:22:07 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,9 +205,12 @@ void	ft_sort_time(t_node *lst)
 void	ft_sort(t_node **lst, int options)
 {
 	ft_sort_alphabet(*lst);
-	// if (options & REVERSE_ORDER && options & SORT_BY_NEWEST_FIRST)
-	// 	ft_sort_reverse_time();
-	if (options & REVERSE_ORDER)
+	if (options & REVERSE_ORDER && options & SORT_BY_NEWEST_FIRST)
+	{
+	 	ft_sort_time(*lst);
+		ft_sort_reverse_alphabet(lst);
+	}
+	else if (options & REVERSE_ORDER)
 		ft_sort_reverse_alphabet(lst);
 	else if (options & SORT_BY_NEWEST_FIRST)
 		ft_sort_time(*lst);
