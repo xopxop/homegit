@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:15:40 by dthan             #+#    #+#             */
-/*   Updated: 2020/06/11 00:50:17 by dthan            ###   ########.fr       */
+/*   Updated: 2020/06/11 01:04:15 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,13 @@ void	display(t_node *parent_dir, t_node *parent_file, int *ret, \
 	}
 }
 
+int		ft_find_space(int max_name_len)
+{
+	if (max_name_len % 8 == 0)
+		return (8);
+	return (8 - (max_name_len % 8));
+}
+
 void	ft_short_list(t_node *lchild, int options)
 {
 	int		win_size;
@@ -49,7 +56,7 @@ void	ft_short_list(t_node *lchild, int options)
 	{
 		win_size = ft_get_terminal_width();
 		max_name_len = ft_get_max_file_name(lchild, options);
-		col = win_size / (max_name_len + 1);
+		col = win_size / (max_name_len + ft_find_space(max_name_len));
 		row = (lst_size <= col) ? 1 : (lst_size / col) + 1;
 		table = ft_creat_table(row, col);
 		ft_putlist_into_table(table, lchild, row, col, options);
