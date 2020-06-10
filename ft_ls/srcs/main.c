@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 05:33:01 by dthan             #+#    #+#             */
-/*   Updated: 2020/05/31 19:32:34 by dthan            ###   ########.fr       */
+/*   Updated: 2020/06/11 02:00:26 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,11 @@ void	ft_recusion(t_node *parent, int options, int *ret)
 
 	while (parent)
 	{
+		if (!(options & LIST_HIDDEN) && parent->status.is_hidden == YES)
+		{
+			parent = parent->next;
+			continue;
+		}
 		if (parent->status.type == 'd' && parent->status.allow_open == YES)
 		{
 			write(1, "\n", 1);
