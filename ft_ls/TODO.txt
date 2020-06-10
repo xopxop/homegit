@@ -1,0 +1,2 @@
+1. ft_ls: need not to print hiddenfile when running ./ft_ls -R
+2. ft_ls: spacing is not correct, need to improve the algorithm
