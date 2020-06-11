@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 01:20:19 by dthan             #+#    #+#             */
-/*   Updated: 2020/06/11 00:45:18 by dthan            ###   ########.fr       */
+/*   Updated: 2020/06/11 03:03:45 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,6 @@ int		ft_get_max_file_name(t_node *node, int options)
 		node = node->next;
 	}
 	return (max);
-}
-
-void	ft_skip_hidden_node(t_node **node, int options)
-{
-	if (!(options & LIST_HIDDEN))
-		while (*node && (*node)->status.is_hidden == YES)
-			*node = (*node)->next;
 }
 
 int		ft_get_list_size(t_node *node, int options)
@@ -81,25 +74,23 @@ char	***ft_creat_table(int row, int col)
 	return (table);
 }
 
-void	ft_putlist_into_table(char ***table, t_node *node, int row, int col,\
-			int options)
+void	ft_putlist_into_table(t_table table, t_node *node, int options)
 {
 	int row2;
 	int col2;
 
 	col2 = 0;
-	while (col2 < col && node != NULL)
+	while (col2 < table.col && node != NULL)
 	{
 		row2 = 0;
-		while (row2 < row && node != NULL)
+		while (row2 < table.row && node != NULL)
 		{
-			// ft_skip_hidden_node(&node, options);
 			if (!(options & LIST_HIDDEN) && node->status.is_hidden == YES)
 			{
 				node = node->next;
 				continue;
 			}
-			table[row2][col2] = node->status.name;
+			table.table[row2][col2] = node->status.name;
 			node = node->next;
 			row2++;
 		}
@@ -107,18 +98,18 @@ void	ft_putlist_into_table(char ***table, t_node *node, int row, int col,\
 	}
 }
 
-void	ft_print_short_list(char ***table, int width, int row, int col)
+void	ft_print_short_list(t_table table, int width)
 {
 	int row2;
 	int col2;
 
 	row2 = 0;
 	col2 = 0;
-	while (row2 < row && table[row2][col2] != NULL)
+	while (row2 < table.row && table.table[row2][col2] != NULL)
 	{
-		while (col2 < col && table[row2][col2] != NULL)
+		while (col2 < table.col && table.table[row2][col2] != NULL)
 		{
-			ft_printf("%-*s", width, table[row2][col2]);
+			ft_printf("%-*s", width, table.table[row2][col2]);
 			col2++;
 		}
 		write(1, "\n", 1);

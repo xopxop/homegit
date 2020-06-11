@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/15 15:23:59 by dthan             #+#    #+#             */
-/*   Updated: 2020/03/27 14:59:06 by dthan            ###   ########.fr       */
+/*   Updated: 2020/06/11 03:05:44 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,14 @@ void	ft_free_larg(t_args *input_file)
 		free_lst(input_file->file);
 	if (input_file->dir != NULL)
 		free_lst(input_file->dir);
+}
+
+void	ft_free_table(t_table table)
+{
+	int row;
+
+	row = -1;
+	while(++row < table.row)
+		free(table.table[row]);
+	free(table.table);
 }

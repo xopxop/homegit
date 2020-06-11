@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:15:40 by dthan             #+#    #+#             */
-/*   Updated: 2020/06/11 01:30:14 by dthan            ###   ########.fr       */
+/*   Updated: 2020/06/11 03:03:45 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,23 +44,22 @@ int		ft_find_space(int max_name_len)
 
 void	ft_short_list(t_node *lchild, int options)
 {
+	t_table table;
 	int		win_size;
 	int		max_name_len;
-	int		col;
-	int		row;
 	int		lst_size;
-	char	***table;
 
 	lst_size = ft_get_list_size(lchild, options);
 	if (lst_size > 0)
 	{
 		win_size = ft_get_terminal_width();
 		max_name_len = ft_get_max_file_name(lchild, options);
-		col = win_size / (max_name_len + ft_find_space(max_name_len));
-		row = (lst_size + (col - 1)) / col;
-		table = ft_creat_table(row, col);
-		ft_putlist_into_table(table, lchild, row, col, options);
-		ft_print_short_list(table, (max_name_len + ft_find_space(max_name_len)), row, col);
+		table.col = win_size / (max_name_len + ft_find_space(max_name_len));
+		table.row = (lst_size + (table.col - 1)) / table.col;
+		table.table = ft_creat_table(table.row, table.col);
+		ft_putlist_into_table(table, lchild, options);
+		ft_print_short_list(table, max_name_len + ft_find_space(max_name_len));
+		ft_free_table(table);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 04:58:25 by dthan             #+#    #+#             */
-/*   Updated: 2020/06/09 23:58:04 by dthan            ###   ########.fr       */
+/*   Updated: 2020/06/11 03:05:30 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,14 +109,12 @@ typedef struct		s_node
 	struct s_node	*next;
 }					t_node;
 
-typedef struct		s_window
+typedef struct		s_table
 {
-	int				columns;
-	int				rows;
-	int				lst_len;
-	int				lm;
-	int				max;
-}					t_window;
+	char			***table;
+	int				col;
+	int				row;
+}					t_table;
 
 typedef struct		s_args
 {
@@ -167,6 +165,7 @@ int					ft_isfile(char *dir_name, int *ret);
 */
 void				free_lst(t_node *node);
 void				ft_free_larg(t_args *input_file);
+void				ft_free_table(t_table table);
 
 /*
 ** Display
@@ -184,9 +183,8 @@ void				ft_init_struct_max(t_max *max);
 
 void				ft_sort(t_node **lst, int options);
 void				ft_sort_alphabet(t_node *lst);
-void				ft_sort_reverse_alphabet(t_node **lst);
+void				ft_reverse(t_node **lst);
 void				ft_sort_time(t_node *lst);
-void				ft_swap_stat(t_stat *file1, t_stat *file2);
 
 /*
 **  ============================= Utilities ===================================
@@ -198,6 +196,15 @@ void				ft_swap_stat(t_stat *file1, t_stat *file2);
 
 int					ft_cmp_time(t_node *file1, t_node *file2);
 int					ft_cmp_name(t_stat file1, t_stat file2);
+
+/*
+** Sort helper
+*/
+
+void				ft_separate_hidden_and_non_hidden(t_node *lst);
+void				ft_sort_hidden(t_node *lst);
+void				ft_sort_non_hidden(t_node *lst);
+void				ft_swap_stat(t_stat *file1, t_stat *file2);
 
 /*
 ** Long list helper
@@ -213,13 +220,10 @@ int					ft_blockct(t_node *lst, int options);
 
 int					ft_get_terminal_width();
 int					ft_get_max_file_name(t_node *node, int options);
-void				ft_skip_hidden_node(t_node **node, int options);
 int					ft_get_list_size(t_node *node, int options);
 char				***ft_creat_table(int row, int col);
-void				ft_putlist_into_table(char ***table, t_node *node,\
-					int row, int col, int options);
-void				ft_print_short_list(char ***table, int width, int row,\
-					int col);
+void				ft_putlist_into_table(t_table table, t_node *node, int options);
+void				ft_print_short_list(t_table table, int width);
 
 /*
 ** Initializer

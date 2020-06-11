@@ -6,7 +6,7 @@
 #    By: dthan <dthan@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/21 04:50:06 by dthan             #+#    #+#              #
-#    Updated: 2020/05/24 18:08:05 by dthan            ###   ########.fr        #
+#    Updated: 2020/06/11 03:05:44 by dthan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,12 +21,12 @@ srcs/free.c srcs/display.c srcs/sort.c \
 srcs/utility/parser.c srcs/utility/compaser.c srcs/utility/longlist_helper.c \
 srcs/utility/shortlist_helper.c srcs/utility/initializer.c \
 srcs/utility/info_collecter.c srcs/utility/info_collecter2.c \
-srcs/utility/tools.c
+srcs/utility/tools.c srcs/utility/sort_helper.c
 
 SRCS_OBJ = main.o options.o error_handle.o free.o display.o\
 sort.o \
 parser.o compaser.o longlist_helper.o shortlist_helper.o \
-initializer.o info_collecter.o info_collecter2.o tools.o
+initializer.o info_collecter.o info_collecter2.o tools.o sort_helper.o
 
 all: $(NAME)
 
