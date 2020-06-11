@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 05:33:01 by dthan             #+#    #+#             */
-/*   Updated: 2020/06/11 02:00:26 by dthan            ###   ########.fr       */
+/*   Updated: 2020/06/11 03:07:37 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,8 @@ int	main(int ac, char **av)
 	ft_get_arguments(av, &options, &input_file, &ret);
 	ft_ls(input_file, options, &ret);
 	ft_free_larg(&input_file); //need to fix
+	while (1)
+		;
 	if (ret == 1)
 		return (MINOR_PROBLEMS);
 	return (EXIT_SUCCESS);
