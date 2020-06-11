@@ -84,19 +84,57 @@ void	ft_recusion(t_node *parent, int options, int *ret)
 	}
 }
 
+// void	ft_ls(t_args parent, int options, int *ret)
+// {
+// 	t_node			*child;
+// 	t_node			*node;
+// 	t_node			*ptr;
+// 	DIR				*ptr_dir;
+// 	struct dirent	*ptr_entry;
+
+// 	ptr = parent.file;
+// 	while (ptr)
+// 	{
+// 		display(NULL, ptr, 0, NULL, options);
+// 		ptr = ptr->next;
+// 	}
+// 	while (parent.dir)
+// 	{
+// 		child = NULL;
+// 		ptr_dir = opendir(parent.dir->status.path);
+// 		while ((ptr_entry = readdir(ptr_dir)))
+// 		{
+// 			if (!(node = (t_node*)malloc(sizeof(t_node))))
+// 				ft_err_malloc();
+// 			initialize_struct(node);
+// 			ft_get_file_info(node, ptr_entry->d_name, parent.dir->status.path, ret);
+// 			ft_push_node_to_lst(&child, node);
+// 		}
+// 		closedir(ptr_dir);
+// 		ft_sort(&child, options);
+// 		display(parent.dir, parent.file, ret, child, options);
+// 		if (options & LIST_SUBDIR_RECUSIVELY)
+// 			ft_recusion(child, options, ret);
+// 		free_lst(child);
+// 		parent.dir = parent.dir->next;
+// 	}
+// }
+
 void	ft_ls(t_args parent, int options, int *ret)
 {
 	t_node			*child;
 	t_node			*node;
-	t_node			*ptr;
 	DIR				*ptr_dir;
 	struct dirent	*ptr_entry;
 
-	ptr = parent.file;
-	while (ptr)
+	if (parent.file)
 	{
-		display(NULL, ptr, 0, NULL, options);
-		ptr = ptr->next;
+		while (parent.file)
+		{
+			display(NULL, parent.file, 0, NULL, options);
+			parent.file = parent.file->next;
+		}
+		ft_putchar_fd('\n', STDOUT_FILENO);
 	}
 	while (parent.dir)
 	{
@@ -117,6 +155,8 @@ void	ft_ls(t_args parent, int options, int *ret)
 			ft_recusion(child, options, ret);
 		free_lst(child);
 		parent.dir = parent.dir->next;
+		if (parent.dir != NULL)
+			ft_putchar_fd('\n', STDOUT_FILENO);
 	}
 }
 
@@ -151,8 +191,6 @@ int	main(int ac, char **av)
 	ft_get_arguments(av, &options, &input_file, &ret);
 	ft_ls(input_file, options, &ret);
 	ft_free_larg(&input_file); //need to fix
-	while (1)
-		;
 	if (ret == 1)
 		return (MINOR_PROBLEMS);
 	return (EXIT_SUCCESS);

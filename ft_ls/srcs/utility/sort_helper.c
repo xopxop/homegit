@@ -14,7 +14,7 @@
 
 void		ft_separate_hidden_and_non_hidden(t_node *lst)
 {
-	t_node *ptr;
+	t_node	*ptr;
 	int		is_in_order;
 
 	is_in_order = NO;
@@ -36,7 +36,7 @@ void		ft_separate_hidden_and_non_hidden(t_node *lst)
 
 void		ft_sort_hidden(t_node *lst)
 {
-	t_node *ptr;
+	t_node	*ptr;
 	int		is_in_order;
 
 	is_in_order = NO;
@@ -59,7 +59,7 @@ void		ft_sort_hidden(t_node *lst)
 
 void		ft_sort_non_hidden(t_node *lst)
 {
-	t_node *ptr;
+	t_node	*ptr;
 	int		is_in_order;
 
 	is_in_order = NO;
@@ -93,13 +93,13 @@ static void	ft_swap_file_info(t_stat *file1, t_stat *file2)
 	file1->allow_open = file2->allow_open;
 	file1->stats = file2->stats;
 	file1->min_of = file2->min_of;
-	file1->path_sym_link = file2->path_sym_link;	
+	file1->path_sym_link = file2->path_sym_link;
 }
 
 void		ft_swap_stat(t_stat *file1, t_stat *file2)
 {
 	t_stat temp;
-	
+
 	ft_swap_file_info(&temp, file1);
 	ft_swap_file_info(file1, file2);
 	ft_swap_file_info(file2, &temp);

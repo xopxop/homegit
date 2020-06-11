@@ -45,7 +45,7 @@ void	ft_free_table(t_table table)
 	int row;
 
 	row = -1;
-	while(++row < table.row)
+	while (++row < table.row)
 		free(table.table[row]);
 	free(table.table);
 }
