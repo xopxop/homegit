@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:15:40 by dthan             #+#    #+#             */
-/*   Updated: 2020/06/11 03:10:26 by dthan            ###   ########.fr       */
+/*   Updated: 2020/06/11 03:11:35 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_short_list(t_node *lchild, int options)
 		table.table = ft_creat_table(table.row, table.col);
 		ft_putlist_into_table(table, lchild, options);
 		ft_print_short_list(table, max_name_len + ft_find_space(max_name_len));
-		// ft_free_table(table);
+		ft_free_table(table);
 	}
 }
 
