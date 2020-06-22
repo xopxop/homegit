@@ -54,6 +54,8 @@ Class Vertex {
 		else
 			echo "Error: .doc file doesn't exist." . PHP_EOL;
 	}
+
+	
 }
 
 ?>

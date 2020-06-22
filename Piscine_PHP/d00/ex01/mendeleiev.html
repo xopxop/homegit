@@ -3,151 +3,924 @@
     <HEAD>
         <TITLE>Mendeleiev</TITLE>
         <STYLE>
-            TABLE, TH, TD {
-                border: 1px solid black;
+			BODY {
+				background-image: url(https://i.pinimg.com/originals/40/2a/5a/402a5a749519d119e8c61c0bdc7d4735.jpg);
+				background-size: 100% 100%;
+				background-repeat: no-repeat;
+				background-attachment: fixed;
+			}
+            TH, TD {
+                border: 20px solid transparent;
             }
             TABLE {
                 width: 100%;
                 table-layout: fixed;
-                border: 1px solid black;
-                border-collapse:collapse;
             }
+			H1 {
+				text-align: center;
+			}
+			.post_transition_metals {
+				background-color: deepskyblue;
+			}
+			.transition_metals {
+				background-color: darkorchid;
+			}
+			.lanthanide {
+				background-color: lightslategray;
+			}
+			.alkaline_earth_metals {
+				background-color: mediumaquamarine;
+			}
+			.metaloids {
+				background-color: limegreen;
+			}
+			.alkali_metals {
+				background-color: lime;
+			}
+			.other_nonmetals {
+				background-color: tomato;
+			}
+			.halogens {
+				background-color: firebrick;
+			}
+			.actinide {
+				background-color: darkcyan;
+			}
+			.noble_gases {
+				background-color: thistle;
+			}
+			.radioactive_element {
+				background-color: teal;
+			}
+			.container {
+				width: 100%;
+				margin-right: 1px;
+				margin-left: 1px;
+			}
+			.atomic_number {
+				float: left;
+				text-align: left;
+				width: 50%;
+				overflow: hidden;
+			}
+			.atomic_weigth {
+				float: right;
+				text-align: right;
+				width: 50%;
+				overflow: hidden;
+			}
         </STYLE>
     </HEAD>
     <BODY>
-        <TABLE>
-            <TR >
-                <TH>Group/Period</TH>
-                <TH>1</TH>
-                <TH>2</TH>
-                <TH>3</TH>
-                <TH>4</TH>
-                <TH>5</TH>
-                <TH>6</TH>
-                <TH>7</TH>
-                <TH>8</TH>
-                <TH>9</TH>
-                <TH>10</TH>
-                <TH>11</TH>
-                <TH>12</TH>
-                <TH>13</TH>
-                <TH>14</TH>
-                <TH>15</TH>
-                <TH>16</TH>
-                <TH>17</TH>
-                <TH>18</TH>
+		<DIV>
+        	<TABLE contenteditable="true">
+            <TR>
+                <TD class="other_nonmetals">
+					<H1>H</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">1</DIV>
+						<DIV class="atomic_weigth">1.0079</DIV>
+					</DIV>
+				</TD>
+				<TD colspan="16"></TD>
+                <TD class="noble_gases">
+					<H1>He</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">2</DIV>
+						<DIV class="atomic_weigth">4.0026</DIV>
+					</DIV>
+				</TD>
             </TR>
             <TR>
-                <TH>1</TH>
-                <TD>H</TD>
-                <TD>He</TD>
+                <TD class="alkali_metals">
+					<H1>Li</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">3</DIV>
+						<DIV class="atomic_weigth">6.941</DIV>
+					</DIV>
+				</TD>
+                <TD class="alkaline_earth_metals">
+					<H1>Be</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">4</DIV>
+						<DIV class="atomic_weigth">9.0122</DIV>
+					</DIV>
+				</TD>
+				<TD colspan="10"></TD>
+                <TD class="metaloids">
+					<H1>B</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">5</DIV>
+						<DIV class="atomic_weigth">10.811</DIV>
+					</DIV>
+				</TD>
+                <TD class="other_nonmetals">
+					<H1>C</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">6</DIV>
+						<DIV class="atomic_weigth">12.011</DIV>
+					</DIV>
+				</TD>
+                <TD class="other_nonmetals">
+					<H1>N</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">7</DIV>
+						<DIV class="atomic_weigth">14.007</DIV>
+					</DIV>
+				</TD>
+                <TD class="other_nonmetals">
+					<H1>O</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">8</DIV>
+						<DIV class="atomic_weigth">15.999</DIV>
+					</DIV>
+				</TD>
+                <TD class="halogens">
+					<H1>F</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">9</DIV>
+						<DIV class="atomic_weigth">18.998</DIV>
+					</DIV>
+				</TD>
+                <TD class="noble_gases">
+					<H1>Ne</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">10</DIV>
+						<DIV class="atomic_weigth">20.1797</DIV>
+					</DIV>
+				</TD>
             </TR>
             <TR>
-                <TH>2</TH>
-                <TD>Li</TD>
-                <TD>Be</TD>
-                <TD>B</TD>
-                <TD>C</TD>
-                <TD>N</TD>
-                <TD>O</TD>
-                <TD>F</TD>
-                <TD>Ne</TD>
+                <TD class="alkali_metals">
+					<H1>Na</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">11</DIV>
+						<DIV class="atomic_weigth">22.989</DIV>
+					</DIV>
+				</TD>
+                <TD class="alkaline_earth_metals">
+					<H1>Mg</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">12</DIV>
+						<DIV class="atomic_weigth">24.305</DIV>
+					</DIV>
+				</TD>
+				<TD colspan="10"></TD>
+                <TD class="post_transition_metals">
+					<H1>Al</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">13</DIV>
+						<DIV class="atomic_weigth">26.981</DIV>
+					</DIV>
+				</TD>
+                <TD class="metaloids">
+					<H1>Si</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">14</DIV>
+						<DIV class="atomic_weigth">28.085</DIV>
+					</DIV>
+				</TD>
+                <TD class="other_nonmetals">
+					<H1>P</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">15</DIV>
+						<DIV class="atomic_weigth">30.974</DIV>
+					</DIV>
+				</TD>
+                <TD class="other_nonmetals">
+					<H1>S</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">16</DIV>
+						<DIV class="atomic_weigth">32.066</DIV>
+					</DIV>
+				</TD>
+                <TD class="halogens">
+					<H1>Cl</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">17</DIV>
+						<DIV class="atomic_weigth">35.453</DIV>
+					</DIV>
+				</TD>
+                <TD class="noble_gases">
+					<H1>Ar</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">18</DIV>
+						<DIV class="atomic_weigth">39.948</DIV>
+					</DIV>
+				</TD>
             </TR>
             <TR>
-                <TH>3</TH>
-                <TD>Na</TD>
-                <TD>Mg</TD>
-                <TD>Al</TD>
-                <TD>Si</TD>
-                <TD>P</TD>
-                <TD>S</TD>
-                <TD>Cl</TD>
-                <TD>Ar</TD>
+                <TD class="alkali_metals">
+					<H1>K</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">19</DIV>
+						<DIV class="atomic_weigth">39.098</DIV>
+					</DIV>
+				</TD>
+                <TD class="alkaline_earth_metals">
+					<H1>Ca</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">20</DIV>
+						<DIV class="atomic_weigth">40.078</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Sc</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">21</DIV>
+						<DIV class="atomic_weigth">44.955</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Ti</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">22</DIV>
+						<DIV class="atomic_weigth">47.867</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>V</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">23</DIV>
+						<DIV class="atomic_weigth">50.9415</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Cr</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">24</DIV>
+						<DIV class="atomic_weigth">51.9961</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Mn</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">25</DIV>
+						<DIV class="atomic_weigth">54.938</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Fe</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">26</DIV>
+						<DIV class="atomic_weigth">55.845</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Co</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">27</DIV>
+						<DIV class="atomic_weigth">58.933</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Ni</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">28</DIV>
+						<DIV class="atomic_weigth">58.6934</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Cu</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">29</DIV>
+						<DIV class="atomic_weigth">63.546</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Zn</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">30</DIV>
+						<DIV class="atomic_weigth">65.38</DIV>
+					</DIV>
+				</TD>
+                <TD class="post_transition_metals">
+					<H1>Ga</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">31</DIV>
+						<DIV class="atomic_weigth">69.723</DIV>
+					</DIV>
+				</TD>
+                <TD class="metaloids">
+					<H1>Ge</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">32</DIV>
+						<DIV class="atomic_weigth">72.63</DIV>
+					</DIV>
+				</TD>
+                <TD class="metaloids">
+					<H1>As</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">33</DIV>
+						<DIV class="atomic_weigth">74.921</DIV>
+					</DIV>
+				</TD>
+                <TD class="other_nonmetals">
+					<H1>Se</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">34</DIV>
+						<DIV class="atomic_weigth">78.971</DIV>
+					</DIV>
+				</TD>
+                <TD class="halogens">
+					<H1>Br</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">35</DIV>
+						<DIV class="atomic_weigth">79.904</DIV>
+					</DIV>
+				</TD>
+                <TD class="noble_gases">
+					<H1>Kr</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">36</DIV>
+						<DIV class="atomic_weigth">83.798</DIV>
+					</DIV>
+				</TD>
             </TR>
             <TR>
-                <TH>4</TH>
-                <TD>K</TD>
-                <TD>Ca</TD>
-                <TD>Sc</TD>
-                <TD>Ti</TD>
-                <TD>V</TD>
-                <TD>Cr</TD>
-                <TD>Mn</TD>
-                <TD>Fe</TD>
-                <TD>Co</TD>
-                <TD>Ni</TD>
-                <TD>Cu</TD>
-                <TD>Zn</TD>
-                <TD>Ga</TD>
-                <TD>Ge</TD>
-                <TD>As</TD>
-                <TD>Se</TD>
-                <TD>Br</TD>
-                <TD>Kr</TD>
+                <TD class="alkali_metals">
+					<H1>Rb</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">37</DIV>
+						<DIV class="atomic_weigth">85.467</DIV>
+					</DIV>
+				</TD>
+                <TD class="alkaline_earth_metals">
+					<H1>Sr</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">38</DIV>
+						<DIV class="atomic_weigth">87.62</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Y</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">39</DIV>
+						<DIV class="atomic_weigth">88.9058</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Zr</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">40</DIV>
+						<DIV class="atomic_weigth">91.224</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Nb</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">41</DIV>
+						<DIV class="atomic_weigth">92.9063</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Mo</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">42</DIV>
+						<DIV class="atomic_weigth">95.95</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Tc</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">43</DIV>
+						<DIV class="atomic_weigth">(98)</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Ru</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">44</DIV>
+						<DIV class="atomic_weigth">101.07</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Rh</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">45</DIV>
+						<DIV class="atomic_weigth">102.90</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Pd</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">46</DIV>
+						<DIV class="atomic_weigth">106.42</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Ag</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">47</DIV>
+						<DIV class="atomic_weigth">107.8682</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Cd</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">48</DIV>
+						<DIV class="atomic_weigth">112.414</DIV>
+					</DIV>
+				</TD>
+                <TD class="post_transition_metals">
+					<H1>In</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">49</DIV>
+						<DIV class="atomic_weigth">114.818</DIV>
+					</DIV>
+				</TD>
+                <TD class="post_transition_metals">
+					<H1>Sn</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">50</DIV>
+						<DIV class="atomic_weigth">118.710</DIV>
+					</DIV>
+				</TD>
+                <TD class="metaloids">
+					<H1>Sb</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">51</DIV>
+						<DIV class="atomic_weigth">121.760</DIV>
+					</DIV>
+				</TD>
+                <TD class="metaloids">
+					<H1>Te</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">52</DIV>
+						<DIV class="atomic_weigth">127.60</DIV>
+					</DIV>
+				</TD>
+                <TD class="halogens">
+					<H1>I</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">53</DIV>
+						<DIV class="atomic_weigth">126.90</DIV>
+					</DIV>
+				</TD>
+                <TD class="noble_gases">
+					<H1>Xe</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">54</DIV>
+						<DIV class="atomic_weigth">131.293</DIV>
+					</DIV>
+				</TD>
             </TR>
             <TR>
-                <TH>5</TH>
-                <TD>Rb</TD>
-                <TD>Sr</TD>
-                <TD>Y</TD>
-                <TD>Zr</TD>
-                <TD>Nb</TD>
-                <TD>Mo</TD>
-                <TD>Tc</TD>
-                <TD>Ru</TD>
-                <TD>Rh</TD>
-                <TD>Pd</TD>
-                <TD>Ag</TD>
-                <TD>Cd</TD>
-                <TD>In</TD>
-                <TD>Sn</TD>
-                <TD>Sb</TD>
-                <TD>Te</TD>
-                <TD>I</TD>
-                <TD>Xe</TD>
-            </TR>
-            <TR>
-                <TH>6</TH>
-                <TD>Cs</TD>
-                <TD>Ba</TD>
+                <TD class="alkali_metals">
+					<H1>Cs</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">55</DIV>
+						<DIV class="atomic_weigth">132.905</DIV>
+					</DIV>
+				</TD>
+                <TD class="alkaline_earth_metals">
+					<H1>Ba</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">56</DIV>
+						<DIV class="atomic_weigth">137.327</DIV>
+					</DIV>
+				</TD>
                 <TD></TD>
-                <TD>Hf</TD>
-                <TD>Ta</TD>
-                <TD>W</TD>
-                <TD>Re</TD>
-                <TD>Os</TD>
-                <TD>Ir</TD>
-                <TD>Pt</TD>
-                <TD>Au</TD>
-                <TD>Hg</TD>
-                <TD>Tl</TD>
-                <TD>Pb</TD>
-                <TD>Bi</TD>
-                <TD>Po</TD>
-                <TD>At</TD>
-                <TD>Rn</TD>
+                <TD class="transition_metals">
+					<H1>Hf</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">72</DIV>
+						<DIV class="atomic_weigth">178.49</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Ta</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">73</DIV>
+						<DIV class="atomic_weigth">180.94</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>W</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">74</DIV>
+						<DIV class="atomic_weigth">183.84</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Re</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">75</DIV>
+						<DIV class="atomic_weigth">186.207</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Os</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">76</DIV>
+						<DIV class="atomic_weigth">190.23</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Ir</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">77</DIV>
+						<DIV class="atomic_weigth">192.217</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Pt</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">78</DIV>
+						<DIV class="atomic_weigth">195.084</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Au</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">79</DIV>
+						<DIV class="atomic_weigth">196.96</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Hg</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">80</DIV>
+						<DIV class="atomic_weigth">200.59</DIV>
+					</DIV>
+				</TD>
+                <TD class="post_transition_metals">
+					<H1>Tl</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">81</DIV>
+						<DIV class="atomic_weigth">204.38</DIV>
+					</DIV>
+				</TD>
+                <TD class="post_transition_metals">
+					<H1>Pb</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">82</DIV>
+						<DIV class="atomic_weigth">207.2</DIV>
+					</DIV>
+				</TD>
+                <TD class="post_transition_metals">
+					<H1>Bi</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">83</DIV>
+						<DIV class="atomic_weigth">208.98</DIV>
+					</DIV>
+				</TD>
+                <TD class="metaloids">
+					<H1>Po</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">84</DIV>
+						<DIV class="atomic_weigth">(209)</DIV>
+					</DIV>
+				</TD>
+                <TD class="halogens">
+					<H1>At</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">85</DIV>
+						<DIV class="atomic_weigth">(210)</DIV>
+					</DIV>
+				</TD>
+                <TD class="noble_gases">
+					<H1>Rn</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">86</DIV>
+						<DIV class="atomic_weigth">(222)</DIV>
+					</DIV>
+				</TD>
             </TR>
             <TR>
-                <TH>7</TH>
-                <TD>Fr</TD>
-                <TD>Ra</TD>
+                <TD class="alkali_metals">
+					<H1>Fr</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">87</DIV>
+						<DIV class="atomic_weigth">(223)</DIV>
+					</DIV>
+				</TD>
+                <TD class="alkaline_earth_metals">
+					<H1>Ra</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">88</DIV>
+						<DIV class="atomic_weigth">226</DIV>
+					</DIV>
+				</TD>
                 <TD></TD>
-                <TD>Rf</TD>
-                <TD>Db</TD>
-                <TD>Sg</TD>
-                <TD>Bh</TD>
-                <TD>Hs</TD>
-                <TD>Mt</TD>
-                <TD>Ds</TD>
-                <TD>Rg</TD>
-                <TD>Cn</TD>
-                <TD>Nh</TD>
-                <TD>Fl</TD>
-                <TD>Mc</TD>
-                <TD>Lv</TD>
+                <TD class="transition_metals">
+					<H1>Rf</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">104</DIV>
+						<DIV class="atomic_weigth">(267)</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Db</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">105</DIV>
+						<DIV class="atomic_weigth">(268)</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Sg</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">106</DIV>
+						<DIV class="atomic_weigth">(271)</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Bh</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">107</DIV>
+						<DIV class="atomic_weigth">(272)</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Hs</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">108</DIV>
+						<DIV class="atomic_weigth">(270)</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Mt</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">109</DIV>
+						<DIV class="atomic_weigth">(276)</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Ds</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">110</DIV>
+						<DIV class="atomic_weigth">(281)</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Rg</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">111</DIV>
+						<DIV class="atomic_weigth">(280)</DIV>
+					</DIV>
+				</TD>
+                <TD class="transition_metals">
+					<H1>Cn</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">112</DIV>
+						<DIV class="atomic_weigth">(285)</DIV>
+					</DIV>
+				</TD>
+                <TD class="post_transition_metals">
+					<H1>Uut</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">113</DIV>
+						<DIV class="atomic_weigth">(284)</DIV>
+					</DIV>
+				</TD>
+                <TD class="post_transition_metals">
+					<H1>Fl</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">114</DIV>
+						<DIV class="atomic_weigth">(289)</DIV>
+					</DIV>
+				</TD>
+                <TD class="post_transition_metals">
+					<H1>Uup</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">115</DIV>
+						<DIV class="atomic_weigth">(288)</DIV>
+					</DIV>
+				</TD>
+                <TD class="post_transition_metals">
+					<H1>Lv</H1>
+					<DIV class="container">
+						<DIV class="atomic_number">116</DIV>
+						<DIV class="atomic_weigth">(293)</DIV>
+					</DIV>
+				</TD>
                 <TD>Ts</TD>
                 <TD>Og</TD>
             </TR>
-        </TABLE>
+		</TABLE>
+		</DIV>
+		<BR>
+		<DIV>
+			<TABLE contenteditable="true">
+				<TR>
+					<TD colspan="2"></TD>
+					<TD class="lanthanide">
+						<H1>La</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">57</DIV>
+							<DIV class="atomic_weigth">138.90</DIV>
+						</DIV>
+					</TD>
+					<TD class="lanthanide">
+						<H1>Le</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">58</DIV>
+							<DIV class="atomic_weigth">140.116</DIV>
+						</DIV>
+					</TD>
+					<TD class="lanthanide">
+						<H1>Pr</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">59</DIV>
+							<DIV class="atomic_weigth">140.90</DIV>
+						</DIV>
+					</TD>
+					<TD class="lanthanide">
+						<H1>Nd</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">60</DIV>
+							<DIV class="atomic_weigth">144.242</DIV>
+						</DIV>
+					</TD>
+					<TD class="lanthanide">
+						<H1>Pm</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">61</DIV>
+							<DIV class="atomic_weigth">(145)</DIV>
+						</DIV>
+					</TD>
+					<TD class="lanthanide">
+						<H1>Sm</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">62</DIV>
+							<DIV class="atomic_weigth">150.38</DIV>
+						</DIV>
+					</TD>
+					<TD class="lanthanide">
+						<H1>Eu</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">63</DIV>
+							<DIV class="atomic_weigth">151.964</DIV>
+						</DIV>
+					</TD>
+					<TD class="lanthanide">
+						<H1>Gd</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">64</DIV>
+							<DIV class="atomic_weigth">157.25</DIV>
+						</DIV>
+					</TD>
+					<TD class="lanthanide">
+						<H1>Tb</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">65</DIV>
+							<DIV class="atomic_weigth">158.92</DIV>
+						</DIV>
+					</TD>
+					<TD class="lanthanide">
+						<H1>Dy</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">66</DIV>
+							<DIV class="atomic_weigth">162.500</DIV>
+						</DIV>
+					</TD>
+					<TD class="lanthanide">
+						<H1>Ho</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">67</DIV>
+							<DIV class="atomic_weigth">164.93</DIV>
+						</DIV>
+					</TD>
+					<TD class="lanthanide">
+						<H1>Er</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">68</DIV>
+							<DIV class="atomic_weigth">167.259</DIV>
+						</DIV>
+					</TD>
+					<TD class="lanthanide">
+						<H1>Tm</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">69</DIV>
+							<DIV class="atomic_weigth">168.93</DIV>
+						</DIV>
+					</TD>
+					<TD class="lanthanide">
+						<H1>Yb</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">70</DIV>
+							<DIV class="atomic_weigth">173.054</DIV>
+						</DIV>
+					</TD>
+					<TD class="lanthanide">
+						<H1>Lu</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">71</DIV>
+							<DIV class="atomic_weigth">174.9668</DIV>
+						</DIV>
+					</TD>
+					<TD colspan="1"></TD>
+				</TR>
+				<TR>
+					<TD colspan="2"></TD>
+					<TD class="actinide">
+						<H1>Ac</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">89</DIV>
+							<DIV class="atomic_weigth">(227)</DIV>
+						</DIV>
+					</TD>
+					<TD class="actinide">
+						<H1>Th</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">90</DIV>
+							<DIV class="atomic_weigth">232.0377</DIV>
+						</DIV>
+					</TD>
+					<TD class="actinide">
+						<H1>Pa</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">91</DIV>
+							<DIV class="atomic_weigth">231.03</DIV>
+						</DIV>
+					</TD>
+					<TD class="actinide">
+						<H1>U</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">92</DIV>
+							<DIV class="atomic_weigth">238.02</DIV>
+						</DIV>
+					</TD>
+					<TD class="actinide">
+						<H1>Np</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">93</DIV>
+							<DIV class="atomic_weigth">(237)</DIV>
+						</DIV>
+					</TD>
+					<TD class="actinide">
+						<H1>Pu</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">94</DIV>
+							<DIV class="atomic_weigth">(244)</DIV>
+						</DIV>
+					</TD>
+					<TD class="actinide">
+						<H1>Am</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">95</DIV>
+							<DIV class="atomic_weigth">(243)</DIV>
+						</DIV>
+					</TD>
+					<TD class="actinide">
+						<H1>Cm</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">96</DIV>
+							<DIV class="atomic_weigth">(247)</DIV>
+						</DIV>
+					</TD>
+					<TD class="actinide">
+						<H1>Bk</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">97</DIV>
+							<DIV class="atomic_weigth">(247)</DIV>
+						</DIV>
+					</TD>
+					<TD class="actinide">
+						<H1>Cf</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">98</DIV>
+							<DIV class="atomic_weigth">(251)</DIV>
+						</DIV>
+					</TD>
+					<TD class="actinide">
+						<H1>Es</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">99</DIV>
+							<DIV class="atomic_weigth">(252)</DIV>
+						</DIV>
+					</TD>
+					<TD class="actinide">
+						<H1>Fm</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">100</DIV>
+							<DIV class="atomic_weigth">(257)</DIV>
+						</DIV>
+					</TD>
+					<TD class="actinide">
+						<H1>Md</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">101</DIV>
+							<DIV class="atomic_weigth">(258)</DIV>
+						</DIV>
+					</TD>
+					<TD class="actinide">
+						<H1>No</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">102</DIV>
+							<DIV class="atomic_weigth">(259)</DIV>
+						</DIV>
+					</TD>
+					<TD class="actinide">
+						<H1>Lr</H1>
+						<DIV class="container">
+							<DIV class="atomic_number">103</DIV>
+							<DIV class="atomic_weigth">(262)</DIV>
+						</DIV>
+					</TD>
+					<TD colspan="1"></TD>
+				</TR>
+			</TABLE>
+		</DIV>
     </BODY>
 </HTML>
