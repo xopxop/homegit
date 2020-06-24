@@ -1,0 +1,67 @@
+BODY {
+	background-image: url(https://i.pinimg.com/originals/40/2a/5a/402a5a749519d119e8c61c0bdc7d4735.jpg);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
+TABLE {
+	table-layout: fixed;
+}
+TD {
+	width: 5.5vw;
+	font-size: 1vw;
+	border-radius: 0.5vw;
+}
+H1 {
+	text-align: center;
+}
+.post_transition_metals {
+	background-color: deepskyblue;
+}
+.transition_metals {
+	background-color: darkorchid;
+}
+.lanthanide {
+	background-color: lightslategray;
+}
+.alkaline_earth_metals {
+	background-color: mediumaquamarine;
+}
+.metaloids {
+	background-color: limegreen;
+}
+.alkali_metals {
+	background-color: lime;
+}
+.other_nonmetals {
+	background-color: tomato;
+}
+.halogens {
+	background-color: firebrick;
+}
+.actinide {
+	background-color: darkcyan;
+}
+.noble_gases {
+	background-color: thistle;
+}
+.radioactive_element {
+	background-color: teal;
+}
+.container {
+	width: 100%;
+	margin-right: 1px;
+	margin-left: 1px;
+}
+.atomic_number {
+	float: left;
+	text-align: left;
+	width: 50%;
+	overflow: hidden;
+}
+.atomic_weigth {
+	float: right;
+	text-align: right;
+	width: 50%;
+	overflow: hidden;
+}

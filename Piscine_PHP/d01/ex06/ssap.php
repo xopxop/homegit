@@ -2,7 +2,7 @@
 <?PHP
 
 function split($string) {
-	return (array_filter(explode(' ', $string)));
+	return (array_filter(preg_split('/\s+/', trim($string))));
 }
 
 if ($argc != 1) {
@@ -12,10 +12,9 @@ if ($argc != 1) {
 		foreach ($words as $elem)
 			$my_arr[] = $elem;
 	}
-	print_r($my_arr);
-	// sort($my_arr, SORT_REGULAR);
-	// foreach ($my_arr as $elem)
-	// 	echo "$elem\n";
+	sort($my_arr, SORT_REGULAR);
+	foreach ($my_arr as $elem)
+		echo "$elem\n";
 }
 
 ?>
