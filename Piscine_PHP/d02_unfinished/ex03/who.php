@@ -1,31 +1,19 @@
 #!/usr/bin/php
 <?php
-	date_default_timezone_set('Europe/paris');
-	$usr = get_current_user();
-	$file = file_get_contents("/var/run/utmp");
-	$sub = substr($file, 1256);
-	$e = array();
-	$typedef   = 'a256user/a4id/a32line/ipid/itype/I2time/a256host/i16pad';
-	while ($sub != NULL) {
-		$array = unpack($typedef, $sub);
-		if (strcmp(trim($array[user]), $usr) == 0 && $array[type] == 7)
-		{
-			$date = date("M  j H:i", $array["time1"]);
-			$line = trim($array[line]);
-			$line = $line . "  ";
-			$usrr = trim($array[user]);
-			$usrr = $usrr . "  ";
-			$tab = array($usrr.$line.$date);
-			$e = array_merge($e, $tab);
-		}
-		$sub = substr($sub, 628);		
+    date_default_timezone_set('Europe/Paris');
+    $file = fopen("/var/run/utmpx", "r");
+    while ($utmpx = fread($file, 628)){
+        $unpack = unpack("a256a/a4b/a32c/id/ie/I2f/a256g/i16h", $utmpx);
+        $array[$unpack['c']] = $unpack;
+    }
+    ksort($array);
+    foreach ($array as $v){
+        if ($v['e'] == 7) {
+            echo str_pad(substr(trim($v['a']), 0, 8), 8, " ")." ";
+            echo str_pad(substr(trim($v['c']), 0, 8), 8, " ")." ";
+            echo date("M", $v["f1"]);
+            echo str_pad(date("j", $v["f1"]), 3, " ", STR_PAD_LEFT)." ".date("H:i", $v["f1"]);
+            echo "\n";
+        }
 	}
-	sort($e);
-	foreach ($e as $elem) {
-		echo $elem;
-		echo "\n";
-	}
-
-
-
 ?>
