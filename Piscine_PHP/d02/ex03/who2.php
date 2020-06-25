@@ -7,12 +7,12 @@
     while ($str = fread($file, 628))
     {
         $tab = unpack("A256login/A4/A32tty/i/itype/Itime/i16", $str);
-        if ($tab['type'] == 7)
-        {
+        // if ($i >= 2 * 628 && $tab['type'] == 7)
+        // {
             $time = strftime("%b %e %R", $tab['time']);
             array_push($who , str_pad($tab['login'], 8, " ") . " " . str_pad($tab['tty'], 8, " ") . " " . $time);
-		}
-		$i = $i + 628;
+		// }
+		// $i = $i + 628;
 		echo $i . "\n";
     }
     sort($who);
