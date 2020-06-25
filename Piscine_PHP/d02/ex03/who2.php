@@ -14,7 +14,7 @@
         }
     $i = $i + 628;
     }
-    // sort($who);
+    sort($who);
     foreach ($who as $value)
         echo "$value\n";
 ?>
