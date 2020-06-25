@@ -6,16 +6,19 @@ date_default_timezone_set("Europe/Moscow");
 while (!feof($file))
 {
 	$data = fread($file, 628);
-	if (strlen($data) == 628)
+	if (strlen($data) == 628) {
+		$data = unpack("a256user/a4id/a32line/ipid/itype/itime", $data);
+		$array[] = $data;
+	}
+}
+ksort($array);
+foreach($array as $line) {
+	if ($line['type'] == 7)
 	{
-		$data = unpack("a256user/a4id/a32line/i4pid/i4type/itime", $data);
-		if ($data['type'] == 7)
-		{
-			echo trim($data['user']) . " ";
-			echo trim($data['line']) . "  ";
-			$time = date("M d H:i", $data['time']);
-			echo $time . "\n";
-		}
+		echo trim($line['user']) . " ";
+		echo trim($line['line']) . "  ";
+		$time = date("M d H:i", $line['time']);
+		echo $time . "\n";
 	}
 }
 ?>
