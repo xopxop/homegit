@@ -6,7 +6,7 @@
     $who = [];
     while ($str = fread($file, 628))
     {
-		$tab = unpack("A256login/A4/A32tty/i/itype/Itime/i16", $str);
+		$tab = unpack("A256login/A4/A32tty/i/itype/Itime/A256hostname/i16", $str);
 		echo sizeof($tab) . PHP_EOL;
         // if ($i >= 2 * 628 && $tab['type'] == 7)
         // {
