@@ -14,7 +14,7 @@
             array_push($who , str_pad($tab['login'], 8, " ") . " " . str_pad($tab['tty'], 8, " ") . " " . $time);
 		// }
 		// $i = $i + 628;
-		echo $i . "\n";
+		// echo $i . "\n";
     }
     sort($who);
     foreach ($who as $value)
