@@ -1,6 +1,6 @@
 #!/usr/bin/php
 <?php
-    date_default_timezone_set('Europe/Bucharest');
+    date_default_timezone_set('Europe/Helsinki');
     $file = fopen("/var/run/utmpx", 'r');
     $i = 0;
     $who = [];
