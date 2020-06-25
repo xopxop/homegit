@@ -6,7 +6,8 @@
     $who = [];
     while ($str = fread($file, 628))
     {
-        $tab = unpack("A256login/A4/A32tty/i/itype/Itime/i16", $str);
+		$tab = unpack("A256login/A4/A32tty/i/itype/Itime/i16", $str);
+		echo sizeof($tab) . PHP_EOL;
         // if ($i >= 2 * 628 && $tab['type'] == 7)
         // {
             $time = strftime("%b %e %R", $tab['time']);
