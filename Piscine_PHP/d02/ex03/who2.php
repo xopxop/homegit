@@ -1,14 +1,14 @@
 #!/usr/bin/php
 <?php
-$file = fopen("/var/run/utmp", "rb");
-fseek($file, 768);
+$file = fopen("/var/run/utmpx", "rb");
+fseek($file, 1256);
 date_default_timezone_set("Europe/Moscow");
 while (!feof($file))
 {
-	$data = fread($file, 384);
-	if (strlen($data) == 384)
+	$data = fread($file, 628);
+	if (strlen($data) == 628)
 	{
-		$data = unpack("itype/ipid/a32terminal/iterminalid/a32username/a256hostname/iterminalstatus/iexitstatus/isession/    /ipid/itype/itime", $data);
+		$data = unpack("a256user/a4id/a32line/i4pid/i4type/itime", $data);
 		if ($data['type'] == 7)
 		{
 			echo trim($data['user']) . " ";
