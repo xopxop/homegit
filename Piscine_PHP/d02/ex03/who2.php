@@ -1,24 +1,20 @@
 #!/usr/bin/php
 <?php
-$file = fopen("/var/run/utmpx", "rb");
-fseek($file, 1256);
-date_default_timezone_set("Europe/Moscow");
-while (!feof($file))
-{
-	$data = fread($file, 628);
-	if (strlen($data) == 628) {
-		$data = unpack("a256user/a4id/a32line/ipid/itype/itime", $data);
-		$array[] = $data;
-	}
-}
-ksort($array);
-foreach($array as $line) {
-	if ($line['type'] == 7)
-	{
-		echo trim($line['user']) . " ";
-		echo trim($line['line']) . "  ";
-		$time = date("M d H:i", $line['time']);
-		echo $time . "\n";
-	}
-}
+    date_default_timezone_set('Europe/Bucharest');
+    $file = fopen("/var/run/utmpx", 'r');
+    $i = 0;
+    $who = [];
+    while ($str = fread($file, 628))
+    {
+        $tab = unpack("A256login/A4/A32tty/i/itype/Itime/i16", $str);
+        if ($i >= 2 * 628 && $tab['type'] == 7)
+        {
+            $time = strftime("%b %e %R", $tab['time']);
+            array_push($who , $tab['login']." ".$tab['tty']."  ".$time);
+        }
+    $i = $i + 628;
+    }
+    sort($who);
+    foreach ($who as $value)
+        echo "$value\n";
 ?>
