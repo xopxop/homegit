@@ -7,9 +7,11 @@
 		echo "'>\n</body></html>\n";
 	}
 	else {
-		header_remove("X-Frame-Options"); 
-		header("WWW-Authenticate: Basic realm=''Member area''");
-		header('HTTP/1.0 401 Unauthorized');
+		// header_remove("X-Frame-Options");
+		// header();
+		// header("WWW-Authenticate: Basic realm=''Member area''");
+		// header('HTTP/1.0 401 Unauthorized');
+		print_r(headers_list());
 		echo "<html><body>That area is accessible for members only</body></html>     \n";
 	}
 ?>
