@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 05:33:01 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/02 14:51:24 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/02 15:32:34 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ void	ft_ls(t_args parent, int options, int *ret)
 		}
 		closedir(ptr_dir);
 		ft_sort(&child, options);
-		display(parent.dir, parent.file, ret, child, options);
+		display(parent.dir, NULL, ret, child, options);
 		if (options & LIST_SUBDIR_RECUSIVELY)
 			ft_recusion(child, options, ret);
 		free_lst(child);
