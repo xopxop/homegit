@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:15:40 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/02 15:34:34 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/02 15:40:12 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	ft_short_list(t_node *lchild, int options)
 	}
 }
 
-void	ft_long_list(t_node *parent, t_node *lchild, int options)
+void	ft_long_list(t_node *parent_file, t_node *lchild, int options)
 {
 	int		total_block;
 	t_max	max;
@@ -83,6 +83,12 @@ void	ft_long_list(t_node *parent, t_node *lchild, int options)
 			lchild = lchild->next;
 		}
 	}
-	else
-		ft_print_long_list(parent, max);
+	else if (parent_file)
+	{
+		while (parent_file)
+		{
+			ft_print_long_list(parent_file, max);
+			parent_file = parent_file->next;
+		}
+	}
 }
