@@ -8,4 +8,4 @@
 3. Check the struct t_args, do we need it? arcording to the output of the command
 	ft_ls dthan$ ls -l TODO.txt Makefile test2 test
 	then it seems like the list was re-order, it will process in the order of:
-	Makefile -> TODO.txt -> test -> test2
+	Makefile -> TODO.txt -> test -> test2							WE NEED t_args

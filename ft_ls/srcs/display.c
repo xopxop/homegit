@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:15:40 by dthan             #+#    #+#             */
-/*   Updated: 2020/06/11 03:11:35 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/02 14:41:30 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	display(t_node *parent_dir, t_node *parent_file, int *ret, \
 		if (options & LONG_LIST_FORMAT)
 			ft_long_list(parent_file, lchild, options);
 		else
-			ft_printf("%s\n", parent_file->status.name);
+			ft_short_list(parent_file, options);
 	}
 	else if (parent_dir)
 	{

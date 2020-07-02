@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 05:33:01 by dthan             #+#    #+#             */
-/*   Updated: 2020/06/11 03:07:37 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/02 14:43:14 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,11 +129,7 @@ void	ft_ls(t_args parent, int options, int *ret)
 
 	if (parent.file)
 	{
-		while (parent.file)
-		{
-			display(NULL, parent.file, 0, NULL, options);
-			parent.file = parent.file->next;
-		}
+		display(NULL, parent.file, 0, NULL, options);
 		ft_putchar_fd('\n', STDOUT_FILENO);
 	}
 	while (parent.dir)
