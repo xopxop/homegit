@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:15:40 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/02 15:40:12 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/02 15:42:54 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void	ft_long_list(t_node *parent_file, t_node *lchild, int options)
 	{
 		while (parent_file)
 		{
+			ft_get_max(&max, parent_file, options);
 			ft_print_long_list(parent_file, max);
 			parent_file = parent_file->next;
 		}
