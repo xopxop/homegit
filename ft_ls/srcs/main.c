@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 05:33:01 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/02 14:43:14 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/02 14:51:24 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,8 @@ void	ft_get_arguments(char **input, int *options, t_args *lst, int *ret)
 	}
 	if (lst->dir == NULL && lst->file == NULL && *ret == 0)
 		ft_split_input(".", lst, ret);
+	ft_sort_alphabet(lst->file);
+	ft_sort_alphabet(lst->dir);
 }
 
 int	main(int ac, char **av)
