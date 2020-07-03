@@ -23,6 +23,8 @@ void	cd_cmd(char **tokens)
 	{
 		if (*tokens == NULL)
 			path = ft_call_value_of("HOME");
+		else if (ft_strequ(*tokens, "-"))
+			path = ft_call_value_of("OLDPWD");
 		else if (tokens[0] && !tokens[1])
 			path = *tokens;
 		if (access(path, F_OK) == -1)
