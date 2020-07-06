@@ -20,7 +20,6 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <sys/signal.h>
-# include <sys/vlimit.h>
 
 # define MY_ENOMEM "Out of memory"
 # define CD_ENOTDIR "cd: not a directory: "
