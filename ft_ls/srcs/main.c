@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 05:33:01 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/02 15:32:34 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/06 16:30:54 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,35 @@ void	ft_get_file_info(t_node *node, char *filename, char *path, int *ret)
 	node->next = NULL;
 }
 
-void	ft_recusion(t_node *parent, int options, int *ret)
+t_node*	ft_get_lchild(t_node *parent_dir, int *ret)
 {
+	t_node			*node;
+	t_node			*lchild;
 	DIR				*ptr_dir;
 	struct dirent	*ptr_entry;
+	
+	lchild = NULL;
+	ptr_dir = opendir(parent_dir->status.path);
+	while ((ptr_entry = readdir(ptr_dir)))
+	{
+		if (!(node = (t_node*)malloc(sizeof(t_node))))
+				ft_err_malloc();
+		initialize_struct(node);
+		ft_get_file_info(node, ptr_entry->d_name, parent_dir->status.path, ret);
+		ft_push_node_to_lst(&lchild, node);
+	}
+	closedir(ptr_dir);
+	return (lchild);
+}
+
+void	ft_recusion(t_node *parent, t_args output)
+{
+	DIR				*ptr_dir;
 	t_node			*child;
-	t_node			*node;
 
 	while (parent)
 	{
-		if (!(options & LIST_HIDDEN) && parent->status.is_hidden == YES)
+		if (!(output.options & LIST_HIDDEN) && parent->status.is_hidden == YES)
 		{
 			parent = parent->next;
 			continue;
@@ -60,23 +79,15 @@ void	ft_recusion(t_node *parent, int options, int *ret)
 			if (!(ptr_dir = opendir(parent->status.path)))
 			{
 				ft_err_permission_dinied(parent->status.name);
-				*ret = MINOR_PROBLEMS;
+				(&output)->ret = MINOR_PROBLEMS;  //need to check this
 			}
 			else
 			{
-				child = NULL;
-				while ((ptr_entry = readdir(ptr_dir)))
-				{
-					if (!(node = (t_node*)malloc(sizeof(t_node))))
-						ft_err_malloc();
-					initialize_struct(node);
-					ft_get_file_info(node, ptr_entry->d_name, parent->status.path, ret);
-					ft_push_node_to_lst(&child, node);
-				}
 				closedir(ptr_dir);
-				ft_sort(&child, options);
-				display(parent, NULL, 0, child, options);
-				ft_recusion(child, options, ret);
+				child = ft_get_lchild(parent, &output.ret);
+				ft_sort(&child, output.options);
+				display(parent, NULL, child, output);
+				ft_recusion(child, output);
 				free_lst(child);
 			}
 		}
@@ -84,93 +95,19 @@ void	ft_recusion(t_node *parent, int options, int *ret)
 	}
 }
 
-// void	ft_ls(t_args parent, int options, int *ret)
-// {
-// 	t_node			*child;
-// 	t_node			*node;
-// 	t_node			*ptr;
-// 	DIR				*ptr_dir;
-// 	struct dirent	*ptr_entry;
-
-// 	ptr = parent.file;
-// 	while (ptr)
-// 	{
-// 		display(NULL, ptr, 0, NULL, options);
-// 		ptr = ptr->next;
-// 	}
-// 	while (parent.dir)
-// 	{
-// 		child = NULL;
-// 		ptr_dir = opendir(parent.dir->status.path);
-// 		while ((ptr_entry = readdir(ptr_dir)))
-// 		{
-// 			if (!(node = (t_node*)malloc(sizeof(t_node))))
-// 				ft_err_malloc();
-// 			initialize_struct(node);
-// 			ft_get_file_info(node, ptr_entry->d_name, parent.dir->status.path, ret);
-// 			ft_push_node_to_lst(&child, node);
-// 		}
-// 		closedir(ptr_dir);
-// 		ft_sort(&child, options);
-// 		display(parent.dir, parent.file, ret, child, options);
-// 		if (options & LIST_SUBDIR_RECUSIVELY)
-// 			ft_recusion(child, options, ret);
-// 		free_lst(child);
-// 		parent.dir = parent.dir->next;
-// 	}
-// }
-
-t_node*	ft_get_lchild(t_node *parent_dir, int *ret)
-{
-	t_node			*node;
-	t_node			*lchild;
-	DIR				*ptr_dir;
-	struct dirent	*ptr_entry;
-	
-	lchild = NULL;
-	ptr_dir =opendir(parent_dir->status.path);
-	while ((ptr_entry = readdir(ptr_dir)))
-	{
-		if (!(node = (t_node*)malloc(sizeof(t_node))))
-				ft_err_malloc();
-			initialize_struct(node);
-			ft_get_file_info(node, ptr_entry->d_name, parent_dir->status.path, ret);
-			ft_push_node_to_lst(&lchild, node);
-	}
-	closedir(ptr_dir);
-	return (lchild);
-}
-
-void	ft_ls(t_args parent, int options, int *ret)
+void	ft_ls(t_args parent)
 {
 	t_node			*child;
-	// t_node			*node;
-	// DIR				*ptr_dir;
-	// struct dirent	*ptr_entry;
 
 	if (parent.file)
-	{
-		display(NULL, parent.file, 0, NULL, options);
-		ft_putchar_fd('\n', STDOUT_FILENO);
-	}
+		display(NULL, parent.file, NULL, parent);
 	while (parent.dir)
 	{
-		// child = NULL;
-		// ptr_dir = opendir(parent.dir->status.path);
-		// while ((ptr_entry = readdir(ptr_dir)))
-		// {
-		// 	if (!(node = (t_node*)malloc(sizeof(t_node))))
-		// 		ft_err_malloc();
-		// 	initialize_struct(node);
-		// 	ft_get_file_info(node, ptr_entry->d_name, parent.dir->status.path, ret);
-		// 	ft_push_node_to_lst(&child, node);
-		// }
-		// closedir(ptr_dir);
-		child = ft_get_lchild(parent.dir, ret);
-		ft_sort(&child, options);
-		display(parent.dir, NULL, ret, child, options);
-		if (options & LIST_SUBDIR_RECUSIVELY)
-			ft_recusion(child, options, ret);
+		child = ft_get_lchild(parent.dir, &parent.ret);
+		ft_sort(&child, parent.options);
+		display(parent.dir, NULL, child, parent);
+		if (parent.options & LIST_SUBDIR_RECUSIVELY)
+			ft_recusion(child, parent);
 		free_lst(child);
 		parent.dir = parent.dir->next;
 		if (parent.dir != NULL)
@@ -178,7 +115,7 @@ void	ft_ls(t_args parent, int options, int *ret)
 	}
 }
 
-void	ft_get_arguments(char **input, int *options, t_args *lst, int *ret)
+void	ft_get_arguments(char **input, t_args *output)
 {
 	int		arg_nbr;
 
@@ -186,32 +123,30 @@ void	ft_get_arguments(char **input, int *options, t_args *lst, int *ret)
 	while (input[arg_nbr])
 	{
 		if (ft_isoptions(input[arg_nbr][0]))
-			*options |= get_options(input[arg_nbr]);
-		else if (ft_isfile(input[arg_nbr], ret))
-			ft_split_input(input[arg_nbr], lst, ret);
+			output->options |= get_options(input[arg_nbr]);
+		else if (ft_isfile(input[arg_nbr], &(output->ret)))
+			ft_split_input(input[arg_nbr], output);
 		arg_nbr++;
 	}
-	if (lst->dir == NULL && lst->file == NULL && *ret == 0)
-		ft_split_input(".", lst, ret);
-	ft_sort_alphabet(lst->file);
-	ft_sort_alphabet(lst->dir);
+	if (output->dir == NULL && output->file == NULL && output->ret == 0)
+		ft_split_input(".", output);
+	ft_sort_alphabet(output->file);
+	ft_sort_alphabet(output->dir);
 }
 
 int	main(int ac, char **av)
 {
-	int		options;
-	t_args	input_file;
-	int		ret;
+	t_args	output;
 
-	ret = 0;
-	options = 0;
-	input_file.file = NULL;
-	input_file.dir = NULL;
+	output.ret = 0;
+	output.options = 0;
+	output.file = NULL;
+	output.dir = NULL;
 	(void)ac;
-	ft_get_arguments(av, &options, &input_file, &ret);
-	ft_ls(input_file, options, &ret);
-	ft_free_larg(&input_file); //need to fix
-	if (ret == 1)
+	ft_get_arguments(av, &output);
+	ft_ls(output);
+	ft_free_larg(&output); //need to fix
+	if (output.ret == 1)
 		return (MINOR_PROBLEMS);
 	return (EXIT_SUCCESS);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 09:28:16 by dthan             #+#    #+#             */
-/*   Updated: 2020/02/28 09:28:18 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/06 16:28:38 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,12 @@ int	ft_isfile(char *dir_name, int *ret)
 {
 	struct stat filestat;
 
-	if (!(lstat(dir_name, &filestat)))
-		return (YES);
-	*ret = MINOR_PROBLEMS;
-	ft_err_can_not_access(dir_name);
-	return (NO);
+	if ((lstat(dir_name, &filestat)) == -1)
+	{
+		*ret = MINOR_PROBLEMS;
+		ft_err_can_not_access(dir_name);
+		// ft_putstr_fd(strerror(errno), STDERR_FILENO); // need to test this with file and fix
+		return (NO);
+	}
+	return (YES);
 }

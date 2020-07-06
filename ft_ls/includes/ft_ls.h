@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 04:58:25 by dthan             #+#    #+#             */
-/*   Updated: 2020/06/11 03:05:30 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/03 08:41:31 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,8 @@ typedef struct		s_args
 {
 	struct s_node	*file;
 	struct s_node	*dir;
+	int				options;
+	int				ret;
 }					t_args;
 
 /*
@@ -128,10 +130,9 @@ typedef struct		s_args
 
 void				ft_get_file_info(t_node *node, char *filename, char *path,\
 					int *ret);
-void				ft_recusion(t_node *parent, int options, int *ret);
-void				ft_ls(t_args parent, int options, int *ret);
-void				ft_get_arguments(char **input, int *options, t_args *lst,\
-					int *ret);
+void				ft_recusion(t_node *parent, t_args output);
+void				ft_ls(t_args parent);
+void				ft_get_arguments(char **input, t_args *output);
 
 /*
 **  Error
@@ -171,8 +172,8 @@ void				ft_free_table(t_table table);
 ** Display
 */
 
-void				display(t_node *parent, t_node *parent_file, int *ret,\
-					t_node *lchild, int options);
+void				display(t_node *parent, t_node *parent_file, \
+					t_node *lchild, t_args output);
 void				ft_short_list(t_node *lfile, int options);
 void				ft_long_list(t_node *parent, t_node *lchild, int options);
 void				ft_init_struct_max(t_max *max);
@@ -255,6 +256,6 @@ t_min				ft_get_min(t_node *node);
 
 int					ft_numlen(int num);
 void				ft_push_node_to_lst(t_node **head, t_node *node);
-void				ft_split_input(char *name, t_args *lst, int *ret);
+void				ft_split_input(char *name, t_args *output);
 
 #endif

@@ -6,49 +6,31 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:15:40 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/02 17:27:58 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/03 08:34:03 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_ls.h"
 
-void	display(t_node *parent_dir, t_node *parent_file, int *ret, \
-		t_node *lchild, int options)
+void	display(t_node *parent_dir, t_node *parent_file, t_node *lchild, \
+				t_args output)
 {
 	t_node *ptr;
+
 	if (parent_file && !parent_dir && !lchild)
 		ptr = parent_file;
 	else if (!parent_file && parent_dir)
 	{
 		ptr = parent_dir;
-		if (options & LIST_SUBDIR_RECUSIVELY && lchild != NULL)
+		if (output.options & LIST_SUBDIR_RECUSIVELY && lchild != NULL)
 			ft_printf("%s:\n", ptr->status.path);
-		else if (*ret == MINOR_PROBLEMS)   // check this
+		else if (output.ret == MINOR_PROBLEMS)   // check this
 			ft_printf("\n%s:\n", parent_dir->status.path);
 	}
-	if (options & LONG_LIST_FORMAT)
-		ft_long_list(ptr, lchild, options);
+	if (output.options & LONG_LIST_FORMAT)
+		ft_long_list(ptr, lchild, output.options);
 	else
-		ft_short_list((lchild) ? ptr : lchild, options);
-
-	// if (parent_file)
-	// {
-	// 	if (options & LONG_LIST_FORMAT)
-	// 		ft_long_list(parent_file, lchild, options);
-	// 	else
-	// 		ft_short_list(parent_file, options);
-	// }
-	// else if (parent_dir)
-	// {
-	// 	if (options & LIST_SUBDIR_RECUSIVELY && lchild != NULL)
-	// 		ft_printf("%s:\n", parent_dir->status.path);
-	// 	else if (*ret == MINOR_PROBLEMS)
-	// 		ft_printf("\n%s:\n", parent_dir->status.path);
-	// 	if (options & LONG_LIST_FORMAT)
-	// 		ft_long_list(parent_dir, lchild, options);
-	// 	else
-	// 		ft_short_list(lchild, options);
-	// }
+		ft_short_list((lchild) ? lchild : ptr, output.options);
 }
 
 int		ft_find_space(int max_name_len)

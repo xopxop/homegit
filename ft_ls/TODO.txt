@@ -11,4 +11,8 @@
 	Makefile -> TODO.txt -> test -> test2							WE NEED t_args
 
 2nd July
-1. check "." , ".." hiddenfile
+1. check "." , ".." hiddenfile										Done
+
+3rd July
+1. Check the printing out name directory when there is more than one args
+with directory type

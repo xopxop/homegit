@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 01:54:29 by dthan             #+#    #+#             */
-/*   Updated: 2020/03/25 01:54:30 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/03 10:48:44 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,16 @@ void	ft_push_node_to_lst(t_node **head, t_node *node)
 	}
 }
 
-void	ft_split_input(char *name, t_args *lst, int *ret)
+void	ft_split_input(char *name, t_args *output)
 {
 	t_node *node;
 
 	if (!(node = (t_node*)malloc(sizeof(t_node))))
 		ft_err_malloc();
 	initialize_struct(node);
-	ft_get_file_info(node, name, NULL, ret);
+	ft_get_file_info(node, name, NULL, &(output->ret));
 	if (node->status.type == 'd')
-		ft_push_node_to_lst(&lst->dir, node);
+		ft_push_node_to_lst(&output->dir, node);
 	else
-		ft_push_node_to_lst(&lst->file, node);
+		ft_push_node_to_lst(&output->file, node);
 }
