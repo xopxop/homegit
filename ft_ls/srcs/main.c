@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 05:33:01 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/06 16:30:54 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/06 17:33:26 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,8 @@ void	ft_recusion(t_node *parent, t_args output)
 	while (parent)
 	{
 		if (!(output.options & LIST_HIDDEN) && parent->status.is_hidden == YES)
-		{
-			parent = parent->next;
-			continue;
-		}
-		if (parent->status.type == 'd' && parent->status.allow_open == YES)
+			;
+		else if (parent->status.type == 'd' && parent->status.allow_open == YES)
 		{
 			write(1, "\n", 1);
 			if (!(ptr_dir = opendir(parent->status.path)))
@@ -86,6 +83,7 @@ void	ft_recusion(t_node *parent, t_args output)
 				closedir(ptr_dir);
 				child = ft_get_lchild(parent, &output.ret);
 				ft_sort(&child, output.options);
+				ft_printf("%s:\n", parent->status.path);
 				display(parent, NULL, child, output);
 				ft_recusion(child, output);
 				free_lst(child);
@@ -95,23 +93,42 @@ void	ft_recusion(t_node *parent, t_args output)
 	}
 }
 
+int		ft_lstcount(t_node *lst)
+{
+	int	ct;
+
+	ct = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		ct++;
+	}
+	return (ct);
+}
+
 void	ft_ls(t_args parent)
 {
 	t_node			*child;
+	int				print_dname;
 
+	print_dname = (ft_lstcount(parent.dir) == 1 && parent.file == NULL && \
+		!(parent.options & LIST_SUBDIR_RECUSIVELY)) ? NO : YES;
 	if (parent.file)
+	{
 		display(NULL, parent.file, NULL, parent);
+		(parent.dir) ? ft_putchar('\n') : 0;
+	}
 	while (parent.dir)
 	{
+		(print_dname == YES) ? ft_printf("%s:\n", parent.dir->status.path) : 0;
 		child = ft_get_lchild(parent.dir, &parent.ret);
 		ft_sort(&child, parent.options);
 		display(parent.dir, NULL, child, parent);
-		if (parent.options & LIST_SUBDIR_RECUSIVELY)
-			ft_recusion(child, parent);
+		(parent.options & LIST_SUBDIR_RECUSIVELY) ? \
+			ft_recusion(child, parent) : 0;
 		free_lst(child);
 		parent.dir = parent.dir->next;
-		if (parent.dir != NULL)
-			ft_putchar_fd('\n', STDOUT_FILENO);
+		(parent.dir != NULL) ? ft_putchar('\n') : 0;
 	}
 }
 

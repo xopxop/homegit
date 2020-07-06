@@ -15,4 +15,8 @@
 
 3rd July
 1. Check the printing out name directory when there is more than one args
-with directory type
+with directory type													DONE
+
+6th July
+1. Reducing for ft_recusion, my idea is reducing from the error function,
+with passing the ret to it
