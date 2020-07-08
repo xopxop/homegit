@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utility.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 06:49:13 by dthan             #+#    #+#             */
-/*   Updated: 2020/02/21 06:49:14 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/09 02:37:58 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_UTILITY_H
 # include "libft.h"
 
-void    *ft_memalloc(size_t size);
+void	*ft_memalloc(size_t size);
 void	ft_memdel(void **ap);
 char	*ft_strnew(size_t size);
 void	ft_strdel(char **as);
@@ -37,8 +37,7 @@ char	*ft_itoa_unsigned_longlong(unsigned long long nbr);
 char	*ft_strrev(char *str);
 char	*ft_strjoin_and_free_string2(char *string1, char *string2);
 char	*ft_strjoin_and_free_string1(char *string1, char *string2);
-int     ft_arrayct(char **input);
+int		ft_arrayct(char **input);
 void	ft_arraydel(char **string_array);
-
 
 #endif

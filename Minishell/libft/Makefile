@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dthan <marvin@42.fr>                       +#+  +:+       +#+         #
+#    By: dthan <dthan@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/24 16:34:34 by dthan             #+#    #+#              #
-#*   Updated: 2019/10/30 09:19:04 by dthan            ###   ########.fr       *#
+#    Updated: 2020/07/08 21:12:33 by dthan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 NAME=libft.a
 
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror
 
 INCLUDES=./
 
@@ -185,7 +185,7 @@ utility/ft_strjoin_and_free.c \
 utility/ft_itoa_signed_and_unsigned_long_long.c \
 utility/ft_strrev.c \
 utility/ft_arrayct.c \
-utility/ft_arraydel.c
+utility/ft_arraydel.c \
 
 UTILITY_OBJ=ft_memalloc.o \
 ft_memdel.o \
@@ -209,7 +209,7 @@ ft_strjoin_and_free.o \
 ft_itoa_signed_and_unsigned_long_long.o \
 ft_strrev.o \
 ft_arrayct.o \
-ft_arraydel.o
+ft_arraydel.o \
 
 all: $(NAME)
 

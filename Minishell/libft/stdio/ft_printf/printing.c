@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 20:40:30 by dthan             #+#    #+#             */
-/*   Updated: 2020/02/18 02:07:51 by dthan            ###   ########.fr       */
+/*   Updated: 2020/05/21 21:40:00 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 ** it will return the function coresponding to the specifier type
 */
 
-static void	(*get_func(t_specifier specifier))(t_info*, va_list, size_t *ct)
+static void	(*get_func(t_specifier specifier))(t_info*, va_list, size_t*, int)
 {
-	static void	(*func[SPECIFIER_COUNT])(t_info*, va_list, size_t *ct);
+	static void	(*func[SPECIFIER_COUNT])(t_info*, va_list, size_t*, int);
 
 	func[spec_char] = &type_c;
 	func[spec_str] = &type_s;
@@ -45,13 +45,13 @@ static void	(*get_func(t_specifier specifier))(t_info*, va_list, size_t *ct)
 ** Return value: length of the output_str
 */
 
-int			printing(t_info *info, va_list arg)
+int			printing(t_info *info, va_list arg, int fd)
 {
-	static void	(*print_func)(t_info*, va_list, size_t *ct);
+	static void	(*print_func)(t_info*, va_list, size_t*, int);
 	size_t		ct;
 
 	ct = 0;
 	print_func = get_func(info->specifier);
-	print_func(info, arg, &ct);
+	print_func(info, arg, &ct, fd);
 	return (ct);
 }
