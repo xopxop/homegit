@@ -6,7 +6,7 @@
 #    By: dthan <dthan@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/24 16:34:34 by dthan             #+#    #+#              #
-#    Updated: 2020/05/24 18:04:38 by dthan            ###   ########.fr        #
+#    Updated: 2020/07/08 21:12:33 by dthan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -126,6 +126,7 @@ string/ft_memchr.c \
 string/ft_memcmp.c \
 string/ft_strlen.c \
 string/ft_strdup.c \
+string/ft_strndup.c \
 string/ft_strcpy.c \
 string/ft_strncpy.c \
 string/ft_strcat.c \
@@ -147,6 +148,7 @@ ft_memchr.o \
 ft_memcmp.o \
 ft_strlen.o \
 ft_strdup.o \
+ft_strndup.o \
 ft_strcpy.o \
 ft_strncpy.o \
 ft_strcat.o \
@@ -181,7 +183,9 @@ utility/ft_ctwords.c \
 utility/ft_itoa.c \
 utility/ft_strjoin_and_free.c \
 utility/ft_itoa_signed_and_unsigned_long_long.c \
-utility/ft_strrev.c
+utility/ft_strrev.c \
+utility/ft_arrayct.c \
+utility/ft_arraydel.c \
 
 UTILITY_OBJ=ft_memalloc.o \
 ft_memdel.o \
@@ -203,7 +207,9 @@ ft_ctwords.o \
 ft_itoa.o \
 ft_strjoin_and_free.o \
 ft_itoa_signed_and_unsigned_long_long.o \
-ft_strrev.o
+ft_strrev.o \
+ft_arrayct.o \
+ft_arraydel.o \
 
 all: $(NAME)
 

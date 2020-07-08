@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_string.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 06:47:29 by dthan             #+#    #+#             */
-/*   Updated: 2020/02/21 06:47:31 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/09 02:38:18 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void				*ft_memchr(const void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t				ft_strlen(const char *s);
 char				*ft_strdup(const char *s1);
+char				*ft_strndup(char *str, size_t len)
 char				*ft_strcpy(char *dest, const char *src);
 char				*ft_strncpy(char *dst, const char *src, size_t len);
 char				*ft_strcat(char *dest, const char *src);
