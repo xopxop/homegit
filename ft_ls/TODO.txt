@@ -19,4 +19,10 @@ with directory type													DONE
 
 6th July
 1. Reducing for ft_recusion, my idea is reducing from the error function,
-with passing the ret to it
+with passing the ret to it											DONE
+
+7th July
+1. Check the return MINOR ERROR										DONE
+
+8th July
+1. Check memleak

@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 04:58:25 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/03 08:41:31 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/08 21:28:29 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,11 @@
 # define LIST_HIDDEN 4
 # define REVERSE_ORDER 8
 # define SORT_BY_NEWEST_FIRST 16
-
 # define STD_ERR 2
 # define STD_OUT 1
-
-# define OPTIONS_ERROR 256 // WHere this one uses for?
-
 # define OK 0
 # define MINOR_PROBLEMS 1
 # define SERIOUS_TROUBLE 2
-
 # define YES 1
 # define NO 0
 
@@ -128,21 +123,20 @@ typedef struct		s_args
 ** Main
 */
 
-void				ft_get_file_info(t_node *node, char *filename, char *path,\
-					int *ret);
-void				ft_recusion(t_node *parent, t_args output);
-void				ft_ls(t_args parent);
+t_node				*ft_get_lchild(t_node *parent_dir, int *ret);
+void				ft_recusion(t_node *parent, t_args *output);
+void				ft_ls(t_args *parent);
 void				ft_get_arguments(char **input, t_args *output);
 
 /*
 **  Error
 */
 
-void				ft_err_can_not_access(char *invalid_file_or_dir);
+void				ft_err_can_not_access(char *invalid_file_or_dir, int *ret);
 void				ft_err_invalid_option(char *invalid_option, int dashno);
 void				ft_err_malloc();
-void				ft_err_permission_dinied(char *dirname);
-void				ft_err_can_not_read_link(char *path);
+void				ft_err_permission_dinied(char *dirname, int *ret);
+void				ft_err_can_not_read_link(char *path, int *ret);
 
 /*
 **  options.c
@@ -223,7 +217,13 @@ int					ft_get_terminal_width();
 int					ft_get_max_file_name(t_node *node, int options);
 int					ft_get_list_size(t_node *node, int options);
 char				***ft_creat_table(int row, int col);
-void				ft_putlist_into_table(t_table table, t_node *node, int options);
+void				ft_putlist_into_table(t_table table, t_node *node, \
+					int options);
+
+/*
+** Short list helper2
+*/
+
 void				ft_print_short_list(t_table table, int width);
 
 /*
@@ -247,6 +247,9 @@ char				ft_get_data_type(mode_t mode);
 ** Info Collecter 2
 */
 
+char				*ft_get_path(char *filename, char *path);
+void				ft_get_file_info(t_node *node, char *filename, char *path,\
+					int *ret);
 char				*ft_get_path_sym_link(char *pathname, int *ret);
 t_min				ft_get_min(t_node *node);
 
@@ -257,5 +260,6 @@ t_min				ft_get_min(t_node *node);
 int					ft_numlen(int num);
 void				ft_push_node_to_lst(t_node **head, t_node *node);
 void				ft_split_input(char *name, t_args *output);
+int					ft_lstcount(t_node *lst);
 
 #endif

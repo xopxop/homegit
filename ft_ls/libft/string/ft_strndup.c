@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/22 13:30:54 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/26 17:45:23 by dthan            ###   ########.fr       */
+/*   Created: 2020/04/06 00:18:18 by dthan             #+#    #+#             */
+/*   Updated: 2020/07/08 20:49:31 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(const char *s1, const char *s2)
-{
-	int i;
+#include "../includes/ft_string.h"
 
+char	*ft_strndup(char *str, size_t len)
+{
+	char	*new;
+	int		i;
+
+	new = ft_strnew(len);
 	i = 0;
-	while (s1[i] || s2[i])
+	while (len > 0)
 	{
-		if (s1[i] != s2[i])
-			return ((unsigned char)(s1[i]) - (unsigned char)(s2[i]));
+		new[i] = str[i];
+		len--;
 		i++;
 	}
-	return (0);
+	return (new);
 }

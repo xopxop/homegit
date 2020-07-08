@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 09:28:16 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/06 16:28:38 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/08 20:41:17 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,19 @@ int	ft_is_long_option(char chr1, char chr2)
 
 int	ft_isfile(char *dir_name, int *ret)
 {
-	struct stat filestat;
+	struct stat		filestat;
+	DIR				*ptr_dir;
 
 	if ((lstat(dir_name, &filestat)) == -1)
 	{
-		*ret = MINOR_PROBLEMS;
-		ft_err_can_not_access(dir_name);
-		// ft_putstr_fd(strerror(errno), STDERR_FILENO); // need to test this with file and fix
+		ft_err_can_not_access(dir_name, ret);
 		return (NO);
 	}
+	if (!(ptr_dir = opendir(dir_name)))
+	{
+		ft_err_permission_dinied(dir_name, ret);
+		return (NO);
+	}
+	closedir(ptr_dir);
 	return (YES);
 }

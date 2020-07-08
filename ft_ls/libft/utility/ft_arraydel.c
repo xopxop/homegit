@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_arraydel.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/22 13:30:54 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/26 17:45:23 by dthan            ###   ########.fr       */
+/*   Created: 2020/04/04 06:29:33 by dthan             #+#    #+#             */
+/*   Updated: 2020/04/04 06:29:34 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(const char *s1, const char *s2)
-{
-	int i;
+#include "../includes/ft_utility.h"
 
-	i = 0;
-	while (s1[i] || s2[i])
+void	ft_arraydel(char **string_array)
+{
+	char *ptr;
+
+	while (*string_array)
 	{
-		if (s1[i] != s2[i])
-			return ((unsigned char)(s1[i]) - (unsigned char)(s2[i]));
-		i++;
+		ptr = *string_array;
+		string_array++;
+		free(ptr);
 	}
-	return (0);
+	ptr = *string_array;
+	free(ptr);
 }

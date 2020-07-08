@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_arrayct.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/22 13:30:54 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/26 17:45:23 by dthan            ###   ########.fr       */
+/*   Created: 2020/03/26 13:36:33 by dthan             #+#    #+#             */
+/*   Updated: 2020/03/26 13:37:24 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(const char *s1, const char *s2)
+int	ft_arrayct(char **input)
 {
-	int i;
+	int ct;
 
-	i = 0;
-	while (s1[i] || s2[i])
-	{
-		if (s1[i] != s2[i])
-			return ((unsigned char)(s1[i]) - (unsigned char)(s2[i]));
-		i++;
-	}
-	return (0);
+	ct = 0;
+	while (input[ct])
+		ct++;
+	return (ct);
 }

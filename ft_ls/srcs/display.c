@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:15:40 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/06 16:56:48 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/08 21:26:34 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,7 @@ void	display(t_node *parent_dir, t_node *parent_file, t_node *lchild, \
 	if (parent_file && !parent_dir && !lchild)
 		ptr = parent_file;
 	else if (!parent_file && parent_dir)
-	{
 		ptr = parent_dir;
-		if (output.ret == MINOR_PROBLEMS)   // check this
-			ft_printf("\n%s:\n", parent_dir->status.path);
-	}
 	if (output.options & LONG_LIST_FORMAT)
 		ft_long_list(ptr, lchild, output.options);
 	else
@@ -72,9 +68,7 @@ void	ft_long_list(t_node *parent_file, t_node *lchild, int options)
 		ft_get_max(&max, lchild, options);
 		while (lchild)
 		{
-			if (!(options & LIST_HIDDEN) && lchild->status.is_hidden == YES)
-				;
-			else
+			if (!(!(options & LIST_HIDDEN) && lchild->status.is_hidden == YES))
 				ft_print_long_list(lchild, max);
 			lchild = lchild->next;
 		}

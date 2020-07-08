@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 01:54:29 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/03 10:48:44 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/08 01:29:42 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,17 @@ void	ft_split_input(char *name, t_args *output)
 		ft_push_node_to_lst(&output->dir, node);
 	else
 		ft_push_node_to_lst(&output->file, node);
+}
+
+int		ft_lstcount(t_node *lst)
+{
+	int	ct;
+
+	ct = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		ct++;
+	}
+	return (ct);
 }
