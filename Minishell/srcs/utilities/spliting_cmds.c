@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/06 00:13:56 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/09 21:44:40 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/10 02:34:35 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,7 @@ t_cmd		*ft_split_cmds(char *input, t_cmd *cmds)
 	int		i;
 
 	i = -1;
-	shell = (ft_input_contain_dquote(input)) ? ft_strsplit_shell(input) \
-											: ft_strsplit(input, ';');
+	shell = ft_strsplit_shell(input);
 	while (shell[++i])
 	{
 		node = ft_get_arg(shell[i], node);
