@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/06 00:14:09 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/09 21:57:11 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/10 02:15:01 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,20 +131,18 @@ t_cmd		*ft_get_arg(char *token_cmd, t_cmd *cmd)
 {
 	char	**tokens_args;
 	int		i;
-	char	*temp;
 
 	i = -1;
 	if (!(cmd = (t_cmd*)malloc(sizeof(t_cmd))))
 		ft_error_handle(MY_ENOMEM, NULL, NULL, NULL);
-	tokens_args = (ft_input_contain_dquote(token_cmd)) ? ft_strsplit_args(token_cmd) : ft_strsplit(token_cmd, ' ');
+	tokens_args = ft_strsplit_args(token_cmd);
 	if (!(cmd->args = (char**)malloc(sizeof(char*) * (ft_arrayct(tokens_args) + 1))))
 		ft_error_handle(MY_ENOMEM, NULL, NULL, NULL);
 	while (tokens_args[++i])
 	{
 		if (!(cmd->args[i] = (char*)ft_memalloc(sizeof(char) * sysconf(_SC_ARG_MAX))))
 			ft_error_handle(MY_ENOMEM, NULL, NULL, NULL);
-		temp = ft_strtrim(tokens_args[i]);
-		cmd->args[i] = ft_strcpy(cmd->args[i], temp);
+		cmd->args[i] = ft_strcpy(cmd->args[i], tokens_args[i]);
 	}
 	cmd->args[i] = NULL;
 	cmd->next = NULL;
