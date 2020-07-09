@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tool_for_env.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/04 06:16:45 by dthan             #+#    #+#             */
-/*   Updated: 2020/04/04 06:16:47 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/09 17:43:36 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,5 @@ char	*ft_call_value_of(char *var_name)
 	char *p;
 
 	return ((p = ft_call_var(var_name)) != NULL) ? \
-	&*(p + ft_strlen(var_name) + 1) : &*p;
+	&*(p + ft_strlen(var_name) + 1) : NULL;
 }

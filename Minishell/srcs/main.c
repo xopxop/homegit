@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 09:18:23 by dthan             #+#    #+#             */
-/*   Updated: 2020/03/27 22:25:51 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/09 17:44:17 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,21 +58,29 @@ int		ft_external_cmd(t_cmd *cmd)
 	char **p;
 	char *bin_path;
 
-	p = ft_strsplit(ft_call_value_of("PATH"), ':');
-	while (*p)
+	if (access(cmd->args[0], F_OK) != -1)
 	{
-		bin_path = ft_strjoin(*p, "/");
-		bin_path = ft_strjoin_and_free_string1(bin_path, cmd->args[0]);
-		if (access(bin_path, F_OK) != -1)
-		{
-			ft_fork(bin_path, cmd->args);
-			free(bin_path);
-			return (EXIT_SUCCESS);
-		}
-		free(bin_path);
-		p++;
+		ft_fork(cmd->args[0], cmd->args);
+		return (EXIT_SUCCESS);
 	}
-	ft_arraydel(p);
+	else
+	{
+		p = ft_strsplit(ft_call_value_of("PATH"), ':');
+		while (p && *p)
+		{
+			bin_path = ft_strjoin(*p, "/");
+			bin_path = ft_strjoin_and_free_string1(bin_path, cmd->args[0]);
+			if (access(bin_path, F_OK) != -1)
+			{
+				ft_fork(bin_path, cmd->args);
+				free(bin_path);
+				return (EXIT_SUCCESS);
+			}
+			free(bin_path);
+			p++;
+		}
+		ft_arraydel(p);
+	}
 	return (EXIT_FAILURE);
 }
 

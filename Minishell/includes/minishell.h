@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 11:22:29 by dthan             #+#    #+#             */
-/*   Updated: 2020/03/26 11:25:46 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/09 17:50:11 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 # define CD_EACCES "cd: permission dinied: "
 # define CD_EMARG "cd: too many arguments"
 # define CD_ENOPWD "cd: string not in pwd: "
-# define SYNTAX_SEMICOLON "minishell : syntax error near unexpected token \';\'"
-# define SYNTAX_CMDNF "minishell : command not found : "
+# define SYNTAX_SEMICOLON "minishell: syntax error near unexpected token \';\'"
+# define SYNTAX_CMDNF "minishell: command not found : "
 
 char **env;
 
