@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 09:18:23 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/10 03:57:49 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/10 05:00:43 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		ft_internal_cmd(t_cmd *cmd)
 	};
 	i = -1;
 	while (get_built_in[++i].command)
-		if (ft_strcmp(cmd->args[0], get_built_in[i].command) == 0)
+		if (*cmd->args && ft_strcmp(cmd->args[0], get_built_in[i].command) == 0)
 		{
 			get_built_in[i].func(&cmd->args[1]);
 			return (EXIT_SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/06 00:13:56 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/10 04:09:23 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/10 05:07:43 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	ft_get_size_shell(char *input)
 		if (input[i] == ';' && input[i + 1] && input[i + 1] != ';' && !inside_dquote)
 			ct++;
 	}
-	return (ct);
+	return (ct); // fix something in here
 }
 
 static char	**ft_strsplit_shell(char *input)
