@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 09:18:23 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/09 17:44:17 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/10 03:57:49 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,10 +110,17 @@ int		ft_external_cmd(t_cmd *cmd)
 // 	}
 // }
 
+// void	free_cmd_node(t_cmd *node)
+// {
+
+
+// }
+
 void	ft_execute(char *input)
 {
 	t_cmd	*cmd;
 	char	*trimmed_input;
+	// t_cmd	*temp;
 
 	cmd = NULL;
 	trimmed_input = ft_strtrim(input);
@@ -128,7 +135,9 @@ void	ft_execute(char *input)
 				if (ft_internal_cmd(cmd) == EXIT_FAILURE && \
 					ft_external_cmd(cmd) == EXIT_FAILURE)
 					ft_error_handle(SYNTAX_CMDNF, cmd->args[0], NULL, NULL);
+				// temp = cmd;
 				cmd = cmd->next;
+				// free_cmd_node(temp);
 			}
 			//remove the linked list
 		}

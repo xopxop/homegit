@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/06 00:13:56 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/10 02:34:35 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/10 04:09:23 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ static char	*ft_get_single_shell(char *input, int *tail)
 					break ;
 		}
 	}
-	if (*tail <= head)
-		return (NULL);
 	str = ft_strndup(&input[head], *tail - head);
-	*tail = *tail + 1;
 	return (str);
 }
 
@@ -46,7 +43,7 @@ static int	ft_get_size_shell(char *input)
 	while (input[++i])
 	{
 		inside_dquote = (input[i] && (inside_dquote % 2 == 1)) ? 1 : 0;
-		if (input[i] == ';' && input[i + 1] && !inside_dquote)
+		if (input[i] == ';' && input[i + 1] && input[i + 1] != ';' && !inside_dquote)
 			ct++;
 	}
 	return (ct);

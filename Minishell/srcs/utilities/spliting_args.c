@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/06 00:14:09 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/10 02:15:01 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/10 03:40:31 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,22 +67,20 @@ static char	*ft_get_single_arg(char *input, int *tail)
 	char	*str;
 	int		head;
 
-	head = *tail;
-	while (input[(*tail)] && !ft_isspace(input[*tail]))
+	head = -1;
+	while (input[(*tail)])
 	{
-		if (input[*tail] == '"')
+		if (!ft_isspace(input[*tail]))
 		{
-			while (input[++(*tail)])
-				if (input[*tail] == '"')
-					break ;
+			head = *tail;
+			ft_jump_arg(input, tail);
+			break ;
 		}
 		(*tail)++;
 	}
-	if (*tail <= head)
+	if (head == -1)
 		return (NULL);
 	str = ft_strndup(&input[head], *tail - head);
-	while (input[(*tail)] && ft_isspace(input[*tail]))
-		(*tail)++;
 	return (str);
 }
 
@@ -92,6 +90,7 @@ static char	**ft_strsplit_args(char *input)
 	int		size;
 	int		i;
 	int		pos_input;
+	char	*temp;
 
 	i = -1;
 	pos_input = 0;
@@ -99,7 +98,15 @@ static char	**ft_strsplit_args(char *input)
 	if (!(tokens = (char**)malloc(sizeof(char*) * (size + 1))))
 		ft_error_handle(MY_ENOMEM, NULL, NULL, NULL);
 	while (++i < size)
-		tokens[i] = ft_get_single_arg(input, &pos_input);
+	{
+		temp = ft_get_single_arg(input, &pos_input);
+		if (temp == NULL)
+		{
+			i--;
+			continue ;
+		}
+		tokens[i] = temp;
+	}
 	tokens[i] = NULL;
 	return (tokens);
 }
