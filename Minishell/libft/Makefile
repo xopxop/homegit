@@ -6,7 +6,7 @@
 #    By: dthan <dthan@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/24 16:34:34 by dthan             #+#    #+#              #
-#    Updated: 2020/07/08 21:12:33 by dthan            ###   ########.fr        #
+#    Updated: 2020/07/12 12:00:18 by dthan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 NAME=libft.a
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 
 INCLUDES=./
 

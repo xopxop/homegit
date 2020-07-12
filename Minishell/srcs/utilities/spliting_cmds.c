@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/06 00:13:56 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/11 19:29:49 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/12 11:58:10 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	ft_get_size_shell(char *input)
 	return (ct); // fix something in here
 }
 
-static char	**ft_strsplit_shell(char *input)
+static char	** ft_strsplit_shell(char *input)
 {
 	char	**shell;
 	int		size;

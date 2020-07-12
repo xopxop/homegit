@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/06 00:14:09 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/11 19:39:30 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/12 11:51:57 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,11 +142,11 @@ t_cmd		*ft_get_arg(char *token_cmd, t_cmd *cmd)
 	int		i;
 
 	i = -1;
-	if (!(cmd = (t_cmd*)malloc(sizeof(t_cmd))))
-		ft_error_handle(MY_ENOMEM, NULL, NULL, NULL);
 	tokens_args = ft_strsplit_args(token_cmd);
 	if (tokens_args == NULL)
 		return (NULL);
+	if (!(cmd = (t_cmd*)malloc(sizeof(t_cmd))))
+		ft_error_handle(MY_ENOMEM, NULL, NULL, NULL);
 	if (!(cmd->args = (char**)malloc(sizeof(char*) * (ft_arrayct(tokens_args) + 1))))
 		ft_error_handle(MY_ENOMEM, NULL, NULL, NULL);
 	while (tokens_args[++i])
