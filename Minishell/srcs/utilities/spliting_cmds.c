@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/06 00:13:56 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/10 05:07:43 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/11 19:29:49 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,19 @@ static void	ft_delete_dquote(t_cmd *lst)
 	}
 }
 
+void	filter_cmds_list(t_cmd *list)
+{
+	t_cmd *temp;
+
+	while (list)
+	{
+		temp = list;
+		list = list->next;
+		if (temp->args == NULL)
+			free(temp);
+	}
+}
+
 t_cmd		*ft_split_cmds(char *input, t_cmd *cmds)
 {
 	char	**shell;
@@ -104,6 +117,7 @@ t_cmd		*ft_split_cmds(char *input, t_cmd *cmds)
 		ft_push_node(&cmds, node);
 	}
 	ft_delete_dquote(cmds);
+	filter_cmds_list(cmds);
 	ft_arraydel(shell);
 	return (cmds);
 }

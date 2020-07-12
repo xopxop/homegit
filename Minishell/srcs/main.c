@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 09:18:23 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/10 05:00:43 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/12 11:34:04 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,6 +172,16 @@ char	*get_input(int level)
 	return (line);
 }
 
+void	free_env()
+{
+	int i;
+
+	i = -1;
+	while(env[++i])
+		free(env[i]);
+	free(env);
+}
+
 int		main(int argc, char **argv, char **envp)
 {
 	char	*input;
@@ -187,5 +197,6 @@ int		main(int argc, char **argv, char **envp)
 		ft_execute(input);
 		free(input);
 	}
+	free_env();
 	return (EXIT_SUCCESS);
 }
