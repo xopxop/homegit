@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 11:22:29 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/09 17:50:11 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/12 18:35:25 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_error_malloc(void);
 void	ft_error_handle(char *first, char *second, char *third, char *fourth);
 
 // Helper
-void	ft_fork(char *path, char **arguments);
+int		ft_fork(char *path, char **arguments);
 
 /*
 ** internal_cmd

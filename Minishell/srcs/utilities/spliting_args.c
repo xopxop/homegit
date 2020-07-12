@@ -6,13 +6,15 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/06 00:14:09 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/12 11:51:57 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/12 19:26:23 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-// this function will be used to jump if it hit the "
+/*
+** this function will be used to jump if it hit the "
+*/
 
 static void	ft_jump_dquote(char *str, int *i, int *inside_dquote)
 {
@@ -22,7 +24,9 @@ static void	ft_jump_dquote(char *str, int *i, int *inside_dquote)
 	*inside_dquote = 0;
 }
 
-// this function will be used to jump to the next argument
+/*
+** this function will be used to jump to the next argument
+*/
 
 static void	ft_jump_arg(char *str, int *i)
 {
@@ -113,29 +117,7 @@ static char	**ft_strsplit_args(char *input)
 	return (tokens);
 }
 
-// t_cmd		*ft_get_arg(char *token_cmd, t_cmd *cmd)
-// {
-// 	char	**tokens_args;
-// 	int		i;
-
-// 	i = -1;
-// 	if (!(cmd = (t_cmd*)malloc(sizeof(t_cmd))))
-// 		ft_error_handle(MY_ENOMEM, NULL, NULL, NULL);
-// 	tokens_args = (ft_input_contain_dquote(token_cmd)) ? ft_strsplit_args(token_cmd) : ft_strsplit(token_cmd, ' ');
-// 	if (!(cmd->args = (char**)malloc(sizeof(char*) * (ft_arrayct(tokens_args) + 1))))
-// 		ft_error_handle(MY_ENOMEM, NULL, NULL, NULL);
-// 	while (tokens_args[++i])
-// 	{
-// 		if (!(cmd->args[i] = (char*)ft_memalloc(sizeof(char) * sysconf(_SC_ARG_MAX))))
-// 			ft_error_handle(MY_ENOMEM, NULL, NULL, NULL);
-// 		cmd->args[i] = ft_strcpy(cmd->args[i], tokens_args[i]);
-// 	}
-// 	cmd->args[i] = NULL;
-// 	cmd->next = NULL;
-// 	ft_arraydel(tokens_args);
-// 	return (cmd);
-// }
-
+// need to remove sysconf_ft
 t_cmd		*ft_get_arg(char *token_cmd, t_cmd *cmd)
 {
 	char	**tokens_args;
@@ -147,11 +129,13 @@ t_cmd		*ft_get_arg(char *token_cmd, t_cmd *cmd)
 		return (NULL);
 	if (!(cmd = (t_cmd*)malloc(sizeof(t_cmd))))
 		ft_error_handle(MY_ENOMEM, NULL, NULL, NULL);
-	if (!(cmd->args = (char**)malloc(sizeof(char*) * (ft_arrayct(tokens_args) + 1))))
+	if (!(cmd->args = (char**)malloc(sizeof(char*) * \
+		(ft_arrayct(tokens_args) + 1))))
 		ft_error_handle(MY_ENOMEM, NULL, NULL, NULL);
 	while (tokens_args[++i])
 	{
-		if (!(cmd->args[i] = (char*)ft_memalloc(sizeof(char) * sysconf(_SC_ARG_MAX))))
+		if (!(cmd->args[i] = (char*)ft_memalloc(sizeof(char) * \
+			sysconf(_SC_ARG_MAX))))
 			ft_error_handle(MY_ENOMEM, NULL, NULL, NULL);
 		cmd->args[i] = ft_strcpy(cmd->args[i], tokens_args[i]);
 	}
@@ -160,7 +144,6 @@ t_cmd		*ft_get_arg(char *token_cmd, t_cmd *cmd)
 	ft_arraydel(tokens_args);
 	return (cmd);
 }
-
 
 void		ft_push_node(t_cmd **head, t_cmd *node)
 {

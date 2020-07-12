@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 09:18:23 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/12 11:55:32 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/12 19:51:22 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 void	ft_promt(void)
 {
 	char *ptr_dir;
+	char *ppwd;
 
 	ft_putstr("minishell:");
-	ptr_dir = ft_strrchr(ft_call_value_of("PWD"), '/') + 1;
+	ppwd = ft_call_value_of("PWD");
+	ptr_dir = ft_strrchr(ppwd, '/') + 1;
+	// ptr_dir = ft_strrchr(ft_call_value_of("PWD"), '/') + 1;
 	if (*ptr_dir == '\0')
 		ft_putchar('/');
 	else if (!ft_strcmp(ft_call_value_of("HOME"), ft_call_value_of("PWD")))
@@ -55,63 +58,32 @@ int		ft_internal_cmd(t_cmd *cmd)
 
 int		ft_external_cmd(t_cmd *cmd)
 {
-	char **p;
-	char *bin_path;
-	char **temp;
+	char	**p;
+	char	*bin_path;
+	int		i;
 
 	if (access(cmd->args[0], F_OK) != -1)
-	{
-		ft_fork(cmd->args[0], cmd->args);
-		return (EXIT_SUCCESS);
-	}
+		return (ft_fork(cmd->args[0], cmd->args));
 	else
 	{
 		p = ft_strsplit(ft_call_value_of("PATH"), ':');
-		temp = p;
-		while (p && *p)
+		i = -1;
+		while (p && p[++i])
 		{
-			bin_path = ft_strjoin(*p, "/");
-			bin_path = ft_strjoin_and_free_string1(bin_path, cmd->args[0]);
+			bin_path = ft_3strjoin(p[i], "/", cmd->args[0]);
 			if (access(bin_path, F_OK) != -1)
 			{
 				ft_fork(bin_path, cmd->args);
 				free(bin_path);
-				ft_arraydel(temp);
+				ft_arraydel(p);
 				return (EXIT_SUCCESS);
 			}
 			free(bin_path);
-			p++;
 		}
-		ft_arraydel(temp);
+		ft_arraydel(p);
 	}
 	return (EXIT_FAILURE);
 }
-
-// void	ft_execute(char *input)
-// {
-// 	char *trimmed_input;
-// 	char **cmds;
-// 	char **tokens;
-// 	int i;
-
-// 	if (input)
-// 	{
-// 		i = -1;
-// 		trimmed_input = ft_strtrim(input);
-// 		cmds = ft_strsplit(trimmed_input, ';');
-// 		while (cmds[++i])
-// 		{
-// 			tokens = ft_strsplit(cmds[i], ' ');
-// 			if (is_env_var(&tokens[1]) == EXIT_SUCCESS)
-// 				tokens = ft_change_tokens(tokens);
-// 			if (ft_internal_cmd(tokens) == EXIT_FAILURE && ft_external_cmd(tokens) == EXIT_FAILURE)
-// 				ft_printf("minishell: command not found: %s\n", cmds[i]);
-// 			ft_arraydel(tokens);
-// 		}
-// 		ft_arraydel(cmds);
-// 		free(trimmed_input);
-// 	}
-// }
 
 void	free_cmd_node(t_cmd *node)
 {
@@ -140,14 +112,12 @@ void	ft_execute(char *input)
 			while (cmd)
 			{
 				ft_replace_args_if_env_var(cmd->args);
-				if (ft_internal_cmd(cmd) == EXIT_FAILURE && \
-					ft_external_cmd(cmd) == EXIT_FAILURE)
+				if (ft_internal_cmd(cmd) && ft_external_cmd(cmd))
 					ft_error_handle(SYNTAX_CMDNF, cmd->args[0], NULL, NULL);
 				temp = cmd;
 				cmd = cmd->next;
 				free_cmd_node(temp);
 			}
-			//remove the linked list
 		}
 		else
 			ft_error_handle(SYNTAX_SEMICOLON, NULL, NULL, NULL);
@@ -180,12 +150,13 @@ char	*get_input(int level)
 	return (line);
 }
 
-void	free_env()
+// need to move
+void	free_env(void)
 {
 	int i;
 
 	i = -1;
-	while(env[++i])
+	while (env[++i])
 		free(env[i]);
 	free(env);
 }

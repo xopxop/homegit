@@ -6,7 +6,7 @@
 #    By: dthan <dthan@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/24 16:34:34 by dthan             #+#    #+#              #
-#    Updated: 2020/07/12 12:00:18 by dthan            ###   ########.fr        #
+#    Updated: 2020/07/12 18:59:23 by dthan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -186,6 +186,7 @@ utility/ft_itoa_signed_and_unsigned_long_long.c \
 utility/ft_strrev.c \
 utility/ft_arrayct.c \
 utility/ft_arraydel.c \
+utility/ft_3strjoin.c
 
 UTILITY_OBJ=ft_memalloc.o \
 ft_memdel.o \
@@ -210,6 +211,7 @@ ft_itoa_signed_and_unsigned_long_long.o \
 ft_strrev.o \
 ft_arrayct.o \
 ft_arraydel.o \
+ft_3strjoin.o
 
 all: $(NAME)
 
