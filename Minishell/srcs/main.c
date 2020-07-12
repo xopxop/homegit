@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 09:18:23 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/12 11:34:04 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/12 11:42:02 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int		ft_external_cmd(t_cmd *cmd)
 			{
 				ft_fork(bin_path, cmd->args);
 				free(bin_path);
+				ft_arraydel(p);
 				return (EXIT_SUCCESS);
 			}
 			free(bin_path);
