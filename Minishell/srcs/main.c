@@ -6,30 +6,13 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 09:18:23 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/13 04:03:17 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/13 12:01:21 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	ft_promt(void)
-{
-	char *ptr_dir;
-
-	ft_printf("%sminishell:%s", RED_COLOR, DEFAULT_COLOR);
-	ptr_dir = ft_strrchr(ft_call_value_of("PWD"), '/') + 1;
-	if (*ptr_dir == '\0')
-		ft_putchar('/');
-	else if (!ft_strcmp(ft_call_value_of("HOME"), ft_call_value_of("PWD")))
-		ft_putchar('~');
-	else
-		ft_putstr(ptr_dir);
-	ft_putchar(' ');
-	ft_putstr(ft_call_value_of("USER"));
-	ft_putstr("$ ");
-}
-
-int		ft_internal_cmd(t_cmd *cmd)
+static int	ft_internal_cmd(t_cmd *cmd)
 {
 	int			i;
 	t_builtin	*get_built_in;
@@ -53,7 +36,7 @@ int		ft_internal_cmd(t_cmd *cmd)
 	return (EXIT_FAILURE);
 }
 
-int		ft_external_cmd(t_cmd *cmd)
+static int	ft_external_cmd(t_cmd *cmd)
 {
 	char	**p;
 	char	*bin_path;
@@ -82,18 +65,7 @@ int		ft_external_cmd(t_cmd *cmd)
 	return (EXIT_FAILURE);
 }
 
-void	free_cmd_node(t_cmd *node)
-{
-	int i;
-
-	i = -1;
-	while (node->args[++i])
-		free(node->args[i]);
-	free(node->args);
-	free(node);
-}
-
-void	ft_execute(char *input)
+static void	ft_execute(char *input)
 {
 	t_cmd	*cmd;
 	char	*trimmed_input;
@@ -122,17 +94,7 @@ void	ft_execute(char *input)
 	}
 }
 
-void	signal_handeler(int signo)
-{
-	if (signo == SIGINT)
-	{
-		ft_putchar_fd('\n', STDOUT_FILENO);
-		ft_promt();
-		signal(SIGINT, signal_handeler);
-	}
-}
-
-char	*get_input(int level)
+static char	*get_input(int level)
 {
 	char *line;
 
@@ -147,28 +109,17 @@ char	*get_input(int level)
 	return (line);
 }
 
-// need to move
-void	free_env(void)
-{
-	int i;
-
-	i = -1;
-	while (env[++i])
-		free(env[i]);
-	free(env);
-}
-
-int		main(int argc, char **argv, char **envp)
+int			main(int argc, char **argv, char **envp)
 {
 	char	*input;
 
 	(void)argc;
 	(void)argv;
-	env = ft_new_env(NULL, NULL, 0, envp);
+	g_env = ft_new_env(NULL, NULL, 0, envp);
 	while (1)
 	{
 		ft_promt();
-		//signal(SIGINT, signal_handeler);
+		signal(SIGINT, signal_handeler);
 		input = get_input((int)1);
 		ft_execute(input);
 		free(input);

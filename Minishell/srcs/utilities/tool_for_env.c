@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/04 06:16:45 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/13 04:10:05 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/13 12:02:38 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ char	*ft_call_var(char *var_name)
 	int len;
 
 	i = -1;
-	while (env[++i])
+	while (g_env[++i])
 	{
 		len = ft_strlen(var_name);
-		if (!ft_strncmp(var_name, env[i], len))
-			if (env[i][len] == '=')
-				return (env[i]);
+		if (!ft_strncmp(var_name, g_env[i], len))
+			if (g_env[i][len] == '=')
+				return (g_env[i]);
 	}
 	return (NULL);
 }

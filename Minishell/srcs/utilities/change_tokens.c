@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   change_tokens.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/04 05:59:47 by dthan             #+#    #+#             */
-/*   Updated: 2020/04/04 05:59:48 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/13 11:04:07 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	**ft_creat_new_and_replace_tokens(char **tokens, int size)
 
 	i = -1;
 	if (!(new_tokens = (char**)malloc(sizeof(char*) * (size + 1))))
-		ft_error_handle(MY_ENOMEM, NULL, NULL, NULL); //need to stop program
+		ft_error_handle(MY_ENOMEM, NULL, NULL, NULL);
 	ptr = new_tokens;
 	*ptr = ft_strdup(tokens[++i]);
 	while (tokens[++i])

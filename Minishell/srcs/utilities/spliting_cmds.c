@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/06 00:13:56 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/12 11:58:10 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/13 11:03:36 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,14 @@ static int	ft_get_size_shell(char *input)
 	while (input[++i])
 	{
 		inside_dquote = (input[i] && (inside_dquote % 2 == 1)) ? 1 : 0;
-		if (input[i] == ';' && input[i + 1] && input[i + 1] != ';' && !inside_dquote)
+		if (input[i] == ';' && input[i + 1] && \
+		input[i + 1] != ';' && !inside_dquote)
 			ct++;
 	}
-	return (ct); // fix something in here
+	return (ct);
 }
 
-static char	** ft_strsplit_shell(char *input)
+static char	**ft_strsplit_shell(char *input)
 {
 	char	**shell;
 	int		size;
@@ -87,19 +88,6 @@ static void	ft_delete_dquote(t_cmd *lst)
 					}
 			}
 		lst = lst->next;
-	}
-}
-
-void	filter_cmds_list(t_cmd *list)
-{
-	t_cmd *temp;
-
-	while (list)
-	{
-		temp = list;
-		list = list->next;
-		if (temp->args == NULL)
-			free(temp);
 	}
 }
 

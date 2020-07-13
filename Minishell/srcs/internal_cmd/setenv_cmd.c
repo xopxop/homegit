@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setenv_cmd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 02:24:43 by dthan             #+#    #+#             */
-/*   Updated: 2020/03/30 02:24:45 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/13 12:04:06 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,16 @@ void	setenv_cmd(char **tokens)
 	{
 		len = ft_strlen(tokens[0]);
 		i = -1;
-		while (env[++i])
-			if (!ft_strncmp(tokens[0], env[i], len) && env[i][len] == '=')
+		while (g_env[++i])
+			if (!ft_strncmp(tokens[0], g_env[i], len) && g_env[i][len] == '=')
 			{
-				change_var(env[i] + len + 1, tokens[1]);
+				change_var(g_env[i] + len + 1, tokens[1]);
 				return ;
 			}
-		if (env[i] == NULL)
+		if (g_env[i] == NULL)
 		{
-			ptr = env;
-			env = ft_new_env(tokens[0], tokens[1], 1, env);
+			ptr = g_env;
+			g_env = ft_new_env(tokens[0], tokens[1], 1, g_env);
 			ft_arraydel(ptr);
 		}
 	}

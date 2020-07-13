@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 02:25:22 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/12 11:34:32 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/13 04:47:57 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,6 @@
 void	exit_cmd(char **tokens)
 {
 	(void)tokens;
+	free_env();
 	exit(EXIT_SUCCESS);
 }
