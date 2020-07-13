@@ -6,14 +6,19 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 11:22:29 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/13 12:07:06 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/13 12:10:11 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 # include "../libft/includes/libft.h"
-# include <linux/limits.h>
+
+/*
+** For Linux
+** # include <linux/limits.h>
+*/
+
 # include <limits.h>
 # include <unistd.h>
 # include <sys/wait.h>
