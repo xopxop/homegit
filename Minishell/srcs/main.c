@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 09:18:23 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/12 19:51:22 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/13 04:03:17 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,9 @@
 void	ft_promt(void)
 {
 	char *ptr_dir;
-	char *ppwd;
 
-	ft_putstr("minishell:");
-	ppwd = ft_call_value_of("PWD");
-	ptr_dir = ft_strrchr(ppwd, '/') + 1;
-	// ptr_dir = ft_strrchr(ft_call_value_of("PWD"), '/') + 1;
+	ft_printf("%sminishell:%s", RED_COLOR, DEFAULT_COLOR);
+	ptr_dir = ft_strrchr(ft_call_value_of("PWD"), '/') + 1;
 	if (*ptr_dir == '\0')
 		ft_putchar('/');
 	else if (!ft_strcmp(ft_call_value_of("HOME"), ft_call_value_of("PWD")))

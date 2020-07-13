@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/06 00:14:09 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/12 19:26:23 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/13 04:17:14 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ static char	**ft_strsplit_args(char *input)
 	return (tokens);
 }
 
-// need to remove sysconf_ft
+// need to remove sysconf_ft - removed
 t_cmd		*ft_get_arg(char *token_cmd, t_cmd *cmd)
 {
 	char	**tokens_args;
@@ -134,8 +134,7 @@ t_cmd		*ft_get_arg(char *token_cmd, t_cmd *cmd)
 		ft_error_handle(MY_ENOMEM, NULL, NULL, NULL);
 	while (tokens_args[++i])
 	{
-		if (!(cmd->args[i] = (char*)ft_memalloc(sizeof(char) * \
-			sysconf(_SC_ARG_MAX))))
+		if (!(cmd->args[i] = (char*)ft_memalloc(sizeof(char) * ARG_MAX)))
 			ft_error_handle(MY_ENOMEM, NULL, NULL, NULL);
 		cmd->args[i] = ft_strcpy(cmd->args[i], tokens_args[i]);
 	}

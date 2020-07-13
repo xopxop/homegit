@@ -6,13 +6,14 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 11:22:29 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/12 18:35:25 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/13 04:16:27 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 # include "../libft/includes/libft.h"
+# include <linux/limits.h>
 # include <limits.h>
 # include <unistd.h>
 # include <sys/wait.h>
@@ -29,6 +30,9 @@
 # define CD_ENOPWD "cd: string not in pwd: "
 # define SYNTAX_SEMICOLON "minishell: syntax error near unexpected token \';\'"
 # define SYNTAX_CMDNF "minishell: command not found : "
+# define RED_COLOR "\033[0;33m"
+# define DEFAULT_COLOR "\033[0m"
+
 
 char **env;
 
