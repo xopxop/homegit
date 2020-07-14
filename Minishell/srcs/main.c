@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 09:18:23 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/13 12:01:21 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/14 18:00:10 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ static char	*get_input(int level)
 	{
 		ft_putstr("dquote> ");
 		line = ft_strjoin_and_free_string1(line, "\n");
-		line = ft_strjoin_and_free_string2(line, get_input((int)2));
+		line = ft_strjoin_and_free_2strings(line, get_input((int)2));
 	}
 	return (line);
 }

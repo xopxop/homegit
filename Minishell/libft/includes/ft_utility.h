@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 06:49:13 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/12 19:00:30 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/14 18:00:36 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ char	*ft_itoa_unsigned_longlong(unsigned long long nbr);
 char	*ft_strrev(char *str);
 char	*ft_strjoin_and_free_string2(char *string1, char *string2);
 char	*ft_strjoin_and_free_string1(char *string1, char *string2);
+char	*ft_strjoin_and_free_2strings(char *string1, char *string2);
 int		ft_arrayct(char **input);
 void	ft_arraydel(char **string_array);
 
