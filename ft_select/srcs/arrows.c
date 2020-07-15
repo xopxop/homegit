@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 08:20:46 by dthan             #+#    #+#             */
-/*   Updated: 2020/05/22 17:35:56 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/15 16:01:06 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,14 +108,14 @@ void	move_up(t_lst *last, t_lst *head)
 	}
 }
 
-void	ft_move(t_select *select, char *buf)
+void	ft_move(char *buf)
 {
 	if (UPWARDS_ARROW(buf))
-		move_up(select->last, select->head);
+		move_up(g_select.last, g_select.head);
 	else if (DOWNWARDS_ARROW(buf))
-		move_down(select->head);
+		move_down(g_select.head);
 	else if (RIGHTWARDS_ARROW(buf))
-		move_right(select->head);
+		move_right(g_select.head);
 	else if (LEFTWARDS_ARROW(buf))
-		move_left(select->last);
+		move_left(g_select.last);
 }

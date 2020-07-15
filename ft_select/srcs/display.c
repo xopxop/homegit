@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 08:26:23 by dthan             #+#    #+#             */
-/*   Updated: 2020/05/22 17:31:54 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/15 19:00:40 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,25 +46,26 @@ static void	ft_print_output(t_lst *lst, t_terminal term, int width_col)
 	}
 }
 
-void		ft_display(t_select *select)
+void		ft_display(void)
 {
 	struct winsize	w;
 	int				input_size;
 	int				width_col;
 
-	if (select->head == NULL)
+	if (g_select.head == NULL)
 	{
 		tputs(tgetstr("cl", NULL), 1, char_to_term);
+		restore_old_term_config();
 		exit(EXIT_SUCCESS);
 	}
 	tputs(tgetstr("cl", NULL), 1, char_to_term);
-	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
-	input_size = ft_count_elems(select->head);
-	width_col = (ft_finding_longest_elem(select->head) + 1);
-	select->term.cols = w.ws_col / width_col;
-	select->term.rows = (input_size == select->term.cols) ? 1 : \
-								(input_size / select->term.cols) + 1;
-	if (select->term.rows > w.ws_row)
+	ioctl(STDERR_FILENO, TIOCGWINSZ, &w);
+	input_size = ft_count_elems(g_select.head);
+	width_col = (ft_finding_longest_elem(g_select.head) + 1);
+	g_select.term.cols = w.ws_col / width_col;
+	g_select.term.rows = (input_size == g_select.term.cols) ? 1 : \
+								(input_size / g_select.term.cols) + 1;
+	if (g_select.term.rows > w.ws_row)
 		return ;
-	ft_print_output(select->head, select->term, width_col);
+	ft_print_output(g_select.head, g_select.term, width_col);
 }

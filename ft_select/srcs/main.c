@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 01:13:54 by dthan             #+#    #+#             */
-/*   Updated: 2020/05/22 17:28:12 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/15 16:06:25 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ static void	init_custom_config(t_terminal *term)
 
 	term->termtype = getenv("TERM");
 	tgetent(term->term_buffer, term->termtype);
-	tcgetattr(STDERR_FILENO, &term->term_attributes);
+	tcgetattr(STDERR_FILENO, &term->new_attributes);
 	tcgetattr(STDERR_FILENO, &term->old_attributes);
-	term->term_attributes.c_lflag &= ~(ICANON | ECHO);
-	term->term_attributes.c_cc[VMIN] = 1;
-	term->term_attributes.c_cc[VTIME] = 0;
-	tcsetattr(STDERR_FILENO, TCSANOW, &term->term_attributes);
+	term->new_attributes.c_lflag &= ~(ICANON | ECHO);
+	term->new_attributes.c_cc[VMIN] = 1;
+	term->new_attributes.c_cc[VTIME] = 0;
+	tcsetattr(STDERR_FILENO, TCSANOW, &term->new_attributes);
 	tputs(tgetstr("ti", NULL), 1, char_to_term);
 	tputs(tgetstr("vi", NULL), 1, char_to_term);
 }
@@ -50,33 +50,59 @@ void		init_elems(t_select *select, char **input)
 	select->last = prev_node;
 }
 
-static void	on_key_press(t_select *select)
+void	restore_old_term_config(void)
+{
+	tcsetattr(STDIN_FILENO, TCSANOW, &g_select.term.old_attributes);
+	tputs(tgetstr("ve", NULL), 1, char_to_term);
+	tputs(tgetstr("te", NULL), 1, char_to_term);
+}
+
+void	signal_handler(int signo)
+{
+	if (signo == SIGTSTP)
+	{
+		restore_old_term_config();
+		signal(SIGTSTP, SIG_DFL);
+		ioctl(STDERR_FILENO, TIOCSTI, CTRL_Z);
+	}
+	else if (signo == SIGCONT)
+	{
+		init_custom_config(&g_select.term);
+		signal_initialization();
+		ft_display();
+	}
+}
+
+void	signal_initialization(void)
+{
+	signal(SIGTSTP, signal_handler);
+	signal(SIGCONT, signal_handler);
+}
+
+static void	on_key_press(void)
 {
 	char	buf[5];
 
 	while (true)
 	{
 		ft_bzero(buf, 5);
-		ft_display(select);
-		read(STDIN_FILENO, buf, 5);
+		ft_display();
+		read(STDERR_FILENO, buf, 5);
 		if (ESCAPE_KEY(buf))
+		{
+			restore_old_term_config();
+			// free_elems(&select->head, &select->last);
 			exit(EXIT_SUCCESS);
+		}
 		else if (SPACE_KEY(buf))
-			ft_space_key(select->head);
+			ft_space_key(g_select.head);
 		else if (ENTER_KEY(buf))
 			break ;
 		else if (BACKSPACE_KEY(buf) || DELETE_KEY(buf))
-			ft_remove_elem(&select->head);
+			ft_remove_elem(&g_select.head);
 		else
-			ft_move(select, buf);
+			ft_move(buf);
 	}
-}
-
-static void	restore_old_term_config(t_select select)
-{
-	tcsetattr(STDIN_FILENO, TCSANOW, &select.term.old_attributes);
-	tputs(tgetstr("ve", NULL), 1, char_to_term);
-	tputs(tgetstr("te", NULL), 1, char_to_term);
 }
 
 static void	send_selected_choices_to_the_shell(t_lst *head)
@@ -104,14 +130,13 @@ static void	send_selected_choices_to_the_shell(t_lst *head)
 
 static void	ft_select(char **av)
 {
-	t_select	select;
-
-	init_custom_config(&select.term);
-	init_elems(&(select), av);
-	on_key_press(&select);
-	restore_old_term_config(select);
-	send_selected_choices_to_the_shell(select.head);
-	free_elems(&select.head, &select.last);
+	init_custom_config(&g_select.term);
+	init_elems(&(g_select), av);
+	signal_initialization();
+	on_key_press();
+	restore_old_term_config();
+	send_selected_choices_to_the_shell(g_select.head);
+	free_elems(&g_select.head, &g_select.last);
 }
 
 int			main(int ac, char **av)

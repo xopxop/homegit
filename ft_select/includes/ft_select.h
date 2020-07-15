@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 00:53:17 by dthan             #+#    #+#             */
-/*   Updated: 2020/05/22 17:36:24 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/15 19:00:34 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define DOWNWARDS_ARROW(str) ft_strequ(str, "\033[B")
 # define RIGHTWARDS_ARROW(str) ft_strequ(str, "\033[C")
 # define LEFTWARDS_ARROW(str) ft_strequ(str, "\033[D")
+# define CTRL_Z "\x1A"
 
 typedef struct		s_elem
 {
@@ -51,7 +52,7 @@ typedef struct		s_lst
 typedef struct		s_terminal
 {
 
-	struct termios	term_attributes;
+	struct termios	new_attributes;
 	struct termios	old_attributes;
 	char			term_buffer[2048];
 	char			*termtype;
@@ -66,12 +67,14 @@ typedef struct		s_select
 	t_terminal		term;
 }					t_select;
 
+t_select g_select;
+
 int		char_to_term(int c);
 t_lst	*ft_creat_elem(char *input);
-void	ft_display(t_select *select);
+void	ft_display(void);
 void	ft_space_key(t_lst *head);
 void	ft_remove_elem(t_lst **head);
-void	ft_move(t_select *select, char *buf);
+void	ft_move(char *buf);
 void	move_right(t_lst *head);
 void	move_left(t_lst *last);
 void	move_down(t_lst *head);
@@ -80,5 +83,7 @@ int		ft_finding_longest_elem(t_lst *lst);
 int		count_selected_elem(t_lst *head);
 int		ft_count_elems(t_lst *lst);
 void	free_elems(t_lst **head, t_lst **last);
+void	restore_old_term_config(void);
+void	signal_initialization(void);
 
 #endif
