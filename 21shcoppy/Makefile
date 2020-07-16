@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+         #
+#    By: dthan <dthan@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/25 09:14:51 by dthan             #+#    #+#              #
-#    Updated: 2020/03/25 09:14:54 by dthan            ###   ########.fr        #
+#    Updated: 2020/07/15 23:50:33 by dthan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,6 @@ srcs/parser/AST/simple_command.c \
 srcs/parser/AST/here_end.c \
 srcs/parser/print_ast.c \
 srcs/executor/executor.c \
-srcs/executor/executor_tools.c \
 srcs/executor/internal_cmd/cd_cmd.c \
 srcs/executor/internal_cmd/echo_cmd.c \
 srcs/executor/internal_cmd/env_cmd.c \
@@ -56,7 +55,9 @@ srcs/executor/execute_ast/execute_pipe_sequence.c \
 srcs/executor/execute_ast/execute_command.c \
 srcs/executor/execute_ast/execute_simple_command.c \
 srcs/executor/execute_ast/execute_cmd_name.c \
-srcs/executor/execute_ast/execute_cmd_suffix.c
+srcs/executor/execute_ast/execute_cmd_suffix.c \
+srcs/executor/heredoc.c \
+srcs/line_edition/get_line.c
 
 SRCS_OBJ = main.o error.o \
 tool_for_env.o  \
@@ -81,7 +82,6 @@ simple_command.o \
 here_end.o \
 print_ast.o \
 executor.o \
-executor_tools.o \
 cd_cmd.o \
 echo_cmd.o \
 env_cmd.o \
@@ -96,14 +96,16 @@ execute_pipe_sequence.o \
 execute_command.o \
 execute_simple_command.o \
 execute_cmd_name.o \
-execute_cmd_suffix.o
+execute_cmd_suffix.o \
+heredoc.o \
+get_line.o
 
 all: $(NAME)
 
 $(NAME):
 	@make -s -C libft/ fclean && make -s -C libft/
 	@gcc $(CFLAGS) -I$(INCLUDES) -c $(SRCS_CODES) 
-	@gcc $(CFLAGS) $(SRCS_OBJ) libft/libft.a -o $(NAME)
+	@gcc $(CFLAGS) $(SRCS_OBJ) libft/libft.a -o $(NAME) -ltermcap
 	@echo "\033[32mCreated Minishell\033[0m"
 
 clean:

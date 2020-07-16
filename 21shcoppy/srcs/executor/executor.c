@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/08 08:06:41 by dthan             #+#    #+#             */
-/*   Updated: 2020/04/08 08:06:42 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/15 21:24:57 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,15 @@ void redirect_less(char *src)
 	dup2(fd, STDIN_FILENO);
 }
 
+void redirect_dless(t_exe exe)
+{
+	int fd[2];
+
+	pipe(fd);
+	ft_putstr_fd(exe.heredoc->heredoc, fd[WRITE_END]);
+	close(fd[WRITE_END]);
+	dup2(fd[READ_END], STDIN_FILENO);
+}
 
 void handle_redirect(t_exe exe)
 {
@@ -115,7 +124,29 @@ void handle_redirect(t_exe exe)
 		return (redirect_dgreat(exe.redirect_des));
 	if (ft_strequ(exe.redirect_op, "<"))
 		return (redirect_less(exe.redirect_src));
+	if (ft_strequ(exe.redirect_op, "<<"))
+		return (redirect_dless(exe));
 }
+
+// void run (t_exe exec)
+// {
+// 	if (ft_internal_cmd(exec) == EXIT_SUCCESS)
+// 		return ;
+// 	if (fork() == 0)
+// 	{
+// 		if (exec.redirect_op != NULL)
+// 			handle_redirect(exec);
+// 		if (ft_strequ(exec.av[0], "echo"))
+// 		{
+// 			echo_cmd(&exec.av[1]);
+// 			exit(EXIT_SUCCESS);
+// 		}
+// 		run2(exec);
+// 		exit(EXIT_SUCCESS);
+// 	}
+// 	else
+// 		wait(NULL);
+// }
 
 void run (t_exe exec)
 {
@@ -125,12 +156,7 @@ void run (t_exe exec)
 	{
 		if (exec.redirect_op != NULL)
 			handle_redirect(exec);
-		if (ft_strequ(exec.av[0], "echo"))
-		{
-			echo_cmd(&exec.av[1]);
-			exit(EXIT_SUCCESS);
-		}
-		run2(exec);
+		(ft_strequ(exec.av[0], "echo")) ? echo_cmd(&exec.av[1]) : run2(exec);
 		exit(EXIT_SUCCESS);
 	}
 	else
@@ -144,5 +170,6 @@ void executor(t_astnode *ast)
 	printBinaryTree(ast);
 	ft_bzero(&exec, sizeof(t_exe));
 	exec.av = (char**)malloc(sysconf(_SC_ARG_MAX));
-	execute_complete_command(ast, &exec);
+	find_heredoc(ast, &exec);
+	execute_complete_command(ast, &exec); //should coppy using temp, for the purpose of freeing memory
 }

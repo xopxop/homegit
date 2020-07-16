@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 11:22:29 by dthan             #+#    #+#             */
-/*   Updated: 2020/03/26 11:25:46 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/15 23:44:14 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,13 @@
 # include <sys/stat.h>
 # include <sys/signal.h>
 // # include <sys/vlimit.h>
+# include <stdio.h>
 
 # include "shell_error.h"
 # include "ast.h"
 # include "token.h"
 # include "utilities.h"
+# include "line_edition.h"
 #define READ_END 0
 #define WRITE_END 1
 
@@ -35,6 +37,13 @@ typedef struct			s_builtin
 	void				(*func)(char**);
 }						t_builtin;
 
+typedef struct 			s_heredoc
+{
+	char				*heredoc;
+	struct s_heredoc	*next;
+}						t_heredoc;
+
+
 typedef struct	s_exe
 {
 	int			ac;
@@ -42,6 +51,7 @@ typedef struct	s_exe
 	char		*redirect_op;
 	char		*redirect_des;
 	char		*redirect_src;
+	t_heredoc	*heredoc;
 }				t_exe;
 
 char **env;
@@ -94,11 +104,9 @@ void execute_simple_command(t_astnode *ast, t_exe *exe);
 ** Executor tool
 */
 
-int		count_av(t_astnode *ast);
-void	create_av(t_astnode *ast, char **av);
-
 void	run (t_exe exec);
 void	get_av_cmd_name(t_astnode *ast, t_exe *exe);
 void	get_av_cmd_suffix(t_astnode *ast, t_exe *exe);
+void	find_heredoc(t_astnode *ast, t_exe *exe);
 
 #endif

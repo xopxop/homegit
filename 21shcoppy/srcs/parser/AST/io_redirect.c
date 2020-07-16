@@ -23,17 +23,20 @@
 // t_astnode *io_redirect1(t_token **token)
 // {
 // 	t_astnode *node;
-// 	t_astnode *childnode;
+// 	t_astnode *lnode;
+// 	t_astnode *rnode;
 
 // 	if(*token == NULL)
 // 		return (NULL);
-// 	if ((*token)->type == TOKEN_IO_NUMBER)
+// 	if ((*token)->type != TOKEN_IO_NUMBER)
 // 		return (NULL);
-// 	if ((childnode = io_file(token)) == NULL)
+// 	lnode = ft_strdup((*token)->data);
+// 	*token = (*token)->next;
+// 	if ((rnode = io_file(token)) == NULL)
 // 		return (NULL);
 // 	node = build_node(AST_io_redirect);
-// 	node->data = ft_strdup((*token)->data);
-// 	node->left = childnode;
+// 	node->left = lnode;
+// 	node->right = rnode;
 // 	return (node);
 // }
 
