@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 20:18:39 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/16 03:23:37 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/16 04:03:53 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	init_custom_config()
 	g_term.new_attributes.c_cc[VMIN] = 1;
 	g_term.new_attributes.c_cc[VTIME] = 0;
 	tcsetattr(STDOUT_FILENO, TCSANOW, &g_term.new_attributes);
-	tputs(tgetstr("ti", NULL), 1, char_to_term);
+	// tputs(tgetstr("ti", NULL), 1, char_to_term);
 }
 
 void	move_left(void)
