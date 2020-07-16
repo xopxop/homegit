@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 09:18:23 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/16 03:11:14 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/16 04:02:03 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,16 @@ static void	ft_execute(char *input)
 	}
 }
 
-static void	signal_handeler(int signo)
-{
-	if (signo == SIGINT)
-	{
-		ft_putchar_fd('\n', STDOUT_FILENO);
-		ft_promt();
-		signal(SIGINT, signal_handeler);
-	}
-}
+//enable later
+// static void	signal_handeler(int signo)
+// {
+// 	if (signo == SIGINT)
+// 	{
+// 		ft_putchar_fd('\n', STDOUT_FILENO);
+// 		ft_promt();
+// 		signal(SIGINT, signal_handeler);
+// 	}
+// }
 
 // without line_edition
 // static char	*get_input(int level)
