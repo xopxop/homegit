@@ -151,7 +151,7 @@ void insertChar(int c, t_line *line)
 	line->cursor++;
 }
 
-void ProcessKeyPress(struct line *line)
+void ProcessKeyPress(t_line *line)
 {
 	int c = getKey();
 
