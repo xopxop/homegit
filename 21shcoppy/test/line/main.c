@@ -21,21 +21,21 @@ enum key {
 };
 
 
-struct term {
+typedef struct s_term {
 	size_t	TerminalRow;
 	size_t	TerminalCol;
 	size_t	startRow;
 	size_t  startCol;
 	struct termios orig;
-};
+}				t_term;
 
-struct term terminal;
+t_term terminal;
 
-struct line
+typedef struct s_line
 {
 	size_t length;
 	size_t cursor;
-};
+}				t_line;;
 
 int		charToTerm(int c)
 {
@@ -108,7 +108,7 @@ int getKey(void)
 		return (c);
 }
 
-void moveCursor(int c, struct line *line)
+void moveCursor(int c, t_line *line)
 {
 	if (c == ARROW_UP)
 	{
@@ -142,7 +142,7 @@ void moveCursor(int c, struct line *line)
 	}
 }
 
-void insertChar(int c, struct line *line)
+void insertChar(int c, t_line *line)
 {
 	tputs(tgetstr("im", NULL), 1, charToTerm);
 	write(STDIN_FILENO, &c, 1);
@@ -214,7 +214,7 @@ void initTerminal()
 
 char *lineEditing(void)
 {
-	struct line line;
+	t_line line;
 
 	terminal.orig = enableRawMode();
 	initTerminal();
