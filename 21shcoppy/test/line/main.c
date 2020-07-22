@@ -83,7 +83,7 @@ int getKey(void)
 	char c;
 	char seq[3];
 
-	while (nread = read(STDIN_FILENO, &c, 1) != 1)
+	while ((nread = read(STDIN_FILENO, &c, 1) != 1))
 		;
 	if (c == '\x1b')
 	{
