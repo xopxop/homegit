@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 11:22:29 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/17 13:44:23 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/29 20:16:10 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** For Linux
 ** # include <linux/limits.h>
 */
-
+# include <linux/limits.h>
 # include <limits.h>
 # include <unistd.h>
 # include <sys/wait.h>
@@ -38,6 +38,7 @@
 # define SYNTAX_CMDNF "minishell: command not found : "
 
 char				**g_env;
+int					line_signal;
 
 typedef struct		s_builtin
 {

@@ -18,7 +18,7 @@ int main(int ac, char **av)
                 {
                     nb /= i;
                     printf("%d", i);
-                    if (i < nb)
+                    if (i <= nb)
                         printf("*");
                 }
                 else

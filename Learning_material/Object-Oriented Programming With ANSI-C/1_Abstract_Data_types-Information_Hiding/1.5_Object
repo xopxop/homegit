@@ -1,0 +1,9 @@
+/******************** Object.h *******************/
+
+extern const void * Object;		/* New(Object); */
+int differ (const void * a, const void * b);
+
+/*************************************************/
+
+	+	differ() can compare objects: it returns true if they are not equal
+		and false if they are

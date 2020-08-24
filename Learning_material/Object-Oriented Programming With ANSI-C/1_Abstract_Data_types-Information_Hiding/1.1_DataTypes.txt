@@ -1,0 +1,12 @@
+Typically we would define an element of a linear list as a structure
+
+typedef struct node {
+	struct node *next;
+	... information ...
+}node;
+
+and for the opearations we specify function headers like
+		node *head (node *elt, const node * tail);
+
+==> This approach, however, is quite sloppy. Good programming principles dictat that
+we conceal the representation of a data item and declare only the possible manipulations

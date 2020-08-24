@@ -1,0 +1,8 @@
+NOTE: See main.c
+
+We create a set and add 2 new objects to it. If all is well, we find the objects
+in the set and we should not find another new object ==> the program should simply
+print OK
+
+The call to differ() illustrates a semantic point:
+.... Check the book

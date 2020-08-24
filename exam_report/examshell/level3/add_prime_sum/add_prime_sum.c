@@ -4,7 +4,7 @@ int check_num(char *str)
 {
     while (*str)
     {
-        if (*str < 48 && *str > 57)
+        if (*str < 48 || *str > 57)
             return (0);
         str++;
     }
@@ -50,31 +50,45 @@ int main(int argc, char **argv)
     if (argc == 2)
     {
         ptr = argv[1];
-        if (!check_num(argv[1]) || *ptr == '-' || *ptr == '0')
-            write(1, "0", 1);
-        else
+        if (check_num(argv[1]) && *ptr != '-' && *ptr != '0')
         {
-            nbr = basic_atoi(argv[1]);
-            sum = 0;
-            temp = 2;
-            if (nbr == 1)
-                sum = 1;
-            while (temp <= nbr)
-            {
-                loop = 1;
-                ct = 0;
-                while(loop <= temp)
-                {
-                    if (temp % loop == 0)
-                        ct++;
-                    loop++;
-                }
-                if (ct == 2)
-                    sum += temp;
-                temp++;
-            }
-            ft_putnbr(sum);
+            // nbr = basic_atoi(argv[1]);
+            // sum = 0;
+            // temp = 2;
+            // if (nbr == 1)
+            //     sum = 1;
+            // while (temp <= nbr)
+            // {
+            //     loop = 1;
+            //     ct = 0;
+            //     while(loop <= temp)
+            //     {
+            //         if (temp % loop == 0)
+            //             ct++;
+            //         loop++;
+            //     }
+            //     if (ct == 2)
+            //         sum += temp;
+            //     temp++;
+            // }
+            // ft_putnbr(sum);
+			nbr = basic_atoi(argv[1]);
+			temp = 2;
+			sum = (nbr == 1) ? 1 : 0;
+			while (nbr >= temp)
+			{
+				loop = 1;
+				ct = 0;
+				while (loop <= temp)
+					ct += (temp % loop++ == 0) ? 1 : 0;
+				if (ct == 2)
+					sum += temp;
+				temp++;
+			}
+			ft_putnbr(sum);
         }
+        else
+			write(1, "0", 1);
     }
     else
         write(1, "0", 1);

@@ -6,7 +6,7 @@
 #    By: dthan <dthan@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/24 16:34:34 by dthan             #+#    #+#              #
-#    Updated: 2020/07/08 21:12:33 by dthan            ###   ########.fr        #
+#    Updated: 2020/08/10 13:21:04 by dthan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -211,18 +211,31 @@ ft_strrev.o \
 ft_arrayct.o \
 ft_arraydel.o \
 
+#<<<<<<<<<<VECTOR.H>>>>>>>>>># NOTE: Optional
+VECTOR_SRCS=vector/ft_vector_create.c \
+vector/ft_vector_free.c \
+vector/ft_vector_get_data.c \
+vector/ft_vector_size.c \
+vector/ft_vector_get_alloc.c
+
+VECTOR_OBJ=ft_vector_create.o \
+ft_vector_free.o \
+ft_vector_get_data.o \
+ft_vector_size.o \
+ft_vector_get_alloc.o
+
 all: $(NAME)
 
 $(NAME):
 	@gcc $(FLAGS) -I$(INCLUDES) -c $(CTYPE_SRCS) $(LIST_SRCS) $(PRINT_SRCS) $(STDIO_SRCS) $(STDLIB_SRCS) \
-	$(STRING_SRCS) $(UTILITY_SRCS) $(GNL_SRCS) $(PRINTF_SRCS)
+	$(STRING_SRCS) $(UTILITY_SRCS) $(GNL_SRCS) $(PRINTF_SRCS) $(VECTOR_SRCS)
 	@ar rc $(NAME) $(CTYPE_OBJ) $(LIST_OBJ) $(PRINT_OBJ) $(STDIO_OBJ) $(STDLIB_OBJ) $(STRING_OBJ) \
-	$(UTILITY_OBJ) $(GNL_OBJ) $(PRINTF_OBJ)
+	$(UTILITY_OBJ) $(GNL_OBJ) $(PRINTF_OBJ) $(VECTOR_OBJ)
 	@ranlib $(NAME)
 
 clean:
 	@/bin/rm -f $(CTYPE_OBJ) $(LIST_OBJ) $(PRINT_OBJ) $(STDIO_OBJ) $(STDLIB_OBJ) $(STRING_OBJ) \
-	$(UTILITY_OBJ) $(GNL_OBJ) $(PRINTF_OBJ)
+	$(UTILITY_OBJ) $(GNL_OBJ) $(PRINTF_OBJ) $(VECTOR_OBJ)
 
 fclean: clean
 	@/bin/rm -f $(NAME)

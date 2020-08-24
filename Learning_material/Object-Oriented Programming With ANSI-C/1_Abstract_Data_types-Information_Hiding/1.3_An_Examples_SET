@@ -1,0 +1,30 @@
+/******************* Set.h *************************/
+
+#ifndef SET_H
+#define SET_H   --> Protecting header
+
+extern const void *Set;
+
+void * add (void * set, const void * element);
+void * find (const void * set, const void *element);
+void * drop (void *set, const void *element);
+int contains ( const void * set, const void * element);
+
+#endif
+
+/****************************************************/
+
+	+ 	add() takes an element, adds it to a set and return whatever was added
+		or already present in the set
+	+	find() looks for an element in a set and returns whatever is present in
+		the set or a null pointer
+	+	drop() locates an element, removes it from a set and return whatever was
+		removed
+	+	contains() converts the result of find() into a truth value
+
+The generic pointer void * is used throughout.
+	On the one hand it makes it impossible to discover what a set looks like,
+	but on the other hand it permits us to pass virtually anything to add()
+	and the other functions.
+	Not everything will behave like a set or an element - we are SACRIFICING
+	TYPE SECURITY in the interest of INFORMATION HIDING (see more in chapter 8)

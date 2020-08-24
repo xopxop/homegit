@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 08:26:23 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/15 19:00:40 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/15 23:45:26 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static void	ft_print_output(t_lst *lst, t_terminal term, int width_col)
 {
 	int		i;
 	int		j;
-	t_lst	*current;
 
 	i = -1;
 	j = 0;

@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 01:13:54 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/15 16:06:25 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/16 02:43:27 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 static void	init_custom_config(t_terminal *term)
 {
-	int		ret;
-
 	term->termtype = getenv("TERM");
 	tgetent(term->term_buffer, term->termtype);
 	tcgetattr(STDERR_FILENO, &term->new_attributes);
@@ -52,7 +50,7 @@ void		init_elems(t_select *select, char **input)
 
 void	restore_old_term_config(void)
 {
-	tcsetattr(STDIN_FILENO, TCSANOW, &g_select.term.old_attributes);
+	tcsetattr(STDIN_FILENO, TCSANOW, &g_select.term.old_attributes); // need to put to std_err
 	tputs(tgetstr("ve", NULL), 1, char_to_term);
 	tputs(tgetstr("te", NULL), 1, char_to_term);
 }

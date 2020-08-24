@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 11:32:53 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/30 10:23:43 by dthan            ###   ########.fr       */
+/*   Updated: 2020/08/10 12:50:01 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@
 # include "ft_utility.h"
 # include "get_next_line.h"
 # include "ft_printf.h"
+# include "ft_vector.h"
 
 #endif

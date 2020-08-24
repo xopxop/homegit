@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 09:18:23 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/16 04:02:03 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/23 22:23:55 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static void	ft_promt(void)
 	promt = ft_strjoin_and_free_string1(promt, ft_call_value_of("USER"));
 	promt = ft_strjoin_and_free_string1(promt, "$ ");
 	ft_putstr(promt);
-	g_term.default_cursor_pos = ft_strlen(promt) + 1;
 	free(promt);
 }
 

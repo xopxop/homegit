@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 20:22:00 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/22 04:11:18 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/23 23:43:13 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,42 +38,7 @@
 
 /*** define ***/
 #define CTRL_KEY(k) ((k) & 0x1f)
-
-
-
-// old
-# define ENTER_KEY(str) ft_strequ(str, "\n")
-# define UPWARDS_ARROW(str) ft_strequ(str, "\033[A")
-# define DOWNWARDS_ARROW(str) ft_strequ(str, "\033[B")
-# define RIGHTWARDS_ARROW(str) ft_strequ(str, "\033[C")
-# define LEFTWARDS_ARROW(str) ft_strequ(str, "\033[D")
-# define X_AXIS	0
-# define Y_AXIS	1
-
-typedef	struct		s_cusor
-{
-	int				coordinate[2];
-}					t_cusor;
-
-/*** not use ***/
-typedef struct		s_terminal
-{
-
-	struct termios	new_attributes;
-	struct termios	old_attributes;
-	char			term_buffer[2048]; // maybe need to check the term_buffer
-	char			*termtype;
-	int				cols;
-	int				rows;
-	int				default_cursor_pos;
-	struct s_cusor	cursor;
-}					t_terminal;
-/******/
-
-typedef struct erow {
-	int size;
-	char *chars;
-} erow;
+#define ABUF_INIT {NULL, 0}
 
 enum editorKey {
 	BACKSPACE = 127,
@@ -84,37 +49,51 @@ enum editorKey {
 	DEL_KEY
 };
 
-struct editorConfig {
-	int cx0, cy0;
-	int cx, cy;
-	int rowoff;
-	int len;
-	int screenrows;
-	int screencols;
-	int numrows;
-	erow row;
-	struct termios		orig_termios;	
-};
+/***************DEFINE STRUCT ***************/
 
-struct editorConfig E;
-
-struct abuf {
-	char *b;
-	int len;
-};
-
-#define ABUF_INIT {NULL, 0}
-
-/*** not used ***/
-typedef struct		s_line_info
+typedef struct	s_tempstr
 {
-	char			*returned_line;
-	int				line_length;
-	int				cusor_pos;
-}					t_line_info;
+	char		*tempStr;
+	int			tempSize;
+}				t_tempstr;
 
-t_terminal	g_term;
-/******/
+typedef struct	s_coordinate
+{
+	int			cx;
+	int			cy;
+}				t_coordinate;
+
+typedef struct			s_cusor
+{
+	struct s_coordinate	startPos;
+	struct s_coordinate	currentPos;
+	int					atLine;
+}						t_cursor;
+
+typedef struct			s_lineEditorConfig
+{
+	struct termios		orig_termios;	
+	struct s_cusor		cursor;
+	int					screenrows;
+	int					screencols;
+}						t_lineEditorConfig;
+
+typedef struct			s_buffer
+{
+	char				*str;
+	int					len;
+}						t_buffer;
+
+typedef struct			s_line
+{
+	char				*str;
+	int					len;
+}						t_line;
+
+t_lineEditorConfig E;
+
+/***************************************/
+
 char	*ft_getline(void);
 
 #endif

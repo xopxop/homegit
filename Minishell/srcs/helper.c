@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 03:08:48 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/13 12:01:40 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/29 20:36:21 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	signal_handeler(int signo)
 {
 	if (signo == SIGINT)
 	{
+		line_signal = 1;
 		ft_putchar_fd('\n', STDOUT_FILENO);
 		ft_promt();
 		signal(SIGINT, signal_handeler);

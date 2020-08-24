@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 09:18:23 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/14 18:00:10 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/29 20:34:57 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ static char	*get_input(int level)
 
 	if ((get_next_line(STDOUT_FILENO, &line)) <= 0)
 		return (NULL);
-	if (is_open_dquote(line, level))
+	if (is_open_dquote(line, level) && line_signal == 0)
 	{
 		ft_putstr("dquote> ");
 		line = ft_strjoin_and_free_string1(line, "\n");
@@ -120,7 +120,9 @@ int			main(int argc, char **argv, char **envp)
 	{
 		ft_promt();
 		signal(SIGINT, signal_handeler);
+		line_signal = 0;
 		input = get_input((int)1);
+		line_signal = 1;
 		ft_execute(input);
 		free(input);
 	}

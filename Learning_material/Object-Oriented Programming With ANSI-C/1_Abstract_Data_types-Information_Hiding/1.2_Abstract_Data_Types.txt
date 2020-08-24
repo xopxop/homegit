@@ -1,0 +1,8 @@
+We call a data type [abstract] if we do not reveal its representation to the user
+At a theoretical level this requires us to specify the properties of the data typeby mathematical
+axioms involving the possible operations. For example:
+	we can remove an element from a queue only as often as we added one previously
+	and we retrieve the elements in the same order in which they were added
+
+Abstract data type offer GREAT FLEXIBILITY to the programmer
+Abstract data types satisfy the good programming principles of information hiding and divide and conquer

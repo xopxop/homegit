@@ -1,0 +1,6 @@
+Program will have data representing
++ Student's Age
++ Student's GPA
++ Student's first initial
++ Student's last initial
++ Whether the student has perfect attendace so far

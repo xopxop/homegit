@@ -1,0 +1,6 @@
+For an abstract data type:
+	We completely hide all implementation details, such as the representation of data items, from the application code
+	The application code can only access a header file where a descriptor pointer represents accepting and returning generic pointers
+	The descriptor pointer is passed to a general function new() to ontain a pointer to a data item, and this pointer is passed to a general function delete() to recycle the associated resources
+	Normally, each abstract data type is implemented in a signle source file.
+	Ideally, it has no access to the representation of other data types. The descriptor pointer normally points at least to a constant size_t value indicating the space requirements of a data item

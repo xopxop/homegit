@@ -1,0 +1,12 @@
+/********************* new.h *********************/
+
+void * new (const void * type, ... );
+void delete (void * item);
+
+/*************************************************/
+
+	+	new() accepts a descriptor like SET and possibly more arguments
+		for initialization and returns a pointer to a new data item with a
+		presentation conforming to the descriptor
+	+	delete() accepts a pointer originally produced by new() and recycles
+		the associated resources

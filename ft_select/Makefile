@@ -6,14 +6,14 @@
 #    By: dthan <dthan@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/16 00:21:06 by dthan             #+#    #+#              #
-#    Updated: 2020/05/22 08:37:56 by dthan            ###   ########.fr        #
+#    Updated: 2020/07/15 23:44:47 by dthan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_select
 INCLUDES = includes/
 LIBFT = libft/libft.a
-FLAG = -g #-Wall -Wextra -Werror
+FLAG = -g -Wall -Wextra -Werror
 SRCS = srcs/main.c srcs/arrows.c srcs/display.c srcs/elements.c srcs/other_keys.c
 OBJS = main.o arrows.o display.o elements.o other_keys.o
 

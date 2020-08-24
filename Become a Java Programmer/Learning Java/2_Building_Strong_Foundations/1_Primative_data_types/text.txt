@@ -1,0 +1,5 @@
+PRIMATIVE TYPES																REFERENCE TYPES
++ boolean: represents a true or flase value
++ int: represents a whole number
++ double: represents a decimal number
++ char: represents a single letter or symbol

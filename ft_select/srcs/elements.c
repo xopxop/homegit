@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 08:24:40 by dthan             #+#    #+#             */
-/*   Updated: 2020/05/22 17:34:09 by dthan            ###   ########.fr       */
+/*   Updated: 2020/07/15 23:45:40 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int		ft_finding_longest_elem(t_lst *lst)
 {
 	int maxsize;
-	int size;
 
 	maxsize = 0;
 	while (lst)

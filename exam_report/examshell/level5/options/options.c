@@ -26,9 +26,25 @@ int main(int ac, char **av)
                     stack['z' - av[i][j] + 6] = 1;
                     j++;
                 }
+				if (av[i][j])
+				{
+					write(1, "Invalid Options\n", 16);
+					return (0);
+				}
+				j++;
             }
             i++;
         }
+		i = 0;
+		while (i < 32)
+		{
+			stack[i] = '0' + stack[i];
+			write(1, &stack[i++], 1);
+			if (i == 32)
+				write(1, "\n", 1);
+			else if (i % 8 == 0)
+				write(1, " ", 1);
+		}
     }
     return (0);
 }
