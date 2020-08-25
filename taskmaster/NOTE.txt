@@ -1,0 +1,3 @@
+24.8.2020
+	parsed config_file_sucessfully, however it is still very raw
+	Next-step: check daemon process

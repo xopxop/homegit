@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 10:46:05 by dthan             #+#    #+#             */
-/*   Updated: 2020/08/21 15:47:45 by dthan            ###   ########.fr       */
+/*   Updated: 2020/08/25 00:36:53 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,12 @@
 # define LOGLEVEL		4
 # define CHILDLOGDIR	5
 
+# define unexpected 2
 /*
 *******************DEFAULT-SETUP***********************
 */
-# define DEFAULT_CONFIGURATION	"/tmp/taskmaster.d/taskmasterd.conf"
+// # define DEFAULT_CONFIGURATION	"/tmp/taskmaster.d/taskmasterd.conf"
+# define DEFAULT_CONFIGURATION "/home/dthan/Projects/homegit/taskmaster/testfile/basic.conf"
 # define DEFAULT_LOGFILE		"/tmp/taskmaster.d/taskmaster.log"
 # define DEFAULT_LOGLVL			"info"
 # define DEFAULT_CHILDLOGDIR	"/tmp/taskmaster.d/childlog"
@@ -105,12 +107,12 @@ typedef struct		s_program
 	char			*command;
 	int				numprocs;
 	int				piority;
-	bool			autostart;
+	int			autostart;
 	int				startsecs;
 	int				startretries;
-	bool			autorestart;
+	int			autorestart;
 	int				exitcodes;
-	int				stopsignal;
+	char				*stopsignal;
 	int				stopwaitsecs;
 	char			*user; // not used yet
 	char			*stdout_logfile;
@@ -140,7 +142,5 @@ typedef struct		s_denv
 	int							ac;
 	char						padd[4];
 }								t_denv;
-
-t_denv g_denv;
 
 #endif
