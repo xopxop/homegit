@@ -1,0 +1,2 @@
+daemon initialized
+daemon finished

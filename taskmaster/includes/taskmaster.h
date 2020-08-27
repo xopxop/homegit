@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 10:46:05 by dthan             #+#    #+#             */
-/*   Updated: 2020/08/25 00:36:53 by dthan            ###   ########.fr       */
+/*   Updated: 2020/08/27 03:41:20 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@
 */
 // # define DEFAULT_CONFIGURATION	"/tmp/taskmaster.d/taskmasterd.conf"
 # define DEFAULT_CONFIGURATION "/home/dthan/Projects/homegit/taskmaster/testfile/basic.conf"
-# define DEFAULT_LOGFILE		"/tmp/taskmaster.d/taskmaster.log"
+// # define DEFAULT_LOGFILE		"/tmp/taskmaster.d/taskmaster.log"
+# define DEFAULT_LOGFILE		"/home/dthan/Projects/homegit/taskmaster/log/taskmaster.log"
 # define DEFAULT_LOGLVL			"info"
 # define DEFAULT_CHILDLOGDIR	"/tmp/taskmaster.d/childlog"
 

@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 16:51:57 by dthan             #+#    #+#             */
-/*   Updated: 2020/08/25 03:07:38 by dthan            ###   ########.fr       */
+/*   Updated: 2020/08/27 03:02:32 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include <sys/stat.h>
 # include <errno.h>
 # include <sys/socket.h>
+# include <signal.h>
+# include <string.h>
+# include <syslog.h>
 
 t_denv g_denv;
 //--------------init/input
@@ -40,4 +43,9 @@ void getSection(void);
 void print_program(t_program pro);
 //for_init_input.c
 void printState(void);
+//-------------init/signal
+void initSignal(void);
+//-------------init/daemon
+//daemon_builder.c
+void	creatDaemon(void);
 #endif
