@@ -9,62 +9,104 @@
 #include "game.h"
 #include "ObjectField.h"
 
-WINDOW* wnd;
+WINDOW* main_wnd;
+WINDOW* game_wnd;
+
+rect game_area;
+rect screen_area;
+
+vec2ui cur_size;
+
+ObjectField asteroids;
+ObjectField starts;
 
 struct {
 	vec2i pos;
+	rect bounds;
 	char disp_char;
+	int energy;
 } player;
-
-ObjectField starts;
 
 int init(void)
 {
-	wnd = initscr();
+	srand(time(0));
+
+	main_wnd = initscr();
 	cbreak();
 	noecho();
 	clear();
 	refresh();
-
-	keypad(wnd, true);
-
-	nodelay(wnd, true);
-
 	curs_set(0);
-
-	if (!has_colors()) {
-		endwin();
-		std::cout << "ERROR: Terminal does not support color." << std::endl;
-		exit(1);
-	}
-
 	start_color();
+	screen_area = { { 0, 0 }, { 80, 24 } };
 
-	attron(A_BOLD);
-	box(wnd, 0, 0);
-	attroff(A_BOLD);
+	int infopanel_height = 4;
+	game_wnd = newwin(	screen_area.height() - infopanel_height - 2,
+						screen_area.width() - 2,
+						screen_area.top() + 1,
+						screen_area.left() + 1);
+	main_wnd = newwin(screen_area.height(), screen_area.width(), 0, 0);
+	game_area= { { 0, 0 }, { screen_area.width() - 2, screen_area.height() - infopanel_height - 4 } };
 
-	// init_pair(1, COLOR_BLACK, COLOR_CYAN);
-	// wbkgd(wnd, COLOR_PAIR(1));
+	init_pair(1, COLOR_WHITE, COLOR_BLACK);
+	init_pair(2, COLOR_GREEN, COLOR_BLACK);
+	init_pair(3, COLOR_YELLOW, COLOR_BLACK);
+	init_pair(4, COLOR_RED, COLOR_BLACK);
+	init_pair(5, COLOR_BLUE, COLOR_BLACK);
+
+	keypad(main_wnd, true);
+	keypad(game_wnd, true);
+
+	nodelay(main_wnd, true);
+	nodelay(game_wnd, true);
 
 	return 0;
 }
 
 void run(void)
 {
-	uint_fast16_t maxx, maxy;
-	getmaxyx(wnd, maxy, maxx);
-	rect game_area = { {0, 0} , {maxx, maxy} };
+	// uint_fast16_t maxx, maxy;
+	// getmaxyx(wnd, maxy, maxx);
+	// rect game_area = { {0, 0} , {maxx, maxy} };
+	// starts.setBounds(game_area);
+	int tick;
+
+	player.disp_char = 'o';
+	player.pos = {10, 5};
+	
+	asteroids.setBounds(game_area);
 	starts.setBounds(game_area);
 
-
-	player.disp_char = '0';
-	player.pos = {10, 5};
-	int in_char;
+	int in_char = 0;
 	bool exit_requested = false;
+	bool game_over = false;
+
+	attron(A_BOLD);
+	box(main_wnd, 0, 0);
+	attroff(A_BOLD);
+
+	wmove(main_wnd, game_area.bot() + 3, 1);
+	whline(main_wnd, '-', screen_area.width() - 2);
+
+	wrefresh(main_wnd);
+	wrefresh(game_wnd);
+
+	tick = 0;
 	while(1)
 	{
-		in_char = wgetch(wnd);
+		werase(game_wnd);
+		in_char = wgetch(main_wnd);
+		in_char = tolower(in_char);
+
+		wattron(game_wnd, A_BOLD);
+		mvwaddch(game_wnd, player.pos.y, player.pos.x, player.disp_char);
+
+		wrefresh(main_wnd);
+		wrefresh(game_wnd);
+
+
+
+		
 		mvaddch(player.pos.y, player.pos.x, ' ');
 		
 		starts.update();
@@ -78,33 +120,10 @@ void run(void)
 			mvaddch(s.getPos().y, s.getPos().x, '*');
 		}
 
-
-		switch(in_char) {
-			case 'q':
-				exit_requested = true;
-				break;
-			case KEY_UP:
-			case 'w':
-				player.pos.y -= 1;
-				break;
-			case KEY_DOWN:
-			case 's':
-				player.pos.y += 1;
-				break;
-			case KEY_LEFT:
-			case 'a':
-				player.pos.x -= 1;
-				break;
-			case KEY_RIGHT:
-			case 'd':
-				player.pos.x += 1;
-				break;
-			default:
-				break;
-		}
-		mvaddch(player.pos.y, player.pos.x, player.disp_char);
-		refresh();
-		if (exit_requested) break;
+		if (exit_requested || game_over) break;
+		
+		tick++;
+		
 		usleep(10000);
 	}
 }
