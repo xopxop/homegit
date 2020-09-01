@@ -46,7 +46,8 @@ int init(void)
 						screen_area.top() + 1,
 						screen_area.left() + 1);
 	main_wnd = newwin(screen_area.height(), screen_area.width(), 0, 0);
-	game_area= { { 0, 0 }, { screen_area.width() - 2, screen_area.height() - infopanel_height - 4 } };
+	game_area= { { 0, 0 }, {	screen_area.width() - 2,
+								screen_area.height() - infopanel_height - 4 } };
 
 	init_pair(1, COLOR_WHITE, COLOR_BLACK);
 	init_pair(2, COLOR_GREEN, COLOR_BLACK);
@@ -97,28 +98,46 @@ void run(void)
 		werase(game_wnd);
 		in_char = wgetch(main_wnd);
 		in_char = tolower(in_char);
-
-		wattron(game_wnd, A_BOLD);
-		mvwaddch(game_wnd, player.pos.y, player.pos.x, player.disp_char);
-
+		
+		// controll switch statement
+        switch(in_char) {
+            case 'q':
+                exit_requested = true;
+                break;
+            case KEY_UP:
+            case 'w':
+            case 'i':
+                if(player.pos.y > game_area.top())
+                    player.pos.y -= 1;
+                break;
+            case KEY_DOWN:
+            case 's':
+            case 'k':
+                if(player.pos.y < game_area.bot() + 1)
+                    player.pos.y += 1;
+                break;
+            case KEY_LEFT:
+            case 'a':
+            case 'j':
+                if(player.pos.x > game_area.left() + 1)
+                    player.pos.x -= 1;
+                break;
+            case KEY_RIGHT:
+            case 'd':
+            case 'l':
+                if(player.pos.x < game_area.right() - 2)
+                    player.pos.x += 1;
+                break;
+            default:
+                break;
+        }
+		//draw player body 
+        wattron(game_wnd, A_BOLD);
+        mvwaddch(game_wnd, player.pos.y, player.pos.x, player.disp_char);
+        wattroff(game_wnd, A_BOLD);
+		//
 		wrefresh(main_wnd);
 		wrefresh(game_wnd);
-
-
-
-		
-		mvaddch(player.pos.y, player.pos.x, ' ');
-		
-		starts.update();
-		for(auto s : starts.getData())
-		{
-			mvaddch(s.getPos().y, s.getPos().x, ' ');
-		}
-
-		for(auto s : starts.getData())
-		{
-			mvaddch(s.getPos().y, s.getPos().x, '*');
-		}
 
 		if (exit_requested || game_over) break;
 		
