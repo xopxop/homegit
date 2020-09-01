@@ -46,7 +46,7 @@ int init(void)
 						screen_area.top() + 1,
 						screen_area.left() + 1);
 	main_wnd = newwin(screen_area.height(), screen_area.width(), 0, 0);
-	game_area= { { 0, 0 }, {	screen_area.width() - 2,
+	game_area= { { (uint_fast16_t)0, (uint_fast16_t)0 }, {	screen_area.width() - 2,
 								screen_area.height() - infopanel_height - 4 } };
 
 	init_pair(1, COLOR_WHITE, COLOR_BLACK);
