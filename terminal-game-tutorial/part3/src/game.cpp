@@ -52,7 +52,7 @@ int init(void)
 
 void run(void)
 {
-	uint_fast16_t maxx, maxy;
+	long unsigned int maxx, maxy;
 	getmaxyx(wnd, maxy, maxx);
 	rect game_area = { {0, 0} , {maxx, maxy} };
 	starts.setBounds(game_area);
