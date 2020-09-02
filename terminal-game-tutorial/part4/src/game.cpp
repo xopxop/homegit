@@ -134,7 +134,7 @@ void run(void)
 			asteroids.update();
 		//
 		// update player bounds
-		player.bounds = { { (uint_fast16_t)player.pos.x - 1, (uint_fast16_t)player.pos.y }, { 3 , 1} };
+		player.bounds = { { (uint_fast16_t)(player.pos.x - 1), (uint_fast16_t)player.pos.y }, { 3 , 1} };
 		//
 		//remove asteroid if collided
 		for (size_t i = 0; i < asteroids.getData().size(); i++)
