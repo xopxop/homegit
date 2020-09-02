@@ -18,7 +18,7 @@ rect screen_area;
 vec2ui cur_size;
 
 ObjectField asteroids;
-ObjectField starts;
+ObjectField stars;
 
 struct {
 	vec2i pos;
@@ -66,17 +66,13 @@ int init(void)
 
 void run(void)
 {
-	// uint_fast16_t maxx, maxy;
-	// getmaxyx(wnd, maxy, maxx);
-	// rect game_area = { {0, 0} , {maxx, maxy} };
-	// starts.setBounds(game_area);
 	int tick;
 
 	player.disp_char = 'o';
 	player.pos = {10, 5};
 	
 	asteroids.setBounds(game_area);
-	starts.setBounds(game_area);
+	stars.setBounds(game_area);
 
 	int in_char = 0;
 	bool exit_requested = false;
@@ -131,10 +127,42 @@ void run(void)
             default:
                 break;
         }
-		//draw player body 
-        wattron(game_wnd, A_BOLD);
+		// stars and asteroids update
+		if (tick % 7 == 0)
+			stars.update();
+		if (tick > 100 && tick % 20 == 0)
+			asteroids.update();
+		//
+		// update player bounds
+		player.bounds = { { player.pos.x - 1, player.pos.y }, { 3 , 1} };
+		//
+		//remove asteroid if collided
+		for (size_t i = 0; i < asteroids.getData().size(); i++)
+			if (player.bounds.contains(asteroids.getData().at(i).getPos()))
+				asteroids.erase(i);
+		//
+		for(auto s: stars.getData())
+			mvwaddch(game_wnd, s.getPos().y, s.getPos().x, '.');
+		for(auto a : asteroids.getData())
+		{
+			wattron(game_wnd, A_BOLD);
+			mvwaddch(game_wnd, a.getPos().y, a.getPos().x, '*');
+			wattron(game_wnd, A_BOLD);
+		}
+		//player drawing 
+		wattron(game_wnd, A_BOLD);
         mvwaddch(game_wnd, player.pos.y, player.pos.x, player.disp_char);
         wattroff(game_wnd, A_BOLD);
+        wattron(game_wnd, A_ALTCHARSET);
+        mvwaddch(game_wnd, player.pos.y, player.pos.x - 1, ACS_LARROW);
+		mvwaddch(game_wnd, player.pos.y, player.pos.x + 1, ACS_RARROW);
+		if ((tick % 10) / 3)
+		{
+			wattron(game_wnd, COLOR_PAIR(tick % 2 ? 3 : 4));
+			mvwaddch(game_wnd, player.pos.y + 1, player.pos.x, ACS_UARROW);
+			wattroff(game_wnd, COLOR_PAIR(tick % 2 ? 3 : 4));
+		}
+        wattroff(game_wnd, A_ALTCHARSET);
 		//
 		wrefresh(main_wnd);
 		wrefresh(game_wnd);
