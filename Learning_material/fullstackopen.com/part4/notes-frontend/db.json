@@ -1,0 +1,64 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "content": "HTML is easy",
+      "date": "2019-05-30T17:30:31.098Z",
+      "important": true
+    },
+    {
+      "id": 2,
+      "content": "Browser can execute only Javascript",
+      "date": "2019-05-30T18:39:34.091Z",
+      "important": false
+    },
+    {
+      "id": 3,
+      "content": "GET and POST are the most important methods of HTTP protocal",
+      "date": "2019-05-30T19:20:14.298Z",
+      "important": false
+    },
+    {
+      "content": "Post is used to add data to a REST api",
+      "date": "2020-09-10T02:21:04.660Z",
+      "important": false,
+      "id": 4
+    },
+    {
+      "content": "POst is used to add data to a REST api",
+      "date": "2020-09-10T02:24:04.618Z",
+      "important": false,
+      "id": 5
+    },
+    {
+      "content": "Post is used to add data to a REST api",
+      "date": "2020-09-10T02:24:09.545Z",
+      "important": false,
+      "id": 6
+    },
+    {
+      "content": "aaa",
+      "date": "2020-09-10T03:29:31.665Z",
+      "important": false,
+      "id": 7
+    },
+    {
+      "content": "aaa",
+      "date": "2020-09-10T03:30:58.899Z",
+      "important": false,
+      "id": 8
+    },
+    {
+      "content": "aaa",
+      "date": "2020-09-10T03:33:11.472Z",
+      "important": false,
+      "id": 9
+    },
+    {
+      "content": "aaa",
+      "date": "2020-09-10T03:35:02.747Z",
+      "important": true,
+      "id": 10
+    }
+  ]
+}
