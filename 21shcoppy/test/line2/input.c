@@ -68,8 +68,6 @@ int readKey(void) {
 		return c;
 }
 
-
-
 int processKeyPress(t_line *line) {
 	int c = readKey();
 
@@ -79,7 +77,7 @@ int processKeyPress(t_line *line) {
 			exit(0);
 			break;
 		case BACKSPACE: // need to protect
-		case DEL_KEY:
+		// case DEL_KEY:
 		// if (c == DEL_KEY) editorMoveCursor(ARROW_RIGHT);
 			delChar(line);
 			break;
@@ -98,6 +96,8 @@ int processKeyPress(t_line *line) {
 		// case CTRL_RIGHT:
 		case '\r':
 			return 1;
+		case '\t':
+			break;
 		default:
 			insertChar(line, c);
 			break;

@@ -12,6 +12,7 @@ void initLineEditor(void) {
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &E.ws);
 	E.screencells = E.ws.ws_col * E.ws.ws_row;
 	E.line.str = ft_strdup("");
+	E.line.render = ft_strdup("");
 	E.line.len = 0;
 	E.scrolled_lines_above = 0;
 	E.scrolled_lines_below = 0;

@@ -70,6 +70,8 @@ void refreshLineEditor(void)
 	char *temp;
 
 	// t_buffer appendingBuffer  = ABUF_INIT;
+	
+	write(STDOUT_FILENO, "\x1b[?25l", 6);
 	char buf[32]; // reposition to the starting point of cursor into the terminal
 	ft_bzero(buf, 32);
 	snprintf(buf, sizeof(buf), "\x1b[%d;%dH", E.startrows, 1);
@@ -85,7 +87,7 @@ void refreshLineEditor(void)
 	// 	ft_putstr(" ");
 	// for temporary
 	locate_cursor();
-
+	write(STDOUT_FILENO, "\x1b[?25h", 6);
 
 	// char buf2[32]; // reposition to the starting point of cursor into the terminal
 	// ft_bzero(buf2, 32);

@@ -119,6 +119,8 @@ void insertChar(t_line *line, int c)
 {
 	char *new;
 
+	if (!ft_isprint(c))
+		return ;
 	new = ft_strnew(ft_strlen(line->str) + 1);
 	new = ft_strcpy(new, line->str);
 	ft_memmove(&new[E.cursor.atLine + 1], &new[E.cursor.atLine], line->len - E.cursor.atLine + 1);
@@ -136,19 +138,45 @@ void insertChar(t_line *line, int c)
 	}
 }
 
+int need_to_decrease_scrolled_line_bellow(int prev_strlen) // not exactly previous
+{
+	int total;
+
+	total = prev_strlen + E.prompt.len;
+	return ((total % E.ws.ws_col == 0) ? 1 : 0);
+}
+
+void handle_scrolled_lines_delete(void)
+{
+	if (E.cursor.atLine == E.line.len)
+	{
+		if (E.scrolled_lines_above && E.cursor.prevPos.cx == 1 && E.cursor.prevPos.cy == 1)
+			E.scrolled_lines_above--;
+	}
+	else
+	{
+		if (E.scrolled_lines_above && E.cursor.prevPos.cx == 1 && E.cursor.prevPos.cy == 1)
+		{
+			E.scrolled_lines_above--;
+			E.scrolled_lines_below++;
+		}
+		if (E.scrolled_lines_below && need_to_decrease_scrolled_line_bellow(E.line.len))
+			E.scrolled_lines_below--;
+	}
+}
+
 void delChar(t_line *line)
 {
 	char *new;
 
-	if (line->len == 0)
+	if (E.cursor.atLine == 0)
 		return ;
-	new = ft_strnew(line->len - 1);
-	
-
-	// ft_memmove(&line->str[E.cursor.atLine - 1], &line->str[E.cursor.atLine], line->len - E.cursor.atLine + 1);
-	// new = ft_strdup(line->str);
-	// free(line->str);
-	// line->str = new;
-	// line->len--;
+	ft_memmove(&line->str[E.cursor.atLine - 1], &line->str[E.cursor.atLine], line->len - E.cursor.atLine + 1);
+	new = ft_strdup(line->str);
+	free(line->str);
+	line->str = new;
+	line->len--;
+	E.cursor.atLine--;
+	handle_scrolled_lines_delete();
 	// do i need to decrease scrolled line or not?
 }

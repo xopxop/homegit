@@ -21,6 +21,7 @@
 #define ABUF_INIT {NULL, 0}
 #define PROMT "PROMPT: >"
 #define OFF_SCREEN "<...>"
+#define TAB_STOP 8
 
 enum editorKey {
 	BACKSPACE = 127,
@@ -34,8 +35,7 @@ enum editorKey {
 	CTRL_DOWN,
 	DEL_KEY,
 	HOME_KEY,
-	END_KEY,
-	DEL_KEY
+	END_KEY
 };
 
 /***************DEFINE STRUCT ***************/
@@ -69,6 +69,7 @@ typedef struct			s_prompt
 typedef struct			s_line
 {
 	char				*str;
+	char				*render;
 	int					len;
 }						t_line;
 
