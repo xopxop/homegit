@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 02:00:28 by dthan             #+#    #+#             */
-/*   Updated: 2020/08/25 02:59:42 by dthan            ###   ########.fr       */
+/*   Updated: 2020/08/28 01:38:09 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,7 +180,7 @@ void getSection(void)
 		if (ft_strnequ(secname, "program.", 8))
 		{
 			program = get_program(g_denv.dict, secname);
-			print_program(*program); // for debug
+			// print_program(*program); // for debug
 			push_to_list(program);
 		}
 	}

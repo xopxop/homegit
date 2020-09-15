@@ -1,3 +1,9 @@
 24.8.2020
 	parsed config_file_sucessfully, however it is still very raw
 	Next-step: check daemon process
+27.8.2020
+	daemon running checked
+	adding log file to mornitor the main program
+	Next step: lauching job and add socket
+28.8.2020
+	addsocket is ok, however we have some problem with reusedaddr for socket

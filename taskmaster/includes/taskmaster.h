@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 10:46:05 by dthan             #+#    #+#             */
-/*   Updated: 2020/08/27 03:41:20 by dthan            ###   ########.fr       */
+/*   Updated: 2020/08/28 04:12:59 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,19 @@
 # include <assert.h>
 # include <ftw.h>
 # include <stdbool.h>
+
+/*
+********************STATE
+*/
+
+# define E_STARTING 0
+# define E_BACKOFF 1
+# define E_RUNNING 2
+# define E_STOPPING 3
+# define E_STOPPED 4
+# define E_EXITED 5
+# define E_FATAL 6
+# define E_UNKNOWN 7
 
 /*
 ********************EXIT ROUTINE
@@ -93,6 +106,21 @@
 *******************************************************
 */
 
+typedef struct					s_instance
+{
+	time_t						start_time;
+	time_t						stop_time;
+	time_t						uptime;
+	int							exitcode;
+	pid_t						pid;
+	int							id;
+	int							state;
+	int							backoff;
+	int							fd[6];
+	char						pad[4];
+	char						*name;
+}								t_instance;
+
 typedef struct					s_options
 {
 	uint64_t					optmask;
@@ -127,13 +155,13 @@ typedef struct		s_denv
 	int				sig_tmp;
 	volatile __sig_atomic_t		sigint;
 	char						*dfl_socket;
-	int						unix_socket;
+	int						socketfd;
 	int32_t						log_fd;
 	t_list						*environ;
 	t_list						*prgm_list;
 	dictionary					*dict;
 	t_options					opt;
-	struct sockaddr			*addr;
+	struct sockaddr_un			addr;
 	uint8_t						client_connected;
 	int8_t						lock;
 	uint8_t						shutdown;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   daemon.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 16:51:57 by dthan             #+#    #+#             */
-/*   Updated: 2020/08/27 03:02:32 by dthan            ###   ########.fr       */
+/*   Updated: 2020/09/15 16:52:25 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,11 @@ void initSignal(void);
 //-------------init/daemon
 //daemon_builder.c
 void	creatDaemon(void);
+//-------------init/log
+//log.c
+void writeIntoLog(char *message); // this maybe move to new file
+void init_log(void);
+
+//cleaner
+void cleaner(void);
 #endif

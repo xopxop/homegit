@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dthan <dthan@student.42.fr>                +#+  +:+       +#+         #
+#    By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/24 16:34:34 by dthan             #+#    #+#              #
-#    Updated: 2020/08/27 02:25:51 by dthan            ###   ########.fr        #
+#    Updated: 2020/09/15 16:52:59 by dthan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,10 @@ srcs/daemon/init/config_file/collect_info_from_config_file.c \
 srcs/daemon/init/error/error_input.c \
 srcs/daemon/init/signal/signal.c \
 srcs/daemon/init/daemon/daemon_builder.c \
+srcs/daemon/init/log/log.c \
 srcs/daemon/init/debug/for_init_input.c \
-srcs/daemon/init/debug/for_config_file.c
+srcs/daemon/init/debug/for_config_file.c \
+srcs/daemon/exit.c
 
 OBJS=main.o \
 set_default.o parse_command_line.o \
@@ -33,8 +35,10 @@ load_config_file.o collect_info_from_config_file.o \
 error_input.o \
 signal.o \
 daemon_builder.o \
+log.o \
 for_init_input.o \
 for_config_file.o\
+exit.o
 
 all: $(NAME)
 

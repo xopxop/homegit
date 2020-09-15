@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/20 01:39:45 by dthan             #+#    #+#             */
-/*   Updated: 2020/08/27 03:23:18 by dthan            ###   ########.fr       */
+/*   Updated: 2020/08/28 01:22:36 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,31 +43,12 @@ void	forkingTheParrentProcess(void)
 		exit(EXIT_FAILURE);
 	}
 	if (pid > 0)
-	{
-		ft_printf("parent id: %d\n", pid);
 		exit(EXIT_SUCCESS);
-	}
-	ft_printf("child id: %d\n", getsid(0));
 }
 
 void	creatDaemon(void)
 {
 	forkingTheParrentProcess();
-	umask(0);
+	umask(g_denv.opt.umask);
 	close_standardfd();
-	int fd;
-	fd = open("/home/dthan/Projects/homegit/taskmaster/output.txt", O_CREAT | O_WRONLY, S_IRWXU | S_IRWXG | S_IRWXO);
-	if (fd == -1)
-	{
-		strerror(errno);
-		exit(EXIT_FAILURE);
-	}
-	while (1)
-	{
-		write(fd, "daemon initialized\n", 19);
-		sleep(5);
-		break;
-	}
-	write(fd, "daemon finished\n", 16);
-	close(fd);
 }
