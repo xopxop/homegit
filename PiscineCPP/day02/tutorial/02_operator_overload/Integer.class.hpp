@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Integer.class.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 23:27:52 by dthan             #+#    #+#             */
-/*   Updated: 2020/05/12 23:27:52 by dthan            ###   ########.fr       */
+/*   Updated: 2020/08/25 03:26:51 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Integer {
         int         getValue( void ) const;
 
         Integer &   operator=( Integer const & rhs );
-        Integer     operator+( Integer const & rhs ) const;
+		Integer     operator+( Integer const & rhs ) const;
 
     private:
         int     _n;

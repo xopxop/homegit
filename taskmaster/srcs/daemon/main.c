@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 16:42:42 by dthan             #+#    #+#             */
-/*   Updated: 2020/09/15 17:17:11 by dthan            ###   ########.fr       */
+/*   Updated: 2020/09/15 18:16:18 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,10 @@ void init(int ac, char **av, char **env)
 	init_log();
 	parseConfigFile();
 	initSignal();
-	// creatDaemon();
+	creatDaemon();
 	initSocket();
 }
 
-/*
 void initInstance(t_instance *inst, int id, char *name)
 {
 	ft_memset(inst, 0, sizeof(t_instance));
@@ -144,11 +143,11 @@ void launchJobs(void)
 		ptr = ptr->next;
 	}
 }
-*/
+
 int	main(int ac, char **av, char **env)
 {
 	init(ac - 1, &av[1], env);
-	// launchJobs();
+	launchJobs();
 	writeIntoLog("Taskmasterd is logging out.");
 	cleaner();
 	return (EXIT_SUCCESS);

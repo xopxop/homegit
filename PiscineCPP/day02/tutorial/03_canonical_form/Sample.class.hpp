@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Sample.class.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 01:22:26 by dthan             #+#    #+#             */
-/*   Updated: 2020/05/13 01:22:27 by dthan            ###   ########.fr       */
+/*   Updated: 2020/08/25 03:49:16 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 
 class Sample {
     public:
-        Sample( void );             // Connanical
+        Sample( void );             // Canonical
         Sample( int const n );
-        Sample( Sample const & src );    // Connanical
-        ~Sample(void);
+        Sample( Sample const & src );    // Canonical
+        ~Sample(void);						//Canonical
 
-        Sample &    operator=( Sample const & rhs );    // Connanical
+        Sample &    operator=( Sample const & rhs );    // Canonical
 
         int         getFoo( void ) const;
 

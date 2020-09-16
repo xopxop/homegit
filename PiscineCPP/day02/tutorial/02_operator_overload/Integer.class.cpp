@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Integer.class.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 23:33:08 by dthan             #+#    #+#             */
-/*   Updated: 2020/05/12 23:33:08 by dthan            ###   ########.fr       */
+/*   Updated: 2020/08/25 03:35:45 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ Integer     Integer::operator+( Integer const & rhs ) const {
     return Integer( this->_n + rhs.getValue() );
 }
 
-std::ostream &  operator<< ( std::ostream & o, Integer const & rhs ) {
+std::ostream &  operator<<( std::ostream & o, Integer const & rhs ) {
     o << rhs.getValue();
     return o;
 }

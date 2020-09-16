@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   taskmaster.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 10:46:05 by dthan             #+#    #+#             */
-/*   Updated: 2020/08/28 04:12:59 by dthan            ###   ########.fr       */
+/*   Updated: 2020/09/15 18:27:19 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,21 @@
 */
 
 # define MAX_CLIENT 1
+
+/*
+**********************LOG_LEVEL************************
+*/
+
+typedef enum e_log_level
+{
+	CRIT = 1,			//Messages that indicate a condition that requires immediate user attention, a supervisor state change, or an error in supervisor itself
+	ERRO,				//Messages that indicate a potentially ignorable error condition (e.g. unable to clear a log directory)
+	WARN,				//Messages that indicate an anomalous condition which isnt an error
+	INFO,				//Normal informational output. This is the default log level if none is explicitly configured
+	DEBG,				//Messages useful for users trying to debug process cinfiguation and communication behavior (process output, listener state changes, event notification)
+	TRAC,				//Messages useful for developers trying to debug supervisor plugins, and information about HTTP and RPC requests and responses
+	BLAT				//Messages useful for developers trying to debug supervisor itself
+}			t_log_level;
 
 /*
 *******************************************************

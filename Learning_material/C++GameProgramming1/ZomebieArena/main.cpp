@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/04 07:54:50 by dthan             #+#    #+#             */
-/*   Updated: 2020/09/04 11:23:04 by dthan            ###   ########.fr       */
+/*   Updated: 2020/09/04 13:38:46 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,25 +60,26 @@ int main() {
 
 		//Handle events
 		sf::Event event;
-		while (window.pollEvent(event)) {
-			if (event.type == sf::Event::KeyPressed) {
-				// Pause a game while playing
-				if (event.key.code == sf::Keyboard::Return && state == State::PLAYING) {
-					state = State::PAUSED;
-				}
-				//Restart while pause
-				else if (event.key.code == sf::Keyboard::Return && state == State::PAUSED) {
-					state = State::PLAYING;
-					// Reset the clock so there isnt a frame jump
-					clock.restart();
-				} // Start a new game while in GAME_OVER state
-				else if (event.key.code == sf::Keyboard::Return && state == State::GAME_OVER) {
-					state = State::LEVELING_UP;
-				}
+		state = State::PLAYING;
+		// while (window.pollEvent(event)) {
+		// 	if (event.type == sf::Event::KeyPressed) {
+		// 		// Pause a game while playing
+		// 		if (event.key.code == sf::Keyboard::Return && state == State::PLAYING) {
+		// 			state = State::PAUSED;
+		// 		}
+		// 		//Restart while pause
+		// 		else if (event.key.code == sf::Keyboard::Return && state == State::PAUSED) {
+		// 			state = State::PLAYING;
+		// 			// Reset the clock so there isnt a frame jump
+		// 			clock.restart();
+		// 		} // Start a new game while in GAME_OVER state
+		// 		else if (event.key.code == sf::Keyboard::Return && state == State::GAME_OVER) {
+		// 			state = State::LEVELING_UP;
+		// 		}
 
-				if (state == State::PLAYING) { }
-			}
-		} //End event polling
+		// 		if (state == State::PLAYING) { }
+		// 	}
+		// } //End event polling
 
 		// Handle the player quitting
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {

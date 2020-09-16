@@ -69,8 +69,9 @@ void run(void)
 	int tick;
 
 	player.disp_char = 'o';
-	player.pos = {10, 5};
-	
+	player.pos = {10, 10};
+	player.bounds = { { (uint_fast16_t)(player.pos.x - 1), (uint_fast16_t)player.pos.y }, { 3 , 2} };
+
 	asteroids.setBounds(game_area);
 	stars.setBounds(game_area);
 
