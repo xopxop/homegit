@@ -1,5 +1,5 @@
 #!/usr/bin/php
-<?PHP
+<?php
 
 function ft_split($string) {
 	return (array_filter(preg_split('/\s+/', trim($string))));

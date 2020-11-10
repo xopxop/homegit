@@ -1,5 +1,5 @@
 #!/usr/bin/php
-<?PHP
+<?php
 
 for ($i = 0; $i < 1000; $i++)
 	echo "X";

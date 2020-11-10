@@ -1,5 +1,5 @@
 #!/usr/bin/php
-<?PHP
+<?php
 
 function valid_character($string) {
 	$char_set = "0123456789+-*/%";

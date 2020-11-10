@@ -1,5 +1,5 @@
 BODY {
-	background-color: red;
+	background-color:#505050;
 	width: 100%;
 	margin: auto;
 	position: relative;
@@ -152,10 +152,15 @@ BODY {
 .box span.big {
 	font-family: 'Times New Roman', Times, serif;
 	font-size: 36px;
+	font-weight: 550;
 }
 .box span.shadow {
 	text-shadow: 5px 5px 5px black;
 }
 .box span.italic {
 	font-style: italic;
+}
+div p {
+	margin: 0;
+	padding: 0;
 }

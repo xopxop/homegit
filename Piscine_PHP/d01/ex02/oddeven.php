@@ -1,5 +1,5 @@
 #!/usr/bin/php
-<?PHP
+<?php
 
 while (true) {
 	echo "Enter a number: ";

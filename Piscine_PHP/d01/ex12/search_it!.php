@@ -1,5 +1,5 @@
 #!/usr/bin/php
-<?PHP
+<?php
 
 if ($argc > 2) {
 	$argv = array_reverse($argv);

@@ -1,5 +1,5 @@
 #!/usr/bin/php
-<?PHP
+<?php
 
 function average($total_grade, $total_number) {
 	return ($total_grade / $total_number);
