@@ -3,12 +3,16 @@ session_start();
 if ($_SESSION['loggued_on_user'] == NULL)
 	echo "ERROR" . PHP_EOL;
 else {
-	if ($_POST['msg'] != NULL) {
-		if (!file_exists("../private"))
+	if ($_POST['msg']) {
+		if (!file_exists("../private")) {
 			mkdir("../private");
-		if (!file_exists("../private/chat"))
+			chmod("../private", 0777);
+		}
+		if (!file_exists("../private/chat")) {
 			file_put_contents("../private/chat", NULL);
-		$chat = unserialize("../private/chat");
+			chmod("../private/chat", 0777);
+		}
+		$chat = unserialize(file_get_contents("../private/chat"));
 		$fd = fopen("../private/chat", 'w');
 		flock($fd, LOCK_EX);
 		$data['time'] = time();
@@ -19,4 +23,16 @@ else {
 		fclose($fd);
 	}
 }
+
 ?>
+
+<!DOCTYPE html>
+<html>
+	<body>
+		<form action="speak.php" method="POST">
+			Message: <input type="text" name="msg" value="" />
+			<br />
+			<input type="submit" name="submit" value="OK" />
+		</form>
+	</body>
+</html>
