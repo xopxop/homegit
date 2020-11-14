@@ -1,8 +1,8 @@
 <?PHP
 session_start();
-if ($_SESSION['loggued_on_user'] == NULL)
+if ($_SESSION['loggued_on_user'] == NULL) {
 	echo "ERROR" . PHP_EOL;
-else if ($_POST['msg']) {
+} else if ($_POST['msg']) {
 		if (!file_exists("../private")) {
 			mkdir("../private");
 			chmod("../private", 0777);
@@ -20,11 +20,7 @@ else if ($_POST['msg']) {
 		$chat[] = $data;
 		file_put_contents("../private/chat", serialize($chat));
 		fclose($fd);
-} else {
-	exit();
-}
-
-?>
+		?>
 <!DOCTYPE html>
 <html>
 	<body>
@@ -35,3 +31,4 @@ else if ($_POST['msg']) {
 		</form>
 	</body>
 </html>
+<?php } ?>
