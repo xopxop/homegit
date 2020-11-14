@@ -1,6 +1,6 @@
 <?PHP
 
-if ((isset($_POST['login'])) && ($_POST['login'] != "") && (isset($_POST['oldpw'])) && ($_POST['oldpw'] != "") && (isset($_POST['newpw'])) && ($_POST['newpw'] != "") && (isset($_POST['submit'])) && ($_POST['submit'] === "OK")) {
+if ($_POST['login'] && $_POST['login'] != "" && $_POST['oldpw'] && $_POST['oldpw'] != "" && $_POST['newpw'] && $_POST['newpw'] != "" && $_POST['submit'] && $_POST['submit'] === "OK") {
 	$account = unserialize(file_get_contents("../htdocs/private/passwd"));
 	$match_but_no_modified = false;
 	foreach ($account as $key => $elem)
