@@ -29,14 +29,11 @@ if ($_POST['login'] && $_POST['login'] != "" && $_POST['passwd'] && $_POST['pass
 		creatAccount($account);
 		header('Location: index.html');
 		echo "OK\n";
-		exit();
 	} else {
 		echo "ERROR\n";
-		exit();
 	}
 }
 else {
 	echo "ERROR\n";
-	exit();
 }
 ?>
