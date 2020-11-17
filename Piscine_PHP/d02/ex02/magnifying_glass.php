@@ -1,5 +1,5 @@
 #!/usr/bin/php
-<?PHP
+<?php
 
 function ft_replace($matches)
 {

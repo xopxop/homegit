@@ -3,7 +3,7 @@
 /*
 	documentation:
 	https://man7.org/linux/man-pages//man5/utmp.5.html
-	https://github.com/libyahttps://man7.orghttps://man7.org/linux/man-pages//man5/utmp.5.html/linux/man-pages//man5/utmp.5.htmll/dtformats/blob/master/documentation/Utmp%20login%20records%20format.asciidoc
+	https://github.com/libyal/dtformats/blob/master/documentation/Utmp%20login%20records%20format.asciidoc
 	Note :	utmp struct can vary between OSs
 			This program is only for Linux, and writen and tested on Ubuntu 20.04LTS
 			The format of utmp struct arcoding to the document is for Linux libc 6 utmp

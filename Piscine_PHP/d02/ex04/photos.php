@@ -1,5 +1,5 @@
 #!/usr/bin/php
-<?PHP
+<?php
 function get_web_page($url) {
 	$option = array(
 		CURLOPT_URL => $url,
@@ -40,7 +40,7 @@ if ($argc == 2) {
 			if ($img[$i][0] != '/')
 				$img[$i] = $url . "/" . $img[$i];
 			else
-			$img[$i] = $url . $img[$i];
+				 $img[$i] = $url . $img[$i];
 		}
 	}
 	$img = array_unique($img);

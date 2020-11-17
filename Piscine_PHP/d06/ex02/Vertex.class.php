@@ -48,7 +48,7 @@ Class Vertex {
 		return $str;
 	}
 
-	public function doc() {
+	public static function doc() {
 		if ( $str = file_get_contents( 'Vertex.doc.txt' ) )
 			echo $str;
 		else
