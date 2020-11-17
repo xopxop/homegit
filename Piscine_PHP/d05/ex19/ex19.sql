@@ -1,3 +1,3 @@
-SELECT DATEDIFF(MAX(date), MIN(date)) AS 'uptime'
+SELECT DATEDIFF(last_projection, release_date) AS 'uptime'
 FROM
-	member_history;
+	film;

@@ -4,4 +4,4 @@ FROM
 WHERE
 	last_name LIKE '%-%' OR first_name LIKE '%-%'
 ORDER BY
-	last_name, first_name ASC;
+	last_name ASC, first_name ASC;
