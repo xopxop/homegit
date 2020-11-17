@@ -21,27 +21,19 @@ Class Vector {
 	static $verbose = false;
 
 	public function __construct( $array ) {
-		// if ( array_key_exists( 'orig', $array ) && $array['orig'] instanceof Vertex ) {
-		// 	$this->_x = $array['dest']->_x - $array['orig']->_x;
-		// 	$this->_y = $array['dest']->_y - $array['orig']->_y;
-		// 	$this->_z = $array['dest']->_z - $array['orig']->_z;
-		// 	// What is $this->_w here?
-		// }
-		// else {
-		// 	$orig = new Vertex( array( 'x'=0, 'y'=0, 'z'=0, 'w'=1 ) );
-		// 	$this->_x = $array['dest']->_x - $org->_x;
-		// 	$this->_y = $array['dest']->_y - $org->_y;
-		// 	$this->_z = $array['dest']->_z - $org->_z;
-		// 	// $this->_w
-		// }
-		if ( !array_key_exists( 'orig', $array ) && $array['orig'] instanceof Vertex )
-			$orig = $array['orig'];
-		else
-			$orig = new Vertex( array( 'x'=>0, 'y'=>0, 'z'=>0, 'w'=>1 ) );
-		$this->_x = $array['dest']->_x - $org->_x;
-		$this->_y = $array['dest']->_y - $org->_y;
-		$this->_z = $array['dest']->_z - $org->_z;
-		// $this->_w
+		if ( array_key_exists( 'dest', $array ) && $array['dest'] instanceof Vertex ) {
+			if ( array_key_exists( 'orig', $array ) && $array['orig'] instanceof Vertex) {
+				$this->_x = $array['dest']->getX() - $array['orig']->getX();
+				$this->_y = $array['dest']->getY() - $array['orig']->getY();
+				$this->_z = $array['dest']->getZ() - $array['orig']->getZ();
+				$this->_w = $array['dest']->getW() - $array['orig']->getW();
+			} else {
+				$this->_x = $array['dest']->getX() - 0;
+				$this->_y = $array['dest']->getY() - 0;
+				$this->_z = $array['dest']->getZ() - 0;
+				$this->_w = $array['dest']->getW() - 1;
+			}
+		}
 		if (self::$verbose)
 			echo $this->__toString() . " constructed" . PHP_EOL;
 	}
@@ -56,7 +48,7 @@ Class Vector {
 		return sprintf( "Vector( x:%0.2f, y:%0.2f, z:%0.2f, w:%0.2f )", $this->_x, $this->_y, $this->_z , $this->_w );
 	}
 
-	public function doc() {
+	public static function doc() {
 		if ( $str = file_get_contents( 'Vector.doc.txt' ) )
 			echo $str;
 		else

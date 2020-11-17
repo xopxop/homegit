@@ -54,6 +54,22 @@ Class Vertex {
 		else
 			echo "Error: .doc file doesn't exist." . PHP_EOL;
 	}
+
+	public function getX() {
+		return $this->_x;
+	}
+
+	public function getY() {
+		return $this->_y;
+	}
+
+	public function getZ() {
+		return $this->_z;
+	}
+
+	public function getW() {
+		return $this->_w;
+	}
 }
 
 ?>
