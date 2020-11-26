@@ -1,1 +1,4 @@
-This is homepage
+<?php
+
+require_once("../app/init.php");
+$app = new App;
