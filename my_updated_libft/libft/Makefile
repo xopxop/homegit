@@ -3,243 +3,182 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dthan <dthan@student.42.fr>                +#+  +:+       +#+         #
+#    By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/24 16:34:34 by dthan             #+#    #+#              #
-#    Updated: 2020/08/10 13:21:04 by dthan            ###   ########.fr        #
+#    Updated: 2021/02/04 14:54:14 by dthan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#-----------------------------Updated: 21/2/202--------------------------------#
+#-----------------------------Updated: 4/2/2021--------------------------------#
 
-NAME=libft.a
-
-FLAGS = -Wall -Wextra -Werror
-
-INCLUDES=./
-
-#<<<<<<<<<<GET_NEXT_LINE_PROJECT>>>>>>>>>#
-
-GNL_SRCS=get_next_line/get_next_line.c
-
-GNL_OBJ=get_next_line.o
+CC			:= clang
+CFLAGS		:= -Wall -Wextra -Werror
+INCLUDES	:= -Iincludes/
+LIBRARY		:= libft.a
 
 #<<<<<<<<<<CTYPE.H>>>>>>>>>>#
 
-CTYPE_SRCS=ctype/ft_isalpha.c \
-ctype/ft_isdigit.c \
-ctype/ft_isalnum.c \
-ctype/ft_isascii.c \
-ctype/ft_isprint.c \
-ctype/ft_isspace.c \
-ctype/ft_islower.c \
-ctype/ft_isupper.c \
-ctype/ft_toupper.c \
-ctype/ft_tolower.c
-
-CTYPE_OBJ=ft_isalpha.o \
-ft_isdigit.o \
-ft_isalnum.o \
-ft_isascii.o \
-ft_isprint.o \
-ft_isspace.o \
-ft_islower.o \
-ft_isupper.o \
-ft_toupper.o \
-ft_tolower.o
+CTYPE_DIR := ctype
+CTYPE_FILES += ft_isalpha.c
+CTYPE_FILES += ft_isdigit.c
+CTYPE_FILES += ft_isalnum.c
+CTYPE_FILES += ft_isascii.c
+CTYPE_FILES += ft_isprint.c
+CTYPE_FILES += ft_isspace.c
+CTYPE_FILES += ft_islower.c
+CTYPE_FILES += ft_isupper.c
+CTYPE_FILES += ft_toupper.c
+CTYPE_FILES += ft_tolower.c
+CTYPE := $(addprefix $(CTYPE_DIR)/,$(CTYPE_FILES))
 
 #<<<<<<<<<<LIST.H>>>>>>>>>># NOTE: Optional
 
-LIST_SRCS=list/ft_lstnew.c \
-list/ft_lstdelone.c \
-list/ft_lstdel.c \
-list/ft_lstadd.c \
-list/ft_lstiter.c \
-list/ft_lstmap.c
-
-LIST_OBJ=ft_lstnew.o \
-ft_lstdelone.o \
-ft_lstdel.o \
-ft_lstadd.o \
-ft_lstiter.o \
-ft_lstmap.o
+LIST_DIR := list
+LIST_FILES += ft_lstnew.c
+LIST_FILES += ft_lstdelone.c
+LIST_FILES += ft_lstdel.c
+LIST_FILES += ft_lstadd.c
+LIST_FILES += ft_lstiter.c
+LIST_FILES += ft_lstmap.c
+LIST := $(addprefix $(LIST_DIR)/,$(LIST_FILES))
 
 #<<<<<<<<<<PRINT.H>>>>>>>>>># NOTE: Optional
 
-PRINT_SRCS=print/ft_putchar.c \
-print/ft_putstr.c \
-print/ft_putendl.c \
-print/ft_putnbr.c \
-print/ft_putchar_fd.c \
-print/ft_putstr_fd.c \
-print/ft_putendl_fd.c \
-print/ft_putnbr_fd.c
+PRINT_DIR := print
+PRINT_FILES += ft_putchar.c
+PRINT_FILES += ft_putstr.c
+PRINT_FILES += ft_putendl.c
+PRINT_FILES += ft_putnbr.c
+PRINT_FILES += ft_putchar_fd.c
+PRINT_FILES += ft_putstr_fd.c
+PRINT_FILES += ft_putendl_fd.c
+PRINT_FILES += ft_putnbr_fd.c
+PRINT := $(addprefix $(PRINT_DIR)/,$(PRINT_FILES))
 
-PRINT_OBJ=ft_putchar.o \
-ft_putstr.o \
-ft_putendl.o \
-ft_putnbr.o \
-ft_putchar_fd.o \
-ft_putstr_fd.o \
-ft_putendl_fd.o \
-ft_putnbr_fd.o
+#<<<<<<<<<<PRINTF_H>>>>>>>>>># not yet
 
-#<<<<<<<<<<STDIO.H>>>>>>>>>>#
-
-STDIO_SRCS=
-
-STDIO_OBJ=
-
-#<<<<<<<<<<PRINTF_H>>>>>>>>>>#
-
-PRINTF_SRCS_DIR=stdio/ft_printf/
-
-PRINTF_SRCS=$(addprefix $(PRINTF_SRCS_DIR)/, core.c parsing.c printing.c \
-parsing/fill_struct.c parsing/parsing_helper.c \
-printing/nbr_to_str.c printing/width_control.c printing/percision_control.c \
-printing/flag_control.c printing/printing_helper.c \
-printing/type_c.c printing/type_di.c printing/type_f.c printing/type_o.c \
-printing/type_p.c printing/type_s.c printing/type_u.c printing/type_hex.c \
-printing/type_percent.c)
-
-PRINTF_OBJ=core.o parsing.o printing.o \
-fill_struct.o parsing_helper.o \
-nbr_to_str.o width_control.o percision_control.o flag_control.o \
-printing_helper.o \
-type_c.o type_di.o type_f.o type_o.o type_p.o type_s.o type_u.o type_hex.o \
-type_percent.o \
+STDIO_DIR := stdio
+PRINTF_DIR := ft_printf
+PRINTF_FILES += core.c
+PRINTF_FILES += parsing.c
+PRINTF_FILES += printing.c
+PRINTF_FILES += parsing/fill_struct.c
+PRINTF_FILES += parsing/parsing_helper.c
+PRINTF_FILES += printing/nbr_to_str.c
+PRINTF_FILES += printing/width_control.c
+PRINTF_FILES += printing/percision_control.c
+PRINTF_FILES += printing/flag_control.c
+PRINTF_FILES += printing/printing_helper.c
+PRINTF_FILES += printing/type_c.c
+PRINTF_FILES += printing/type_di.c
+PRINTF_FILES += printing/type_f.c
+PRINTF_FILES += printing/type_o.c
+PRINTF_FILES += printing/type_p.c
+PRINTF_FILES += printing/type_s.c
+PRINTF_FILES += printing/type_u.c
+PRINTF_FILES += printing/type_hex.c
+PRINTF_FILES += printing/type_percent.c
+PRINTF := $(addprefix $(STDIO_DIR)/$(PRINTF_DIR)/,$(PRINTF_FILES))
 
 #<<<<<<<<<<STDLIB.H>>>>>>>>>>#
 
-STDLIB_SRCS=stdlib/ft_atoi.c
-
-STDLIB_OBJ=ft_atoi.o
+STDLIB_DIR := stdlib
+STDLIB_FILES += ft_atoi.c
+STDLIB = $(addprefix $(STDLIB_DIR)/,$(STDLIB_FILES))
 
 #<<<<<<<<<<STRING.H>>>>>>>>>>#
 
-STRING_SRCS=string/ft_memset.c \
-string/ft_bzero.c \
-string/ft_memcpy.c \
-string/ft_memccpy.c \
-string/ft_memmove.c \
-string/ft_memchr.c \
-string/ft_memcmp.c \
-string/ft_strlen.c \
-string/ft_strdup.c \
-string/ft_strndup.c \
-string/ft_strcpy.c \
-string/ft_strncpy.c \
-string/ft_strcat.c \
-string/ft_strncat.c \
-string/ft_strlcat.c \
-string/ft_strchr.c \
-string/ft_strrchr.c \
-string/ft_strstr.c \
-string/ft_strnstr.c \
-string/ft_strcmp.c \
-string/ft_strncmp.c
-
-STRING_OBJ=ft_memset.o \
-ft_bzero.o \
-ft_memcpy.o \
-ft_memccpy.o \
-ft_memmove.o \
-ft_memchr.o \
-ft_memcmp.o \
-ft_strlen.o \
-ft_strdup.o \
-ft_strndup.o \
-ft_strcpy.o \
-ft_strncpy.o \
-ft_strcat.o \
-ft_strncat.o \
-ft_strlcat.o \
-ft_strchr.o \
-ft_strrchr.o \
-ft_strstr.o \
-ft_strnstr.o \
-ft_strcmp.o \
-ft_strncmp.o
+STRING_DIR := string
+STRING_FILES += ft_memset.c
+STRING_FILES += ft_bzero.c
+STRING_FILES += ft_memcpy.c
+STRING_FILES += ft_memccpy.c
+STRING_FILES += ft_memmove.c
+STRING_FILES += ft_memchr.c
+STRING_FILES += ft_memcmp.c
+STRING_FILES += ft_strlen.c
+STRING_FILES += ft_strdup.c
+STRING_FILES += ft_strndup.c
+STRING_FILES += ft_strcpy.c
+STRING_FILES += ft_strncpy.c
+STRING_FILES += ft_strcat.c
+STRING_FILES += ft_strncat.c
+STRING_FILES += ft_strlcat.c
+STRING_FILES += ft_strchr.c
+STRING_FILES += ft_strrchr.c
+STRING_FILES += ft_strstr.c
+STRING_FILES += ft_strnstr.c
+STRING_FILES += ft_strcmp.c
+STRING_FILES += ft_strncmp.c
+STRING := $(addprefix $(STRING_DIR)/,$(STRING_FILES))
 
 #<<<<<<<<<<UTILITY.H>>>>>>>>>># NOTE: Optional
 
-UTILITY_SRCS=utility/ft_memalloc.c \
-utility/ft_memdel.c \
-utility/ft_strnew.c \
-utility/ft_strdel.c \
-utility/ft_strclr.c \
-utility/ft_striter.c \
-utility/ft_striteri.c \
-utility/ft_strmap.c \
-utility/ft_strmapi.c \
-utility/ft_strequ.c \
-utility/ft_strnequ.c \
-utility/ft_strsub.c \
-utility/ft_strjoin.c \
-utility/ft_strtrim.c \
-utility/ft_strsplit.c \
-utility/ft_swap.c \
-utility/ft_ctwords.c \
-utility/ft_itoa.c \
-utility/ft_strjoin_and_free.c \
-utility/ft_itoa_signed_and_unsigned_long_long.c \
-utility/ft_strrev.c \
-utility/ft_arrayct.c \
-utility/ft_arraydel.c \
+UTILITY_DIR := utility
+UTILITY_FILES += ft_memalloc.c
+UTILITY_FILES += ft_memdel.c
+UTILITY_FILES += ft_strnew.c
+UTILITY_FILES += ft_strdel.c
+UTILITY_FILES += ft_strclr.c
+UTILITY_FILES += ft_striter.c
+UTILITY_FILES += ft_striteri.c
+UTILITY_FILES += ft_strmap.c
+UTILITY_FILES += ft_strmapi.c
+UTILITY_FILES += ft_strequ.c
+UTILITY_FILES += ft_strnequ.c
+UTILITY_FILES += ft_strsub.c
+UTILITY_FILES += ft_strjoin.c
+UTILITY_FILES += ft_strtrim.c
+UTILITY_FILES += ft_strsplit.c
+UTILITY_FILES += ft_swap.c
+UTILITY_FILES += ft_ctwords.c
+UTILITY_FILES += ft_itoa.c
+UTILITY_FILES += ft_strjoin_and_free.c
+UTILITY_FILES += ft_itoa_signed_and_unsigned_long_long.c
+UTILITY_FILES += ft_strrev.c
+UTILITY_FILES += ft_arrayct.c
+UTILITY_FILES += ft_arraydel.c
+UTILITY := $(addprefix $(UTILITY_DIR)/,$(UTILITY_FILES))
 
-UTILITY_OBJ=ft_memalloc.o \
-ft_memdel.o \
-ft_strnew.o \
-ft_strdel.o \
-ft_strclr.o \
-ft_striter.o \
-ft_striteri.o \
-ft_strmap.o \
-ft_strmapi.o \
-ft_strequ.o \
-ft_strnequ.o \
-ft_strsub.o \
-ft_strjoin.o \
-ft_strtrim.o \
-ft_strsplit.o \
-ft_swap.o \
-ft_ctwords.o \
-ft_itoa.o \
-ft_strjoin_and_free.o \
-ft_itoa_signed_and_unsigned_long_long.o \
-ft_strrev.o \
-ft_arrayct.o \
-ft_arraydel.o \
+#<<<<<<<<<<GET_NEXT_LINE_PROJECT>>>>>>>>>#
 
-#<<<<<<<<<<VECTOR.H>>>>>>>>>># NOTE: Optional
-VECTOR_SRCS=vector/ft_vector_create.c \
-vector/ft_vector_free.c \
-vector/ft_vector_get_data.c \
-vector/ft_vector_size.c \
-vector/ft_vector_get_alloc.c
+GNL_DIR := get_next_line
+GNL_FILES += get_next_line.c
+GNL := $(addprefix $(GNL_DIR)/,$(GNL_FILES))
 
-VECTOR_OBJ=ft_vector_create.o \
-ft_vector_free.o \
-ft_vector_get_data.o \
-ft_vector_size.o \
-ft_vector_get_alloc.o
+###### SUM-UP #####
+SRC += $(CTYPE)
+SRC += $(LIST)
+SRC += $(PRINT)
+SRC += $(PRINTF)
+SRC += $(STDLIB)
+SRC += $(STRING)
+SRC += $(UTILITY)
+SRC += $(GNL)
 
-all: $(NAME)
+OBJ_DIR := objects
+OBJ_FILES := $(addprefix $(OBJ_DIR)/,$(SRC:%.c=%.o))
 
-$(NAME):
-	@gcc $(FLAGS) -I$(INCLUDES) -c $(CTYPE_SRCS) $(LIST_SRCS) $(PRINT_SRCS) $(STDIO_SRCS) $(STDLIB_SRCS) \
-	$(STRING_SRCS) $(UTILITY_SRCS) $(GNL_SRCS) $(PRINTF_SRCS) $(VECTOR_SRCS)
-	@ar rc $(NAME) $(CTYPE_OBJ) $(LIST_OBJ) $(PRINT_OBJ) $(STDIO_OBJ) $(STDLIB_OBJ) $(STRING_OBJ) \
-	$(UTILITY_OBJ) $(GNL_OBJ) $(PRINTF_OBJ) $(VECTOR_OBJ)
-	@ranlib $(NAME)
+
+all: mkdirs libft
+
+mkdirs:
+	@mkdir -p $(OBJ_DIR)
+
+$(OBJ_DIR)/%.o: %.c
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $(OBJ_DIR)/$(notdir $@)
+
+libft: $(OBJ_FILES)
+	@ar rc $(LIBRARY) $(addprefix $(OBJ_DIR)/,$(notdir $(OBJ_FILES)))
+	@ranlib $(LIBRARY)
 
 clean:
-	@/bin/rm -f $(CTYPE_OBJ) $(LIST_OBJ) $(PRINT_OBJ) $(STDIO_OBJ) $(STDLIB_OBJ) $(STRING_OBJ) \
-	$(UTILITY_OBJ) $(GNL_OBJ) $(PRINTF_OBJ) $(VECTOR_OBJ)
+	@rm -rf $(OBJ_DIR)
 
 fclean: clean
-	@/bin/rm -f $(NAME)
+	@rm -rf $(LIBRARY)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all mkdirs libft clean fclean re

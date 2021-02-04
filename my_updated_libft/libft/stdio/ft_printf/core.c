@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   core.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 02:33:13 by dthan             #+#    #+#             */
-/*   Updated: 2020/05/21 21:45:59 by dthan            ###   ########.fr       */
+/*   Updated: 2020/10/10 02:01:48 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
-#define STDOUT 1
 
 int	parse_and_print(const char *format, va_list args, size_t *pos, int fd)
 {
