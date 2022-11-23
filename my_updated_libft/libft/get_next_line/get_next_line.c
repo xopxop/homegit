@@ -13,7 +13,7 @@
 #include "../includes/get_next_line.h"
 #include "../includes/libft.h"
 
-static int		gnl_verify_line(char **string, char **line)
+static int	gnl_verify_line(char **string, char **line)
 {
 	int			i;
 	char		*string_with_line_break;
@@ -34,13 +34,16 @@ static int		gnl_verify_line(char **string, char **line)
 	return (1);
 }
 
-static int		read_file(int fd, char *read_buffer, char **string, char **line)
+static int	read_file(int fd, char *read_buffer, char **string, char **line)
 {
 	char		*temp_string;
 	ssize_t		read_value;
 
-	while ((read_value = read(fd, read_buffer, BUFF_SIZE)) > 0)
+	while ("reading")
 	{
+		read_value = read(fd, read_buffer, BUFF_SIZE);
+		if (read_value < 1)
+			break ;
 		read_buffer[read_value] = '\0';
 		if (*string)
 		{
@@ -74,7 +77,7 @@ static ssize_t	return_value(ssize_t read_value, int fd, \
 	return (read_value);
 }
 
-int				get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	static char	*string[FD_MAX];
 	char		read_buffer[BUFF_SIZE + 1];

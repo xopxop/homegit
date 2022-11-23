@@ -14,14 +14,16 @@
 
 char	*ft_strmap(char const *string, char (*f)(char))
 {
-	char *newstring;
-	char *pstring;
-	char *pnewstring;
+	char	*newstring;
+	char	*pstring;
+	char	*pnewstring;
 
-	if (!string || !f ||
-			!(newstring = ft_memalloc((size_t)ft_strlen((char*)string) + 1)))
+	if (!string || !f)
 		return (NULL);
-	pstring = (char*)string;
+	newstring = ft_memalloc((size_t)ft_strlen((char *)string) + 1);
+	if (!newstring)
+		return (NULL);
+	pstring = (char *)string;
 	pnewstring = newstring;
 	while (*pstring)
 		*(pnewstring++) = f(*(pstring++));

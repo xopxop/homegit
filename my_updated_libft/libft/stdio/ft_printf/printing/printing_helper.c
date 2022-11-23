@@ -17,7 +17,7 @@
 **                 0 if is number
 */
 
-int		ft_isnan(double num)
+int	ft_isnan(double num)
 {
 	return (num != num);
 }
@@ -27,7 +27,7 @@ int		ft_isnan(double num)
 **                 0 if not
 */
 
-int		ft_isinf(double num)
+int	ft_isinf(double num)
 {
 	if (num == (10.0 / 0.0) || num == (-10.0 / 0.0))
 		return (1);
@@ -39,9 +39,9 @@ int		ft_isinf(double num)
 ** infinity and the string, "nan" for not a number, "inf" for the 2 later
 */
 
-int		special_case(char **s, double num)
+int	special_case(char **s, double num)
 {
-	char *new;
+	char	*new;
 
 	if (ft_isnan(num) || ft_isinf(num))
 	{

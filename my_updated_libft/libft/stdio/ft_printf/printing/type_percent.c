@@ -15,8 +15,8 @@
 void	type_percent(t_info *info, __attribute__((unused)) va_list arg, \
 		size_t *ct, int fd)
 {
-	char percent;
-	char *str;
+	char	percent;
+	char	*str;
 
 	percent = '%';
 	str = ft_strnew(1);

@@ -12,15 +12,29 @@
 
 #include "../../../includes/ft_printf.h"
 
+char	get_extra(t_info *info, char **str)
+{
+	if (ft_isdigit((*str)[0]) && \
+	(info->specifier == spec_int || info->specifier == spec_float))
+		return ((*str)[0]);
+	return (0);
+}
+
+int	get_hash(t_info *info)
+{
+	if (info->flags & HASH_SIGN && \
+	(info->specifier == spec_hexupcase || info->specifier == spec_hexlowcase))
+		return (2);
+	return (0);
+}
+
 void	pad_right(t_info *info, char **str, char *new)
 {
 	char	extra;
 	int		hash;
 
-	extra = (!ft_isdigit((*str)[0]) && (info->specifier == spec_int \
-				|| info->specifier == spec_float)) ? (*str)[0] : 0;
-	hash = (info->flags & HASH_SIGN && (info->specifier == spec_hexupcase || \
-				info->specifier == spec_hexlowcase)) ? 2 : 0;
+	extra = get_extra(info, str);
+	hash = get_hash(info);
 	if (info->flags & ZERO)
 	{
 		ft_strncpy(new, *str, hash);
@@ -43,7 +57,7 @@ void	pad_right(t_info *info, char **str, char *new)
 
 void	width_ctrl(t_info *info, char **str)
 {
-	char *new;
+	char	*new;
 
 	if (info->field_width == 0 || ft_strlen(*str) >= \
 			(size_t)info->field_width)

@@ -19,7 +19,7 @@
 
 int	ft_skip_atoi(const char *format, size_t *pos)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (ft_isdigit(format[*pos]))
@@ -29,7 +29,7 @@ int	ft_skip_atoi(const char *format, size_t *pos)
 
 int	ft_isspecifier(char specifier)
 {
-	char *list_specifier;
+	char	*list_specifier;
 
 	list_specifier = "cspdiuoxXf%";
 	while (*list_specifier)
@@ -43,7 +43,7 @@ int	ft_isspecifier(char specifier)
 
 int	ft_isflag(char chr)
 {
-	char *list_flags;
+	char	*list_flags;
 
 	list_flags = "-+ #0";
 	while (*list_flags)

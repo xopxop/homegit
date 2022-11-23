@@ -20,7 +20,7 @@ char	*ft_strtrim(char const *string)
 	stringstart = 0;
 	if (!string)
 		return (NULL);
-	stringend = ft_strlen((char*)string);
+	stringend = ft_strlen((char *)string);
 	while (ft_isspace(string[stringstart]))
 		stringstart++;
 	while (ft_isspace(string[stringend - 1]))

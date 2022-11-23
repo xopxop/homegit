@@ -13,10 +13,10 @@
 #ifndef FT_STDBOOL_H
 # define FT_STDBOOL_H
 
-typedef enum	e_bool
+typedef enum e_bool
 {
-	false,
-	true
-}				t_bool;
+	false = 0,
+	true = 1
+}	t_bool;
 
 #endif

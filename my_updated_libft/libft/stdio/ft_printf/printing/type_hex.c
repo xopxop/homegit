@@ -32,7 +32,7 @@ void	small_x(t_info *info, va_list arg, char **output)
 
 void	big_x(char **output)
 {
-	char *new;
+	char	*new;
 
 	new = *output;
 	while (*new)
@@ -44,7 +44,7 @@ void	big_x(char **output)
 
 void	type_x(t_info *info, va_list arg, size_t *ct, int fd)
 {
-	char *output;
+	char	*output;
 
 	small_x(info, arg, &output);
 	if (info->specifier == spec_hexupcase)

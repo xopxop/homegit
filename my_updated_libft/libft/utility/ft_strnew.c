@@ -18,7 +18,8 @@ char	*ft_strnew(size_t size)
 	size_t	i;
 
 	i = 0;
-	if (!(s = ft_memalloc(size + 1)))
+	s = ft_memalloc(size + 1);
+	if (!s)
 		return (NULL);
 	while (i < size)
 		s[i++] = '\0';

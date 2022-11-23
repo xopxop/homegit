@@ -14,7 +14,7 @@
 
 static int	getsizenumber(unsigned long long nb)
 {
-	unsigned int size;
+	unsigned int	size;
 
 	size = 0;
 	while (nb > 9)
@@ -25,7 +25,14 @@ static int	getsizenumber(unsigned long long nb)
 	return (size + 1);
 }
 
-char		*ft_itoa_signed_longlong(long long n)
+char	*malloc_string(unsigned int size, long long n)
+{
+	if (n < 0)
+		return ((char *)malloc(sizeof(char) * (size + 2)));
+	return ((char *)malloc(sizeof(char) * (size + 1)));
+}
+
+char	*ft_itoa_signed_longlong(long long n)
 {
 	char				*string;
 	unsigned long long	nbr;
@@ -38,10 +45,10 @@ char		*ft_itoa_signed_longlong(long long n)
 	else
 		nbr = n;
 	size = (unsigned int)getsizenumber(nbr);
-	if (!(string = (char*)malloc(sizeof(char) *
-					(size + 1 + (n < 0 ? 1 : 0)))))
+	string = malloc_string(size, n);
+	if (!string)
 		return (NULL);
-	if (n < 0 && (string[index] = '-'))
+	if (n < 0 && (string[index] == '-'))
 		size++;
 	index = size - 1;
 	while (nbr >= 10)
@@ -54,7 +61,7 @@ char		*ft_itoa_signed_longlong(long long n)
 	return (string);
 }
 
-char		*ft_itoa_unsigned_longlong(unsigned long long nbr)
+char	*ft_itoa_unsigned_longlong(unsigned long long nbr)
 {
 	char			*string;
 	unsigned int	index;
@@ -62,7 +69,8 @@ char		*ft_itoa_unsigned_longlong(unsigned long long nbr)
 
 	index = 0;
 	size = (unsigned int)getsizenumber(nbr);
-	if (!(string = (char*)malloc(sizeof(char) * (size + 1))))
+	string = (char *)malloc(sizeof(char) * (size + 1));
+	if (!string)
 		return (NULL);
 	index = size - 1;
 	while (nbr >= 10)

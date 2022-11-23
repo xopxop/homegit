@@ -14,7 +14,7 @@
 
 void	ft_arraydel(char **string_array)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	if (string_array)

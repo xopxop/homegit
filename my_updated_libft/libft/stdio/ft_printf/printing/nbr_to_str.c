@@ -23,9 +23,9 @@
 ** for more info: http://www.cplusplus.com/reference/cstdio/printf/
 */
 
-long long			get_signed_argument(t_info *info, va_list arg)
+long long	get_signed_argument(t_info *info, va_list arg)
 {
-	long long num;
+	long long	num;
 
 	if (info->length == len_h)
 		num = (short)va_arg(arg, int);
@@ -48,7 +48,7 @@ long long			get_signed_argument(t_info *info, va_list arg)
 
 unsigned long long	get_unsigned_argument(t_info *info, va_list arg)
 {
-	unsigned long num;
+	unsigned long	num;
 
 	if (info->length == len_h)
 		num = (unsigned short)va_arg(arg, unsigned int);
@@ -73,15 +73,16 @@ unsigned long long	get_unsigned_argument(t_info *info, va_list arg)
 ** shifting right
 */
 
-char				*ft_number_conversion(unsigned long long num, int mask, \
+char	*ft_number_conversion(unsigned long long num, int mask, \
 		int shiff_nbr, char *s)
 {
 	int		i;
 	char	*str;
 
 	i = 0;
-	if (!(str = (char*)ft_memalloc(MAXLEN)))
-		return (0);
+	str = (char *)ft_memalloc(MAXLEN);
+	if (!str)
+		return (NULL);
 	if (num == 0)
 		ft_strcpy(str, "0");
 	else

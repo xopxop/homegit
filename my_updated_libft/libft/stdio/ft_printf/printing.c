@@ -19,7 +19,8 @@
 ** it will return the function coresponding to the specifier type
 */
 
-static void	(*get_func(t_specifier specifier))(t_info*, va_list, size_t*, int)
+static void	(*get_func(t_specifier specifier))(t_info *info, va_list, \
+size_t *ct, int fd)
 {
 	static void	(*func[SPECIFIER_COUNT])(t_info*, va_list, size_t*, int);
 
@@ -45,7 +46,7 @@ static void	(*get_func(t_specifier specifier))(t_info*, va_list, size_t*, int)
 ** Return value: length of the output_str
 */
 
-int			printing(t_info *info, va_list arg, int fd)
+int	printing(t_info *info, va_list arg, int fd)
 {
 	static void	(*print_func)(t_info*, va_list, size_t*, int);
 	size_t		ct;

@@ -21,8 +21,9 @@ char	*ft_strdup(const char *s1)
 	ct = 0;
 	while (s1[ct])
 		ct++;
-	if (!(new = (char*)malloc(sizeof(char) * (ct + 1))))
-		return (0);
+	new = (char *)malloc(sizeof(char) * (ct + 1));
+	if (!new)
+		return (NULL);
 	i = 0;
 	while (s1[i])
 	{

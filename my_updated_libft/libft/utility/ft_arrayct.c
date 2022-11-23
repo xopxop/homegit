@@ -12,7 +12,7 @@
 
 int	ft_arrayct(char **input)
 {
-	int ct;
+	int	ct;
 
 	ct = 0;
 	while (input[ct])

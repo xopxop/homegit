@@ -14,7 +14,7 @@
 
 static int	getsizenumber(unsigned int nb)
 {
-	unsigned int size;
+	unsigned int	size;
 
 	size = 0;
 	while (nb > 9)
@@ -25,7 +25,14 @@ static int	getsizenumber(unsigned int nb)
 	return (size + 1);
 }
 
-char		*ft_itoa(int n)
+char	*malloc_string(unsigned int size, int n)
+{
+	if (n < 0)
+		return ((char *)malloc(sizeof(char) * (size + 2)));
+	return ((char *)malloc(sizeof(char) * (size + 1)));
+}
+
+char	*ft_itoa(int n)
 {
 	char			*string;
 	unsigned int	nbr;
@@ -38,10 +45,10 @@ char		*ft_itoa(int n)
 	else
 		nbr = (unsigned int)(n);
 	size = (unsigned int)getsizenumber(nbr);
-	if (!(string = (char*)malloc(sizeof(char) *
-					(size + 1 + (n < 0 ? 1 : 0)))))
+	string = malloc_string(size, n);
+	if (!string)
 		return (NULL);
-	if (n < 0 && (string[index] = '-'))
+	if (n < 0 && (string[index] == '-'))
 		size++;
 	index = size - 1;
 	while (nbr >= 10)

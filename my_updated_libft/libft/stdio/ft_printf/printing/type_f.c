@@ -14,7 +14,7 @@
 
 float	ft_pow(float x, int y)
 {
-	float temp;
+	float	temp;
 
 	if (y == 0)
 		return (1);
@@ -32,7 +32,7 @@ float	ft_pow(float x, int y)
 
 char	*ft_decimal(long double *nbr)
 {
-	char *str;
+	char	*str;
 
 	str = ft_itoa_unsigned_longlong((long long)*nbr);
 	*nbr = *nbr - (long)*nbr;
@@ -102,7 +102,8 @@ void	type_f(t_info *info, va_list arg, size_t *ct, int fd)
 		num = (long double)va_arg(arg, double);
 	if (num < 0)
 		negative = 1;
-	info->percision = (info->percision == -1) ? 6 : info->percision;
+	if (info->percision == -1)
+		info->percision = 6;
 	float_to_string(num, info, &str);
 	flag_ignore(info, str);
 	flag_control(info, &str, negative);

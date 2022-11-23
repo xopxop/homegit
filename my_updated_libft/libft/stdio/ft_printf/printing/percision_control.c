@@ -23,8 +23,8 @@ void	prec_ctrl_str(t_info *info, char **str)
 
 void	prec_ctrl_nums(t_info *info, char **str, int negative)
 {
-	char *new;
-	char *orig;
+	char	*new;
+	char	*orig;
 
 	orig = *str;
 	if (info->percision + negative <= (int)ft_strlen(*str))

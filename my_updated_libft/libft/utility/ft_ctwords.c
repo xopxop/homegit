@@ -12,7 +12,7 @@
 
 #include "../includes/ft_utility.h"
 
-int		ft_ctwords(char const *str, char c)
+int	ft_ctwords(char const *str, char c)
 {
 	size_t	count;
 	int		inside_a_word;
@@ -23,7 +23,10 @@ int		ft_ctwords(char const *str, char c)
 	{
 		if (!inside_a_word && *str != c)
 			count++;
-		inside_a_word = (*str == c) ? 0 : 1;
+		if (*str == c)
+			inside_a_word = 0;
+		else
+			inside_a_word = 1;
 		str++;
 	}
 	return (count);

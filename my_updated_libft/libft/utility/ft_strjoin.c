@@ -25,13 +25,14 @@ char	*ft_strjoin(char const *string1, char const *string2)
 		jointstringsize = (size_t)(ft_strlen(string2));
 	else
 		return (NULL);
-	if (!(jointstring = ft_memalloc(jointstringsize + 1)))
+	jointstring = ft_memalloc(jointstringsize + 1);
+	if (!jointstring)
 		return (NULL);
 	if (string1)
-		jointstring = ft_strcpy(jointstring, (char*)string1);
+		jointstring = ft_strcpy(jointstring, (char *)string1);
 	else if (string2)
-		jointstring = ft_strcpy(jointstring, (char*)string2);
+		jointstring = ft_strcpy(jointstring, (char *)string2);
 	if (string1 && string2)
-		jointstring = ft_strcat(jointstring, (char*)string2);
+		jointstring = ft_strcat(jointstring, (char *)string2);
 	return (jointstring);
 }

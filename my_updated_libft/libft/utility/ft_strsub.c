@@ -14,12 +14,13 @@
 
 char	*ft_strsub(char const *string, unsigned int start, size_t len)
 {
-	char *substring;
+	char	*substring;
 
 	if (!string)
 		return (NULL);
-	if (!(substring = ft_memalloc(len + 1)))
+	substring = ft_memalloc(len + 1);
+	if (!substring)
 		return (NULL);
-	substring = ft_strncpy(substring, (char*)string + start, len);
+	substring = ft_strncpy(substring, (char *)string + start, len);
 	return (substring);
 }

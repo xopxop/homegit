@@ -16,5 +16,7 @@ int	ft_strnequ(char const *string1, char const *string2, size_t maxlen)
 {
 	if (!string1 || !string2)
 		return (0);
-	return (ft_strncmp(string1, string2, maxlen) ? 0 : 1);
+	if (ft_strncmp(string1, string2, maxlen))
+		return (0);
+	return (1);
 }

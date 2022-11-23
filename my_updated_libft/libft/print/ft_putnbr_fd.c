@@ -14,7 +14,7 @@
 
 void	ft_putnbr_fd(int nbr, int filedescriptor)
 {
-	unsigned int nb;
+	unsigned int	nb;
 
 	if (nbr < 0)
 	{

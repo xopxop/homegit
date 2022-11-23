@@ -110,7 +110,10 @@ void	get_length(const char *format, size_t *pos, t_info *info)
 	if ((format[*pos] == 'l' && format[*pos + 1] == 'l') || \
 			(format[*pos] == 'h' && format[*pos + 1] == 'h'))
 	{
-		info->length = (format[*pos + 1] == 'l') ? len_ll : len_hh;
+		if (format[*pos + 1] == 'l')
+			info->length = len_ll;
+		else
+			info->length = len_hh;
 		*pos += 2;
 	}
 	else if (format[*pos] == 'h' || format[*pos] == 'l' || \

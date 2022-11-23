@@ -14,10 +14,10 @@
 
 void	type_s(t_info *info, va_list arg, size_t *ct, int fd)
 {
-	char *ctemp;
-	char *str;
+	char	*ctemp;
+	char	*str;
 
-	ctemp = va_arg(arg, char*);
+	ctemp = va_arg(arg, char *);
 	if (!ctemp)
 		str = ft_strdup("(null)");
 	else

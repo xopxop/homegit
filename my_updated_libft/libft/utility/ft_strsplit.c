@@ -12,18 +12,13 @@
 
 #include "../includes/ft_utility.h"
 
-char	**ft_strsplit(char const *str, char c)
+void	action(char const *str, char c, char **re)
 {
-	char	**re;
 	size_t	checkinsideaword;
 	size_t	indexword;
 	size_t	indexstring;
 	size_t	start;
 
-	if (!str)
-		return (NULL);
-	if (!(re = (char**)ft_memalloc((ft_ctwords(str, c) + 1) * sizeof(char*))))
-		return (NULL);
 	indexword = 0;
 	checkinsideaword = 0;
 	indexstring = -1;
@@ -34,9 +29,28 @@ char	**ft_strsplit(char const *str, char c)
 			re[indexword++] = ft_strsub(str, start, indexstring - start);
 		if (!checkinsideaword && str[indexstring] != c)
 			start = indexstring;
-		checkinsideaword = (str[indexstring] == c) ? 0 : 1;
+		if (str[indexstring] == c)
+			checkinsideaword = 0;
+		else
+			checkinsideaword = 1;
 	}
 	if (checkinsideaword)
 		re[indexword] = ft_strsub(str, start, indexstring - start);
+}
+
+char	**ft_strsplit(char const *str, char c)
+{
+	char	**re;
+	size_t	checkinsideaword;
+	size_t	indexword;
+	size_t	indexstring;
+	size_t	start;
+
+	if (!str)
+		return (NULL);
+	re = (char **)ft_memalloc((ft_ctwords(str, c) + 1) * sizeof(char *));
+	if (!re)
+		return (NULL);
+	action(str, c, re);
 	return (re);
 }

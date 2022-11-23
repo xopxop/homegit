@@ -50,9 +50,7 @@ enum	e_specifier
 	spec_none,
 };
 
-typedef enum e_length	t_length;
-
-enum	e_length
+typedef enum e_length
 {
 	len_hh,
 	len_h,
@@ -60,9 +58,9 @@ enum	e_length
 	len_l,
 	len_lup,
 	len_none,
-};
+}	t_length;
 
-typedef struct		s_info
+typedef struct s_info
 {
 	int				flags;
 	int				field_width;
@@ -70,7 +68,7 @@ typedef struct		s_info
 	t_length		length;
 	t_specifier		specifier;
 	int				dup_first_args;
-}					t_info;
+}	t_info;
 
 /*
 ** Core file

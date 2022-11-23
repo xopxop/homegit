@@ -18,8 +18,10 @@ char	*ft_strmapi(char const *string, char (*f)(unsigned int, char))
 	char			*newstring;
 
 	index = 0;
-	if (!string || !f ||
-			!(newstring = ft_memalloc((size_t)ft_strlen((char*)string) + 1)))
+	if (!string || !f)
+		return (NULL);
+	newstring = ft_memalloc((size_t)ft_strlen((char *)string) + 1);
+	if (!newstring)
 		return (NULL);
 	while (string[index])
 	{
