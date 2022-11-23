@@ -41,10 +41,6 @@ void	action(char const *str, char c, char **re)
 char	**ft_strsplit(char const *str, char c)
 {
 	char	**re;
-	size_t	checkinsideaword;
-	size_t	indexword;
-	size_t	indexstring;
-	size_t	start;
 
 	if (!str)
 		return (NULL);
