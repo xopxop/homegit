@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 11:32:53 by dthan             #+#    #+#             */
-/*   Updated: 2024/04/20 23:27:34 by dthan            ###   ########.fr       */
+/*   Updated: 2024/04/20 23:36:58 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# include "ft_ctype.h"
+# include "../ctype/ft_ctype.h"
 # include "ft_list.h"
 # include "ft_print.h"
 # include "ft_stdio.h"

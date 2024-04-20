@@ -6,13 +6,12 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 06:48:00 by dthan             #+#    #+#             */
-/*   Updated: 2020/02/21 06:48:01 by dthan            ###   ########.fr       */
+/*   Updated: 2024/04/20 23:34:29 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_CTYPE_H
 # define FT_CTYPE_H
-# include "libft.h"
 
 int	ft_isalpha(int c);
 int	ft_isdigit(int c);
