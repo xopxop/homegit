@@ -3,36 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:55:44 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/26 04:44:16 by dthan            ###   ########.fr       */
+/*   Updated: 2024/04/20 23:30:41 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_utility.h"
+#include "../string/ft_string.h"
+#include "ft_utility.h"
 
-char	*ft_strjoin(char const *string1, char const *string2)
+static void copy_data(char *str, char const *str_one, char const *str_two)
 {
-	char	*jointstring;
-	size_t	jointstringsize;
+	if (str_one && !str_two)
+		ft_strcpy(str, (char *)str_one);
+	else if (str_two && !str_one)
+		ft_strcpy(str, (char *)str_two);
+	else if (str_one && str_two)
+	{
+		ft_strcpy(str, (char *)str_one);
+		ft_strcat(str, (char *)str_two);
+	}
+}
 
-	if (string1 && string2)
-		jointstringsize = (size_t)(ft_strlen(string1) + ft_strlen(string2));
-	else if (string1)
-		jointstringsize = (size_t)(ft_strlen(string1));
-	else if (string2)
-		jointstringsize = (size_t)(ft_strlen(string2));
+char	*ft_strjoin(char const *str_one, char const *str_two)
+{
+	char	*str;
+	size_t	str_size;
+
+	if (str_one && str_two)
+		str_size = (size_t)(ft_strlen(str_one) + ft_strlen(str_two));
+	else if (str_one)
+		str_size = (size_t)(ft_strlen(str_one));
+	else if (str_two)
+		str_size = (size_t)(ft_strlen(str_two));
 	else
 		return (NULL);
-	jointstring = ft_memalloc(jointstringsize + 1);
-	if (!jointstring)
+	str = ft_memalloc(str_size + 1);
+	if (!str)
 		return (NULL);
-	if (string1)
-		jointstring = ft_strcpy(jointstring, (char *)string1);
-	else if (string2)
-		jointstring = ft_strcpy(jointstring, (char *)string2);
-	if (string1 && string2)
-		jointstring = ft_strcat(jointstring, (char *)string2);
-	return (jointstring);
+	copy_data(str, str_one, str_two);
+	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 11:32:53 by dthan             #+#    #+#             */
-/*   Updated: 2020/09/24 15:29:58 by dthan            ###   ########.fr       */
+/*   Updated: 2024/04/20 23:27:34 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include "ft_print.h"
 # include "ft_stdio.h"
 # include "ft_stdlib.h"
-# include "ft_string.h"
+# include "../string/ft_string.h"
 # include "ft_utility.h"
 # include "get_next_line.h"
 # include "ft_printf.h"

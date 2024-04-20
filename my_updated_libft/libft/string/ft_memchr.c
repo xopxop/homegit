@@ -3,28 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 19:09:19 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/26 05:07:06 by dthan            ###   ########.fr       */
+/*   Updated: 2024/04/20 23:24:32 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_string.h"
+#include <stddef.h>
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	unsigned char	*ptr;
-	size_t			i;
+	size_t			index;
 
 	ptr = (unsigned char *)s;
-	i = 0;
+	index = 0;
 	while (n--)
 	{
-		if (ptr[i] == (unsigned char)c)
-			return ((void *)(s + i));
-		else
-			i++;
+		if (ptr[index] == (unsigned char)c)
+			return &ptr[index];
+		index++;
 	}
 	return (NULL);
 }

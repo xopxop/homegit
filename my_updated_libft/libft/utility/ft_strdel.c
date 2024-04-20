@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 13:50:14 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/21 13:50:20 by dthan            ###   ########.fr       */
+/*   Updated: 2024/04/20 15:36:51 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_utility.h"
+#include "ft_utility.h"
 
 void	ft_strdel(char **as)
 {

@@ -3,30 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 16:26:00 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/30 10:19:03 by dthan            ###   ########.fr       */
+/*   Updated: 2024/04/20 23:24:17 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_string.h"
+#include <stddef.h>
 
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	unsigned char		*ptr;
-	const unsigned char	*ptr2;
-	unsigned int		i;
+	unsigned char		*dst_ptr;
+	const unsigned char	*src_ptr;
+	size_t		index;
 
-	ptr = (unsigned char *)dst;
-	ptr2 = (unsigned char *)src;
-	i = 0;
-	while (n--)
+	dst_ptr = (unsigned char *)dst;
+	src_ptr = (unsigned char *)src;
+	index = 0;
+	while (index < n)
 	{
-		ptr[i] = ptr2[i];
-		if (ptr[i] == (unsigned char)c)
-			return ((void *)(dst + i + 1));
-		i++;
+		dst_ptr[index] = src_ptr[index];
+		if (dst_ptr[index] == (unsigned char)c)
+			return &dst_ptr[index + 1];
+		index++;
 	}
 	return (NULL);
 }

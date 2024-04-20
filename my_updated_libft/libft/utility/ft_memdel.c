@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 13:49:17 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/21 13:49:25 by dthan            ###   ########.fr       */
+/*   Updated: 2024/04/20 15:36:31 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_utility.h"
+#include <stdlib.h>
 
-void	ft_memdel(void **ap)
+void	ft_memdel(void **pointer)
 {
-	if (ap)
+	if (pointer)
 	{
-		free(*ap);
-		*ap = NULL;
+		free(*pointer);
+		*pointer = NULL;
 	}
 }

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 13:42:33 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/26 04:52:26 by dthan            ###   ########.fr       */
+/*   Updated: 2024/04/20 23:26:16 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_string.h"
+#include "ft_string.h"
 
 char	*ft_strncat(char *dest, const char *src, size_t n)
 {

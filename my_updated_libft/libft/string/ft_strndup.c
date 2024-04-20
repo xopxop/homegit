@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <dthan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/06 00:18:18 by dthan             #+#    #+#             */
-/*   Updated: 2020/07/08 20:49:31 by dthan            ###   ########.fr       */
+/*   Updated: 2024/04/20 23:29:09 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_string.h"
+#include "ft_utility.h"
 
 char	*ft_strndup(char *str, size_t len)
 {

@@ -3,30 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ctwords.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dthan <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dthan <dthan@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 10:23:18 by dthan             #+#    #+#             */
-/*   Updated: 2019/10/30 10:23:26 by dthan            ###   ########.fr       */
+/*   Updated: 2024/04/20 14:15:18 by dthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_utility.h"
+#include <stddef.h>
 
 int	ft_ctwords(char const *str, char c)
 {
 	size_t	count;
-	int		inside_a_word;
+	int		is_inside;
 
-	inside_a_word = 0;
+	is_inside = 0;
 	count = 0;
 	while (*str)
 	{
-		if (!inside_a_word && *str != c)
+		if (!is_inside && *str != c)
 			count++;
 		if (*str == c)
-			inside_a_word = 0;
+			is_inside = 0;
 		else
-			inside_a_word = 1;
+			is_inside = 1;
 		str++;
 	}
 	return (count);
